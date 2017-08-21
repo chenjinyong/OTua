@@ -86,7 +86,7 @@
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条上按钮的风格颜色
-    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
@@ -487,7 +487,7 @@
     }
 }
 
-- (IBAction)searchAction:(UIBarButtonItem *)sender {
+- (IBAction)searchAction:(UIBarButtonItem *)sender{
   //1.获得要跳转的页面的实例
    UINavigationController *searchVC = [Utilities getStoryboardInstance:@"Issue" byIdentity:@"Issue"];
     
@@ -500,7 +500,9 @@
     
 }
 
-- (IBAction)SwitchAction:(UIBarButtonItem *)sender {
+- (IBAction)SwitchAction:(UIBarButtonItem *)sender{
+    //发送注册按钮被按的通知
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
 }
 
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
