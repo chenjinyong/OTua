@@ -41,6 +41,7 @@
 		846F05A11F28615400F62C38 /* activityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F05A01F28615400F62C38 /* activityModel.m */; };
 		847A00C31F272F10004FD3A5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A00C11F272F10004FD3A5 /* Detail.storyboard */; };
 		847A00C61F273E1A004FD3A5 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A00C51F273E1A004FD3A5 /* ActivityTableViewCell.m */; };
+		84D6236C1F4AC28B002053B6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84D6236E1F4AC28B002053B6 /* Localizable.strings */; };
 		84F727221F47E88D00E7E773 /* JSONS.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F727211F47E88D00E7E773 /* JSONS.m */; };
 		84F727281F47E8FB00E7E773 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F727271F47E8FB00E7E773 /* Order.m */; };
 		84F7273F1F47E9C100E7E773 /* GBAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F7272C1F47E9C100E7E773 /* GBAlipayManager.m */; };
@@ -144,6 +145,7 @@
 		847A00C21F272F10004FD3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ActivityList/Base.lproj/Detail.storyboard; sourceTree = SOURCE_ROOT; };
 		847A00C41F273E1A004FD3A5 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		847A00C51F273E1A004FD3A5 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
+		84D6236D1F4AC28B002053B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84F727201F47E88D00E7E773 /* JSONS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONS.h; sourceTree = "<group>"; };
 		84F727211F47E88D00E7E773 /* JSONS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONS.m; sourceTree = "<group>"; };
 		84F727261F47E8FB00E7E773 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				84F727501F47EB1700E7E773 /* Cities.plist */,
 				842B9F4A1F25D1B3009E30BB /* Info.plist */,
 				842B9F7B1F25DF73009E30BB /* PrefixHeader.pch */,
+				84D6236E1F4AC28B002053B6 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				8437DE2F1F48033100880916 /* Member.storyboard in Resources */,
 				84F727511F47EB1700E7E773 /* Cities.plist in Resources */,
 				842B9F411F25D1B3009E30BB /* Main.storyboard in Resources */,
+				84D6236C1F4AC28B002053B6 /* Localizable.strings in Resources */,
 				8437DE321F48034C00880916 /* Issue.storyboard in Resources */,
 				847A00C31F272F10004FD3A5 /* Detail.storyboard in Resources */,
 			);
@@ -795,6 +799,15 @@
 			name = Detail.storyboard;
 			sourceTree = "<group>";
 		};
+		84D6236E1F4AC28B002053B6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84D6236D1F4AC28B002053B6 /* Base */,
+			);
+			name = Localizable.strings;
+			path = ActivityList;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -898,7 +911,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ActivityList/PrefixHeader.pch;
 				INFOPLIST_FILE = ActivityList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -921,7 +934,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ActivityList/PrefixHeader.pch;
 				INFOPLIST_FILE = ActivityList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
