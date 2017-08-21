@@ -32,6 +32,12 @@
 		844615081F2EF7AC00DA2F83 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 844614FF1F2EF7AC00DA2F83 /* Utilities.m */; };
 		8446150B1F2EFBC100DA2F83 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8446150A1F2EFBC100DA2F83 /* Openssl.framework */; };
 		8446150F1F2EFCA300DA2F83 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446150E1F2EFCA300DA2F83 /* BasicEncodingRules.m */; };
+		844823171F48252100B08A8A /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844823161F48252100B08A8A /* CityTableViewController.m */; };
+		8448231B1F4825EF00B08A8A /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8448231A1F4825EF00B08A8A /* PurchaseTableViewController.m */; };
+		844823201F4826E200B08A8A /* MyActionaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8448231F1F4826E200B08A8A /* MyActionaryTableViewController.m */; };
+		844823231F48271B00B08A8A /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844823221F48271B00B08A8A /* SignInViewController.m */; };
+		844823261F48278100B08A8A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844823251F48278100B08A8A /* SignUpViewController.m */; };
+		844823291F4827F000B08A8A /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844823281F4827F000B08A8A /* LeftViewController.m */; };
 		846F05A11F28615400F62C38 /* activityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F05A01F28615400F62C38 /* activityModel.m */; };
 		847A00C31F272F10004FD3A5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A00C11F272F10004FD3A5 /* Detail.storyboard */; };
 		847A00C61F273E1A004FD3A5 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A00C51F273E1A004FD3A5 /* ActivityTableViewCell.m */; };
@@ -121,6 +127,18 @@
 		8446150A1F2EFBC100DA2F83 /* Openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Openssl.framework; path = ActivityList/Openssl.framework; sourceTree = "<group>"; };
 		8446150D1F2EFCA300DA2F83 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicEncodingRules.h; sourceTree = "<group>"; };
 		8446150E1F2EFCA300DA2F83 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicEncodingRules.m; sourceTree = "<group>"; };
+		844823151F48252100B08A8A /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		844823161F48252100B08A8A /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		844823191F4825EF00B08A8A /* PurchaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseTableViewController.h; sourceTree = "<group>"; };
+		8448231A1F4825EF00B08A8A /* PurchaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseTableViewController.m; sourceTree = "<group>"; };
+		8448231E1F4826E200B08A8A /* MyActionaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActionaryTableViewController.h; sourceTree = "<group>"; };
+		8448231F1F4826E200B08A8A /* MyActionaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionaryTableViewController.m; sourceTree = "<group>"; };
+		844823211F48271B00B08A8A /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		844823221F48271B00B08A8A /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		844823241F48278100B08A8A /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		844823251F48278100B08A8A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		844823271F4827F000B08A8A /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftViewController.h; path = ../Sign/LeftViewController.h; sourceTree = "<group>"; };
+		844823281F4827F000B08A8A /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftViewController.m; path = ../Sign/LeftViewController.m; sourceTree = "<group>"; };
 		846F059F1F28615400F62C38 /* activityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activityModel.h; sourceTree = "<group>"; };
 		846F05A01F28615400F62C38 /* activityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activityModel.m; sourceTree = "<group>"; };
 		847A00C21F272F10004FD3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ActivityList/Base.lproj/Detail.storyboard; sourceTree = SOURCE_ROOT; };
@@ -341,6 +359,10 @@
 				8437DE351F48057F00880916 /* DetailViewController.m */,
 				8437DE361F48057F00880916 /* ListViewController.h */,
 				8437DE371F48057F00880916 /* ListViewController.m */,
+				844823151F48252100B08A8A /* CityTableViewController.h */,
+				844823161F48252100B08A8A /* CityTableViewController.m */,
+				844823191F4825EF00B08A8A /* PurchaseTableViewController.h */,
+				8448231A1F4825EF00B08A8A /* PurchaseTableViewController.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -357,6 +379,10 @@
 		8437DE3B1F48057F00880916 /* Mumber */ = {
 			isa = PBXGroup;
 			children = (
+				8448231E1F4826E200B08A8A /* MyActionaryTableViewController.h */,
+				8448231F1F4826E200B08A8A /* MyActionaryTableViewController.m */,
+				844823271F4827F000B08A8A /* LeftViewController.h */,
+				844823281F4827F000B08A8A /* LeftViewController.m */,
 			);
 			path = Mumber;
 			sourceTree = "<group>";
@@ -364,6 +390,10 @@
 		8437DE3C1F48057F00880916 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				844823211F48271B00B08A8A /* SignInViewController.h */,
+				844823221F48271B00B08A8A /* SignInViewController.m */,
+				844823241F48278100B08A8A /* SignUpViewController.h */,
+				844823251F48278100B08A8A /* SignUpViewController.m */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -657,10 +687,16 @@
 				8446150F1F2EFCA300DA2F83 /* BasicEncodingRules.m in Sources */,
 				8437DE3E1F48057F00880916 /* ListViewController.m in Sources */,
 				8437DE3D1F48057F00880916 /* DetailViewController.m in Sources */,
+				844823261F48278100B08A8A /* SignUpViewController.m in Sources */,
+				844823231F48271B00B08A8A /* SignInViewController.m in Sources */,
+				844823201F4826E200B08A8A /* MyActionaryTableViewController.m in Sources */,
 				842B9F3B1F25D1B3009E30BB /* AppDelegate.m in Sources */,
 				84F727461F47E9C100E7E773 /* RSADataSigner.m in Sources */,
+				844823171F48252100B08A8A /* CityTableViewController.m in Sources */,
 				84F727451F47E9C100E7E773 /* openssl_wrapper.m in Sources */,
+				844823291F4827F000B08A8A /* LeftViewController.m in Sources */,
 				84F727221F47E88D00E7E773 /* JSONS.m in Sources */,
+				8448231B1F4825EF00B08A8A /* PurchaseTableViewController.m in Sources */,
 				844615011F2EF7AC00DA2F83 /* ErrorHandler.m in Sources */,
 				844615071F2EF7AC00DA2F83 /* StorageMgr.m in Sources */,
 				844615061F2EF7AC00DA2F83 /* RequestAPI.m in Sources */,

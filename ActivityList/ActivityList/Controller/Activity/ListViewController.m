@@ -24,6 +24,8 @@
 @property(strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic)UIImageView *zoomIV;
 - (IBAction)searchAction:(UIBarButtonItem *)sender;
+- (IBAction)SwitchAction:(UIBarButtonItem *)sender;
+
 
 @end
 
@@ -84,7 +86,7 @@
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条上按钮的风格颜色
-    self.navigationController.navigationBar.tintColor = [UIColor purpleColor];
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
@@ -496,6 +498,12 @@
    //(这里用push方式跳转）
    //[self.navigationController pushViewController:nc animated:YES];
     
+}
+
+- (IBAction)SwitchAction:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 
 @end
