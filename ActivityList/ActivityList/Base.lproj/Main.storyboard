@@ -103,6 +103,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="activityImageView" destination="ZUW-9R-rgS" id="foY-mP-2NK"/>
                                             <outlet property="activityInfoLabel" destination="b3d-6Y-f4Z" id="PQD-Jb-ebT"/>
