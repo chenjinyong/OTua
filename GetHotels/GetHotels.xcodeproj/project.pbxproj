@@ -39,6 +39,9 @@
 		8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BE1F4B00AC00E185F4 /* Order.storyboard */; };
 		8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */; };
 		8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C31F4B078900E185F4 /* libz.tbd */; };
+		840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B74A41F4D19A80023DF99 /* HontelViewController.m */; };
+		8493B3E71F4C554800463257 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3E61F4C554800463257 /* EnterViewController.m */; };
+		8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3EA1F4C5D2800463257 /* LoginViewController.m */; };
 		84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */; };
 		84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139F21F4C3D3B0027952B /* MyInfoViewController.m */; };
 /* End PBXBuildFile section */
@@ -115,6 +118,12 @@
 		8400C8C01F4B051F00E185F4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GetHotels.a"; path = "../../../Library/Developer/Xcode/DerivedData/GetHotels-azqzgbfergllvxbnqssaqwxltrms/Build/Products/Debug-iphonesimulator/libPods-GetHotels.a"; sourceTree = "<group>"; };
 		8400C8C31F4B078900E185F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		840B74A31F4D19A80023DF99 /* HontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelViewController.h; sourceTree = "<group>"; };
+		840B74A41F4D19A80023DF99 /* HontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelViewController.m; sourceTree = "<group>"; };
+		8493B3E51F4C554800463257 /* EnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterViewController.h; sourceTree = "<group>"; };
+		8493B3E61F4C554800463257 /* EnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterViewController.m; sourceTree = "<group>"; };
+		8493B3E91F4C5D2800463257 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8493B3EA1F4C5D2800463257 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84B139EE1F4C3C9C0027952B /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
 		84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
 		84B139F11F4C3D3B0027952B /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
@@ -299,10 +308,12 @@
 		8400C84D1F4AEEFE00E185F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				840B74A21F4D196B0023DF99 /* HontelViewController 酒店 */,
+				840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */,
+				8493B3E81F4C5CFC00463257 /* LoginViewController 注册 */,
+				8493B3E41F4C550700463257 /* EnterViewController 登录 */,
 				8400C84E1F4AEEFE00E185F4 /* ViewController.h */,
 				8400C84F1F4AEEFE00E185F4 /* ViewController.m */,
-				84B139F11F4C3D3B0027952B /* MyInfoViewController.h */,
-				84B139F21F4C3D3B0027952B /* MyInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,6 +325,42 @@
 				8400C8931F4AF31700E185F4 /* BasicEncodingRules.m */,
 			);
 			path = "SCZ-BasicEncodingRules";
+			sourceTree = "<group>";
+		};
+		840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				84B139F11F4C3D3B0027952B /* MyInfoViewController.h */,
+				84B139F21F4C3D3B0027952B /* MyInfoViewController.m */,
+			);
+			name = "MyInfoViewController 我的";
+			sourceTree = "<group>";
+		};
+		840B74A21F4D196B0023DF99 /* HontelViewController 酒店 */ = {
+			isa = PBXGroup;
+			children = (
+				840B74A31F4D19A80023DF99 /* HontelViewController.h */,
+				840B74A41F4D19A80023DF99 /* HontelViewController.m */,
+			);
+			name = "HontelViewController 酒店";
+			sourceTree = "<group>";
+		};
+		8493B3E41F4C550700463257 /* EnterViewController 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				8493B3E51F4C554800463257 /* EnterViewController.h */,
+				8493B3E61F4C554800463257 /* EnterViewController.m */,
+			);
+			name = "EnterViewController 登录";
+			sourceTree = "<group>";
+		};
+		8493B3E81F4C5CFC00463257 /* LoginViewController 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				8493B3E91F4C5D2800463257 /* LoginViewController.h */,
+				8493B3EA1F4C5D2800463257 /* LoginViewController.m */,
+			);
+			name = "LoginViewController 注册";
 			sourceTree = "<group>";
 		};
 		84B139ED1F4C3A9F0027952B /* MyInfoTableViewCell */ = {
@@ -538,10 +585,13 @@
 				8400C8871F4AF2D300E185F4 /* ErrorHandler.m in Sources */,
 				8400C8861F4AF2D300E185F4 /* AppAPIClient.m in Sources */,
 				8400C8501F4AEEFE00E185F4 /* ViewController.m in Sources */,
+				840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */,
 				84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
 				8400C88B1F4AF2D300E185F4 /* NSDateFormatter+Category.m in Sources */,
+				8493B3E71F4C554800463257 /* EnterViewController.m in Sources */,
+				8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */,
 				8400C8941F4AF31700E185F4 /* BasicEncodingRules.m in Sources */,
 				8400C88D1F4AF2D300E185F4 /* RequestAPI.m in Sources */,
 				8400C8881F4AF2D300E185F4 /* JSONS.m in Sources */,
