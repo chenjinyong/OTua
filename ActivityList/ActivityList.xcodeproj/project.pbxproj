@@ -41,6 +41,7 @@
 		846F05A11F28615400F62C38 /* activityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F05A01F28615400F62C38 /* activityModel.m */; };
 		847A00C31F272F10004FD3A5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A00C11F272F10004FD3A5 /* Detail.storyboard */; };
 		847A00C61F273E1A004FD3A5 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A00C51F273E1A004FD3A5 /* ActivityTableViewCell.m */; };
+		84A736101F4D514800E7962B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7360F1F4D514800E7962B /* UserModel.m */; };
 		84D6236C1F4AC28B002053B6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84D6236E1F4AC28B002053B6 /* Localizable.strings */; };
 		84F727221F47E88D00E7E773 /* JSONS.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F727211F47E88D00E7E773 /* JSONS.m */; };
 		84F727281F47E8FB00E7E773 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F727271F47E8FB00E7E773 /* Order.m */; };
@@ -145,6 +146,8 @@
 		847A00C21F272F10004FD3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ActivityList/Base.lproj/Detail.storyboard; sourceTree = SOURCE_ROOT; };
 		847A00C41F273E1A004FD3A5 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		847A00C51F273E1A004FD3A5 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
+		84A7360E1F4D514800E7962B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		84A7360F1F4D514800E7962B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		84D6236D1F4AC28B002053B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84F727201F47E88D00E7E773 /* JSONS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONS.h; sourceTree = "<group>"; };
 		84F727211F47E88D00E7E773 /* JSONS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONS.m; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 		842B9F6C1F25D4A8009E30BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84A7360E1F4D514800E7962B /* UserModel.h */,
+				84A7360F1F4D514800E7962B /* UserModel.m */,
 				842B9F751F25D87F009E30BB /* ActivityList.xcdatamodeld */,
 				846F059F1F28615400F62C38 /* activityModel.h */,
 				846F05A01F28615400F62C38 /* activityModel.m */,
@@ -713,6 +718,7 @@
 				842B9F771F25D87F009E30BB /* ActivityList.xcdatamodeld in Sources */,
 				84F727401F47E9C100E7E773 /* base64.m in Sources */,
 				84F727431F47E9C100E7E773 /* MD5DataSigner.m in Sources */,
+				84A736101F4D514800E7962B /* UserModel.m in Sources */,
 				844615051F2EF7AC00DA2F83 /* NSString+Crypt.m in Sources */,
 				844615081F2EF7AC00DA2F83 /* Utilities.m in Sources */,
 				842B9F381F25D1B3009E30BB /* main.m in Sources */,
