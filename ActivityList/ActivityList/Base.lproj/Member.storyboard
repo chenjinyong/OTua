@@ -156,7 +156,7 @@
                                         <rect key="frame" x="0.0" y="242" width="312" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VYL-oJ-5Yr" id="a55-H8-Zn3">
-                                            <rect key="frame" x="0.0" y="0.0" width="312.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -248,6 +248,9 @@
                                 <state key="normal" title="还没有账号？点击这儿加入我们吧">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bQb-yJ-g5J" kind="show" id="VPa-4b-O1c"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,7 +273,6 @@
                     <connections>
                         <outlet property="passdwordTextField" destination="AvM-f4-fcI" id="e9U-Ld-km5"/>
                         <outlet property="usernameTextField" destination="nFJ-TS-Wfe" id="bJh-Vg-YS0"/>
-                        <segue destination="bQb-yJ-g5J" kind="show" id="2yC-1r-aNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1V-hz-e0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,6 +358,9 @@
                                 <state key="normal" title="点击获取验证码">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="VerAction:forEvent:" destination="bQb-yJ-g5J" eventType="touchUpInside" id="YiU-Nn-XDh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn3-WZ-bPi">
                                 <rect key="frame" x="15" y="384" width="345" height="50"/>
@@ -367,6 +372,9 @@
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="singUpAction:forEvent:" destination="bQb-yJ-g5J" eventType="touchUpInside" id="4Uy-kA-v8g"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -394,10 +402,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="IXq-cq-Qox"/>
+                    <connections>
+                        <outlet property="VerBtn" destination="BeI-55-PRO" id="Ezg-G4-ape"/>
+                        <outlet property="VerText" destination="q01-IS-aYo" id="m73-r5-RfM"/>
+                        <outlet property="conPwdText" destination="85f-sE-Hm1" id="DW8-3u-vPe"/>
+                        <outlet property="nickNameText" destination="gJ2-0g-cWt" id="8SE-oD-xNK"/>
+                        <outlet property="pwdText" destination="MVI-cJ-gUn" id="ire-6F-NS7"/>
+                        <outlet property="singUpBtn" destination="Hn3-WZ-bPi" id="fDk-1a-qxM"/>
+                        <outlet property="userNameText" destination="uBF-0W-MB7" id="bd0-fW-071"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Uv-Gz-pwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3329" y="458"/>
+            <point key="canvasLocation" x="3062" y="458"/>
         </scene>
         <!--我参与的活动-->
         <scene sceneID="Nrf-d8-1uI">
