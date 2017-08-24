@@ -31,6 +31,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
@@ -57,10 +63,38 @@
 }
 
 -(void)backAction{
-    //用model方式返回上一页
-    [self dismissViewControllerAnimated:YES completion:nil];
     //用push方式返回上一页
-    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//自定义的返回按钮的事件
+- (void)leftButtonAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+//当textfield结束编辑的时候调用
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    //当密码和确认密码都输入了之后，按钮才能被点击
+    if (textField == _firstPswText || textField == _secondPwdText || textField ) {
+        if (_firstPswText.text.length != 0 && _secondPwdText.text.length != 0) {
+            _secondPwdText.enabled = YES;
+        }
+    }
+}
+
+//按键盘return收回按钮
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _firstPswText || textField == _secondPwdText)  {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+//让根视图结束编辑状态，到达收起键盘的目的
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 /*
@@ -74,5 +108,17 @@
 */
 
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    if ([_firstPswText.text isEqualToString:_secondPwdText.text]) {
+        //回到登录页面,释放全部页面
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [aiv stopAnimating];
+    } else {
+        [Utilities popUpAlertViewWithMsg:@"密码输入不一致，请重新输入" andTitle:@"提示" onView:self];
+            //_firstPswText.text = @"";
+            _secondPwdText.text = @"";
+        [aiv stopAnimating];
+    }
 }
+
 @end
