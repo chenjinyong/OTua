@@ -44,6 +44,8 @@
 		8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3EA1F4C5D2800463257 /* LoginViewController.m */; };
 		84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */; };
 		84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139F21F4C3D3B0027952B /* MyInfoViewController.m */; };
+		84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */; };
+		84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A81F4EE96700D888CE /* MyOrderViewController.m */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
 		84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */; };
 		84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047CF1F4EF49C003CD7E9 /* payViewController.m */; };
@@ -133,6 +135,10 @@
 		84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
 		84B139F11F4C3D3B0027952B /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
 		84B139F21F4C3D3B0027952B /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
+		84B346A41F4EE93300D888CE /* MyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewCell.h; sourceTree = "<group>"; };
+		84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
+		84B346A71F4EE96700D888CE /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
+		84B346A81F4EE96700D888CE /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
 		84CD37EE1F4DA1E200208741 /* GetHontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHontelViewController.h; sourceTree = "<group>"; };
 		84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHontelViewController.m; sourceTree = "<group>"; };
 		84CD37F21F4DA3BC00208741 /* HontelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelTableViewCell.h; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		8400C84C1F4AEB8B00E185F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84B346A31F4EE8F100D888CE /* MyOrderTableViewCell */,
 				84CD37F11F4DA38200208741 /* HontelTableViewCell */,
 				84B139ED1F4C3A9F0027952B /* MyInfoTableViewCell */,
 				8400C81A1F4AE93E00E185F4 /* Main.storyboard */,
@@ -351,6 +358,8 @@
 			children = (
 				84B139F11F4C3D3B0027952B /* MyInfoViewController.h */,
 				84B139F21F4C3D3B0027952B /* MyInfoViewController.m */,
+				84B346A71F4EE96700D888CE /* MyOrderViewController.h */,
+				84B346A81F4EE96700D888CE /* MyOrderViewController.m */,
 			);
 			name = "MyInfoViewController 我的";
 			sourceTree = "<group>";
@@ -393,6 +402,15 @@
 				84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */,
 			);
 			name = MyInfoTableViewCell;
+			sourceTree = "<group>";
+		};
+		84B346A31F4EE8F100D888CE /* MyOrderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84B346A41F4EE93300D888CE /* MyOrderTableViewCell.h */,
+				84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */,
+			);
+			name = MyOrderTableViewCell;
 			sourceTree = "<group>";
 		};
 		84CD37F11F4DA38200208741 /* HontelTableViewCell */ = {
@@ -619,6 +637,7 @@
 				84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */,
 				8400C88E1F4AF2D300E185F4 /* StorageMgr.m in Sources */,
 				8400C88C1F4AF2D300E185F4 /* NSString+Crypt.m in Sources */,
+				84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */,
 				8400C8891F4AF2D300E185F4 /* NSData+Base64.m in Sources */,
 				8400C81F1F4AE93E00E185F4 /* GetHotels.xcdatamodeld in Sources */,
 				8400C88A1F4AF2D300E185F4 /* NSDate+Utility.m in Sources */,
@@ -635,6 +654,7 @@
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
+				84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */,
 				8400C88B1F4AF2D300E185F4 /* NSDateFormatter+Category.m in Sources */,
 				8493B3E71F4C554800463257 /* EnterViewController.m in Sources */,
 				8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */,

@@ -66,7 +66,7 @@
 -(void)networkRequest{
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     NSString *request = [NSString stringWithFormat:@"/event/%@",_activity.activityId];
-    NSMutableDictionary *parameters = [NSMutableArray new];
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
     if([Utilities loginCheck]){
         [parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]forKey:@"memberId"];
     }
