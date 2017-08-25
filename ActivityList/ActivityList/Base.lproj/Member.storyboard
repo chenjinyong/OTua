@@ -156,7 +156,7 @@
                                         <rect key="frame" x="0.0" y="242" width="312" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VYL-oJ-5Yr" id="a55-H8-Zn3">
-                                            <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="312.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

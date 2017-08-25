@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+//#import "KeychainItemWrapper.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *imageView;
@@ -112,6 +113,19 @@
     if ([_firstPswText.text isEqualToString:_secondPwdText.text]) {
         //回到登录页面,释放全部页面
         [self dismissViewControllerAnimated:YES completion:nil];
+        
+//        KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Account Number" accessGroup:@"YOUR_APP_ID_HERE.com.yourcompany.AppIdentifier"];
+//        //保存帐号
+//        [wrapper setObject:@"<帐号>" forKey:(id)kSecAttrAccount];
+//        
+//        //保存密码
+//        [wrapper setObject:@"<帐号密码>" forKey:(id)kSecValueData];
+//        
+//        //从keychain里取出帐号密码
+//        NSString *password = [wrapper objectForKey:(id)kSecValueData];
+//        
+//        //清空设置   
+//        [wrapper resetKeychainItem];
         [aiv stopAnimating];
     } else {
         [Utilities popUpAlertViewWithMsg:@"密码输入不一致，请重新输入" andTitle:@"提示" onView:self];

@@ -12,10 +12,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *hontelNameLabel;//酒店名称
 @property (weak, nonatomic) IBOutlet UILabel *stayTimeLabel;//入住时间
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;//价格
-@property (weak, nonatomic) IBOutlet UILabel *payA;
-@property (weak, nonatomic) IBOutlet UILabel *payB;
-@property (weak, nonatomic) IBOutlet UILabel *payC;
+@property (weak, nonatomic) IBOutlet UIImageView *orighImg;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
+@property (weak, nonatomic) IBOutlet UIButton *payaBtn;
+@property (weak, nonatomic) IBOutlet UIButton *paybBtn;
+@property (weak, nonatomic) IBOutlet UIButton *paycBtn;
+
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

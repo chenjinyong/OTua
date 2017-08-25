@@ -40,6 +40,7 @@
 		8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */; };
 		8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C31F4B078900E185F4 /* libz.tbd */; };
 		840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B74A41F4D19A80023DF99 /* HontelViewController.m */; };
+		842F357F1F4FB70600E883DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F357E1F4FB70600E883DA /* Security.framework */; };
 		8493B3E71F4C554800463257 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3E61F4C554800463257 /* EnterViewController.m */; };
 		8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3EA1F4C5D2800463257 /* LoginViewController.m */; };
 		84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */; };
@@ -127,6 +128,7 @@
 		8400C8C31F4B078900E185F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		840B74A31F4D19A80023DF99 /* HontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelViewController.h; sourceTree = "<group>"; };
 		840B74A41F4D19A80023DF99 /* HontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelViewController.m; sourceTree = "<group>"; };
+		842F357E1F4FB70600E883DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8493B3E51F4C554800463257 /* EnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterViewController.h; sourceTree = "<group>"; };
 		8493B3E61F4C554800463257 /* EnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterViewController.m; sourceTree = "<group>"; };
 		8493B3E91F4C5D2800463257 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842F357F1F4FB70600E883DA /* Security.framework in Frameworks */,
 				8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */,
 				8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */,
 				8400C8A31F4AF51300E185F4 /* CoreTelephony.framework in Frameworks */,
@@ -434,6 +437,7 @@
 		C50284EB31D6F01A291016B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				842F357E1F4FB70600E883DA /* Security.framework */,
 				8400C8C31F4B078900E185F4 /* libz.tbd */,
 				8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */,
 				8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */,

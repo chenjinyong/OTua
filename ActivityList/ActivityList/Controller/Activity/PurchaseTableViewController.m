@@ -22,12 +22,20 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self naviConfig];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)naviConfig{
+    //设置导航条的文字
+    self.navigationItem.title = @"活动报名支付";
+    
+}
+
 
 #pragma mark - Table view data source
 
