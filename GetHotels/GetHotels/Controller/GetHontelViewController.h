@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GethontelModel.h"
 @interface GetHontelViewController : UIViewController
+@property (strong,nonatomic) GethontelModel *callBack;
 
 @end

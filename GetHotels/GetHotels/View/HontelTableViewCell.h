@@ -12,7 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *hontelImg;
 @property (weak, nonatomic) IBOutlet UILabel *hontelName;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ip;
 @property (weak, nonatomic) IBOutlet UILabel *rmbLabel;
 
+//hontelImg hontelName distanceLabel timeLabel rmbLabel
 @end

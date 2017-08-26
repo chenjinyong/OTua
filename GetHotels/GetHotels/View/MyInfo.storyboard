@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RK3-om-xrW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,28 +11,9 @@
     </dependencies>
     <scenes>
         <!--我的-->
-        <scene sceneID="htE-oK-saE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9x9-p2-EJM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="tYm-LN-tXm"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="80o-xk-lbm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="jDI-Tq-p3M" kind="relationship" relationship="rootViewController" id="EzO-V1-e0H"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BYH-iZ-kfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="88.799999999999997" y="-21.139430284857571"/>
-        </scene>
-        <!--我的-->
         <scene sceneID="Vr8-0U-R5A">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x8L-9h-XrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jDI-Tq-p3M" customClass="MyInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xhB-to-X0a"/>
@@ -43,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-R6-Inc">
-                                <rect key="frame" x="0.0" y="200" width="375" height="418"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myInfoCell" id="WpR-a7-MNY" customClass="MyInfoTableViewCell">
@@ -152,16 +133,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="我的" id="Rla-oL-AJg"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="HeadImage" destination="siY-Tt-vMh" id="W7N-NW-jty"/>
-                        <outlet property="levelLabel" destination="cUS-AZ-gvP" id="ac0-OM-PhN"/>
-                        <outlet property="nameLabel" destination="36R-za-8UI" id="30Y-b1-2Er"/>
-                        <segue destination="RK3-om-xrW" kind="show" identifier="MyInfoHotel" id="hSD-bJ-RRV"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x8L-9h-XrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="-21"/>
+            <point key="canvasLocation" x="903" y="27"/>
         </scene>
         <!--我的酒店-->
         <scene sceneID="ogp-ST-uZk">
@@ -298,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-Rl-TnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="-21"/>
+            <point key="canvasLocation" x="1881" y="-10"/>
         </scene>
     </scenes>
     <resources>

@@ -47,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSDictionary *dict = @{@"taskName" : @"测试项目007",@"time" : @"2017-08-07 11:19",@"phone" : @"180****6666",@"name" : @"张三",@"detail" : @"测试项目",@"remark" : @"这是一段备注，详情暂无"};
 }
 
 - (void)didReceiveMemoryWarning {

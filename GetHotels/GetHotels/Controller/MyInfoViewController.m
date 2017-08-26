@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self naviConfig];
     // Do any additional setup after loading the view.
      _myInfoArr = @[@{@"LeftIcon":@"酒店",@"TitleLabel":@"我的酒店"},@{@"LeftIcon":@"航空",@"TitleLabel":@"我的航空"},@{@"LeftIcon":@"信息",@"TitleLabel":@"我的消息"},@{@"LeftIcon":@"设置",@"TitleLabel":@"账户设置"},@{@"LeftIcon":@"协议",@"TitleLabel":@"使用协议"},@{@"LeftIcon":@"电话",@"TitleLabel":@"联系我们"}];
 }
@@ -30,6 +32,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)naviConfig{
+    //设置导航条的颜色(风格颜色)
+    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 /*
@@ -42,12 +57,6 @@
 }
 */
 
-//将要来到此页面（隐藏导航栏）
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-}
 
 #pragma mark - table view
 
@@ -80,11 +89,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
-        case 0:
-            [self performSegueWithIdentifier:@"MyInfoHotel" sender:self];
-            break;
-        default:
-            break;
+//        case 0:
+//            [self performSegueWithIdentifier:@"MyInfoHotel" sender:self];
+//            break;
+//        default:
+//            break;
     }
     
 }

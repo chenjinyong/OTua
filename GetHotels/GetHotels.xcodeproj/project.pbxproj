@@ -15,7 +15,6 @@
 		8400C8241F4AE93E00E185F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8221F4AE93E00E185F4 /* LaunchScreen.storyboard */; };
 		8400C82F1F4AE93E00E185F4 /* GetHotelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C82E1F4AE93E00E185F4 /* GetHotelsTests.m */; };
 		8400C83A1F4AE93E00E185F4 /* GetHotelsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C8391F4AE93E00E185F4 /* GetHotelsUITests.m */; };
-		8400C8501F4AEEFE00E185F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C84F1F4AEEFE00E185F4 /* ViewController.m */; };
 		8400C8861F4AF2D300E185F4 /* AppAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C8681F4AF2D300E185F4 /* AppAPIClient.m */; };
 		8400C8871F4AF2D300E185F4 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C86A1F4AF2D300E185F4 /* ErrorHandler.m */; };
 		8400C8881F4AF2D300E185F4 /* JSONS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8400C86C1F4AF2D300E185F4 /* JSONS.m */; };
@@ -47,6 +46,8 @@
 		84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139F21F4C3D3B0027952B /* MyInfoViewController.m */; };
 		84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */; };
 		84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A81F4EE96700D888CE /* MyOrderViewController.m */; };
+		84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E4101F503C47003A8728 /* GethontelModel.m */; };
+		84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6E4121F504CD7003A8728 /* UIKit.framework */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
 		84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */; };
 		84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047CF1F4EF49C003CD7E9 /* payViewController.m */; };
@@ -88,8 +89,6 @@
 		8400C8351F4AE93E00E185F4 /* GetHotelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetHotelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8400C8391F4AE93E00E185F4 /* GetHotelsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetHotelsUITests.m; sourceTree = "<group>"; };
 		8400C83B1F4AE93E00E185F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8400C84E1F4AEEFE00E185F4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8400C84F1F4AEEFE00E185F4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8400C8671F4AF2D300E185F4 /* AppAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAPIClient.h; sourceTree = "<group>"; };
 		8400C8681F4AF2D300E185F4 /* AppAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAPIClient.m; sourceTree = "<group>"; };
 		8400C8691F4AF2D300E185F4 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
@@ -141,6 +140,9 @@
 		84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
 		84B346A71F4EE96700D888CE /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
 		84B346A81F4EE96700D888CE /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
+		84B6E40F1F503C47003A8728 /* GethontelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethontelModel.h; sourceTree = "<group>"; };
+		84B6E4101F503C47003A8728 /* GethontelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GethontelModel.m; sourceTree = "<group>"; };
+		84B6E4121F504CD7003A8728 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84CD37EE1F4DA1E200208741 /* GetHontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHontelViewController.h; sourceTree = "<group>"; };
 		84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHontelViewController.m; sourceTree = "<group>"; };
 		84CD37F21F4DA3BC00208741 /* HontelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelTableViewCell.h; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */,
 				842F357F1F4FB70600E883DA /* Security.framework in Frameworks */,
 				8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */,
 				8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */,
@@ -286,6 +289,8 @@
 				8400C81D1F4AE93E00E185F4 /* GetHotels.xcdatamodeld */,
 				84E047D11F4EF860003CD7E9 /* EnterModel.h */,
 				84E047D21F4EF860003CD7E9 /* EnterModel.m */,
+				84B6E40F1F503C47003A8728 /* GethontelModel.h */,
+				84B6E4101F503C47003A8728 /* GethontelModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -341,8 +346,6 @@
 				840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */,
 				8493B3E81F4C5CFC00463257 /* LoginViewController 注册 */,
 				8493B3E41F4C550700463257 /* EnterViewController 登录 */,
-				8400C84E1F4AEEFE00E185F4 /* ViewController.h */,
-				8400C84F1F4AEEFE00E185F4 /* ViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 		C50284EB31D6F01A291016B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B6E4121F504CD7003A8728 /* UIKit.framework */,
 				842F357E1F4FB70600E883DA /* Security.framework */,
 				8400C8C31F4B078900E185F4 /* libz.tbd */,
 				8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */,
@@ -649,13 +653,13 @@
 				8400C8161F4AE93E00E185F4 /* AppDelegate.m in Sources */,
 				8400C8871F4AF2D300E185F4 /* ErrorHandler.m in Sources */,
 				8400C8861F4AF2D300E185F4 /* AppAPIClient.m in Sources */,
-				8400C8501F4AEEFE00E185F4 /* ViewController.m in Sources */,
 				840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */,
 				84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */,
 				84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */,
 				84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
+				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
 				84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */,
