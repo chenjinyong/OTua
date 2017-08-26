@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *HeadImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+- (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
 
 //定义一个存放数据的数组
 @property (strong,nonatomic) NSArray * myInfoArr;
@@ -27,6 +29,26 @@
     [self naviConfig];
     // Do any additional setup after loading the view.
      _myInfoArr = @[@{@"LeftIcon":@"酒店",@"TitleLabel":@"我的酒店"},@{@"LeftIcon":@"航空",@"TitleLabel":@"我的航空"},@{@"LeftIcon":@"信息",@"TitleLabel":@"我的消息"},@{@"LeftIcon":@"设置",@"TitleLabel":@"账户设置"},@{@"LeftIcon":@"协议",@"TitleLabel":@"使用协议"},@{@"LeftIcon":@"电话",@"TitleLabel":@"联系我们"}];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+    if ([Utilities loginCheck]) {
+        //登录
+        _LoginBtn.hidden = YES;
+        _nameLabel.hidden = NO;
+        
+        
+    }else{
+        //未登录
+        _LoginBtn.hidden = NO;
+        _nameLabel.hidden = YES;
+        
+        //_avatarImagrView.image = [UIImage imageNamed:@"Avatar"];
+        //_nameLabel.text = @"小葵";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +120,34 @@
     
 }
 
+//
+- (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
+    
+    //创建一个navigationcontroller
+    //UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:signNavi];
+    //执行跳转//2.用某种方式跳转到上述页面（这里用modal方式跳转）
+    [self presentViewController:signNavi animated:YES completion:nil];
+    
+    //(这里用push方式跳转）
+    //[self.navigationController pushViewController:nc animated:YES];
+    
+}
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

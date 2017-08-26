@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cq3-23-Wl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="-2295"/>
+            <point key="canvasLocation" x="468" y="-2295"/>
         </scene>
         <!--GetHontel-->
         <scene sceneID="TmU-jQ-p0u">
@@ -137,7 +137,7 @@
                                             <constraint firstItem="iqJ-kC-KWU" firstAttribute="top" secondItem="9dH-zz-gzZ" secondAttribute="top" id="zw9-y3-Lz5"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店大蓝" translatesAutoresizingMaskIntoConstraints="NO" id="4T6-gH-60E">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotels" translatesAutoresizingMaskIntoConstraints="NO" id="4T6-gH-60E">
                                         <rect key="frame" x="0.0" y="115" width="375" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="jVf-z0-Edq"/>
@@ -233,7 +233,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aircraft" translatesAutoresizingMaskIntoConstraints="NO" id="2Bb-Kd-ecb">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店大蓝" translatesAutoresizingMaskIntoConstraints="NO" id="2Bb-Kd-ecb">
                                                             <rect key="frame" x="15" y="15" width="90" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="90" id="NI2-oB-PDd"/>
@@ -344,7 +344,7 @@
                 <viewControllerPlaceholder storyboardName="Hotel" id="gYr-VM-z6P" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hj1-GC-JsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="-3058"/>
+            <point key="canvasLocation" x="1151" y="-2956"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8Xe-6L-9EB">
@@ -363,7 +363,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpe-Db-7xG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1796" y="-2474"/>
+            <point key="canvasLocation" x="-1916" y="-2295"/>
         </scene>
         <!--酒店-->
         <scene sceneID="1c2-RT-6bW">
@@ -382,7 +382,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIl-VG-jsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="-2953"/>
+            <point key="canvasLocation" x="-578" y="-2955"/>
         </scene>
         <!--我的-->
         <scene sceneID="vO1-Yo-PDW">
@@ -399,7 +399,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3t-xe-D81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-578" y="-1574"/>
+            <point key="canvasLocation" x="-578" y="-1531"/>
         </scene>
         <!--航空-->
         <scene sceneID="PSg-or-ZFb">
@@ -505,14 +505,28 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVi-86-9Qm">
+                                        <rect key="frame" x="130" y="40" width="225" height="33"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="登录">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="LoginAction:forEvent:" destination="oJm-Dy-HOB" eventType="touchUpInside" id="Ifs-Ya-2VG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="a0m-Ls-oyt" firstAttribute="leading" secondItem="tMI-Wp-Psl" secondAttribute="trailing" constant="20" id="CIT-Oz-6LK"/>
+                                    <constraint firstItem="Gtf-kW-Zxv" firstAttribute="trailing" secondItem="eVi-86-9Qm" secondAttribute="trailing" id="DfD-LK-177"/>
+                                    <constraint firstItem="Gtf-kW-Zxv" firstAttribute="leading" secondItem="eVi-86-9Qm" secondAttribute="leading" id="GQn-pW-cWG"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="leading" secondItem="a0m-Ls-oyt" secondAttribute="leading" id="Uyx-OR-T53"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="trailing" secondItem="a0m-Ls-oyt" secondAttribute="trailing" id="fj2-Ty-Gdu"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="top" secondItem="a0m-Ls-oyt" secondAttribute="bottom" constant="10" id="h8T-nP-yHS"/>
                                     <constraint firstItem="tMI-Wp-Psl" firstAttribute="centerY" secondItem="R4e-Wk-IWX" secondAttribute="centerY" id="jKQ-t7-r0c"/>
+                                    <constraint firstItem="eVi-86-9Qm" firstAttribute="top" secondItem="R4e-Wk-IWX" secondAttribute="top" constant="40" id="nWP-jO-XO9"/>
                                     <constraint firstAttribute="trailing" secondItem="a0m-Ls-oyt" secondAttribute="trailing" constant="20" id="uVf-0l-9g5"/>
                                     <constraint firstItem="tMI-Wp-Psl" firstAttribute="leading" secondItem="R4e-Wk-IWX" secondAttribute="leading" constant="20" id="v5m-JL-7Wt"/>
                                     <constraint firstItem="a0m-Ls-oyt" firstAttribute="top" secondItem="R4e-Wk-IWX" secondAttribute="top" constant="40" id="zOr-zK-2ci"/>
@@ -535,13 +549,14 @@
                     <navigationItem key="navigationItem" title="我的" id="v9e-oY-1KM"/>
                     <connections>
                         <outlet property="HeadImage" destination="tMI-Wp-Psl" id="hYX-Yh-56g"/>
+                        <outlet property="LoginBtn" destination="eVi-86-9Qm" id="5tg-ct-1Sw"/>
                         <outlet property="levelLabel" destination="Gtf-kW-Zxv" id="fMc-4N-f6I"/>
                         <outlet property="nameLabel" destination="a0m-Ls-oyt" id="ybc-NE-xpc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Me-xk-DwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="-1575"/>
+            <point key="canvasLocation" x="468" y="-1531"/>
         </scene>
         <!--MyInfo-->
         <scene sceneID="fnR-tg-dne">
@@ -549,13 +564,13 @@
                 <viewControllerPlaceholder storyboardName="MyInfo" id="Tha-z7-6Gw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIS-ZC-OVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-1382"/>
+            <point key="canvasLocation" x="1144" y="-1532"/>
         </scene>
     </scenes>
     <resources>
-        <image name="aircraft" width="45" height="45"/>
         <image name="aviation" width="22" height="22"/>
         <image name="hotel" width="22" height="22"/>
+        <image name="hotels" width="82" height="61"/>
         <image name="icon" width="100" height="100"/>
         <image name="location" width="11" height="15"/>
         <image name="my" width="22" height="22"/>

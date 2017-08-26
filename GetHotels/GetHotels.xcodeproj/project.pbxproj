@@ -35,9 +35,10 @@
 		8400C8A31F4AF51300E185F4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */; };
 		8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */; };
 		8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BC1F4B009900E185F4 /* Hotel.storyboard */; };
-		8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BE1F4B00AC00E185F4 /* Order.storyboard */; };
 		8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */; };
 		8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C31F4B078900E185F4 /* libz.tbd */; };
+		840422481F5181020017A728 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840422471F5181020017A728 /* Login.storyboard */; };
+		8404224C1F5194FF0017A728 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8404224B1F5194FF0017A728 /* HMSegmentedControl.m */; };
 		840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B74A41F4D19A80023DF99 /* HontelViewController.m */; };
 		842F357F1F4FB70600E883DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F357E1F4FB70600E883DA /* Security.framework */; };
 		8493B3E71F4C554800463257 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3E61F4C554800463257 /* EnterViewController.m */; };
@@ -121,10 +122,12 @@
 		8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		8400C8BC1F4B009900E185F4 /* Hotel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hotel.storyboard; sourceTree = "<group>"; };
-		8400C8BE1F4B00AC00E185F4 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		8400C8C01F4B051F00E185F4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GetHotels.a"; path = "../../../Library/Developer/Xcode/DerivedData/GetHotels-azqzgbfergllvxbnqssaqwxltrms/Build/Products/Debug-iphonesimulator/libPods-GetHotels.a"; sourceTree = "<group>"; };
 		8400C8C31F4B078900E185F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		840422471F5181020017A728 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		8404224A1F5194FF0017A728 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		8404224B1F5194FF0017A728 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		840B74A31F4D19A80023DF99 /* HontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelViewController.h; sourceTree = "<group>"; };
 		840B74A41F4D19A80023DF99 /* HontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelViewController.m; sourceTree = "<group>"; };
 		842F357E1F4FB70600E883DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -270,6 +273,7 @@
 		8400C8471F4AEB8B00E185F4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				840422491F5194FF0017A728 /* HMSegmentedControl */,
 				8400C8911F4AF31700E185F4 /* SCZ-BasicEncodingRules */,
 			);
 			path = 3rd;
@@ -333,7 +337,7 @@
 				8400C8201F4AE93E00E185F4 /* Assets.xcassets */,
 				8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */,
 				8400C8BC1F4B009900E185F4 /* Hotel.storyboard */,
-				8400C8BE1F4B00AC00E185F4 /* Order.storyboard */,
+				840422471F5181020017A728 /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +361,15 @@
 				8400C8931F4AF31700E185F4 /* BasicEncodingRules.m */,
 			);
 			path = "SCZ-BasicEncodingRules";
+			sourceTree = "<group>";
+		};
+		840422491F5194FF0017A728 /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				8404224A1F5194FF0017A728 /* HMSegmentedControl.h */,
+				8404224B1F5194FF0017A728 /* HMSegmentedControl.m */,
+			);
+			path = HMSegmentedControl;
 			sourceTree = "<group>";
 		};
 		840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */ = {
@@ -566,10 +579,10 @@
 			files = (
 				8400C8241F4AE93E00E185F4 /* LaunchScreen.storyboard in Resources */,
 				8400C8211F4AE93E00E185F4 /* Assets.xcassets in Resources */,
+				840422481F5181020017A728 /* Login.storyboard in Resources */,
 				8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */,
 				8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */,
 				8400C81C1F4AE93E00E185F4 /* Main.storyboard in Resources */,
-				8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +672,7 @@
 				84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
+				8404224C1F5194FF0017A728 /* HMSegmentedControl.m in Sources */,
 				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
