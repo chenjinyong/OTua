@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="-63" width="375" height="689"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="159" id="PWz-Ie-LjK" customClass="MyOrderTableViewCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyOrder" rowHeight="159" id="PWz-Ie-LjK" customClass="MyOrderTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="159"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWz-Ie-LjK" id="uVF-Jb-YjR">
@@ -85,10 +85,23 @@
                                                                 <constraint firstAttribute="width" secondItem="BPx-3e-T3A" secondAttribute="height" multiplier="10:9" id="Y6R-bg-IMm"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-2-23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKw-Ch-tc3">
+                                                            <rect key="frame" x="51" y="122" width="61" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-2-25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPQ-cY-3ZL">
+                                                            <rect key="frame" x="142" y="122" width="60.5" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="ole-z2-Zry" firstAttribute="leading" secondItem="mLa-RH-hgY" secondAttribute="leading" id="0NN-Uk-dYo"/>
                                                         <constraint firstItem="BPx-3e-T3A" firstAttribute="top" secondItem="uVF-Jb-YjR" secondAttribute="top" constant="15" id="1yc-xa-ng1"/>
+                                                        <constraint firstItem="KKw-Ch-tc3" firstAttribute="leading" secondItem="8Qq-vV-JOf" secondAttribute="leading" id="54N-ew-3Ry"/>
                                                         <constraint firstAttribute="trailing" secondItem="BPx-3e-T3A" secondAttribute="trailing" constant="15" id="9Xx-tX-KNI"/>
                                                         <constraint firstItem="ole-z2-Zry" firstAttribute="width" secondItem="ole-z2-Zry" secondAttribute="height" multiplier="10:10" id="9fF-WI-qYs"/>
                                                         <constraint firstItem="o9v-w8-Lt9" firstAttribute="top" secondItem="Ogz-Bt-zsP" secondAttribute="bottom" constant="20" id="9kO-vz-lwL"/>
@@ -98,10 +111,13 @@
                                                         <constraint firstItem="mLa-RH-hgY" firstAttribute="width" secondItem="mLa-RH-hgY" secondAttribute="height" multiplier="10:10" id="aTY-K9-I5B"/>
                                                         <constraint firstItem="8Qq-vV-JOf" firstAttribute="leading" secondItem="o9v-w8-Lt9" secondAttribute="leading" id="bwi-mx-G1f"/>
                                                         <constraint firstItem="Ogz-Bt-zsP" firstAttribute="top" secondItem="uVF-Jb-YjR" secondAttribute="top" constant="15" id="d7s-cV-RUV"/>
+                                                        <constraint firstItem="KKw-Ch-tc3" firstAttribute="top" secondItem="8Qq-vV-JOf" secondAttribute="bottom" constant="18" id="e3b-pV-1x4"/>
                                                         <constraint firstItem="4dV-GN-Mcs" firstAttribute="top" secondItem="Ogz-Bt-zsP" secondAttribute="bottom" constant="20" id="hBr-2H-7Zj"/>
+                                                        <constraint firstItem="ZPQ-cY-3ZL" firstAttribute="leading" secondItem="KKw-Ch-tc3" secondAttribute="trailing" constant="30" id="hCp-fC-3P7"/>
                                                         <constraint firstItem="Ogz-Bt-zsP" firstAttribute="leading" secondItem="uVF-Jb-YjR" secondAttribute="leading" constant="20" id="i5d-DX-0zd"/>
                                                         <constraint firstItem="4dV-GN-Mcs" firstAttribute="leading" secondItem="uVF-Jb-YjR" secondAttribute="leading" constant="20" id="lU2-2N-0uz"/>
                                                         <constraint firstItem="8Qq-vV-JOf" firstAttribute="top" secondItem="o9v-w8-Lt9" secondAttribute="bottom" constant="15" id="pfa-S9-PiG"/>
+                                                        <constraint firstItem="ZPQ-cY-3ZL" firstAttribute="top" secondItem="KKw-Ch-tc3" secondAttribute="top" id="pxR-zi-mDf"/>
                                                         <constraint firstItem="ole-z2-Zry" firstAttribute="top" secondItem="mLa-RH-hgY" secondAttribute="bottom" constant="15" id="vg1-9l-zdb"/>
                                                         <constraint firstItem="o9v-w8-Lt9" firstAttribute="leading" secondItem="4dV-GN-Mcs" secondAttribute="trailing" constant="15" id="yka-uk-dic"/>
                                                     </constraints>
@@ -109,14 +125,20 @@
                                                 <connections>
                                                     <outlet property="addressLabel" destination="4dV-GN-Mcs" id="88T-po-UTh"/>
                                                     <outlet property="dateLabel" destination="ole-z2-Zry" id="lky-9F-j2u"/>
+                                                    <outlet property="endDateLabel" destination="ZPQ-cY-3ZL" id="U1p-1e-OPd"/>
                                                     <outlet property="guestLabel" destination="8Qq-vV-JOf" id="UNv-2l-uGP"/>
                                                     <outlet property="hotelsLabel" destination="BPx-3e-T3A" id="2tq-RN-8A1"/>
                                                     <outlet property="hotelsnameLabel" destination="Ogz-Bt-zsP" id="VQu-8A-HVo"/>
                                                     <outlet property="locationLabel" destination="o9v-w8-Lt9" id="KbP-zv-83w"/>
+                                                    <outlet property="startDateLabel" destination="KKw-Ch-tc3" id="hie-f5-Pvn"/>
                                                     <outlet property="userLabel" destination="mLa-RH-hgY" id="lVz-Go-Kyh"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="RK3-om-xrW" id="dd3-vO-DJh"/>
+                                            <outlet property="delegate" destination="RK3-om-xrW" id="iIy-S9-J3P"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -148,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-Rl-TnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="-10"/>
+            <point key="canvasLocation" x="1880.8" y="-10.344827586206897"/>
         </scene>
     </scenes>
     <resources>

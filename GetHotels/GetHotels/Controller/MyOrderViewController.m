@@ -9,10 +9,14 @@
 #import "MyOrderViewController.h"
 #import "MyOrderTableViewCell.h"
 
-@interface MyOrderViewController ()
+@interface MyOrderViewController () <UITableViewDelegate,UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 
 @property (strong, nonatomic)HMSegmentedControl *segmentedControl;
+
+@property (strong,nonatomic)NSMutableArray *MyOrderArr;
+
 @property ( nonatomic)CGRect rectStatus;
 @property ( nonatomic)CGRect rectNav;
 
@@ -29,6 +33,8 @@
     _rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     // 导航栏（navigationbar）
     _rectNav = self.navigationController.navigationBar.frame;
+    
+    
     [self naviConfig];
     [self setSegment];//设置菜单栏
     
@@ -97,6 +103,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyOrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrder" forIndexPath:indexPath];
+    //NSDictionary *dict = _MyOrderArr[indexPath.row];
+    return cell;
+}
 
 
 

@@ -110,13 +110,13 @@
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.section) {
+//    switch (indexPath.section) {
 //        case 0:
 //            [self performSegueWithIdentifier:@"MyInfoHotel" sender:self];
 //            break;
 //        default:
 //            break;
-    }
+//    }
     
 }
 
