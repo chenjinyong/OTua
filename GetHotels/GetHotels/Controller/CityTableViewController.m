@@ -302,7 +302,7 @@
     });
 }
 -(void)backAction{
-    self.tabBarController.tabBar.hidden=YES;
+    //self.tabBarController.tabBar.hidden=YES;
     //用model方式返回上一页
     //[self dismissViewControllerAnimated:YES completion:nil];
     //用push方式返回上一页
