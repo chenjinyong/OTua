@@ -35,12 +35,16 @@
 		8400C8A31F4AF51300E185F4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */; };
 		8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */; };
 		8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BC1F4B009900E185F4 /* Hotel.storyboard */; };
+		8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BE1F4B00AC00E185F4 /* Order.storyboard */; };
 		8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */; };
 		8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C31F4B078900E185F4 /* libz.tbd */; };
-		840422481F5181020017A728 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840422471F5181020017A728 /* Login.storyboard */; };
-		8404224C1F5194FF0017A728 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8404224B1F5194FF0017A728 /* HMSegmentedControl.m */; };
 		840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B74A41F4D19A80023DF99 /* HontelViewController.m */; };
 		842F357F1F4FB70600E883DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842F357E1F4FB70600E883DA /* Security.framework */; };
+		84901C3A1F53B412002A06C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 84901C391F53B412002A06C3 /* background.png */; };
+		84901C3C1F53B424002A06C3 /* hotels.png in Resources */ = {isa = PBXBuildFile; fileRef = 84901C3B1F53B424002A06C3 /* hotels.png */; };
+		84901C3E1F53B432002A06C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 84901C3D1F53B432002A06C3 /* background.png */; };
+		84901C401F53B43B002A06C3 /* hotels.png in Resources */ = {isa = PBXBuildFile; fileRef = 84901C3F1F53B43B002A06C3 /* hotels.png */; };
+		84901C441F53C4D5002A06C3 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84901C431F53C4D5002A06C3 /* HMSegmentedControl.m */; };
 		8493B3E71F4C554800463257 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3E61F4C554800463257 /* EnterViewController.m */; };
 		8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3EA1F4C5D2800463257 /* LoginViewController.m */; };
 		84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */; };
@@ -51,6 +55,9 @@
 		84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6E4121F504CD7003A8728 /* UIKit.framework */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
 		84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */; };
+		84DF473F1F519B9D00C142D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DF473E1F519B9D00C142D8 /* CoreLocation.framework */; };
+		84DF47421F51A19100C142D8 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF47411F51A19100C142D8 /* CityTableViewController.m */; };
+		84DF47441F51AE2900C142D8 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DF47431F51AE2900C142D8 /* Cities.plist */; };
 		84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047CF1F4EF49C003CD7E9 /* payViewController.m */; };
 		84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047D21F4EF860003CD7E9 /* EnterModel.m */; };
 		84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF12791F4EE7A0008302C3 /* HontelBookingViewController.m */; };
@@ -122,15 +129,19 @@
 		8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		8400C8BC1F4B009900E185F4 /* Hotel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hotel.storyboard; sourceTree = "<group>"; };
+		8400C8BE1F4B00AC00E185F4 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		8400C8C01F4B051F00E185F4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GetHotels.a"; path = "../../../Library/Developer/Xcode/DerivedData/GetHotels-azqzgbfergllvxbnqssaqwxltrms/Build/Products/Debug-iphonesimulator/libPods-GetHotels.a"; sourceTree = "<group>"; };
 		8400C8C31F4B078900E185F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		840422471F5181020017A728 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		8404224A1F5194FF0017A728 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
-		8404224B1F5194FF0017A728 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		840B74A31F4D19A80023DF99 /* HontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelViewController.h; sourceTree = "<group>"; };
 		840B74A41F4D19A80023DF99 /* HontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelViewController.m; sourceTree = "<group>"; };
 		842F357E1F4FB70600E883DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84901C391F53B412002A06C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = GetHotels/GetHotels_icon/background.png; sourceTree = SOURCE_ROOT; };
+		84901C3B1F53B424002A06C3 /* hotels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hotels.png; path = GetHotels/GetHotels_icon/hotels.png; sourceTree = SOURCE_ROOT; };
+		84901C3D1F53B432002A06C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = GetHotels/GetHotels_icon/background.png; sourceTree = SOURCE_ROOT; };
+		84901C3F1F53B43B002A06C3 /* hotels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hotels.png; path = GetHotels/GetHotels_icon/hotels.png; sourceTree = SOURCE_ROOT; };
+		84901C421F53C4D5002A06C3 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		84901C431F53C4D5002A06C3 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		8493B3E51F4C554800463257 /* EnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterViewController.h; sourceTree = "<group>"; };
 		8493B3E61F4C554800463257 /* EnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterViewController.m; sourceTree = "<group>"; };
 		8493B3E91F4C5D2800463257 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -150,6 +161,10 @@
 		84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHontelViewController.m; sourceTree = "<group>"; };
 		84CD37F21F4DA3BC00208741 /* HontelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelTableViewCell.h; sourceTree = "<group>"; };
 		84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelTableViewCell.m; sourceTree = "<group>"; };
+		84DF473E1F519B9D00C142D8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84DF47401F51A19100C142D8 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		84DF47411F51A19100C142D8 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		84DF47431F51AE2900C142D8 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		84E047CE1F4EF49C003CD7E9 /* payViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payViewController.h; sourceTree = "<group>"; };
 		84E047CF1F4EF49C003CD7E9 /* payViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payViewController.m; sourceTree = "<group>"; };
 		84E047D11F4EF860003CD7E9 /* EnterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterModel.h; sourceTree = "<group>"; };
@@ -164,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DF473F1F519B9D00C142D8 /* CoreLocation.framework in Frameworks */,
 				84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */,
 				842F357F1F4FB70600E883DA /* Security.framework in Frameworks */,
 				8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */,
@@ -246,6 +262,7 @@
 				8400C8141F4AE93E00E185F4 /* AppDelegate.h */,
 				8400C8151F4AE93E00E185F4 /* AppDelegate.m */,
 				8400C8121F4AE93E00E185F4 /* main.m */,
+				84DF47431F51AE2900C142D8 /* Cities.plist */,
 				8400C8251F4AE93E00E185F4 /* Info.plist */,
 				8400C8C01F4B051F00E185F4 /* PrefixHeader.pch */,
 			);
@@ -273,7 +290,7 @@
 		8400C8471F4AEB8B00E185F4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
-				840422491F5194FF0017A728 /* HMSegmentedControl */,
+				84901C411F53C4D5002A06C3 /* HMSegmentedControl */,
 				8400C8911F4AF31700E185F4 /* SCZ-BasicEncodingRules */,
 			);
 			path = 3rd;
@@ -335,9 +352,13 @@
 				8400C81A1F4AE93E00E185F4 /* Main.storyboard */,
 				8400C8221F4AE93E00E185F4 /* LaunchScreen.storyboard */,
 				8400C8201F4AE93E00E185F4 /* Assets.xcassets */,
+				84901C391F53B412002A06C3 /* background.png */,
+				84901C3F1F53B43B002A06C3 /* hotels.png */,
+				84901C3D1F53B432002A06C3 /* background.png */,
+				84901C3B1F53B424002A06C3 /* hotels.png */,
 				8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */,
 				8400C8BC1F4B009900E185F4 /* Hotel.storyboard */,
-				840422471F5181020017A728 /* Login.storyboard */,
+				8400C8BE1F4B00AC00E185F4 /* Order.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,15 +384,6 @@
 			path = "SCZ-BasicEncodingRules";
 			sourceTree = "<group>";
 		};
-		840422491F5194FF0017A728 /* HMSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				8404224A1F5194FF0017A728 /* HMSegmentedControl.h */,
-				8404224B1F5194FF0017A728 /* HMSegmentedControl.m */,
-			);
-			path = HMSegmentedControl;
-			sourceTree = "<group>";
-		};
 		840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,8 +404,19 @@
 				84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */,
 				84EF12781F4EE7A0008302C3 /* HontelBookingViewController.h */,
 				84EF12791F4EE7A0008302C3 /* HontelBookingViewController.m */,
+				84DF47401F51A19100C142D8 /* CityTableViewController.h */,
+				84DF47411F51A19100C142D8 /* CityTableViewController.m */,
 			);
 			name = "HontelViewController 酒店";
+			sourceTree = "<group>";
+		};
+		84901C411F53C4D5002A06C3 /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				84901C421F53C4D5002A06C3 /* HMSegmentedControl.h */,
+				84901C431F53C4D5002A06C3 /* HMSegmentedControl.m */,
+			);
+			path = HMSegmentedControl;
 			sourceTree = "<group>";
 		};
 		8493B3E41F4C550700463257 /* EnterViewController 登录 */ = {
@@ -453,6 +476,7 @@
 		C50284EB31D6F01A291016B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84DF473E1F519B9D00C142D8 /* CoreLocation.framework */,
 				84B6E4121F504CD7003A8728 /* UIKit.framework */,
 				842F357E1F4FB70600E883DA /* Security.framework */,
 				8400C8C31F4B078900E185F4 /* libz.tbd */,
@@ -577,12 +601,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DF47441F51AE2900C142D8 /* Cities.plist in Resources */,
+				84901C3E1F53B432002A06C3 /* background.png in Resources */,
+				84901C3A1F53B412002A06C3 /* background.png in Resources */,
 				8400C8241F4AE93E00E185F4 /* LaunchScreen.storyboard in Resources */,
+				84901C3C1F53B424002A06C3 /* hotels.png in Resources */,
 				8400C8211F4AE93E00E185F4 /* Assets.xcassets in Resources */,
-				840422481F5181020017A728 /* Login.storyboard in Resources */,
 				8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */,
 				8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */,
 				8400C81C1F4AE93E00E185F4 /* Main.storyboard in Resources */,
+				8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */,
+				84901C401F53B43B002A06C3 /* hotels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,13 +701,14 @@
 				84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
-				8404224C1F5194FF0017A728 /* HMSegmentedControl.m in Sources */,
 				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
+				84DF47421F51A19100C142D8 /* CityTableViewController.m in Sources */,
 				84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */,
 				8400C88B1F4AF2D300E185F4 /* NSDateFormatter+Category.m in Sources */,
 				8493B3E71F4C554800463257 /* EnterViewController.m in Sources */,
+				84901C441F53C4D5002A06C3 /* HMSegmentedControl.m in Sources */,
 				8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */,
 				8400C8941F4AF31700E185F4 /* BasicEncodingRules.m in Sources */,
 				8400C88D1F4AF2D300E185F4 /* RequestAPI.m in Sources */,
