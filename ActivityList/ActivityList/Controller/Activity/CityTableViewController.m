@@ -156,7 +156,7 @@
     return cell;
 }
 
-//
+//设置组的名字方式
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return _keys[section];
 }

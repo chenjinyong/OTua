@@ -101,6 +101,7 @@
 
 -(void)uiLyout{
     [_activityImgView sd_setImageWithURL:[NSURL URLWithString:_activity.imgURL] placeholderImage:[UIImage imageNamed:@"image"]];
+    
     [self addtapgestureRecognizer:_activityImgView];
     
     _applyFeeLbl.text = [NSString stringWithFormat:@"%@元",_activity.applyFee];
