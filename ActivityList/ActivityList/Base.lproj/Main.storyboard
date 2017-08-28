@@ -181,23 +181,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="eAH-hE-i1i">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KA-1L-hqi">
-                                    <rect key="frame" x="15" y="16" width="31" height="18"/>
+                                    <rect key="frame" x="15" y="27" width="31" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dH-EF-LQb">
-                                    <rect key="frame" x="255" y="10" width="90" height="30"/>
+                                    <rect key="frame" x="255" y="21" width="90" height="30"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                     <state key="normal" title="正在获取中...">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="cityAction:forEvent:" destination="p6L-id-q2n" eventType="touchUpInside" id="Lm2-nR-O2c"/>
+                                        <action selector="cityAction:forEvent:" destination="p6L-id-q2n" eventType="touchDragInside" id="e8x-FT-OyY"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -211,7 +211,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="2Zw-S2-6OG" style="IBUITableViewCellStyleDefault" id="kFC-mB-sdR">
-                                <rect key="frame" x="0.0" y="78" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFC-mB-sdR" id="WDg-4J-k5P">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -235,12 +235,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="选择城市" id="fuP-b9-GXL"/>
                     <connections>
-                        <outlet property="cityBtn" destination="1dH-EF-LQb" id="gQ1-sS-009"/>
+                        <outlet property="cityBtn" destination="1dH-EF-LQb" id="mb0-PF-X4i"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzh-4k-anL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2633" y="127"/>
+            <point key="canvasLocation" x="2632.8000000000002" y="126.38680659670166"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zSY-KL-zbT">
