@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
+
 @end
 
 @implementation LoginViewController
@@ -113,17 +115,13 @@
     if ([_firstPswText.text isEqualToString:_secondPwdText.text]) {
         //回到登录页面,释放全部页面
         [self dismissViewControllerAnimated:YES completion:nil];
-        
 //        KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Account Number" accessGroup:@"YOUR_APP_ID_HERE.com.yourcompany.AppIdentifier"];
 //        //保存帐号
 //        [wrapper setObject:@"<帐号>" forKey:(id)kSecAttrAccount];
-//        
 //        //保存密码
 //        [wrapper setObject:@"<帐号密码>" forKey:(id)kSecValueData];
-//        
 //        //从keychain里取出帐号密码
 //        NSString *password = [wrapper objectForKey:(id)kSecValueData];
-//        
 //        //清空设置   
 //        [wrapper resetKeychainItem];
         [aiv stopAnimating];
@@ -133,6 +131,54 @@
             _secondPwdText.text = @"";
         [aiv stopAnimating];
     }
+    [self request];
+}
+
+#pragma mack - resquest
+//登录接口
+- (void)request{
+    //点击按钮的时候创建一个蒙层（菊花膜）并显示在当前页面（self.view）
+    _aiv = [Utilities getCoverOnView:self.view];
+    //参数
+    NSDictionary *para = @{@"tel":_phoneText.text,@"pwd":_firstPswText.text,};
+    NSLog(@"%@",para);
+    //网络请求
+    [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        //关闭蒙层（菊花膜）
+        [_aiv stopAnimating];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+            
+            
+            
+            
+        }else{
+            [_aiv stopAnimating];
+            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
+            
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //NSLog(@"失败");
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:self];
+    }];
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

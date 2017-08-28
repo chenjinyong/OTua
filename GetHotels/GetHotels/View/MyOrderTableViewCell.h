@@ -16,5 +16,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *guestLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *hotelsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+
+
+
 
 @end

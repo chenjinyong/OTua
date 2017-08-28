@@ -9,6 +9,7 @@
 #import "EnterViewController.h"
 #import "EnterModel.h"
 
+
 @interface EnterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
@@ -17,6 +18,8 @@
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
 - (IBAction)enterAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
 
 @end
 
@@ -100,6 +103,7 @@
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)enterAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
     if (_phoneText.text.length == 0) {
         [Utilities popUpAlertViewWithMsg:@"请输入您的手机号" andTitle:nil onView:self];
         return;
@@ -115,49 +119,62 @@
         return;
     }
     
-    //创一个加载图片图标，防止按钮被多次点击
-    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
-    //参数是字典
-    NSDictionary *para = @{@"username":_phoneText.text,@"password":_pwdText.text};
-    NSLog(@"参数:%@",para);
-    //网络请求 post   数据提交方式 kjson
-    [RequestAPI requestURL:@"/api/session"  withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
-        //NSLog(@"登录成功:%@",responseObject);
-        //网络请求成功，加载图标消失
-        [aiv stopAnimating];
-        
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
-            NSDictionary *result = responseObject[@"result"];
-            NSString *token = result[@"token"];
-            //把token存入单例化的全局变量当中
-            //- 把自己实例化
-            // StorageMgr *sto = [StorageMgr singletonStorageMgr];
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"token"];//防范式编程
-            [[StorageMgr singletonStorageMgr] addKey:@"token" andValue:token];
-            
-            //把之前有相同的键都删掉去(相当于字典一样)
-            [Utilities removeUserDefaults:@"username"];
-            
-            //客户的电话号码是否要加密处理根据接口返回的hidePhone判断，把hidePhone处理后存入到单例化的全局变量中，在其他有客户信息显示的页面上进行判断
-            
-            NSDictionary *agent = result[@"agent"];
-            BOOL showPhone = [agent[@"hidePhone"]boolValue];
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"showPhone"];//防范式编程
-            [[StorageMgr singletonStorageMgr] addKey:@"showPhone" andValue:@(showPhone)];
-            //保留用户名
-            [Utilities setUserDefaults:@"username" content:_phoneText.text];
-            _pwdText.text= @"";
-            [self performSegueWithIdentifier:@"loginToTask" sender:self];
-        }
-        else{
+        [self readyForencoding];
+}
+
+
+
+#pragma mack - resquest
+//登录接口
+- (void)readyForencoding{
+    //点击按钮的时候创建一个蒙层（菊花膜）并显示在当前页面（self.view）
+    _aiv = [Utilities getCoverOnView:self.view];
+    //参数
+    NSDictionary *para = @{@"tel":_phoneText.text,@"pwd":_pwdText.text};
+    NSLog(@"%@",para);
+    //网络请求
+    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        //关闭蒙层（菊花膜）
+        [_aiv stopAnimating];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"result"] integerValue] == 1) {
+            NSDictionary * result = responseObject[@"content"];
+            EnterModel * user = [[EnterModel alloc] initWithDictionary:result];
+            //将登陆获取到的用户信息打包存储到单例化全局变量中
+            [[StorageMgr singletonStorageMgr] addKey:@"MemberInfo" andValue:user];
+            //单独将用户的ID也存储到单例化全局变量来作为用户是否已经登陆的判断一句，同时也方便其他所有页面更快捷的使用用户Id这个参数
+            [[StorageMgr singletonStorageMgr] addKey:@"MemberId" andValue:user.userId];
+            //如果键盘还打开着就收回去
+            [self.view endEditing:YES];
+            //清空密码输入框里的内容
+            _pwdText.text = @"";
+            //记忆用户名
+            [Utilities setUserDefaults:@"Username" content:_phoneText.text];
+            //用Model的方式返回上一页
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [_aiv stopAnimating];
             [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
+            
+            
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        [aiv stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍后再试" andTitle:@"提示" onView:self];
-        
+        //NSLog(@"失败");
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:self];
     }];
-    
 }
+
 @end
+
+
+
+
+
+
+
+
+
+
+
