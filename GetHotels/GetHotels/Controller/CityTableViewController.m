@@ -24,16 +24,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self naviConfig];
-    [self uiLayout];
-    [self dataInitalize];
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self naviConfig];
+    [self uiLayout];
+    [self dataInitalize];
+    
+    
+}
+
+//每次将要离开这个页面的时候
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_locMgr stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +66,6 @@
     self.navigationItem.leftBarButtonItem = left;
 }
 
-
 -(void)uiLayout{
     if (![[[StorageMgr singletonStorageMgr] objectForKey:@"LocCity"]isKindOfClass:[NSNull class]]) {
         if ([[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"] != nil) {
@@ -70,10 +76,10 @@
         }
     }
     //当前还没有获取定位的情况下，去执行定位功能
-    [self locationStart];
+    [self locationConfig];
 }
 
--(void)locationStart{
+-(void)locationConfig{
     //这个方法专门处理定位的基本设置
     
     _locMgr = [CLLocationManager new];
@@ -88,6 +94,12 @@
     [_locMgr startUpdatingLocation];
 }
 
+-(void)backAction{
+    //用model方式返回上一页
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //用push方式返回上一页
+    //[self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)dataInitalize{
     firstVisit =YES;
@@ -113,26 +125,14 @@
     
 }
 
-//设置右侧快捷键栏
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
-    return _keys;
-}
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return _keys.count;
 }
 
-//设置section header的高度
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20.f;
-}
-
-//设置cell的高度
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40.f;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //获取当前正在渲染的组的名称
     NSString * key = _keys[section];
     //根据组的名称，作为键来查询到对应的值（这个值就是这一组城市对应的城市数组）
@@ -141,7 +141,8 @@
     return sectionCities.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell" forIndexPath:indexPath];
     
     NSString * key = _keys[indexPath.section];
@@ -157,6 +158,25 @@
     return _keys[section];
 }
 
+//设置section header的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20.f;
+}
+
+//设置cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40.f;
+}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    NSString * key = _keys[indexPath.section];
+//    NSArray * sectionCities = _cities[key];
+//    NSDictionary * city = sectionCities[indexPath.row];
+//    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:[NSNotification notificationWithName:@"ResetHome" object:city[@"name"]] waitUntilDone:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    
+//}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString * key = _keys[indexPath.section];
@@ -166,60 +186,57 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+//设置右侧快捷键栏
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    return _keys;
+}
+
 
 /*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
     //发送注册按钮被按的通知
@@ -301,11 +318,5 @@
         [_locMgr stopUpdatingLocation];
     });
 }
--(void)backAction{
-    //self.tabBarController.tabBar.hidden=YES;
-    //用model方式返回上一页
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    //用push方式返回上一页
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 @end

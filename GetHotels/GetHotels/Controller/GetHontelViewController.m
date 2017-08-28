@@ -8,55 +8,73 @@
 
 #import "GetHontelViewController.h"
 #import "HontelTableViewCell.h"
-#import "EnterModel.h"
+#import "GethontelModel.h"
 #import <CoreLocation/CoreLocation.h>
+#import "HontelModel.h"
 
-@interface GetHontelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
+@interface GetHontelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIScrollViewDelegate>{
     BOOL      isLoading;
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
     BOOL      firstVisit;
+    NSInteger pageNum;
+    NSInteger pageSize;
 }
 @property (weak, nonatomic) IBOutlet UITableView *activityTableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImg;//位置图片
 @property (weak, nonatomic) IBOutlet UIButton *locationBtn;//位置
 - (IBAction)locationAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITextField *searchText;//搜索
 @property (weak, nonatomic) IBOutlet UILabel *temLabel;//温度
 @property (weak, nonatomic) IBOutlet UILabel *weatherLabel;//天气
-@property (weak, nonatomic) IBOutlet UILabel *checkTimeLabel;//入住时间
-@property (weak, nonatomic) IBOutlet UILabel *leaveTimeLabel;//离店时间
-@property (weak, nonatomic) IBOutlet UILabel *rankLabel;//排序
-@property (weak, nonatomic) IBOutlet UILabel *screeningLabel;//筛选
+@property (weak, nonatomic) IBOutlet UIButton *checkTimeBtn;//入住时间
+@property (weak, nonatomic) IBOutlet UIButton *leaveTimeBtn;//离店时间
+@property (weak, nonatomic) IBOutlet UIButton *rankBtn;//排序
+@property (weak, nonatomic) IBOutlet UIButton *screeningBtn;//筛选
 
 //定位
 @property(strong,nonatomic) UIActivityIndicatorView *aiv;
-@property (strong,nonatomic) NSArray *arr;
+@property (strong,nonatomic) NSMutableArray *arr;
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;
 
 
-@property (nonatomic) NSInteger *workingFrame;
+@property (nonatomic) NSInteger workingFrame;
 @end
 
 @implementation GetHontelViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    firstVisit = YES;
+    pageNum =1;
+    pageSize = 5;
     // Do any additional setup after loading the view.
     //为表格视图创建footer （该方法可以去除表格视图底部多余的下划线）
     _activityTableView.tableFooterView = [UIView new];
     _arr =  [NSMutableArray new];
+    
     [self naviConfig];
     [self networkRequest];
+    [self locationConfig];
+    [self enterApp];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
  //   [self loadPhotos];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//每次将要来到这个页面的时候
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self locationstart];
+    
 }
 
 -(void)naviConfig{
@@ -71,20 +89,58 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
--(void)uiLayout{
-    if (![[[StorageMgr singletonStorageMgr] objectForKey:@"LocCity"]isKindOfClass:[NSNull class]]) {
-        if ([[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"] != nil) {
-            //已经获得了定位，将定位的城市显示在按钮上
-            [_locationBtn setTitle:[[StorageMgr singletonStorageMgr] objectForKey:@"locationBtn"] forState:UIControlStateNormal];
-            _locationBtn.enabled = YES;
-            return;
-        }
-    }
-    //当前还没有获取定位的情况下，去执行定位功能
-    [self locationStart];
+//执行网络请求
+-(void)networkRequest{
+    //    NSDictionary *dicA = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    NSDictionary *dicB = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    NSDictionary *dicC = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    NSDictionary *dicD = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    NSDictionary *dicE = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    NSDictionary *dicF = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
+    //    _arr = @[dicA,dicB,dicC,dicD,dicE,dicF];
+    
+    //初始化日期格式器
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    //定义日期格式
+    formatter.dateFormat = @"yyyy-MM-dd";
+    //当前时间
+    NSDate *date = [NSDate date];
+    //明天的日期
+    NSDate *dateTom = [NSDate dateTomorrow];
+    NSString *dateStr = [formatter stringFromDate:date];
+    NSString *dateTomStr= [formatter stringFromDate:dateTom];
+    //参数
+    NSDictionary *para = @{@"city_name" :@"无锡", @"pageNum" :@(pageNum), @"pageSize" :  @(pageSize), @"startId" :  @1, @"priceId" :@1, @"sortingId" :@1 ,@"inTime" : dateStr ,@"outTime" : dateTomStr,@"wxlongitude" :@"", @"wxlatitude" :@""};
+    [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
+     {
+         NSLog(@"主界面%@",responseObject);
+         if ([responseObject[@"result"] integerValue] == 1)
+         {
+             NSDictionary *content = responseObject[@"content"];
+             NSArray *models = content[@"advertising"];
+             for (NSDictionary *dict in models)
+             {
+                 //用acitivity类中定义的初始化方法initWithDictionary:建行遍历得来的字典dict转换成为activityModel对象
+                 GethontelModel *gethontelModel = [[GethontelModel alloc]initWithDict:dict];
+                 //将上述实例化好的ActivityModel对象插入_arr数组
+                 [_arr addObject:gethontelModel];
+             }
+         }
+         else{
+             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
+         }
+     } failure:^(NSInteger statusCode, NSError *error)
+     {
+         //失败以后要做的事情在此执行
+         NSLog(@"statusCode=%ld",statusCode);
+         [self endAnimation];
+         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+     }];
+    
 }
 
--(void)locationStart{
+
+-(void)locationConfig{
     //这个方法专门处理定位的基本设置
     
     _locMgr = [CLLocationManager new];
@@ -98,17 +154,42 @@
     //打开定位服务的开关（开始定位）
     [_locMgr startUpdatingLocation];
 }
-
-//执行网络请求
--(void)networkRequest{
-    NSDictionary *dicA = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    NSDictionary *dicB = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    NSDictionary *dicC = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    NSDictionary *dicD = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    NSDictionary *dicE = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    NSDictionary *dicF = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    _arr = @[dicA,dicB,dicC,dicD,dicE,dicF];
+- (void)enterApp{
+    BOOL AppInit = NO;
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开APP
+        AppInit = YES;
+    } else {
+        if ([Utilities getUserDefaults:@"UserCity"] == nil) {
+            //也说明是第一次打开APP
+            AppInit = YES;
+        }
+        if (AppInit) {
+            //第一次打开到APP将默认城市与记忆城市同步
+            NSString *userCity = _locationBtn.titleLabel.text;
+            [Utilities setUserDefaults:@"UserCity" content:userCity];
+        }else {
+            //不是第一次打开到APP将默认城市与按钮上的城市名反向同步
+            NSString *userCity =[Utilities getUserDefaults:@"UserCity"];
+            [_locationBtn setTitle:userCity forState:UIControlStateNormal];
+        }
     }
+}
+-(void)locationstart{
+    //判断用户是否选择过是否使用定位
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+        //询问用户是否愿意使用定位
+        //判断用户使用的版本 （8.0以上）
+#ifdef __IPHONE_8_0
+        if([_locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+            //使用“使用中打开定位”这个策略去运用定位功能
+            [_locMgr requestWhenInUseAuthorization];
+        }
+#endif
+    }
+    //打开定位服务的开关（开始定位）
+    [_locMgr startUpdatingLocation];
+}
 
 //这个方法处理网络请求完成后所有不同的动画终止
 -(void)endAnimation{
@@ -238,7 +319,23 @@
                 [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];
                 //
                 [[StorageMgr singletonStorageMgr]addKey:@"LocCity" andValue:cityStr];
-                
+                if (![cityStr isEqualToString:_locationBtn.titleLabel.text]) {
+                    //当定位到的城市和当前选择的城市不一样的时候去弹窗
+                    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到的城市为%@，请问您是否需要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction * yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //修改城市按钮标题
+                        [_locationBtn setTitle:cityStr forState:UIControlStateNormal];
+                        //修改用户选择的城市记忆体
+                        [Utilities removeUserDefaults:@"UserCity"];
+                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+                    
+                    }];
+                    UIAlertAction * noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                    [alertView addAction:yesAction];
+                    [alertView addAction:noAction];
+                    [self presentViewController:alertView animated:YES completion:nil];
+                }
+
                 //修改城市按钮标题
                 [_locationBtn setTitle:cityStr forState:UIControlStateNormal];
                 _locationBtn.enabled = YES;
@@ -250,5 +347,18 @@
     });
 }
 
+-(void)checkCityState:(NSNotification *)note{
+    NSString * cityStr = note.object;
+    if (![cityStr isEqualToString:_locationBtn.titleLabel.text]) {
+        //修改城市按钮标题
+        [_locationBtn setTitle:cityStr forState:UIControlStateNormal];
+        //修改用户选择的城市记忆体
+        [Utilities removeUserDefaults:@"UserCity"];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+        //重新执行网络请求
+      
+    }
+    
+}
 
 @end
