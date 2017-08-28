@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface GethontelModel : NSObject
+
+
 - (instancetype)initWithDict: (NSDictionary *)dict;
+
 @end

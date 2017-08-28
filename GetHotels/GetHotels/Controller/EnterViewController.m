@@ -149,7 +149,7 @@
             //清空密码输入框里的内容
             _pwdText.text = @"";
             //记忆用户名
-            [Utilities setUserDefaults:@"Username" content:_phoneText.text];
+            [Utilities setUserDefaults:@"username" content:_phoneText.text];
             //用Model的方式返回上一页
             [self dismissViewControllerAnimated:YES completion:nil];
         }else{

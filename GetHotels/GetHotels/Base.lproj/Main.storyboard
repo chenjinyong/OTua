@@ -19,16 +19,6 @@
             </objects>
             <point key="canvasLocation" x="31162" y="-1862"/>
         </scene>
-        <!--MyInfo-->
-        <scene sceneID="AaU-I0-uOm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MyInfo" id="9Wx-wL-6eW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xYH-bd-7jc"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wdt-bi-q6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1582" y="-985"/>
-        </scene>
         <!--航空-->
         <scene sceneID="2Ny-H4-TCb">
             <objects>
@@ -284,16 +274,30 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zF7-8k-KhJ">
+                                        <rect key="frame" x="130" y="38" width="225" height="33"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="登录">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="LoginAction:forEvent:" destination="oJm-Dy-HOB" eventType="touchUpInside" id="7z4-qz-lkW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="a0m-Ls-oyt" firstAttribute="leading" secondItem="tMI-Wp-Psl" secondAttribute="trailing" constant="20" id="CIT-Oz-6LK"/>
+                                    <constraint firstItem="a0m-Ls-oyt" firstAttribute="trailing" secondItem="zF7-8k-KhJ" secondAttribute="trailing" id="EFC-Uq-1QT"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="leading" secondItem="a0m-Ls-oyt" secondAttribute="leading" id="Uyx-OR-T53"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="trailing" secondItem="a0m-Ls-oyt" secondAttribute="trailing" id="fj2-Ty-Gdu"/>
+                                    <constraint firstItem="zF7-8k-KhJ" firstAttribute="top" secondItem="R4e-Wk-IWX" secondAttribute="top" constant="38" id="h7b-J1-WJK"/>
                                     <constraint firstItem="Gtf-kW-Zxv" firstAttribute="top" secondItem="a0m-Ls-oyt" secondAttribute="bottom" constant="10" id="h8T-nP-yHS"/>
                                     <constraint firstItem="tMI-Wp-Psl" firstAttribute="centerY" secondItem="R4e-Wk-IWX" secondAttribute="centerY" id="jKQ-t7-r0c"/>
                                     <constraint firstAttribute="trailing" secondItem="a0m-Ls-oyt" secondAttribute="trailing" constant="20" id="uVf-0l-9g5"/>
                                     <constraint firstItem="tMI-Wp-Psl" firstAttribute="leading" secondItem="R4e-Wk-IWX" secondAttribute="leading" constant="20" id="v5m-JL-7Wt"/>
+                                    <constraint firstItem="a0m-Ls-oyt" firstAttribute="leading" secondItem="zF7-8k-KhJ" secondAttribute="leading" id="yoA-ee-kDN"/>
                                     <constraint firstItem="a0m-Ls-oyt" firstAttribute="top" secondItem="R4e-Wk-IWX" secondAttribute="top" constant="40" id="zOr-zK-2ci"/>
                                     <constraint firstAttribute="height" constant="120" id="znE-DH-CJC"/>
                                 </constraints>
@@ -314,6 +318,7 @@
                     <navigationItem key="navigationItem" title="我的" id="v9e-oY-1KM"/>
                     <connections>
                         <outlet property="HeadImage" destination="tMI-Wp-Psl" id="hYX-Yh-56g"/>
+                        <outlet property="LoginBtn" destination="zF7-8k-KhJ" id="q32-tx-KPl"/>
                         <outlet property="levelLabel" destination="Gtf-kW-Zxv" id="fMc-4N-f6I"/>
                         <outlet property="nameLabel" destination="a0m-Ls-oyt" id="ybc-NE-xpc"/>
                     </connections>

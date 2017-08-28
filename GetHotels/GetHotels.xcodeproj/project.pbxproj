@@ -35,7 +35,6 @@
 		8400C8A31F4AF51300E185F4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */; };
 		8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */; };
 		8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BC1F4B009900E185F4 /* Hotel.storyboard */; };
-		8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8400C8BE1F4B00AC00E185F4 /* Order.storyboard */; };
 		8400C8C21F4B074100E185F4 /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */; };
 		8400C8C41F4B078900E185F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8400C8C31F4B078900E185F4 /* libz.tbd */; };
 		840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B74A41F4D19A80023DF99 /* HontelViewController.m */; };
@@ -53,6 +52,7 @@
 		84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A81F4EE96700D888CE /* MyOrderViewController.m */; };
 		84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E4101F503C47003A8728 /* GethontelModel.m */; };
 		84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6E4121F504CD7003A8728 /* UIKit.framework */; };
+		84C833131F5430ED007F7C24 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C833121F5430ED007F7C24 /* Login.storyboard */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
 		84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */; };
 		84DF473F1F519B9D00C142D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DF473E1F519B9D00C142D8 /* CoreLocation.framework */; };
@@ -129,7 +129,6 @@
 		8400C8A21F4AF51300E185F4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfo.storyboard; sourceTree = "<group>"; };
 		8400C8BC1F4B009900E185F4 /* Hotel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hotel.storyboard; sourceTree = "<group>"; };
-		8400C8BE1F4B00AC00E185F4 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		8400C8C01F4B051F00E185F4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8400C8C11F4B074100E185F4 /* libPods-GetHotels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GetHotels.a"; path = "../../../Library/Developer/Xcode/DerivedData/GetHotels-azqzgbfergllvxbnqssaqwxltrms/Build/Products/Debug-iphonesimulator/libPods-GetHotels.a"; sourceTree = "<group>"; };
 		8400C8C31F4B078900E185F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -157,6 +156,7 @@
 		84B6E40F1F503C47003A8728 /* GethontelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethontelModel.h; sourceTree = "<group>"; };
 		84B6E4101F503C47003A8728 /* GethontelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GethontelModel.m; sourceTree = "<group>"; };
 		84B6E4121F504CD7003A8728 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84C833121F5430ED007F7C24 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84CD37EE1F4DA1E200208741 /* GetHontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHontelViewController.h; sourceTree = "<group>"; };
 		84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHontelViewController.m; sourceTree = "<group>"; };
 		84CD37F21F4DA3BC00208741 /* HontelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelTableViewCell.h; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 				84901C3B1F53B424002A06C3 /* hotels.png */,
 				8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */,
 				8400C8BC1F4B009900E185F4 /* Hotel.storyboard */,
-				8400C8BE1F4B00AC00E185F4 /* Order.storyboard */,
+				84C833121F5430ED007F7C24 /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -610,8 +610,8 @@
 				8400C8BB1F4B008000E185F4 /* MyInfo.storyboard in Resources */,
 				8400C8BD1F4B009900E185F4 /* Hotel.storyboard in Resources */,
 				8400C81C1F4AE93E00E185F4 /* Main.storyboard in Resources */,
-				8400C8BF1F4B00AC00E185F4 /* Order.storyboard in Resources */,
 				84901C401F53B43B002A06C3 /* hotels.png in Resources */,
+				84C833131F5430ED007F7C24 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

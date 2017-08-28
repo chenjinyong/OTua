@@ -166,6 +166,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ScrollView" destination="ej3-U4-d2C" id="HbH-d1-dK8"/>
+                        <outlet property="allorderTableView" destination="6UJ-2D-7MN" id="g34-wY-VUo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-Rl-TnD" userLabel="First Responder" sceneMemberID="firstResponder"/>

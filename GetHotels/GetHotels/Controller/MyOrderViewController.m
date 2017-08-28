@@ -10,12 +10,17 @@
 #import "MyOrderTableViewCell.h"
 
 @interface MyOrderViewController () <UITableViewDelegate,UITableViewDataSource>
+{
+    NSInteger allorderPagNum;//判断是否是第一页
+}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
+@property (weak, nonatomic) IBOutlet UITableView *allorderTableView;
 
 @property (strong, nonatomic)HMSegmentedControl *segmentedControl;
-
 @property (strong,nonatomic)NSMutableArray *MyOrderArr;
+
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
 
 @property ( nonatomic)CGRect rectStatus;
 @property ( nonatomic)CGRect rectNav;
@@ -37,6 +42,7 @@
     
     [self naviConfig];
     [self setSegment];//设置菜单栏
+    [self allorderRequest];
     
 }
 
@@ -94,6 +100,23 @@
     
 }
 
+#pragma mack -RefreshControl
+//创建刷新指示器的方法
+- (void)setRefreshControl{
+    //以获取列表的刷新指示器
+    UIRefreshControl * allorderRef = [UIRefreshControl new];
+    [allorderRef addTarget:self action:@selector(allorderRef) forControlEvents:UIControlEventValueChanged];
+    allorderRef.tag = 10001;
+    [_allorderTableView addSubview:allorderRef];
+}
+//以获取列表的刷新
+- (void)allorderRef{
+    allorderPagNum = 1;
+    [self allorderRequest];
+    NSLog(@"刷新了一下");
+}
+
+
 /*
 #pragma mark - Navigation
 
@@ -104,14 +127,65 @@
 }
 */
 
+//多少组
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+//    return _myOrderArr.count;
+//}
+
+//设置每一组中每一行细胞被点击以后要做的事情
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //判断当前tableview是否为_activityTableView（这个条件判断常用在一个页面中有多个tableView的时候）
+    if ([tableView isEqual: _allorderTableView]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
+}
+
+//每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 
+//细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyOrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrder" forIndexPath:indexPath];
     //NSDictionary *dict = _MyOrderArr[indexPath.row];
+    self.allorderTableView.tableFooterView = [UIView new];
     return cell;
+}
+
+#pragma mack - resquest
+//登录接口
+- (void)allorderRequest{
+    //点击按钮的时候创建一个蒙层（菊花膜）并显示在当前页面（self.view）
+    _aiv = [Utilities getCoverOnView:self.view];
+    //参数
+    NSDictionary *para = @{@"openid":@1,@"id":@1};
+    NSLog(@"%@",para);
+    //网络请求
+    [RequestAPI requestURL:@"/findOrders_edu" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        //关闭蒙层（菊花膜）
+        [_aiv stopAnimating];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"result"] integerValue] == 1) {
+            //NSDictionary * result = responseObject[@"content"];
+            
+            
+            //用Model的方式返回上一页
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [_aiv stopAnimating];
+            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
+            
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //NSLog(@"失败");
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:self];
+    }];
 }
 
 

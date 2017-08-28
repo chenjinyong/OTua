@@ -147,11 +147,12 @@
         //关闭蒙层（菊花膜）
         [_aiv stopAnimating];
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+        if ([responseObject[@"result"] integerValue] == 1) {
+            //NSDictionary * result = responseObject[@"content"];
             
             
-            
-            
+            //用Model的方式返回上一页
+            [self dismissViewControllerAnimated:YES completion:nil];
         }else{
             [_aiv stopAnimating];
             [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
