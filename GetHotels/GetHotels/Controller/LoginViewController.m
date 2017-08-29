@@ -141,12 +141,12 @@
     _aiv = [Utilities getCoverOnView:self.view];
     //参数
     NSDictionary *para = @{@"tel":_phoneText.text,@"pwd":_firstPswText.text,};
-    NSLog(@"%@",para);
+    //NSLog(@"%@",para);
     //网络请求
     [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
         //关闭蒙层（菊花膜）
         [_aiv stopAnimating];
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([responseObject[@"result"] integerValue] == 1) {
             //NSDictionary * result = responseObject[@"content"];
             
