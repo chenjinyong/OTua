@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
+@property (weak, nonatomic) IBOutlet UITableView *MyInfoTableView;
 
 //定义一个存放数据的数组
 @property (strong,nonatomic) NSArray * myInfoArr;
@@ -69,6 +70,12 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
+//将要来到此页面（隐藏导航栏）
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -95,11 +102,21 @@
 //细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myInfoCell" forIndexPath:indexPath];
+    //去掉底部多余下划线
+    self.MyInfoTableView.tableFooterView = [UIView new];
     //根据行号拿到数组中对应的数据
     NSDictionary *dict = _myInfoArr[indexPath.section];
     cell.LeftIcon.image = [UIImage imageNamed:dict[@"LeftIcon"]];
     cell.TitleLabel.text = dict[@"TitleLabel"];
     return cell;
+}
+
+//设置组的底部视图高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 2) {
+        return 5.f;
+    }
+    return 1.f;
 }
 
 //细胞高度
@@ -109,17 +126,21 @@
 
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //点击某行细胞变色
+    //NSLog(@"%ld<<",(long)indexPath.section);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    switch (indexPath.section) {
-//        case 0:
-//            [self performSegueWithIdentifier:@"MyInfoHotel" sender:self];
-//            break;
-//        default:
-//            break;
-//    }
-    
+    if (![Utilities loginCheck] && indexPath.row == 0){
+        [Utilities popUpAlertViewWithMsg:@"请先登录" andTitle:nil onView:self];
+    } else {
+        if (indexPath.section == 0){
+            switch (indexPath.row) {
+                case 0:
+                    [self performSegueWithIdentifier:@"MyInfoToOrder" sender:self];
+                    break;
+            }
+        }
+    }
 }
-
 //
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event {
     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];

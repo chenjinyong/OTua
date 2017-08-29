@@ -8,6 +8,7 @@
 
 #import "MyOrderViewController.h"
 #import "MyOrderTableViewCell.h"
+#import "EnterModel.h"
 
 @interface MyOrderViewController () <UITableViewDelegate,UITableViewDataSource>
 {
@@ -138,6 +139,7 @@
     //判断当前tableview是否为_activityTableView（这个条件判断常用在一个页面中有多个tableView的时候）
     if ([tableView isEqual: _allorderTableView]) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
     }
     
 }
@@ -156,35 +158,36 @@
 }
 
 #pragma mack - resquest
-//登录接口
+//酒店请求
 - (void)allorderRequest{
     //点击按钮的时候创建一个蒙层（菊花膜）并显示在当前页面（self.view）
     _aiv = [Utilities getCoverOnView:self.view];
+    EnterModel * model = [[StorageMgr singletonStorageMgr]objectForKey: @"MemberInfo"];
     //参数
-    NSDictionary *para = @{@"openid":@1,@"id":@1};
-    NSLog(@"%@",para);
+    NSDictionary *para = @{@"openid":model.openid,@"id":@1};
+    //NSLog(@"%@",para);
     //网络请求
     [RequestAPI requestURL:@"/findOrders_edu" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
         //关闭蒙层（菊花膜）
         [_aiv stopAnimating];
         NSLog(@"%@",responseObject);
+        UIRefreshControl * ref = (UIRefreshControl *)[_allorderTableView viewWithTag:100];
+        [ref endRefreshing];
         if ([responseObject[@"result"] integerValue] == 1) {
             //NSDictionary * result = responseObject[@"content"];
             
             
             //用Model的方式返回上一页
-            [self dismissViewControllerAnimated:YES completion:nil];
+            //[self dismissViewControllerAnimated:YES completion:nil];
         }else{
             [_aiv stopAnimating];
-            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
-            
-            
+            [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        //NSLog(@"失败");
-        [_aiv stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:self];
+//        //NSLog(@"失败");
+//        [_aiv stopAnimating];
+//        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:self];
     }];
 }
 

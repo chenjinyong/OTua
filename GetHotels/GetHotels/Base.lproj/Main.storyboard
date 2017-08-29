@@ -204,7 +204,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R8M-5z-iFS">
                                 <rect key="frame" x="0.0" y="184" width="375" height="434"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myInfoCell" id="dGG-9b-vps" customClass="MyInfoTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -236,10 +236,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="kHc-mV-slA" secondAttribute="trailing" constant="15" id="qWj-GS-h5O"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="LeftIcon" destination="tc7-0S-rvl" id="xhJ-gm-ykL"/>
                                             <outlet property="TitleLabel" destination="kHc-mV-slA" id="q4u-Tp-dRX"/>
-                                            <segue destination="Tha-z7-6Gw" kind="show" id="IFQ-ai-KN4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -320,8 +320,10 @@
                     <connections>
                         <outlet property="HeadImage" destination="tMI-Wp-Psl" id="hYX-Yh-56g"/>
                         <outlet property="LoginBtn" destination="zF7-8k-KhJ" id="q32-tx-KPl"/>
+                        <outlet property="MyInfoTableView" destination="R8M-5z-iFS" id="B2j-Bf-sor"/>
                         <outlet property="levelLabel" destination="Gtf-kW-Zxv" id="fMc-4N-f6I"/>
                         <outlet property="nameLabel" destination="a0m-Ls-oyt" id="ybc-NE-xpc"/>
+                        <segue destination="Tha-z7-6Gw" kind="show" identifier="MyInfoToOrder" id="5Ya-Qv-WW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Me-xk-DwN" userLabel="First Responder" sceneMemberID="firstResponder"/>

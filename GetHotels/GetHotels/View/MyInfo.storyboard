@@ -13,7 +13,7 @@
         <!--我的酒店-->
         <scene sceneID="ogp-ST-uZk">
             <objects>
-                <viewController id="RK3-om-xrW" customClass="MyOrderViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="RK3-om-xrW" customClass="MyOrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BmF-w5-EQW"/>
                         <viewControllerLayoutGuide type="bottom" id="d5b-br-4Bj"/>
@@ -25,7 +25,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej3-U4-d2C">
                                 <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6UJ-2D-7MN">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UserInfo" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6UJ-2D-7MN">
                                         <rect key="frame" x="0.0" y="-63" width="375" height="689"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -171,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-Rl-TnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880.8" y="-10.344827586206897"/>
+            <point key="canvasLocation" x="2820" y="-10.344827586206897"/>
         </scene>
     </scenes>
     <resources>
