@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HontelTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *hontelImg;
+@property (weak, nonatomic) IBOutlet UILabel *hotel_address;
 @property (weak, nonatomic) IBOutlet UILabel *hontelName;
-@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ip;
-@property (weak, nonatomic) IBOutlet UILabel *rmbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+
+@property (weak, nonatomic) IBOutlet UILabel *distance;
 
 //hontelImg hontelName distanceLabel timeLabel rmbLabel
 @end

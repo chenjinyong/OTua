@@ -53,6 +53,7 @@
 		84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A81F4EE96700D888CE /* MyOrderViewController.m */; };
 		84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E4101F503C47003A8728 /* GethontelModel.m */; };
 		84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6E4121F504CD7003A8728 /* UIKit.framework */; };
+		84C7809B1F5574980046BD43 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C7809A1F5574980046BD43 /* ZLImageViewDisplayView.m */; };
 		84C833131F5430ED007F7C24 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C833121F5430ED007F7C24 /* Login.storyboard */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
 		84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */; };
@@ -159,6 +160,8 @@
 		84B6E40F1F503C47003A8728 /* GethontelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethontelModel.h; sourceTree = "<group>"; };
 		84B6E4101F503C47003A8728 /* GethontelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GethontelModel.m; sourceTree = "<group>"; };
 		84B6E4121F504CD7003A8728 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84C780991F5574980046BD43 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
+		84C7809A1F5574980046BD43 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		84C833121F5430ED007F7C24 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		84CD37EE1F4DA1E200208741 /* GetHontelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHontelViewController.h; sourceTree = "<group>"; };
 		84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHontelViewController.m; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 		8400C8111F4AE93E00E185F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				847E60F11F550B3800759E84 /* BackGround */,
 				8400C8141F4AE93E00E185F4 /* AppDelegate.h */,
 				8400C8151F4AE93E00E185F4 /* AppDelegate.m */,
 				8400C8121F4AE93E00E185F4 /* main.m */,
@@ -293,6 +297,7 @@
 		8400C8471F4AEB8B00E185F4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				84C780981F5574980046BD43 /* ZLImageViewDisplayView */,
 				84901C411F53C4D5002A06C3 /* HMSegmentedControl */,
 				8400C8911F4AF31700E185F4 /* SCZ-BasicEncodingRules */,
 			);
@@ -357,10 +362,6 @@
 				8400C81A1F4AE93E00E185F4 /* Main.storyboard */,
 				8400C8221F4AE93E00E185F4 /* LaunchScreen.storyboard */,
 				8400C8201F4AE93E00E185F4 /* Assets.xcassets */,
-				84901C391F53B412002A06C3 /* background.png */,
-				84901C3F1F53B43B002A06C3 /* hotels.png */,
-				84901C3D1F53B432002A06C3 /* background.png */,
-				84901C3B1F53B424002A06C3 /* hotels.png */,
 				8400C8BA1F4B008000E185F4 /* MyInfo.storyboard */,
 				8400C8BC1F4B009900E185F4 /* Hotel.storyboard */,
 				84C833121F5430ED007F7C24 /* Login.storyboard */,
@@ -415,6 +416,17 @@
 			name = "HontelViewController 酒店";
 			sourceTree = "<group>";
 		};
+		847E60F11F550B3800759E84 /* BackGround */ = {
+			isa = PBXGroup;
+			children = (
+				84901C391F53B412002A06C3 /* background.png */,
+				84901C3F1F53B43B002A06C3 /* hotels.png */,
+				84901C3D1F53B432002A06C3 /* background.png */,
+				84901C3B1F53B424002A06C3 /* hotels.png */,
+			);
+			name = BackGround;
+			sourceTree = "<group>";
+		};
 		84901C411F53C4D5002A06C3 /* HMSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +470,15 @@
 				84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */,
 			);
 			name = MyOrderTableViewCell;
+			sourceTree = "<group>";
+		};
+		84C780981F5574980046BD43 /* ZLImageViewDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				84C780991F5574980046BD43 /* ZLImageViewDisplayView.h */,
+				84C7809A1F5574980046BD43 /* ZLImageViewDisplayView.m */,
+			);
+			path = ZLImageViewDisplayView;
 			sourceTree = "<group>";
 		};
 		84CD37F11F4DA38200208741 /* HontelTableViewCell */ = {
@@ -714,6 +735,7 @@
 				84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */,
 				8400C88B1F4AF2D300E185F4 /* NSDateFormatter+Category.m in Sources */,
 				8493B3E71F4C554800463257 /* EnterViewController.m in Sources */,
+				84C7809B1F5574980046BD43 /* ZLImageViewDisplayView.m in Sources */,
 				84901C441F53C4D5002A06C3 /* HMSegmentedControl.m in Sources */,
 				8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */,
 				8400C8941F4AF31700E185F4 /* BasicEncodingRules.m in Sources */,

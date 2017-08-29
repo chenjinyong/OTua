@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface GethontelModel : NSObject
-@property (strong,nonatomic) NSString *ad_img;
-@property (strong,nonatomic) NSString *ad_name;
-@property (strong,nonatomic) NSString *ad_url;
-@property (strong,nonatomic) NSString *id;
-@property (strong,nonatomic) NSString *start_time;
-
+@property (strong,nonatomic) NSString *distance;
+@property (strong,nonatomic) NSString *hotel_address;
+@property (strong,nonatomic) NSString *hotel_name;
+@property (strong,nonatomic) NSString *Price;
+@property (strong,nonatomic) NSString *latitude;
+@property (strong,nonatomic) NSString *longitude;
 
 
 - (instancetype)initWithDict: (NSDictionary *)dict;

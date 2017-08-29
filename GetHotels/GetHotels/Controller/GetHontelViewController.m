@@ -11,7 +11,7 @@
 #import "GethontelModel.h"
 #import <CoreLocation/CoreLocation.h>
 #import "HontelModel.h"
-
+#import "UIImageView+WebCache.h"
 @interface GetHontelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIScrollViewDelegate>{
     BOOL      isLoading;
     NSInteger page;
@@ -20,9 +20,9 @@
     BOOL      firstVisit;
     NSInteger pageNum;
     NSInteger pageSize;
+    NSInteger i;
 }
-@property (weak, nonatomic) IBOutlet UITableView *activityTableView;
-@property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;//
 @property (weak, nonatomic) IBOutlet UIImageView *locationImg;//位置图片
 @property (weak, nonatomic) IBOutlet UIButton *locationBtn;//位置
 - (IBAction)locationAction:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -33,37 +33,94 @@
 @property (weak, nonatomic) IBOutlet UIButton *leaveTimeBtn;//离店时间
 @property (weak, nonatomic) IBOutlet UIButton *rankBtn;//排序
 @property (weak, nonatomic) IBOutlet UIButton *screeningBtn;//筛选
+@property (weak, nonatomic) IBOutlet UIImageView *firstImg;
+@property (weak, nonatomic) IBOutlet UIImageView *secondImg;
+@property (weak, nonatomic) IBOutlet UIImageView *threeImg;
+@property (weak, nonatomic) IBOutlet UIImageView *fourImg;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 //定位
 @property(strong,nonatomic) UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray *arr;
+@property (strong,nonatomic) NSMutableArray *arr1;
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;
 
 
-@property (nonatomic) NSInteger workingFrame;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, strong) NSTimer *timer;
+//@property (nonatomic) NSInteger workingFrame;
 @end
 
 @implementation GetHontelViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UIApplication
+      sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent
+     animated:NO];
+    
     firstVisit = YES;
     pageNum =1;
     pageSize = 5;
+    page = 1;
     // Do any additional setup after loading the view.
     //为表格视图创建footer （该方法可以去除表格视图底部多余的下划线）
-    _activityTableView.tableFooterView = [UIView new];
     _arr =  [NSMutableArray new];
-    
+    _arr1 =  [NSMutableArray new];
+
     [self naviConfig];
     [self networkRequest];
     [self locationConfig];
     [self enterApp];
+    [self uiLayout];
+    //创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
     
-    
+   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
  //   [self loadPhotos];
+    
+    
+    //    图片的宽
+         CGFloat imageW = self.scrollview.frame.size.width;
+     //    CGFloat imageW = 300;
+     //    图片高
+         CGFloat imageH = 90;
+     //    图片的Y
+         CGFloat imageY = 0;
+     //    图片中数
+         NSInteger totalCount = 3;
+     //   1.添加5张图片
+
+         for (int i = 0; i < totalCount; i++) {
+                 UIImageView *imageView = [[UIImageView alloc] init];
+        //        图片X
+                 CGFloat imageX = i * imageW;
+         //        设置frame
+                imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
+         //        设置图片
+             NSString *name = [[NSBundle mainBundle]pathForResource:@"BackGround" ofType:@"jpg" inDirectory:@"BackGround"];
+              //   NSString *name = [NSString stringWithFormat:@"BackGround", i + 1];
+                 imageView.image = [UIImage imageNamed:name];
+         //        隐藏指示条
+                self.scrollview.showsHorizontalScrollIndicator = NO;
+        
+                 [self.scrollview addSubview:imageView];
+             }
+    
+     //    2.设置scrollview的滚动范围
+         CGFloat contentW = totalCount *imageW;
+        //不允许在垂直方向上进行滚动
+         self.scrollview.contentSize = CGSizeMake(contentW, 0);
+    
+     //    3.设置分页
+        self.scrollview.pagingEnabled = YES;
+    
+     //    4.监听scrollview的滚动
+         self.scrollview.delegate = self;
+    
+         [self addTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,8 +146,101 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
+
+//
+
+- (void)nextImage
+ {
+        // int page = (int)self.pageControl.currentPage;
+        if (page == 3) {
+                 page = 0;
+             }else
+                 {
+                         page++;
+                     }
+    
+    //  滚动scrollview
+         CGFloat x = page * self.scrollview.frame.size.width;
+        self.scrollview.contentOffset = CGPointMake(x, 0);
+     }
+
+ // scrollview滚动的时候调用
+ - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+     //    计算页码
+     //    页码 = (contentoffset.x + scrollView一半宽度)/scrollView宽度
+         CGFloat scrollviewW =  scrollView.frame.size.width;
+         CGFloat x = scrollView.contentOffset.x;
+         int page = (x + scrollviewW / 2) /  scrollviewW;
+         self.pageControl.currentPage = page;
+     }
+// 开始拖拽的时候调用
+ - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+ {
+     //    关闭定时器(注意点; 定时器一旦被关闭,无法再开启)
+     //    [self.timer invalidate];
+         [self removeTimer];
+    }
+
+ - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+ {
+     //    开启定时器
+        [self addTimer];
+     }
+
+ /**
+  *  开启定时器
+  */
+ - (void)addTimer{
+    
+         self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+ }
+ /**
+  *  关闭定时器
+  */
+- (void)removeTimer
+ {
+     [self.timer invalidate];
+ }
+
+-(void)uiLayout{
+    _tableView.tableFooterView = [UIView new];
+    [self refresh];
+}
+
+-(void)refresh{
+    //初始化一个下拉刷新按钮
+    UIRefreshControl *refreshControl=[[UIRefreshControl alloc]init];
+    refreshControl.tag=9478;
+    NSString *title = @"加载中....";
+    //设置标题
+    NSDictionary *dic = @{NSForegroundColorAttributeName : [UIColor grayColor], NSBackgroundColorAttributeName: [UIColor groupTableViewBackgroundColor] };
+    NSAttributedString *attrTitle = [[NSAttributedString alloc]initWithString:title attributes:dic];
+    refreshControl.attributedTitle = attrTitle;
+    //设置刷新指示器的颜色
+    refreshControl.tintColor = [UIColor grayColor];
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //定义用户触发下拉事件执行的方法
+    [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到activityTableView中（在tableview中，下拉刷新控件会自动放置在表格视图的后侧位置） 就不用设置位置了
+    [self.tableView addSubview:refreshControl];
+}
+-(void)refreshPage{
+    page = 1;
+    [self networkRequest];
+}
+
+//刷完之后 结束收回根据下标tag获得子视图也就是refreshcontrol
+-(void)end{
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:1];
+    [refresh endRefreshing];
+}
+
+
 //执行网络请求
 -(void)networkRequest{
+    
     //    NSDictionary *dicA = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
     //    NSDictionary *dicB = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
     //    NSDictionary *dicC = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
@@ -117,14 +267,24 @@
          if ([responseObject[@"result"] integerValue] == 1)
          {
              NSDictionary *content = responseObject[@"content"];
-             NSArray *models = content[@"advertising"];
-             for (NSDictionary *dict in models)
+             NSArray *adv = content[@"advertising"];
+             NSDictionary *hotel = content[@"hotel"];
+             NSArray *list= hotel[@"list"];
+             for (NSDictionary *img in adv)
              {
-                 //用acitivity类中定义的初始化方法initWithDictionary:建行遍历得来的字典dict转换成为activityModel对象
-                 GethontelModel *gethontelModel = [[GethontelModel alloc]initWithDict:dict];
-                 //将上述实例化好的ActivityModel对象插入_arr数组
-                 [_arr addObject:gethontelModel];
+                 _arr[i] = img[@"ad_img"];
+                 i++;
              }
+             [_firstImg sd_setImageWithURL:[NSURL URLWithString:_arr[0]] placeholderImage:[UIImage imageNamed:@"白云"]];
+             [_secondImg sd_setImageWithURL:[NSURL URLWithString:_arr[2]] placeholderImage:[UIImage imageNamed:@"白云"]];
+             [_threeImg sd_setImageWithURL:[NSURL URLWithString:_arr[3]] placeholderImage:[UIImage imageNamed:@"白云"]];
+             [_fourImg sd_setImageWithURL:[NSURL URLWithString:_arr[4]] placeholderImage:[UIImage imageNamed:@"白云"]];
+             for (NSDictionary *dic in list) {
+                 GethontelModel *model= [[GethontelModel alloc]initWithDict:dic];
+                 [_arr1 addObject:model];
+             }
+             [_tableView reloadData];
+            
          }
          else{
              [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
@@ -203,7 +363,7 @@
 
 //每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arr.count;
+    return _arr1.count;
     
 }
 
@@ -220,12 +380,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HontelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HontelTableViewCell" forIndexPath:indexPath];
     //根据行号拿到数组中对应的数据
-    NSDictionary *dict = _arr[indexPath.row];
-    cell.hontelImg.image = [UIImage imageNamed:@"hontel"];
-    cell.hontelName.text = dict[@"hontelName"];
-    cell.distanceLabel.text = dict[@"distanceLabel"];
-    cell.ip.text = dict[@"ip"];
-    cell.rmbLabel.text = dict[@"rmbLabel"];
+    GethontelModel *model = _arr1[indexPath.row];
+    cell.hontelName.text = model.hotel_name;
+    cell.price.text = [NSString stringWithFormat:@"¥%@",model.Price];
+    cell.hotel_address.text = model.hotel_address;
+    //计算距离
+    CLLocation *otherLocation = [[CLLocation alloc] initWithLatitude:[model.latitude doubleValue] longitude:[model.longitude doubleValue]];
+    
+    CLLocationDistance kilometers=[_location distanceFromLocation:otherLocation]/1000;
+    cell.distance.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
+    
+    
+    [_aiv stopAnimating];
     return cell;
 }
 
