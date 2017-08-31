@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "HontelModel.h"
 #import "UIImageView+WebCache.h"
+#import "HontelBookingViewController.h"
 @interface GetHontelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIScrollViewDelegate>{
     BOOL      isLoading;
     NSInteger page;
@@ -265,7 +266,7 @@
      {
          NSLog(@"主界面%@",responseObject);
          if ([responseObject[@"result"] integerValue] == 1)
-         {
+         { 
              NSDictionary *content = responseObject[@"content"];
              NSArray *adv = content[@"advertising"];
              NSDictionary *hotel = content[@"hotel"];
@@ -428,15 +429,25 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
+    if ([segue.identifier isEqualToString:@"ToDetail"]) {
+        
+        NSIndexPath *indexpath = [_tableView indexPathForSelectedRow];
+       
+        GethontelModel *model = _arr1[indexpath.row];
+        HontelBookingViewController *detailVc = [segue destinationViewController];
+        detailVc.hotelid = model.hotelId;
+        
+        
+    }
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 - (IBAction)locationAction:(UIButton *)sender forEvent:(UIEvent *)event {
     //发送注册按钮被按的通知
@@ -456,8 +467,8 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    NSLog(@"纬度：%f",newLocation.coordinate.latitude);
-    NSLog(@"经度：%f",newLocation.coordinate.longitude);
+   // NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
     _location = newLocation;
     //用flag思想判断是否可以去根据定位拿到城市
     if(firstVisit){

@@ -53,6 +53,7 @@
 		84B346A91F4EE96700D888CE /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A81F4EE96700D888CE /* MyOrderViewController.m */; };
 		84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E4101F503C47003A8728 /* GethontelModel.m */; };
 		84B6E4131F504CD7003A8728 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6E4121F504CD7003A8728 /* UIKit.framework */; };
+		84B718431F56AA6C00FD4B8B /* HontelBookingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B718421F56AA6C00FD4B8B /* HontelBookingModel.m */; };
 		84C7809B1F5574980046BD43 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C7809A1F5574980046BD43 /* ZLImageViewDisplayView.m */; };
 		84C833131F5430ED007F7C24 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C833121F5430ED007F7C24 /* Login.storyboard */; };
 		84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD37EF1F4DA1E200208741 /* GetHontelViewController.m */; };
@@ -160,6 +161,8 @@
 		84B6E40F1F503C47003A8728 /* GethontelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethontelModel.h; sourceTree = "<group>"; };
 		84B6E4101F503C47003A8728 /* GethontelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GethontelModel.m; sourceTree = "<group>"; };
 		84B6E4121F504CD7003A8728 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84B718411F56AA6C00FD4B8B /* HontelBookingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelBookingModel.h; sourceTree = "<group>"; };
+		84B718421F56AA6C00FD4B8B /* HontelBookingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HontelBookingModel.m; sourceTree = "<group>"; };
 		84C780991F5574980046BD43 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
 		84C7809A1F5574980046BD43 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		84C833121F5430ED007F7C24 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				840512FD1F544770004F7C42 /* HontelModel.m */,
 				84B6E40F1F503C47003A8728 /* GethontelModel.h */,
 				84B6E4101F503C47003A8728 /* GethontelModel.m */,
+				84B718411F56AA6C00FD4B8B /* HontelBookingModel.h */,
+				84B718421F56AA6C00FD4B8B /* HontelBookingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
 				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
+				84B718431F56AA6C00FD4B8B /* HontelBookingModel.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
 				84DF47421F51A19100C142D8 /* CityTableViewController.m in Sources */,

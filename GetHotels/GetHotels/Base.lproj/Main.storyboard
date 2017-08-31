@@ -561,7 +561,7 @@
                                                     <outlet property="hontelName" destination="YOd-vR-Nyc" id="EqX-Ms-oAn"/>
                                                     <outlet property="hotel_address" destination="MCA-Qh-8WP" id="4ao-xy-hib"/>
                                                     <outlet property="price" destination="F5s-3c-Ekx" id="u6J-Rc-oDb"/>
-                                                    <segue destination="gYr-VM-z6P" kind="show" id="4Dr-KJ-MkT"/>
+                                                    <segue destination="gYr-VM-z6P" kind="show" identifier="ToDetail" id="4Dr-KJ-MkT"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
