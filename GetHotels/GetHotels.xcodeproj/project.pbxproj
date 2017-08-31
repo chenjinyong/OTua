@@ -47,6 +47,17 @@
 		84901C441F53C4D5002A06C3 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84901C431F53C4D5002A06C3 /* HMSegmentedControl.m */; };
 		8493B3E71F4C554800463257 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3E61F4C554800463257 /* EnterViewController.m */; };
 		8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493B3EA1F4C5D2800463257 /* LoginViewController.m */; };
+		84AA8BCA1F58053800F72B55 /* PrirceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BC91F58053800F72B55 /* PrirceTableViewController.m */; };
+		84AA8BE11F58125300F72B55 /* GBAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BCE1F58125300F72B55 /* GBAlipayManager.m */; };
+		84AA8BE21F58125300F72B55 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BD11F58125300F72B55 /* base64.m */; };
+		84AA8BE31F58125300F72B55 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BD41F58125300F72B55 /* DataSigner.m */; };
+		84AA8BE41F58125300F72B55 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BD61F58125300F72B55 /* DataVerifier.m */; };
+		84AA8BE51F58125300F72B55 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BD81F58125300F72B55 /* MD5DataSigner.m */; };
+		84AA8BE61F58125300F72B55 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BDA1F58125300F72B55 /* NSDataEx.m */; };
+		84AA8BE71F58125300F72B55 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BDC1F58125300F72B55 /* openssl_wrapper.m */; };
+		84AA8BE81F58125300F72B55 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BDE1F58125300F72B55 /* RSADataSigner.m */; };
+		84AA8BE91F58125300F72B55 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BE01F58125300F72B55 /* RSADataVerifier.m */; };
+		84AA8BEC1F5814FC00F72B55 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8BEB1F5814FC00F72B55 /* Order.m */; };
 		84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */; };
 		84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B139F21F4C3D3B0027952B /* MyInfoViewController.m */; };
 		84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B346A51F4EE93300D888CE /* MyOrderTableViewCell.m */; };
@@ -150,6 +161,30 @@
 		8493B3E61F4C554800463257 /* EnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterViewController.m; sourceTree = "<group>"; };
 		8493B3E91F4C5D2800463257 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8493B3EA1F4C5D2800463257 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84AA8BC81F58053800F72B55 /* PrirceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrirceTableViewController.h; sourceTree = "<group>"; };
+		84AA8BC91F58053800F72B55 /* PrirceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrirceTableViewController.m; sourceTree = "<group>"; };
+		84AA8BCC1F58125300F72B55 /* GBAlipayConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAlipayConfig.h; sourceTree = "<group>"; };
+		84AA8BCD1F58125300F72B55 /* GBAlipayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAlipayManager.h; sourceTree = "<group>"; };
+		84AA8BCE1F58125300F72B55 /* GBAlipayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBAlipayManager.m; sourceTree = "<group>"; };
+		84AA8BD01F58125300F72B55 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		84AA8BD11F58125300F72B55 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		84AA8BD21F58125300F72B55 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		84AA8BD31F58125300F72B55 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		84AA8BD41F58125300F72B55 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
+		84AA8BD51F58125300F72B55 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		84AA8BD61F58125300F72B55 /* DataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataVerifier.m; sourceTree = "<group>"; };
+		84AA8BD71F58125300F72B55 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
+		84AA8BD81F58125300F72B55 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
+		84AA8BD91F58125300F72B55 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
+		84AA8BDA1F58125300F72B55 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
+		84AA8BDB1F58125300F72B55 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		84AA8BDC1F58125300F72B55 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		84AA8BDD1F58125300F72B55 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
+		84AA8BDE1F58125300F72B55 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
+		84AA8BDF1F58125300F72B55 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
+		84AA8BE01F58125300F72B55 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		84AA8BEA1F5814FC00F72B55 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		84AA8BEB1F5814FC00F72B55 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		84B139EE1F4C3C9C0027952B /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
 		84B139EF1F4C3C9C0027952B /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
 		84B139F11F4C3D3B0027952B /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
@@ -327,6 +362,8 @@
 				84B6E4101F503C47003A8728 /* GethontelModel.m */,
 				84B718411F56AA6C00FD4B8B /* HontelBookingModel.h */,
 				84B718421F56AA6C00FD4B8B /* HontelBookingModel.m */,
+				84AA8BEA1F5814FC00F72B55 /* Order.h */,
+				84AA8BEB1F5814FC00F72B55 /* Order.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +371,8 @@
 		8400C84B1F4AEB8B00E185F4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				84AA8BCB1F58125300F72B55 /* AliMgr */,
+				84AA8BCF1F58125300F72B55 /* AliUtil */,
 				8400C8671F4AF2D300E185F4 /* AppAPIClient.h */,
 				8400C8681F4AF2D300E185F4 /* AppAPIClient.m */,
 				8400C8691F4AF2D300E185F4 /* ErrorHandler.h */,
@@ -417,6 +456,8 @@
 				84EF12791F4EE7A0008302C3 /* HontelBookingViewController.m */,
 				84DF47401F51A19100C142D8 /* CityTableViewController.h */,
 				84DF47411F51A19100C142D8 /* CityTableViewController.m */,
+				84AA8BC81F58053800F72B55 /* PrirceTableViewController.h */,
+				84AA8BC91F58053800F72B55 /* PrirceTableViewController.m */,
 			);
 			name = "HontelViewController 酒店";
 			sourceTree = "<group>";
@@ -457,6 +498,40 @@
 				8493B3EA1F4C5D2800463257 /* LoginViewController.m */,
 			);
 			name = "LoginViewController 注册";
+			sourceTree = "<group>";
+		};
+		84AA8BCB1F58125300F72B55 /* AliMgr */ = {
+			isa = PBXGroup;
+			children = (
+				84AA8BCC1F58125300F72B55 /* GBAlipayConfig.h */,
+				84AA8BCD1F58125300F72B55 /* GBAlipayManager.h */,
+				84AA8BCE1F58125300F72B55 /* GBAlipayManager.m */,
+			);
+			path = AliMgr;
+			sourceTree = "<group>";
+		};
+		84AA8BCF1F58125300F72B55 /* AliUtil */ = {
+			isa = PBXGroup;
+			children = (
+				84AA8BD01F58125300F72B55 /* base64.h */,
+				84AA8BD11F58125300F72B55 /* base64.m */,
+				84AA8BD21F58125300F72B55 /* config.h */,
+				84AA8BD31F58125300F72B55 /* DataSigner.h */,
+				84AA8BD41F58125300F72B55 /* DataSigner.m */,
+				84AA8BD51F58125300F72B55 /* DataVerifier.h */,
+				84AA8BD61F58125300F72B55 /* DataVerifier.m */,
+				84AA8BD71F58125300F72B55 /* MD5DataSigner.h */,
+				84AA8BD81F58125300F72B55 /* MD5DataSigner.m */,
+				84AA8BD91F58125300F72B55 /* NSDataEx.h */,
+				84AA8BDA1F58125300F72B55 /* NSDataEx.m */,
+				84AA8BDB1F58125300F72B55 /* openssl_wrapper.h */,
+				84AA8BDC1F58125300F72B55 /* openssl_wrapper.m */,
+				84AA8BDD1F58125300F72B55 /* RSADataSigner.h */,
+				84AA8BDE1F58125300F72B55 /* RSADataSigner.m */,
+				84AA8BDF1F58125300F72B55 /* RSADataVerifier.h */,
+				84AA8BE01F58125300F72B55 /* RSADataVerifier.m */,
+			);
+			path = AliUtil;
 			sourceTree = "<group>";
 		};
 		84B139ED1F4C3A9F0027952B /* MyInfoTableViewCell */ = {
@@ -715,6 +790,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AA8BEC1F5814FC00F72B55 /* Order.m in Sources */,
+				84AA8BE41F58125300F72B55 /* DataVerifier.m in Sources */,
 				84CD37F01F4DA1E200208741 /* GetHontelViewController.m in Sources */,
 				8400C88E1F4AF2D300E185F4 /* StorageMgr.m in Sources */,
 				8400C88C1F4AF2D300E185F4 /* NSString+Crypt.m in Sources */,
@@ -724,27 +801,36 @@
 				8400C88A1F4AF2D300E185F4 /* NSDate+Utility.m in Sources */,
 				84B139F01F4C3C9C0027952B /* MyInfoTableViewCell.m in Sources */,
 				8400C8161F4AE93E00E185F4 /* AppDelegate.m in Sources */,
+				84AA8BE91F58125300F72B55 /* RSADataVerifier.m in Sources */,
 				8400C8871F4AF2D300E185F4 /* ErrorHandler.m in Sources */,
+				84AA8BE21F58125300F72B55 /* base64.m in Sources */,
 				8400C8861F4AF2D300E185F4 /* AppAPIClient.m in Sources */,
 				840B74A51F4D19A80023DF99 /* HontelViewController.m in Sources */,
 				84B139F31F4C3D3B0027952B /* MyInfoViewController.m in Sources */,
 				840512FE1F544770004F7C42 /* HontelModel.m in Sources */,
+				84AA8BE71F58125300F72B55 /* openssl_wrapper.m in Sources */,
 				84CD37F41F4DA3BC00208741 /* HontelTableViewCell.m in Sources */,
+				84AA8BE61F58125300F72B55 /* NSDataEx.m in Sources */,
 				84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */,
+				84AA8BE81F58125300F72B55 /* RSADataSigner.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
 				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
+				84AA8BE51F58125300F72B55 /* MD5DataSigner.m in Sources */,
 				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
 				84B718431F56AA6C00FD4B8B /* HontelBookingModel.m in Sources */,
 				84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */,
 				8400C8901F4AF2D300E185F4 /* Utilities.m in Sources */,
 				84DF47421F51A19100C142D8 /* CityTableViewController.m in Sources */,
 				84B346A61F4EE93300D888CE /* MyOrderTableViewCell.m in Sources */,
+				84AA8BCA1F58053800F72B55 /* PrirceTableViewController.m in Sources */,
 				8400C88B1F4AF2D300E185F4 /* NSDateFormatter+Category.m in Sources */,
+				84AA8BE11F58125300F72B55 /* GBAlipayManager.m in Sources */,
 				8493B3E71F4C554800463257 /* EnterViewController.m in Sources */,
 				84C7809B1F5574980046BD43 /* ZLImageViewDisplayView.m in Sources */,
 				84901C441F53C4D5002A06C3 /* HMSegmentedControl.m in Sources */,
 				8493B3EB1F4C5D2800463257 /* LoginViewController.m in Sources */,
 				8400C8941F4AF31700E185F4 /* BasicEncodingRules.m in Sources */,
+				84AA8BE31F58125300F72B55 /* DataSigner.m in Sources */,
 				8400C88D1F4AF2D300E185F4 /* RequestAPI.m in Sources */,
 				8400C8881F4AF2D300E185F4 /* JSONS.m in Sources */,
 			);

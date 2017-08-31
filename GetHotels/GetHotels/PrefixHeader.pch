@@ -19,5 +19,6 @@
 #import "ErrorHandler.h"
 #import "HMSegmentedControl.h"
 #import "NSDate+Utility.h"
+#import "GBAlipayManager.h"
 
 #endif /* PrefixHeader_pch */

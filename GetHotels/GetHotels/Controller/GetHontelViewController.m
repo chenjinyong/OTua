@@ -383,7 +383,7 @@
     //根据行号拿到数组中对应的数据
     GethontelModel *model = _arr1[indexPath.row];
     cell.hontelName.text = model.hotel_name;
-    cell.price.text = [NSString stringWithFormat:@"¥%@",model.Price];
+    cell.price.text = [NSString stringWithFormat:@"¥%ld",(long)model.Price];
     cell.hotel_address.text = model.hotel_address;
     //计算距离
     CLLocation *otherLocation = [[CLLocation alloc] initWithLatitude:[model.latitude doubleValue] longitude:[model.longitude doubleValue]];

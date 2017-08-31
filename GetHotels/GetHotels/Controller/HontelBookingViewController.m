@@ -8,6 +8,7 @@
 
 #import "HontelBookingViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PrirceTableViewController.h"
 //#import "HontelBookingModel.h"
 //#import "GethontelModel.h"
 
@@ -84,7 +85,7 @@
             NSDictionary *content = responseObject[@"content"];
             NSDictionary *contents = responseObject[@"content"];
     
-            GethontelModel *mod= [[GethontelModel alloc]initWithDict:content];
+            _mod= [[GethontelModel alloc]initWithDict:content];
            HontelBookingModel *model= [[HontelBookingModel alloc]initWithDic:contents];
             
            [_hontelImg sd_setImageWithURL:[NSURL URLWithString:_HontelBooking.hotel_img] placeholderImage:[UIImage imageNamed:@"hotel_img"]];
@@ -92,9 +93,9 @@
            [_bedImg sd_setImageWithURL:[NSURL URLWithString:_HontelBooking.room_img] placeholderImage:[UIImage imageNamed:@"room_img"]];
         
  //           _hontelImg.image = model.hotel_img;
-            _addressLabel.text = mod.hotel_address;
-            _hontelbedLabel.text = mod.hotel_name;
-            _priceLabel.text = mod.Price;
+            _addressLabel.text = _mod.hotel_address;
+            _hontelbedLabel.text = _mod.hotel_name;
+            _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_mod.Price];
 //            _policyB.text = [Utilities dateStrFromCstampTime:_HontelBooking.out_time withDateFormat:@"HH:mm以后 "];
             
             NSArray *types = content[@"hotel_types"];
@@ -152,5 +153,19 @@
 - (IBAction)contactAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if ([Utilities loginCheck]) {
+        PrirceTableViewController * purchaseVC = [Utilities getStoryboardInstance:@"Hotel" byIdentity:@"Purchase"];
+        purchaseVC.Hotel = _mod;
+        [self.navigationController pushViewController:purchaseVC animated:YES];
+        
+    }else{
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
+        [self presentViewController:signNavi animated:YES completion:nil];
+    }
+    
 }
 @end
+
+
+
+
