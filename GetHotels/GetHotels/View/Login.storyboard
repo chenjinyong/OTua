@@ -69,7 +69,7 @@
                                                 <rect key="frame" x="61" y="114" width="204" height="18"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWT-rv-1IS">
                                                 <rect key="frame" x="30" y="91" width="235" height="1"/>
@@ -238,7 +238,7 @@
                                                 <rect key="frame" x="61" y="109" width="204" height="18"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rk8-8b-83k">
                                                 <rect key="frame" x="30" y="132" width="235" height="1"/>
@@ -257,7 +257,7 @@
                                                 <rect key="frame" x="61" y="150" width="204" height="18"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2t-Pr-BiG">
                                                 <rect key="frame" x="30" y="173" width="235" height="1"/>

@@ -45,6 +45,9 @@
     [self setSegment];//设置菜单栏
     [self allorderRequest];
     
+    //去除返回按钮上的文字
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +57,7 @@
 
 -(void)naviConfig{
         //设置导航条的颜色(风格颜色)
-        self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
         //设置导航条标题的颜色
         self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
         //设置导航条是否隐藏
@@ -63,6 +66,18 @@
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
         //设置是否需要毛玻璃效果
         self.navigationController.navigationBar.translucent = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
 }
 //将要来到此页面（隐藏导航栏）
 - (void)viewDidAppear:(BOOL)animated{

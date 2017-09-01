@@ -13,6 +13,7 @@
 //#import "GethontelModel.h"
 
 @interface HontelBookingViewController (){
+    NSInteger flag;
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
@@ -22,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *hontelbedLabel;//风格
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;//价格
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;//地址
-@property (weak, nonatomic) IBOutlet UILabel *timeOneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeTwoLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *timeOneLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *timeTwoLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bedImg;
 @property (weak, nonatomic) IBOutlet UILabel *styleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *breakfastLabel;//是否含早点
@@ -36,13 +37,31 @@
 @property (weak, nonatomic) IBOutlet UILabel *policyA;//政策
 @property (weak, nonatomic) IBOutlet UILabel *policyB;
 
+
+
 @property (weak, nonatomic) IBOutlet UILabel *petLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *contactBtn;//米聊
 - (IBAction)contactAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;//购买
+
+@property (weak, nonatomic) IBOutlet UIButton *todayBtn;
+- (IBAction)todayAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowBtn;
+- (IBAction)tomorrowAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
+
+
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBtn;
+- (IBAction)cancelAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *detaBtn;
+- (IBAction)detaBtn:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIDatePicker *picker;
+
+
 
 @property (strong,nonatomic) NSMutableArray *arr;
 @end
@@ -56,6 +75,11 @@
     [self naviConfig];
     
     _arr =  [NSMutableArray new];
+    _toolbar.backgroundColor = [UIColor lightGrayColor];
+    _picker.backgroundColor = [UIColor lightGrayColor];
+    _picker.hidden = YES;
+    _toolbar.hidden = YES;
+    
 
 }
 
@@ -65,7 +89,7 @@
 }
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -74,6 +98,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
+    
+    //去除返回按钮上的文字
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -107,7 +134,7 @@
  //           _hontelImg.image = model.hotel_img;
             _addressLabel.text = _mod.hotel_address;
             _hontelbedLabel.text = _mod.hotel_name;
-            _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_mod.Price];
+            _priceLabel.text = [NSString stringWithFormat:@"¥%ld元",(long)_mod.Price];
 //            _policyB.text = [Utilities dateStrFromCstampTime:_HontelBooking.out_time withDateFormat:@"HH:mm以后 "];
             
             NSArray *types = content[@"hotel_types"];
@@ -162,8 +189,8 @@
 }
 
 
-- (IBAction)contactAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
+
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if ([Utilities loginCheck]) {
         PrirceTableViewController * purchaseVC = [Utilities getStoryboardInstance:@"Hotel" byIdentity:@"Purchase"];
@@ -175,6 +202,51 @@
         [self presentViewController:signNavi animated:YES completion:nil];
     }
     
+}
+
+- (IBAction)contactAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+}
+
+
+//今天时间选择事件
+- (IBAction)todayAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 0;
+//    [_todayBtn setTitle:theDate forState:UIControlStateNormal];
+    _toolbar.hidden = NO;
+    _picker.hidden = NO;
+}
+//明天时间选择事件
+- (IBAction)tomorrowAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 1;
+    _toolbar.hidden = NO;
+    _picker.hidden = NO;
+}
+//取消时间按钮点击事件
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    
+    _toolbar.hidden = YES;
+    _picker.hidden = YES;
+    
+}
+
+//确定时间按钮点击事件
+- (IBAction)detaBtn:(UIBarButtonItem *)sender {
+    NSDate *date = _picker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"MM月dd日";
+    NSString *theDate = [formatter stringFromDate:date];
+    if (flag == 0) {
+        [_todayBtn setTitle:theDate forState:UIControlStateNormal];
+        _todayBtn.titleLabel.text = theDate;
+        [[StorageMgr singletonStorageMgr]addKey:@"today" andValue:_todayBtn.titleLabel.text];
+    } else {
+        [_tomorrowBtn setTitle:theDate forState:UIControlStateNormal];
+        _tomorrowBtn.titleLabel.text = theDate;
+        [[StorageMgr singletonStorageMgr] addKey:@"tomorrow" andValue:_tomorrowBtn.titleLabel.text];
+    }
+    _toolbar.hidden = YES;
+    _picker.hidden = YES;
 }
 @end
 

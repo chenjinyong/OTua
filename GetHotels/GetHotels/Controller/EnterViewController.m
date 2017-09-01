@@ -38,7 +38,7 @@
 
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -81,6 +81,7 @@
 }
 
 -(void)uiLayout{
+    
     //判断是否存在用户名记忆体
     if ([[Utilities getUserDefaults:@"Username" ]isKindOfClass:[NSNull class]]) {
         if ([Utilities getUserDefaults:@"Username"] != nil) {
@@ -89,6 +90,19 @@
         }
     }
 }
+
+-(void)textChange:(UITextField *)textFiled{
+    //当文本框中的内容改变时判断内容长度是否为零；是则不启用按钮，不是则启用按钮。
+    if(_phoneText.text.length != 0 && _pwdText.text.length != 0){
+        _LoginBtn.enabled = YES;
+        _LoginBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+        //[_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        _LoginBtn.enabled = NO;
+        _LoginBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
+}
+
 
 /*
 #pragma mark - Navigation
@@ -106,20 +120,23 @@
     
     if (_phoneText.text.length == 0) {
         [Utilities popUpAlertViewWithMsg:@"请输入您的手机号" andTitle:nil onView:self];
+        
         return;
+    }else{
+        //判断某个字符串中是否每个字符都是数字
+        NSCharacterSet * notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        if ([_phoneText.text rangeOfCharacterFromSet:notDigits].location != NSNotFound ) {
+            [Utilities popUpAlertViewWithMsg:@"请输入有效的手机号码" andTitle:nil onView:self];
+            return;
+        }
+        if (_pwdText.text.length == 0) {
+            [Utilities popUpAlertViewWithMsg:@"请输入您的密码" andTitle:nil onView:self];
+            return;
+        }
+
     }
-    //判断某个字符串中是否每个字符都是数字
-    NSCharacterSet * notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-    if ([_phoneText.text rangeOfCharacterFromSet:notDigits].location != NSNotFound ) {
-        [Utilities popUpAlertViewWithMsg:@"请输入有效的手机号码" andTitle:nil onView:self];
-        return;
-    }
-    if (_pwdText.text.length == 0) {
-        [Utilities popUpAlertViewWithMsg:@"请输入您的密码" andTitle:nil onView:self];
-        return;
-    }
+    [self readyForencoding];
     
-        [self readyForencoding];
 }
 
 
@@ -144,6 +161,7 @@
             [[StorageMgr singletonStorageMgr] addKey:@"MemberInfo" andValue:user];
             //单独将用户的ID也存储到单例化全局变量来作为用户是否已经登陆的判断一句，同时也方便其他所有页面更快捷的使用用户Id这个参数
             [[StorageMgr singletonStorageMgr] addKey:@"MemberId" andValue:user.userId];
+
             //如果键盘还打开着就收回去
             [self.view endEditing:YES];
             //清空密码输入框里的内容

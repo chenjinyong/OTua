@@ -163,7 +163,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="我的酒店" id="YGb-sy-DLR"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ScrollView" destination="ej3-U4-d2C" id="HbH-d1-dK8"/>
                         <outlet property="allorderTableView" destination="6UJ-2D-7MN" id="g34-wY-VUo"/>
@@ -171,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-Rl-TnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="-10.344827586206897"/>
+            <point key="canvasLocation" x="2566" y="-4"/>
         </scene>
     </scenes>
     <resources>

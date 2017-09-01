@@ -10,8 +10,13 @@
 
 @interface PrirceTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *HotelnameLbl;
-@property (weak, nonatomic) IBOutlet UILabel *timeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *priceLbl;
+@property (weak, nonatomic) IBOutlet UILabel *todLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tomlabel;
+
+//支付页面传时间控件
+@property (strong,nonatomic) UITextField *textA;
+//@property (strong,nonatomic)NSString *str;
 
 @property (strong,nonatomic) NSArray * arr;
 
@@ -61,10 +66,14 @@
     
 }
 
+
+
 -(void)uiLayout{
     _HotelnameLbl.text = _Hotel.hotel_name;
-    _timeLbl.text = _apply.in_time;
+    
     _priceLbl.text = [NSString stringWithFormat:@"%ld元",(long)_Hotel.Price];
+    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"];
+    _tomlabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"tomorrow"];
     //去掉多余下划线
     self.tableView.tableFooterView = [UIView new];
     //将表格试图设置为“编辑视图中”

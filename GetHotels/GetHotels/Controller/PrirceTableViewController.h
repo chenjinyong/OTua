@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "GethontelModel.h"
-#import "HontelModel.h"
 #import "HontelBookingModel.h"
 
 @interface PrirceTableViewController : UITableViewController
 
 @property (strong,nonatomic) GethontelModel *Hotel;
 @property (strong,nonatomic) HontelBookingModel *apply;
+
+
+@property(strong,nonatomic) NSString *str;//接收AVc中的内容
+@property(strong,nonatomic) UITextField *BText;
 
 
 @end

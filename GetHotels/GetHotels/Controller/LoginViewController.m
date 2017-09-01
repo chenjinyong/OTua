@@ -42,7 +42,7 @@
 
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -51,6 +51,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
+    
     
     //阴影的颜色
     _imageView.layer.shadowColor = [UIColor grayColor].CGColor;
@@ -75,6 +76,18 @@
 - (void)leftButtonAction:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+-(void)textChange:(UITextField *)textFiled{
+    //当文本框中的内容改变时判断内容长度是否为零；是则不启用按钮，不是则启用按钮。
+    if(_phoneText.text.length != 0 && _firstPswText.text.length && _secondPwdText.text!= 0){
+        _loginBtn.enabled = YES;
+        _loginBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+        //[_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        _loginBtn.enabled = NO;
+        _loginBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
 }
 
 //当textfield结束编辑的时候调用
@@ -128,7 +141,7 @@
     } else {
         [Utilities popUpAlertViewWithMsg:@"密码输入不一致，请重新输入" andTitle:@"提示" onView:self];
             //_firstPswText.text = @"";
-            _secondPwdText.text = @"";
+        _secondPwdText.text = @"";
         [aiv stopAnimating];
     }
     [self request];
@@ -148,15 +161,12 @@
         [_aiv stopAnimating];
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"result"] integerValue] == 1) {
-            //NSDictionary * result = responseObject[@"content"];
-            
             
             //用Model的方式返回上一页
             [self dismissViewControllerAnimated:YES completion:nil];
         }else{
             [_aiv stopAnimating];
             [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
-            
             
         }
         

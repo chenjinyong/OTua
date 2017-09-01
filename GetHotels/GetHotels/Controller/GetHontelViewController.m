@@ -10,11 +10,11 @@
 #import "HontelTableViewCell.h"
 #import "GethontelModel.h"
 #import <CoreLocation/CoreLocation.h>
-#import "HontelModel.h"
 #import "UIImageView+WebCache.h"
 #import "HontelBookingViewController.h"
 @interface GetHontelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,UIScrollViewDelegate>{
     BOOL      isLoading;
+    NSInteger flag;
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
@@ -65,14 +65,6 @@
 - (IBAction)deteAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 
-//离开时间选择事件
-@property (weak, nonatomic) IBOutlet UIToolbar *toobars;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelsItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *detesItem;
-- (IBAction)cancelsAction:(UIBarButtonItem *)sender;
-- (IBAction)detesAction:(UIBarButtonItem *)sender;
-
-@property (weak, nonatomic) IBOutlet UIDatePicker *timesPicker;
 
 
 @end
@@ -107,6 +99,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     
     [self addTimer];
+    
+    //去除返回按钮上的文字
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,11 +112,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     _timePicker.backgroundColor = [UIColor lightGrayColor];
+    _toobar.backgroundColor = [UIColor lightGrayColor];
     _timePicker.hidden = YES;
     
-    _timesPicker.backgroundColor = [UIColor lightGrayColor];
-    _timesPicker.hidden = YES;
-    _toobars.hidden = YES;
+
     [self locationstart];
     
     
@@ -129,7 +123,7 @@
 
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -376,10 +370,10 @@
 //    return YES;
 //}
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
+//键盘收回
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
 }
 
 
@@ -490,92 +484,62 @@
     }
     
 }
-//入店时间取消事件
-- (IBAction)cancelAction:(UIBarButtonItem *)sender {
-    _toobar.hidden = YES;
-    _timePicker.hidden = YES;
-}
-//入店时间确定事件
-- (IBAction)deteAction:(UIBarButtonItem *)sender {
-    NSDate *date = _timePicker.date;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    formatter.dateFormat = @"入住MM-dd";
-    NSString *theDate = [formatter stringFromDate:date];
-    [_checkTimeBtn setTitle:theDate forState:UIControlStateNormal];
-    _toobar.hidden = YES;
-    _timePicker.hidden = YES;
-}
 
 //入店时间选择事件
 - (IBAction)checkAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 0;
 //    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 100, 320, 216)];//创建datePicker实例变量 并初始化
 //    datePicker.backgroundColor = [UIColor grayColor];
     
     _toobar.hidden = NO;
     _timePicker.hidden = NO;
-    _toobars.hidden = YES;
-    _timesPicker.hidden = YES;
     self.tabBarController.tabBar.hidden = YES;
 }
-//入店时间选择事件
+//离开时间选择事件
 - (IBAction)leaveAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    self.tabBarController.tabBar.hidden = YES;
-    _toobars.hidden = NO;
-    _timesPicker.hidden = NO;
-}
-
-
-
-//离开时间选择事件
-- (IBAction)checksAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    //    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 100, 320, 216)];//创建datePicker实例变量 并初始化
-    //    datePicker.backgroundColor = [UIColor grayColor];
-    
-    _toobars.hidden = NO;
-    _timesPicker.hidden = NO;
+    flag = 1;
+    _toobar.hidden = NO;
+    _timePicker.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }
-//离开时间选择事件
-- (IBAction)leavesAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    self.tabBarController.tabBar.hidden = YES;
-    _toobars.hidden = NO;
-    _timesPicker.hidden = NO;
+//时间取消事件
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    _toobar.hidden = YES;
+    _timePicker.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+}
+//时间确定事件
+- (IBAction)deteAction:(UIBarButtonItem *)sender {
+    if(flag == 0){
+        
+        
+        NSDate *date = _timePicker.date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        formatter.dateFormat = @"入住MM-dd";
+        NSString *theDate = [formatter stringFromDate:date];
+        [_checkTimeBtn setTitle:theDate forState:UIControlStateNormal];
+    }else{
+        NSDate *date = _timePicker.date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        formatter.dateFormat = @"离开MM-dd";
+        NSString *theDate = [formatter stringFromDate:date];
+        [_leaveTimeBtn setTitle:theDate forState:UIControlStateNormal];
+    }
+    self.tabBarController.tabBar.hidden = NO;
     _toobar.hidden = YES;
     _timePicker.hidden = YES;
 }
 
-//离开时间确定事件
-- (IBAction)detesAction:(UIBarButtonItem *)sender {
-//    //UIDatePicker时间范围限制
-//    NSDate* Date = _checkTimeBtn.titleLabel;
 
-//    _timesPicker.minimumDate = [NSDate date];
-    NSDate *dates = _timesPicker.date;
-    NSDateFormatter *formatters = [[NSDateFormatter alloc]init];
-    formatters.dateFormat = @"离开MM-dd";
-    NSString *theDates = [formatters stringFromDate:dates];
-
-       [_leaveTimeBtn setTitle:theDates forState:UIControlStateNormal];
-
-//    [_leaveTimeBtn setTitle:theDates forState:UIControlStateNormal];
-
-    _toobars.hidden = YES;
-    _timesPicker.hidden = YES;
-}
-//离开时间取消事件
-- (IBAction)cancelsAction:(UIBarButtonItem *)sender {
-    _toobars.hidden = YES;
-    _timesPicker.hidden = YES;
-}
 
 
 - (IBAction)rankAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (IBAction)screeningAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
-    self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 

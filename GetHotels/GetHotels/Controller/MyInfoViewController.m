@@ -30,6 +30,11 @@
     [self naviConfig];
     // Do any additional setup after loading the view.
      _myInfoArr = @[@{@"LeftIcon":@"酒店",@"TitleLabel":@"我的酒店"},@{@"LeftIcon":@"航空",@"TitleLabel":@"我的航空"},@{@"LeftIcon":@"信息",@"TitleLabel":@"我的消息"},@{@"LeftIcon":@"设置",@"TitleLabel":@"账户设置"},@{@"LeftIcon":@"协议",@"TitleLabel":@"使用协议"},@{@"LeftIcon":@"电话",@"TitleLabel":@"联系我们"}];
+    
+    //去除返回按钮上的文字
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,7 +64,7 @@
 
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
