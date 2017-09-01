@@ -356,7 +356,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rc0-vn-F9W">
                                         <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="zm1-hx-0o3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location4" translatesAutoresizingMaskIntoConstraints="NO" id="zm1-hx-0o3">
                                                 <rect key="frame" x="15" y="15" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="HDk-Eg-KAo"/>
@@ -478,6 +478,9 @@
                                         <state key="normal" title="入住时间">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkAction:forEvent:" destination="7FO-bs-FMk" eventType="touchUpInside" id="AVY-z1-T3D"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JN-Sv-MG2">
                                         <rect key="frame" x="101.5" y="234" width="81" height="28"/>
@@ -485,6 +488,9 @@
                                         <state key="normal" title="离店时间">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="leaveAction:forEvent:" destination="7FO-bs-FMk" eventType="touchUpInside" id="XuJ-eW-ynZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-Ea-34b">
                                         <rect key="frame" x="192.5" y="234" width="81.5" height="28"/>
@@ -492,6 +498,9 @@
                                         <state key="normal" title="智能排序">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="rankAction:forEvent:" destination="7FO-bs-FMk" eventType="touchUpInside" id="c1p-xT-Gac"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJW-GA-M6Y">
                                         <rect key="frame" x="284" y="234" width="81" height="28"/>
@@ -499,19 +508,22 @@
                                         <state key="normal" title="筛选">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="screeningAction:forEvent:" destination="7FO-bs-FMk" eventType="touchDragInside" id="tb3-MZ-PBq"/>
+                                        </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u2x-bc-UMb">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u2x-bc-UMb">
                                         <rect key="frame" x="0.0" y="262" width="375" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HontelTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="HontelTableViewCell" rowHeight="178" id="Aib-E8-AL6" customClass="HontelTableViewCell">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="178"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HontelTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="HontelTableViewCell" rowHeight="130" id="Aib-E8-AL6" customClass="HontelTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aib-E8-AL6" id="XK5-eT-tfc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aircraft" translatesAutoresizingMaskIntoConstraints="NO" id="tsV-YK-vno">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hontel" translatesAutoresizingMaskIntoConstraints="NO" id="tsV-YK-vno">
                                                             <rect key="frame" x="15" y="15" width="90" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="tsV-YK-vno" secondAttribute="height" multiplier="1:1" id="BjQ-Kn-zRL"/>
@@ -570,31 +582,91 @@
                                             <outlet property="delegate" destination="7FO-bs-FMk" id="TzR-2i-LUH"/>
                                         </connections>
                                     </tableView>
+                                    <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-7y-P2e">
+                                        <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem title="取消" id="Skb-cH-KXs">
+                                                <connections>
+                                                    <action selector="cancelAction:" destination="7FO-bs-FMk" id="nnW-yR-hj3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="8ki-Wm-qVw"/>
+                                            <barButtonItem title="确定" id="K00-SG-1y0">
+                                                <connections>
+                                                    <action selector="deteAction:" destination="7FO-bs-FMk" id="ml3-kS-ePs"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VtN-Vv-Y4D">
+                                        <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="525877359.52946299">
+                                            <!--2017-08-31 13:02:39 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8XX-rJ-mTY">
+                                        <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="525920859.65945101">
+                                            <!--2017-09-01 01:07:39 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPc-Yd-p9U">
+                                        <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem title="取消" id="Cdn-ZL-Esj">
+                                                <connections>
+                                                    <action selector="cancelsAction:" destination="7FO-bs-FMk" id="FY2-hf-WRE"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="o7k-CH-LiI"/>
+                                            <barButtonItem title="确定" id="nwG-6q-Cot">
+                                                <connections>
+                                                    <action selector="detesAction:" destination="7FO-bs-FMk" id="EcG-Sc-DKw"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="8XX-rJ-mTY" firstAttribute="top" secondItem="VPc-Yd-p9U" secondAttribute="bottom" id="04x-vE-BfL"/>
                                     <constraint firstItem="u2x-bc-UMb" firstAttribute="top" secondItem="bJW-GA-M6Y" secondAttribute="bottom" id="44C-go-EtP"/>
+                                    <constraint firstAttribute="trailing" secondItem="VPc-Yd-p9U" secondAttribute="trailing" id="7Oh-q5-V5x"/>
                                     <constraint firstAttribute="trailing" secondItem="Rc0-vn-F9W" secondAttribute="trailing" id="7VU-gT-yDF"/>
                                     <constraint firstItem="Exy-Ea-34b" firstAttribute="width" secondItem="LyL-ak-To5" secondAttribute="width" id="Dac-EK-2qX"/>
+                                    <constraint firstAttribute="trailing" secondItem="VtN-Vv-Y4D" secondAttribute="trailing" id="JqJ-9a-2sL"/>
+                                    <constraint firstAttribute="trailing" secondItem="mWG-7y-P2e" secondAttribute="trailing" id="JqK-xJ-dCH"/>
+                                    <constraint firstItem="VtN-Vv-Y4D" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="K69-aB-aim"/>
                                     <constraint firstItem="yaT-wN-Jgs" firstAttribute="top" secondItem="Rc0-vn-F9W" secondAttribute="bottom" id="UNR-94-vkR"/>
                                     <constraint firstAttribute="trailing" secondItem="bJW-GA-M6Y" secondAttribute="trailing" constant="10" id="Yb1-7p-kkq"/>
                                     <constraint firstItem="6JN-Sv-MG2" firstAttribute="leading" secondItem="LyL-ak-To5" secondAttribute="trailing" constant="10" id="amG-Xy-Rlo"/>
+                                    <constraint firstItem="mWG-7y-P2e" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="bSs-2t-fqX"/>
                                     <constraint firstItem="bJW-GA-M6Y" firstAttribute="width" secondItem="LyL-ak-To5" secondAttribute="width" id="c6F-wJ-dvF"/>
                                     <constraint firstAttribute="trailing" secondItem="u2x-bc-UMb" secondAttribute="trailing" id="eVw-iF-B9Z"/>
                                     <constraint firstItem="Exy-Ea-34b" firstAttribute="centerY" secondItem="LyL-ak-To5" secondAttribute="centerY" id="ftv-hb-tjl"/>
                                     <constraint firstItem="Exy-Ea-34b" firstAttribute="leading" secondItem="6JN-Sv-MG2" secondAttribute="trailing" constant="10" id="jLg-Sx-HeU"/>
                                     <constraint firstItem="yaT-wN-Jgs" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="jfY-oD-gvd"/>
+                                    <constraint firstAttribute="bottom" secondItem="VtN-Vv-Y4D" secondAttribute="bottom" id="mU1-fL-7Ed"/>
+                                    <constraint firstItem="VPc-Yd-p9U" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="o2E-nb-4sk"/>
                                     <constraint firstItem="Rc0-vn-F9W" firstAttribute="top" secondItem="yf4-vT-t1z" secondAttribute="top" constant="64" id="oNp-EQ-kTB"/>
+                                    <constraint firstItem="VtN-Vv-Y4D" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="oSb-dd-KCV"/>
                                     <constraint firstItem="6JN-Sv-MG2" firstAttribute="centerY" secondItem="LyL-ak-To5" secondAttribute="centerY" id="ppY-HH-CGp"/>
+                                    <constraint firstItem="VPc-Yd-p9U" firstAttribute="top" secondItem="mWG-7y-P2e" secondAttribute="top" id="qXn-xm-9Xc"/>
                                     <constraint firstItem="Rc0-vn-F9W" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="rdd-TD-wE9"/>
                                     <constraint firstItem="LyL-ak-To5" firstAttribute="top" secondItem="yaT-wN-Jgs" secondAttribute="bottom" id="reL-Q5-xTw"/>
                                     <constraint firstItem="LyL-ak-To5" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" constant="10" id="trd-v4-hcV"/>
                                     <constraint firstAttribute="bottom" secondItem="u2x-bc-UMb" secondAttribute="bottom" id="uVy-JM-paA"/>
+                                    <constraint firstAttribute="trailing" secondItem="8XX-rJ-mTY" secondAttribute="trailing" id="ueF-sQ-JsB"/>
                                     <constraint firstItem="bJW-GA-M6Y" firstAttribute="centerY" secondItem="LyL-ak-To5" secondAttribute="centerY" id="ukp-mn-YJQ"/>
                                     <constraint firstItem="6JN-Sv-MG2" firstAttribute="width" secondItem="LyL-ak-To5" secondAttribute="width" id="vQb-JI-LmD"/>
+                                    <constraint firstItem="8XX-rJ-mTY" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="vyE-57-AiV"/>
+                                    <constraint firstAttribute="bottom" secondItem="VtN-Vv-Y4D" secondAttribute="bottom" id="wKX-cx-YlW"/>
                                     <constraint firstItem="u2x-bc-UMb" firstAttribute="leading" secondItem="yf4-vT-t1z" secondAttribute="leading" id="waa-Bq-OUY"/>
                                     <constraint firstAttribute="trailing" secondItem="yaT-wN-Jgs" secondAttribute="trailing" id="x5s-qi-gko"/>
                                     <constraint firstItem="bJW-GA-M6Y" firstAttribute="leading" secondItem="Exy-Ea-34b" secondAttribute="trailing" constant="10" id="xbF-HZ-j2I"/>
+                                    <constraint firstAttribute="trailing" secondItem="VtN-Vv-Y4D" secondAttribute="trailing" id="yg2-84-iDq"/>
+                                    <constraint firstItem="VtN-Vv-Y4D" firstAttribute="top" secondItem="mWG-7y-P2e" secondAttribute="bottom" id="ztc-xW-nDI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -609,7 +681,11 @@
                     <navigationItem key="navigationItem" title="首页" id="Nbz-8s-eQJ"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelItem" destination="Skb-cH-KXs" id="MwC-uU-c0x"/>
+                        <outlet property="cancelsItem" destination="Cdn-ZL-Esj" id="Ucp-Vz-qgi"/>
                         <outlet property="checkTimeBtn" destination="LyL-ak-To5" id="y4d-gj-pgD"/>
+                        <outlet property="deteItem" destination="K00-SG-1y0" id="LF7-bv-aQv"/>
+                        <outlet property="detesItem" destination="nwG-6q-Cot" id="WzP-Np-A0l"/>
                         <outlet property="firstImg" destination="fAg-6g-Y2O" id="vF3-f7-pW1"/>
                         <outlet property="fourImg" destination="9FE-2W-NsB" id="8Rw-0i-nyK"/>
                         <outlet property="leaveTimeBtn" destination="6JN-Sv-MG2" id="LhN-QF-WJN"/>
@@ -623,6 +699,10 @@
                         <outlet property="tableView" destination="u2x-bc-UMb" id="8Ph-Lh-BCq"/>
                         <outlet property="temLabel" destination="E0P-PK-InH" id="dpg-IU-h1a"/>
                         <outlet property="threeImg" destination="ub1-vJ-qoB" id="p8x-ln-V6i"/>
+                        <outlet property="timePicker" destination="VtN-Vv-Y4D" id="ZUO-IG-1SB"/>
+                        <outlet property="timesPicker" destination="8XX-rJ-mTY" id="EOY-v8-IQi"/>
+                        <outlet property="toobar" destination="mWG-7y-P2e" id="JTA-gY-x0J"/>
+                        <outlet property="toobars" destination="VPc-Yd-p9U" id="mNV-px-gA9"/>
                         <outlet property="weatherLabel" destination="LSG-hO-lf7" id="aez-mn-lYw"/>
                     </connections>
                 </viewController>
@@ -650,11 +730,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aircraft" width="45" height="45"/>
         <image name="aviation" width="22" height="22"/>
+        <image name="hontel" width="35" height="35"/>
         <image name="hotel" width="22" height="22"/>
         <image name="icon" width="100" height="100"/>
-        <image name="location" width="11" height="15"/>
+        <image name="location4" width="10" height="10"/>
         <image name="my" width="22" height="22"/>
         <image name="小雨" width="17" height="17"/>
         <image name="搜索" width="13" height="13"/>

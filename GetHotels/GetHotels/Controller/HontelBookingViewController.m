@@ -76,6 +76,18 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
+}
+
 -(void)networkRequest{
     NSDictionary *dict = @{@"id" : @(_hotelid)};
     [RequestAPI requestURL:@"/findHotelById" withParameters:dict andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {

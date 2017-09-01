@@ -37,16 +37,24 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
 //每次将要离开这个页面的时候
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [_locMgr stopUpdatingLocation];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 -(void)naviConfig{
     //    //设置导航条的文字

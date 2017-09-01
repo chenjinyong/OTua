@@ -34,6 +34,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *leaveTimeBtn;//离店时间
 @property (weak, nonatomic) IBOutlet UIButton *rankBtn;//排序
 @property (weak, nonatomic) IBOutlet UIButton *screeningBtn;//筛选
+- (IBAction)checkAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)leaveAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)rankAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)screeningAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
 @property (weak, nonatomic) IBOutlet UIImageView *firstImg;
 @property (weak, nonatomic) IBOutlet UIImageView *secondImg;
 @property (weak, nonatomic) IBOutlet UIImageView *threeImg;
@@ -51,15 +56,34 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 //@property (nonatomic) NSInteger workingFrame;
+
+//入店时间选择事件
+@property (weak, nonatomic) IBOutlet UIToolbar *toobar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deteItem;
+- (IBAction)cancelAction:(UIBarButtonItem *)sender;
+- (IBAction)deteAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
+
+//离开时间选择事件
+@property (weak, nonatomic) IBOutlet UIToolbar *toobars;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelsItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *detesItem;
+- (IBAction)cancelsAction:(UIBarButtonItem *)sender;
+- (IBAction)detesAction:(UIBarButtonItem *)sender;
+
+@property (weak, nonatomic) IBOutlet UIDatePicker *timesPicker;
+
+
 @end
 
 @implementation GetHontelViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication
-      sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent
-     animated:NO];
+    //设置状态栏为白色
+    UIApplication *app = [UIApplication sharedApplication];
+    app.statusBarStyle = UIStatusBarStyleLightContent;
     
     firstVisit = YES;
     pageNum =1;
@@ -69,6 +93,7 @@
     //为表格视图创建footer （该方法可以去除表格视图底部多余的下划线）
     _arr =  [NSMutableArray new];
     _arr1 =  [NSMutableArray new];
+
 
     [self naviConfig];
     [self networkRequest];
@@ -80,48 +105,8 @@
     
    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
- //   [self loadPhotos];
     
-    
-    //    图片的宽
-         CGFloat imageW = self.scrollview.frame.size.width;
-     //    CGFloat imageW = 300;
-     //    图片高
-         CGFloat imageH = 90;
-     //    图片的Y
-         CGFloat imageY = 0;
-     //    图片中数
-         NSInteger totalCount = 3;
-     //   1.添加5张图片
-
-         for (int i = 0; i < totalCount; i++) {
-                 UIImageView *imageView = [[UIImageView alloc] init];
-        //        图片X
-                 CGFloat imageX = i * imageW;
-         //        设置frame
-                imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
-         //        设置图片
-             NSString *name = [[NSBundle mainBundle]pathForResource:@"BackGround" ofType:@"jpg" inDirectory:@"BackGround"];
-              //   NSString *name = [NSString stringWithFormat:@"BackGround", i + 1];
-                 imageView.image = [UIImage imageNamed:name];
-         //        隐藏指示条
-                self.scrollview.showsHorizontalScrollIndicator = NO;
-        
-                 [self.scrollview addSubview:imageView];
-             }
-    
-     //    2.设置scrollview的滚动范围
-         CGFloat contentW = totalCount *imageW;
-        //不允许在垂直方向上进行滚动
-         self.scrollview.contentSize = CGSizeMake(contentW, 0);
-    
-     //    3.设置分页
-        self.scrollview.pagingEnabled = YES;
-    
-     //    4.监听scrollview的滚动
-         self.scrollview.delegate = self;
-    
-         [self addTimer];
+    [self addTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,7 +116,14 @@
 //每次将要来到这个页面的时候
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _timePicker.backgroundColor = [UIColor lightGrayColor];
+    _timePicker.hidden = YES;
+    
+    _timesPicker.backgroundColor = [UIColor lightGrayColor];
+    _timesPicker.hidden = YES;
+    _toobars.hidden = YES;
     [self locationstart];
+    
     
 }
 
@@ -148,62 +140,32 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
+
 //
 
-- (void)nextImage
+-(void)nextImage
  {
-        // int page = (int)self.pageControl.currentPage;
-        if (page == 3) {
-                 page = 0;
-             }else
-                 {
-                         page++;
-                     }
-    
-    //  滚动scrollview
-         CGFloat x = page * self.scrollview.frame.size.width;
-        self.scrollview.contentOffset = CGPointMake(x, 0);
+     // int page = (int)self.pageControl.currentPage;
+     if (page == 3) {
+         page = 0;
+     }else{
+        page++;
      }
+     //滚动scrollview
+     CGFloat x = page * self.scrollview.frame.size.width;
+     self.scrollview.contentOffset = CGPointMake(x, 0);
+}
 
- // scrollview滚动的时候调用
- - (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-     //    计算页码
-     //    页码 = (contentoffset.x + scrollView一半宽度)/scrollView宽度
-         CGFloat scrollviewW =  scrollView.frame.size.width;
-         CGFloat x = scrollView.contentOffset.x;
-         int page = (x + scrollviewW / 2) /  scrollviewW;
-         self.pageControl.currentPage = page;
-     }
-// 开始拖拽的时候调用
- - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
- {
-     //    关闭定时器(注意点; 定时器一旦被关闭,无法再开启)
-     //    [self.timer invalidate];
-         [self removeTimer];
-    }
 
- - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
- {
-     //    开启定时器
-        [self addTimer];
-     }
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    //开启定时器
+    [self addTimer];
+}
+//开启定时器,设置图片多少秒跳转一次
+-(void)addTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+}
 
- /**
-  *  开启定时器
-  */
- - (void)addTimer{
-    
-         self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
- }
- /**
-  *  关闭定时器
-  */
-- (void)removeTimer
- {
-     [self.timer invalidate];
- }
 
 -(void)uiLayout{
     _tableView.tableFooterView = [UIView new];
@@ -213,8 +175,7 @@
 -(void)refresh{
     //初始化一个下拉刷新按钮
     UIRefreshControl *refreshControl=[[UIRefreshControl alloc]init];
-    refreshControl.tag=9478;
-    NSString *title = @"加载中....";
+    NSString *title = @"加载中...";
     //设置标题
     NSDictionary *dic = @{NSForegroundColorAttributeName : [UIColor grayColor], NSBackgroundColorAttributeName: [UIColor groupTableViewBackgroundColor] };
     NSAttributedString *attrTitle = [[NSAttributedString alloc]initWithString:title attributes:dic];
@@ -224,6 +185,7 @@
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //定义用户触发下拉事件执行的方法
     [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+    refreshControl.tag = 10001;
     //将下拉刷新控件添加到activityTableView中（在tableview中，下拉刷新控件会自动放置在表格视图的后侧位置） 就不用设置位置了
     [self.tableView addSubview:refreshControl];
 }
@@ -232,24 +194,15 @@
     [self networkRequest];
 }
 
-//刷完之后 结束收回根据下标tag获得子视图也就是refreshcontrol
--(void)end{
-    UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:1];
-    [refresh endRefreshing];
-}
+////刷完之后 结束收回根据下标tag获得子视图也就是refreshcontrol
+//-(void)end{
+//    UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:1];
+//    [refresh endRefreshing];
+//}
 
 
 //执行网络请求
 -(void)networkRequest{
-    
-    //    NSDictionary *dicA = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    NSDictionary *dicB = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    NSDictionary *dicC = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    NSDictionary *dicD = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    NSDictionary *dicE = @{@"hontelImg" : @"",@"hontelName" : @"无锡苏宁凯酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    NSDictionary *dicF = @{@"hontelImg" : @"",@"hontelName" : @"无锡万达喜来登酒店",@"distanceLabel" : @"100米",@"ip" : @"无锡",@"rmbLabel" :@"330"};
-    //    _arr = @[dicA,dicB,dicC,dicD,dicE,dicF];
-    
     //初始化日期格式器
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     //定义日期格式
@@ -264,9 +217,12 @@
     NSDictionary *para = @{@"city_name" :@"无锡", @"pageNum" :@(pageNum), @"pageSize" :  @(pageSize), @"startId" :  @1, @"priceId" :@1, @"sortingId" :@1 ,@"inTime" : dateStr ,@"outTime" : dateTomStr,@"wxlongitude" :@"", @"wxlatitude" :@""};
     [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
      {
-         NSLog(@"主界面%@",responseObject);
+         
+         NSLog(@"首页%@",responseObject);
          if ([responseObject[@"result"] integerValue] == 1)
-         { 
+         {
+             UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:10001];
+            [refresh endRefreshing];
              NSDictionary *content = responseObject[@"content"];
              NSArray *adv = content[@"advertising"];
              NSDictionary *hotel = content[@"hotel"];
@@ -276,10 +232,10 @@
                  _arr[i] = img[@"ad_img"];
                  i++;
              }
-             [_firstImg sd_setImageWithURL:[NSURL URLWithString:_arr[0]] placeholderImage:[UIImage imageNamed:@"白云"]];
-             [_secondImg sd_setImageWithURL:[NSURL URLWithString:_arr[2]] placeholderImage:[UIImage imageNamed:@"白云"]];
-             [_threeImg sd_setImageWithURL:[NSURL URLWithString:_arr[3]] placeholderImage:[UIImage imageNamed:@"白云"]];
-             [_fourImg sd_setImageWithURL:[NSURL URLWithString:_arr[4]] placeholderImage:[UIImage imageNamed:@"白云"]];
+             [_firstImg sd_setImageWithURL:[NSURL URLWithString:_arr[0]] placeholderImage:[UIImage imageNamed:@""]];
+             [_secondImg sd_setImageWithURL:[NSURL URLWithString:_arr[2]] placeholderImage:[UIImage imageNamed:@""]];
+             [_threeImg sd_setImageWithURL:[NSURL URLWithString:_arr[3]] placeholderImage:[UIImage imageNamed:@""]];
+             [_fourImg sd_setImageWithURL:[NSURL URLWithString:_arr[4]] placeholderImage:[UIImage imageNamed:@""]];
              for (NSDictionary *dic in list) {
                  GethontelModel *model= [[GethontelModel alloc]initWithDict:dic];
                  [_arr1 addObject:model];
@@ -385,6 +341,7 @@
     cell.hontelName.text = model.hotel_name;
     cell.price.text = [NSString stringWithFormat:@"¥%ld",(long)model.Price];
     cell.hotel_address.text = model.hotel_address;
+    
     //计算距离
     CLLocation *otherLocation = [[CLLocation alloc] initWithLatitude:[model.latitude doubleValue] longitude:[model.longitude doubleValue]];
     
@@ -405,7 +362,7 @@
 //设置每一组中每一行细胞被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
@@ -419,15 +376,11 @@
 //    return YES;
 //}
 
-//让根视图结束编辑状态，到达收起键盘的目的
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
-
-
-
-
-
 
 
 #pragma mark - Navigation
@@ -537,5 +490,93 @@
     }
     
 }
+//入店时间取消事件
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    _toobar.hidden = YES;
+    _timePicker.hidden = YES;
+}
+//入店时间确定事件
+- (IBAction)deteAction:(UIBarButtonItem *)sender {
+    NSDate *date = _timePicker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"入住MM-dd";
+    NSString *theDate = [formatter stringFromDate:date];
+    [_checkTimeBtn setTitle:theDate forState:UIControlStateNormal];
+    _toobar.hidden = YES;
+    _timePicker.hidden = YES;
+}
+
+//入店时间选择事件
+- (IBAction)checkAction:(UIButton *)sender forEvent:(UIEvent *)event {
+//    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 100, 320, 216)];//创建datePicker实例变量 并初始化
+//    datePicker.backgroundColor = [UIColor grayColor];
+    
+    _toobar.hidden = NO;
+    _timePicker.hidden = NO;
+    _toobars.hidden = YES;
+    _timesPicker.hidden = YES;
+    self.tabBarController.tabBar.hidden = YES;
+}
+//入店时间选择事件
+- (IBAction)leaveAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.tabBarController.tabBar.hidden = YES;
+    _toobars.hidden = NO;
+    _timesPicker.hidden = NO;
+}
+
+
+
+//离开时间选择事件
+- (IBAction)checksAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 100, 320, 216)];//创建datePicker实例变量 并初始化
+    //    datePicker.backgroundColor = [UIColor grayColor];
+    
+    _toobars.hidden = NO;
+    _timesPicker.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+}
+//离开时间选择事件
+- (IBAction)leavesAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.tabBarController.tabBar.hidden = YES;
+    _toobars.hidden = NO;
+    _timesPicker.hidden = NO;
+    _toobar.hidden = YES;
+    _timePicker.hidden = YES;
+}
+
+//离开时间确定事件
+- (IBAction)detesAction:(UIBarButtonItem *)sender {
+//    //UIDatePicker时间范围限制
+//    NSDate* Date = _checkTimeBtn.titleLabel;
+
+//    _timesPicker.minimumDate = [NSDate date];
+    NSDate *dates = _timesPicker.date;
+    NSDateFormatter *formatters = [[NSDateFormatter alloc]init];
+    formatters.dateFormat = @"离开MM-dd";
+    NSString *theDates = [formatters stringFromDate:dates];
+
+       [_leaveTimeBtn setTitle:theDates forState:UIControlStateNormal];
+
+//    [_leaveTimeBtn setTitle:theDates forState:UIControlStateNormal];
+
+    _toobars.hidden = YES;
+    _timesPicker.hidden = YES;
+}
+//离开时间取消事件
+- (IBAction)cancelsAction:(UIBarButtonItem *)sender {
+    _toobars.hidden = YES;
+    _timesPicker.hidden = YES;
+}
+
+
+- (IBAction)rankAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (IBAction)screeningAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 
 @end
