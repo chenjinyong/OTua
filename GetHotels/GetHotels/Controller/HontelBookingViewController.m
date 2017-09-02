@@ -9,8 +9,6 @@
 #import "HontelBookingViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PrirceTableViewController.h"
-//#import "HontelBookingModel.h"
-//#import "GethontelModel.h"
 
 @interface HontelBookingViewController (){
     NSInteger flag;
@@ -106,7 +104,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     self.tabBarController.tabBar.hidden = YES;
-    
+    [self getCurrentTime];
+    [self getTomowrrowTime];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -201,11 +200,33 @@
         UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
         [self presentViewController:signNavi animated:YES completion:nil];
     }
-    
 }
 
 - (IBAction)contactAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
+}
+
+//默认选择当前时间
+-(NSDate *)getCurrentTime{
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"MM月-dd日"];
+    NSString *dateTime=[formatter stringFromDate:[NSDate date]];
+    NSDate *date = [formatter dateFromString:dateTime];
+    [_todayBtn setTitle:dateTime forState:UIControlStateNormal];
+    _todayBtn.titleLabel.text = dateTime;
+    [[StorageMgr singletonStorageMgr]addKey:@"today" andValue:_todayBtn.titleLabel.text];
+    return date;
+}
+//默认选择当前时间的后一天
+-(NSDate *)getTomowrrowTime{
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"MM月-dd日"];
+    NSString *dateTime=[formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:24*60*60]];
+    NSDate *date = [formatter dateFromString:dateTime];
+    [_tomorrowBtn setTitle:dateTime forState:UIControlStateNormal];
+    _tomorrowBtn.titleLabel.text = dateTime;
+    [[StorageMgr singletonStorageMgr] addKey:@"tomorrow" andValue:_tomorrowBtn.titleLabel.text];
+    return date;
 }
 
 

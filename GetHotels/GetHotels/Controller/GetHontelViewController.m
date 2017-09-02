@@ -114,7 +114,6 @@
     _timePicker.backgroundColor = [UIColor lightGrayColor];
     _toobar.backgroundColor = [UIColor lightGrayColor];
     _timePicker.hidden = YES;
-    
 
     [self locationstart];
     
@@ -510,26 +509,25 @@
 }
 //时间确定事件
 - (IBAction)deteAction:(UIBarButtonItem *)sender {
+    NSDate *date = _timePicker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
     if(flag == 0){
         
-        
-        NSDate *date = _timePicker.date;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        formatter.dateFormat = @"入住MM-dd";
+        formatter.dateFormat = @"入住MM-dd ▼";
         NSString *theDate = [formatter stringFromDate:date];
+        
         [_checkTimeBtn setTitle:theDate forState:UIControlStateNormal];
     }else{
-        NSDate *date = _timePicker.date;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        formatter.dateFormat = @"离开MM-dd";
+        formatter.dateFormat = @"离开MM-dd ▼";
         NSString *theDate = [formatter stringFromDate:date];
+        
         [_leaveTimeBtn setTitle:theDate forState:UIControlStateNormal];
     }
     self.tabBarController.tabBar.hidden = NO;
     _toobar.hidden = YES;
     _timePicker.hidden = YES;
 }
-
 
 
 

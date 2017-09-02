@@ -25,8 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
+//    self.navigationController.navigationBar.barTintColor = [UIColor ];
+//    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     // Do any additional setup after loading the view.
     count = 0;
     //初始化位置管理器对象作为定位功能的基础

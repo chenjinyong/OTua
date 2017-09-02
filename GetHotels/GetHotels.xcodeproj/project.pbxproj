@@ -71,7 +71,6 @@
 		84DF473F1F519B9D00C142D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DF473E1F519B9D00C142D8 /* CoreLocation.framework */; };
 		84DF47421F51A19100C142D8 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF47411F51A19100C142D8 /* CityTableViewController.m */; };
 		84DF47441F51AE2900C142D8 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84DF47431F51AE2900C142D8 /* Cities.plist */; };
-		84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047CF1F4EF49C003CD7E9 /* payViewController.m */; };
 		84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E047D21F4EF860003CD7E9 /* EnterModel.m */; };
 		84EF127A1F4EE7A0008302C3 /* HontelBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF12791F4EE7A0008302C3 /* HontelBookingViewController.m */; };
 		84F795F61F59696400509AD0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F795F51F59696400509AD0 /* MapViewController.m */; };
@@ -207,8 +206,6 @@
 		84DF47401F51A19100C142D8 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
 		84DF47411F51A19100C142D8 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
 		84DF47431F51AE2900C142D8 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
-		84E047CE1F4EF49C003CD7E9 /* payViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payViewController.h; sourceTree = "<group>"; };
-		84E047CF1F4EF49C003CD7E9 /* payViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payViewController.m; sourceTree = "<group>"; };
 		84E047D11F4EF860003CD7E9 /* EnterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterModel.h; sourceTree = "<group>"; };
 		84E047D21F4EF860003CD7E9 /* EnterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterModel.m; sourceTree = "<group>"; };
 		84EF12781F4EE7A0008302C3 /* HontelBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HontelBookingViewController.h; sourceTree = "<group>"; };
@@ -414,7 +411,6 @@
 			children = (
 				840B74A21F4D196B0023DF99 /* HontelViewController 酒店 */,
 				84F795F31F59693300509AD0 /* MapViewController  地图 */,
-				84EF127B1F4EF25E008302C3 /* payViewController 支付 */,
 				840B74A11F4D17410023DF99 /* MyInfoViewController 我的 */,
 				8493B3E81F4C5CFC00463257 /* LoginViewController 注册 */,
 				8493B3E41F4C550700463257 /* EnterViewController 登录 */,
@@ -567,15 +563,6 @@
 				84CD37F31F4DA3BC00208741 /* HontelTableViewCell.m */,
 			);
 			name = HontelTableViewCell;
-			sourceTree = "<group>";
-		};
-		84EF127B1F4EF25E008302C3 /* payViewController 支付 */ = {
-			isa = PBXGroup;
-			children = (
-				84E047CE1F4EF49C003CD7E9 /* payViewController.h */,
-				84E047CF1F4EF49C003CD7E9 /* payViewController.m */,
-			);
-			name = "payViewController 支付";
 			sourceTree = "<group>";
 		};
 		84F795F31F59693300509AD0 /* MapViewController  地图 */ = {
@@ -822,7 +809,6 @@
 				84E047D31F4EF860003CD7E9 /* EnterModel.m in Sources */,
 				84AA8BE81F58125300F72B55 /* RSADataSigner.m in Sources */,
 				8400C8131F4AE93E00E185F4 /* main.m in Sources */,
-				84E047D01F4EF49C003CD7E9 /* payViewController.m in Sources */,
 				84AA8BE51F58125300F72B55 /* MD5DataSigner.m in Sources */,
 				84B6E4111F503C47003A8728 /* GethontelModel.m in Sources */,
 				84B718431F56AA6C00FD4B8B /* HontelBookingModel.m in Sources */,

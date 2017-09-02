@@ -67,6 +67,11 @@
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //去掉导航栏下面的空格
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+    
+    
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条上按钮的风格颜色
