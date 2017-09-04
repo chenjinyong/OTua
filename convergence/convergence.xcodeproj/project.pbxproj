@@ -43,8 +43,10 @@
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
 		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
-		84F6BE261F5D4B1100A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */; };
-		84F6BE291F5D4E0100A3C791 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE281F5D4E0100A3C791 /* Main.storyboard */; };
+		84F6BE2F1F5D610F00A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */; };
+		84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */; };
+		84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */; };
+		84F6BE3A1F5D734D00A3C791 /* setUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE391F5D734D00A3C791 /* setUp.storyboard */; };
 		A7359B1E13D0B1AD8DB215C0 /* libPods-convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */; };
 		B29FE1711F5D32700085C03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29FE1701F5D32700085C03E /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -73,7 +75,7 @@
 		848D3F451F5525310043C9BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		848D3F461F5525310043C9BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		848D3F4F1F5525310043C9BD /* convergence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = convergence.xcdatamodel; sourceTree = "<group>"; };
-		848D3F511F5525310043C9BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		848D3F511F5525310043C9BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		848D3F541F5525310043C9BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848D3F561F5525310043C9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848D3F5B1F5525310043C9BD /* convergenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = convergenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,8 +138,12 @@
 		848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		848D3FD11F5527F60043C9BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848D3FD31F5527FF0043C9BD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyLogin.storyboard; sourceTree = "<group>"; };
-		84F6BE281F5D4E0100A3C791 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyLogin.storyboard; path = Homepage/MyLogin.storyboard; sourceTree = "<group>"; };
+		84F6BE311F5D651C00A3C791 /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
+		84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
+		84F6BE341F5D66AE00A3C791 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoViewController.h; path = convergence/Model/MyInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = convergence/Model/MyInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		84F6BE391F5D734D00A3C791 /* setUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = setUp.storyboard; sourceTree = "<group>"; };
 		B29FE1701F5D32700085C03E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Homepage/Main.storyboard; sourceTree = "<group>"; };
 		C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CDCBA564569A3F130335B3 /* Pods-convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,9 +222,7 @@
 		848D3F421F5525310043C9BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				848D3F531F5525310043C9BD /* LaunchScreen.storyboard */,
 				848D3F451F5525310043C9BD /* AppDelegate.h */,
-				848D3F511F5525310043C9BD /* Assets.xcassets */,
 				848D3F461F5525310043C9BD /* AppDelegate.m */,
 				848D3FC41F5526EA0043C9BD /* PrefixHeader.pch */,
 				848D3F561F5525310043C9BD /* Info.plist */,
@@ -343,12 +347,13 @@
 			path = AliUtil;
 			sourceTree = "<group>";
 		};
-		84F6BE271F5D4E0100A3C791 /* Homepage */ = {
+		84F6BE301F5D64B900A3C791 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				84F6BE281F5D4E0100A3C791 /* Main.storyboard */,
+				84F6BE311F5D651C00A3C791 /* MyInfoTableViewCell.h */,
+				84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */,
 			);
-			path = Homepage;
+			name = MyInfo;
 			sourceTree = "<group>";
 		};
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
@@ -357,7 +362,7 @@
 				B29FE1531F5D2EA10085C03E /* FindOut */,
 				B29FE1541F5D2EA10085C03E /* Homepage */,
 				B29FE1551F5D2EA10085C03E /* Information */,
-				B29FE1561F5D2EA10085C03E /* My */,
+				B29FE1561F5D2EA10085C03E /* MyInfoViewControll */,
 				B29FE1571F5D2EA10085C03E /* Securities */,
 				B29FE1581F5D2EA10085C03E /* Setting */,
 			);
@@ -385,10 +390,13 @@
 			path = Information;
 			sourceTree = "<group>";
 		};
-		B29FE1561F5D2EA10085C03E /* My */ = {
+		B29FE1561F5D2EA10085C03E /* MyInfoViewControll */ = {
 			isa = PBXGroup;
 			children = (
+				84F6BE341F5D66AE00A3C791 /* MyInfoViewController.h */,
+				84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */,
 			);
+			name = MyInfoViewControll;
 			path = My;
 			sourceTree = "<group>";
 		};
@@ -409,9 +417,12 @@
 		B29FE1591F5D2F0C0085C03E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84F6BE301F5D64B900A3C791 /* MyInfo */,
 				B29FE1701F5D32700085C03E /* Main.storyboard */,
-				84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */,
-				84F6BE271F5D4E0100A3C791 /* Homepage */,
+				848D3F531F5525310043C9BD /* LaunchScreen.storyboard */,
+				848D3F511F5525310043C9BD /* Assets.xcassets */,
+				84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */,
+				84F6BE391F5D734D00A3C791 /* setUp.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -550,8 +561,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F6BE261F5D4B1100A3C791 /* MyLogin.storyboard in Resources */,
-				84F6BE291F5D4E0100A3C791 /* Main.storyboard in Resources */,
+				84F6BE2F1F5D610F00A3C791 /* MyLogin.storyboard in Resources */,
+				84F6BE3A1F5D734D00A3C791 /* setUp.storyboard in Resources */,
 				848D3F551F5525310043C9BD /* LaunchScreen.storyboard in Resources */,
 				848D3F521F5525310043C9BD /* Assets.xcassets in Resources */,
 				B29FE1711F5D32700085C03E /* Main.storyboard in Resources */,
@@ -638,6 +649,7 @@
 				848D3FB41F5526DF0043C9BD /* MD5DataSigner.m in Sources */,
 				848D3F7C1F5526C90043C9BD /* BasicEncodingRules.m in Sources */,
 				848D3FB51F5526DF0043C9BD /* NSDataEx.m in Sources */,
+				84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */,
 				848D3FB01F5526DF0043C9BD /* GBAlipayManager.m in Sources */,
 				848D3FC11F5526DF0043C9BD /* StorageMgr.m in Sources */,
 				848D3FC01F5526DF0043C9BD /* RequestAPI.m in Sources */,
@@ -645,6 +657,7 @@
 				848D3FBE1F5526DF0043C9BD /* NSDateFormatter+Category.m in Sources */,
 				848D3FBB1F5526DF0043C9BD /* JSONS.m in Sources */,
 				848D3F471F5525310043C9BD /* AppDelegate.m in Sources */,
+				84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */,
 				848D3FB21F5526DF0043C9BD /* DataSigner.m in Sources */,
 				848D3FB81F5526DF0043C9BD /* RSADataVerifier.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
@@ -695,6 +708,7 @@
 				848D3F541F5525310043C9BD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
