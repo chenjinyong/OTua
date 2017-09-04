@@ -43,6 +43,8 @@
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
 		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
+		84F6BE261F5D4B1100A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */; };
+		84F6BE291F5D4E0100A3C791 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE281F5D4E0100A3C791 /* Main.storyboard */; };
 		A7359B1E13D0B1AD8DB215C0 /* libPods-convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */; };
 		B29FE1711F5D32700085C03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29FE1701F5D32700085C03E /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -134,6 +136,8 @@
 		848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		848D3FD11F5527F60043C9BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848D3FD31F5527FF0043C9BD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyLogin.storyboard; sourceTree = "<group>"; };
+		84F6BE281F5D4E0100A3C791 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B29FE1701F5D32700085C03E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Homepage/Main.storyboard; sourceTree = "<group>"; };
 		C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CDCBA564569A3F130335B3 /* Pods-convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.release.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +343,14 @@
 			path = AliUtil;
 			sourceTree = "<group>";
 		};
+		84F6BE271F5D4E0100A3C791 /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				84F6BE281F5D4E0100A3C791 /* Main.storyboard */,
+			);
+			path = Homepage;
+			sourceTree = "<group>";
+		};
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				B29FE1701F5D32700085C03E /* Main.storyboard */,
+				84F6BE251F5D4B1100A3C791 /* MyLogin.storyboard */,
+				84F6BE271F5D4E0100A3C791 /* Homepage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,6 +550,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F6BE261F5D4B1100A3C791 /* MyLogin.storyboard in Resources */,
+				84F6BE291F5D4E0100A3C791 /* Main.storyboard in Resources */,
 				848D3F551F5525310043C9BD /* LaunchScreen.storyboard in Resources */,
 				848D3F521F5525310043C9BD /* Assets.xcassets in Resources */,
 				B29FE1711F5D32700085C03E /* Main.storyboard in Resources */,
