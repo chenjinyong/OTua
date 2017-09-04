@@ -209,39 +209,39 @@
                                         <rect key="frame" x="40" y="185" width="295" height="200"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="手机号" translatesAutoresizingMaskIntoConstraints="NO" id="r8n-9a-q18">
-                                                <rect key="frame" x="30" y="60" width="26" height="26"/>
+                                                <rect key="frame" x="30" y="50" width="26" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="BpH-fa-IKT"/>
                                                     <constraint firstAttribute="width" secondItem="r8n-9a-q18" secondAttribute="height" multiplier="1:1" id="E8Y-dv-oSR"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiP-2t-x0o">
-                                                <rect key="frame" x="61" y="68" width="204" height="18"/>
+                                                <rect key="frame" x="61" y="58" width="204" height="18"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7W-kn-DBk">
-                                                <rect key="frame" x="30" y="91" width="235" height="1"/>
+                                                <rect key="frame" x="30" y="81" width="235" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ffp-pW-HQ9"/>
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="密码" translatesAutoresizingMaskIntoConstraints="NO" id="4pq-QO-9mq">
-                                                <rect key="frame" x="30" y="101" width="26" height="26"/>
+                                                <rect key="frame" x="30" y="96" width="26" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="gbA-BN-SZT"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lz0-vS-K5r">
-                                                <rect key="frame" x="61" y="109" width="204" height="18"/>
+                                                <rect key="frame" x="61" y="104" width="204" height="18"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rk8-8b-83k">
-                                                <rect key="frame" x="30" y="132" width="235" height="1"/>
+                                                <rect key="frame" x="30" y="127" width="235" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="tc1-SI-E3M"/>
@@ -269,11 +269,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="4pq-QO-9mq" firstAttribute="top" secondItem="r8n-9a-q18" secondAttribute="bottom" constant="15" id="0i3-Xd-eND"/>
+                                            <constraint firstItem="4pq-QO-9mq" firstAttribute="top" secondItem="r8n-9a-q18" secondAttribute="bottom" constant="20" id="0i3-Xd-eND"/>
                                             <constraint firstItem="oiP-2t-x0o" firstAttribute="bottom" secondItem="r8n-9a-q18" secondAttribute="bottom" id="13A-pd-y2F"/>
                                             <constraint firstAttribute="trailing" secondItem="Rk8-8b-83k" secondAttribute="trailing" constant="30" id="5kF-P0-eOX"/>
                                             <constraint firstItem="U7W-kn-DBk" firstAttribute="top" secondItem="oiP-2t-x0o" secondAttribute="bottom" constant="5" id="8J0-Gh-KcK"/>
-                                            <constraint firstItem="1A0-re-GMh" firstAttribute="top" secondItem="4pq-QO-9mq" secondAttribute="bottom" constant="15" id="8yM-Xo-voI"/>
+                                            <constraint firstItem="1A0-re-GMh" firstAttribute="top" secondItem="4pq-QO-9mq" secondAttribute="bottom" constant="20" id="8yM-Xo-voI"/>
                                             <constraint firstItem="7Jp-k3-lq8" firstAttribute="leading" secondItem="lz0-vS-K5r" secondAttribute="leading" id="Agk-7B-Kbg"/>
                                             <constraint firstAttribute="height" constant="200" id="Khr-3R-TD5"/>
                                             <constraint firstItem="r8n-9a-q18" firstAttribute="leading" secondItem="yUe-VP-iIi" secondAttribute="leading" constant="30" id="LgO-Dj-Tns"/>
@@ -281,7 +281,7 @@
                                             <constraint firstItem="1A0-re-GMh" firstAttribute="width" secondItem="1A0-re-GMh" secondAttribute="height" multiplier="1:1" id="MbQ-FP-P2l"/>
                                             <constraint firstItem="4pq-QO-9mq" firstAttribute="width" secondItem="4pq-QO-9mq" secondAttribute="height" multiplier="1:1" id="Q2i-FY-38w"/>
                                             <constraint firstItem="v2t-Pr-BiG" firstAttribute="leading" secondItem="yUe-VP-iIi" secondAttribute="leading" constant="30" id="RJW-ad-Zew"/>
-                                            <constraint firstItem="r8n-9a-q18" firstAttribute="top" secondItem="yUe-VP-iIi" secondAttribute="top" constant="60" id="RLq-Jo-eg7"/>
+                                            <constraint firstItem="r8n-9a-q18" firstAttribute="top" secondItem="yUe-VP-iIi" secondAttribute="top" constant="50" id="RLq-Jo-eg7"/>
                                             <constraint firstItem="7Jp-k3-lq8" firstAttribute="bottom" secondItem="1A0-re-GMh" secondAttribute="bottom" id="Y0Q-f5-L8S"/>
                                             <constraint firstItem="lz0-vS-K5r" firstAttribute="leading" secondItem="oiP-2t-x0o" secondAttribute="leading" id="f6x-2m-VZe"/>
                                             <constraint firstItem="lz0-vS-K5r" firstAttribute="trailing" secondItem="oiP-2t-x0o" secondAttribute="trailing" id="fk8-PB-1cI"/>

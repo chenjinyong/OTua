@@ -350,7 +350,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
 {
     
-    return 120;
+    return 100;
 }
 //设置每一组中每一行细胞被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -445,6 +445,7 @@
                 if (![cityStr isEqualToString:_locationBtn.titleLabel.text]) {
                     //当定位到的城市和当前选择的城市不一样的时候去弹窗
                     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到的城市为%@，请问您是否需要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    
                     UIAlertAction * yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         //修改城市按钮标题
                         [_locationBtn setTitle:cityStr forState:UIControlStateNormal];
@@ -454,8 +455,9 @@
                     
                     }];
                     UIAlertAction * noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-                    [alertView addAction:yesAction];
                     [alertView addAction:noAction];
+                    [alertView addAction:yesAction];
+                    
                     [self presentViewController:alertView animated:YES completion:nil];
                 }
 

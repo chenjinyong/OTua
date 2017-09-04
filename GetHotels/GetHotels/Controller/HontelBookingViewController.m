@@ -209,7 +209,7 @@
 //默认选择当前时间
 -(NSDate *)getCurrentTime{
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"MM月-dd日"];
+    [formatter setDateFormat:@"MM月dd日"];
     NSString *dateTime=[formatter stringFromDate:[NSDate date]];
     NSDate *date = [formatter dateFromString:dateTime];
     [_todayBtn setTitle:dateTime forState:UIControlStateNormal];
@@ -220,7 +220,7 @@
 //默认选择当前时间的后一天
 -(NSDate *)getTomowrrowTime{
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"MM月-dd日"];
+    [formatter setDateFormat:@"MM月dd日"];
     NSString *dateTime=[formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:24*60*60]];
     NSDate *date = [formatter dateFromString:dateTime];
     [_tomorrowBtn setTitle:dateTime forState:UIControlStateNormal];
@@ -265,6 +265,7 @@
         [_tomorrowBtn setTitle:theDate forState:UIControlStateNormal];
         _tomorrowBtn.titleLabel.text = theDate;
         [[StorageMgr singletonStorageMgr] addKey:@"tomorrow" andValue:_tomorrowBtn.titleLabel.text];
+        [Utilities popUpAlertViewWithMsg:@"qq" andTitle:@"tis" onView:self];      
     }
     _toolbar.hidden = YES;
     _picker.hidden = YES;

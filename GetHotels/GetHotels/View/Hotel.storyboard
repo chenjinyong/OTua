@@ -74,10 +74,10 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="CAv-cH-3AC">
-                                <rect key="frame" x="167.5" y="318.5" width="20" height="20"/>
+                                <rect key="frame" x="176" y="318.5" width="12" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4Jb-qm-XlA"/>
-                                    <constraint firstAttribute="width" secondItem="CAv-cH-3AC" secondAttribute="height" multiplier="1:1" id="uT8-TO-qdL"/>
+                                    <constraint firstAttribute="width" secondItem="CAv-cH-3AC" secondAttribute="height" multiplier="3:5" id="uT8-TO-qdL"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lH8-y3-ILT">
@@ -216,14 +216,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="32V-jF-WqL">
-                                <rect key="frame" x="325" y="318.5" width="20" height="20"/>
+                                <rect key="frame" x="334" y="318.5" width="11" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="32V-jF-WqL" secondAttribute="height" multiplier="1:1" id="73E-GB-ecE"/>
                                     <constraint firstAttribute="height" constant="20" id="AXD-ho-iBl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HL3-bA-OxN">
-                                <rect key="frame" x="30" y="313.5" width="137.5" height="30"/>
+                                <rect key="frame" x="30" y="313.5" width="146" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Rzh-Fc-eNb"/>
                                 </constraints>
@@ -236,7 +235,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptm-MC-cpR">
-                                <rect key="frame" x="187.5" y="313.5" width="137.5" height="30"/>
+                                <rect key="frame" x="188" y="313.5" width="146" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="-月-号">
                                     <color key="titleColor" white="0.33333333333333331" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
@@ -339,7 +338,6 @@
                             <constraint firstItem="Dkn-0V-HQj" firstAttribute="leading" secondItem="na7-ot-v2M" secondAttribute="leading" constant="30" id="XYd-4M-3CH"/>
                             <constraint firstItem="nSk-1E-7dd" firstAttribute="leading" secondItem="na7-ot-v2M" secondAttribute="leading" constant="30" id="Xh3-ga-Hau"/>
                             <constraint firstItem="9wf-BW-fSw" firstAttribute="top" secondItem="3W3-Aq-hfc" secondAttribute="bottom" constant="5" id="Yfq-vJ-zpR"/>
-                            <constraint firstItem="32V-jF-WqL" firstAttribute="width" secondItem="32V-jF-WqL" secondAttribute="height" multiplier="1:1" id="Z3r-On-TJd"/>
                             <constraint firstAttribute="trailing" secondItem="3W3-Aq-hfc" secondAttribute="trailing" id="aGq-KH-D4P"/>
                             <constraint firstItem="XYP-F7-XvC" firstAttribute="top" secondItem="Dkn-0V-HQj" secondAttribute="top" id="atR-2n-fWk"/>
                             <constraint firstAttribute="trailing" secondItem="UkX-T1-i1Z" secondAttribute="trailing" id="bif-ee-pZZ"/>
@@ -498,8 +496,8 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftn-jZ-nGC">
-                                    <rect key="frame" x="20" y="103" width="64" height="39.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftn-jZ-nGC">
+                                    <rect key="frame" x="20" y="103" width="84" height="39.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
