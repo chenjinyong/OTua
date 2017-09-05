@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847000781F5E38A7004350C9 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847000771F5E38A7004350C9 /* SignInViewController.m */; };
+		8470007B1F5E38C4004350C9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007A1F5E38C4004350C9 /* SignUpViewController.m */; };
+		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
 		848D3F441F5525310043C9BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F431F5525310043C9BD /* main.m */; };
 		848D3F471F5525310043C9BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F461F5525310043C9BD /* AppDelegate.m */; };
 		848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F4E1F5525310043C9BD /* convergence.xcdatamodeld */; };
@@ -70,6 +73,12 @@
 
 /* Begin PBXFileReference section */
 		440BE0004877292B44AB639C /* Pods-convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.debug.xcconfig"; sourceTree = "<group>"; };
+		847000761F5E38A7004350C9 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = SOURCE_ROOT; };
+		847000771F5E38A7004350C9 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = SOURCE_ROOT; };
+		847000791F5E38C4004350C9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = SOURCE_ROOT; };
+		8470007A1F5E38C4004350C9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = SOURCE_ROOT; };
+		8470007C1F5E3C26004350C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		8470007D1F5E3C26004350C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		848D3F3F1F5525310043C9BD /* convergence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = convergence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848D3F431F5525310043C9BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		848D3F451F5525310043C9BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +192,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847000751F5E3849004350C9 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				847000761F5E38A7004350C9 /* SignInViewController.h */,
+				847000771F5E38A7004350C9 /* SignInViewController.m */,
+				847000791F5E38C4004350C9 /* SignUpViewController.h */,
+				8470007A1F5E38C4004350C9 /* SignUpViewController.m */,
+			);
+			name = Sign;
+			sourceTree = "<group>";
+		};
 		848D3F361F5525310043C9BD = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +300,8 @@
 				848D3F4E1F5525310043C9BD /* convergence.xcdatamodeld */,
 				848D3F801F5526DA0043C9BD /* Order.h */,
 				848D3F811F5526DA0043C9BD /* Order.m */,
+				8470007C1F5E3C26004350C9 /* UserModel.h */,
+				8470007D1F5E3C26004350C9 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +381,7 @@
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				847000751F5E3849004350C9 /* Sign */,
 				B29FE1531F5D2EA10085C03E /* FindOut */,
 				B29FE1541F5D2EA10085C03E /* Homepage */,
 				B29FE1551F5D2EA10085C03E /* Information */,
@@ -648,12 +671,14 @@
 				848D3FB91F5526DF0043C9BD /* AppAPIClient.m in Sources */,
 				848D3FB41F5526DF0043C9BD /* MD5DataSigner.m in Sources */,
 				848D3F7C1F5526C90043C9BD /* BasicEncodingRules.m in Sources */,
+				847000781F5E38A7004350C9 /* SignInViewController.m in Sources */,
 				848D3FB51F5526DF0043C9BD /* NSDataEx.m in Sources */,
 				84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */,
 				848D3FB01F5526DF0043C9BD /* GBAlipayManager.m in Sources */,
 				848D3FC11F5526DF0043C9BD /* StorageMgr.m in Sources */,
 				848D3FC01F5526DF0043C9BD /* RequestAPI.m in Sources */,
 				848D3FB31F5526DF0043C9BD /* DataVerifier.m in Sources */,
+				8470007E1F5E3C26004350C9 /* UserModel.m in Sources */,
 				848D3FBE1F5526DF0043C9BD /* NSDateFormatter+Category.m in Sources */,
 				848D3FBB1F5526DF0043C9BD /* JSONS.m in Sources */,
 				848D3F471F5525310043C9BD /* AppDelegate.m in Sources */,
@@ -666,6 +691,7 @@
 				848D3FBD1F5526DF0043C9BD /* NSDate+Utility.m in Sources */,
 				848D3FB71F5526DF0043C9BD /* RSADataSigner.m in Sources */,
 				848D3FC31F5526DF0043C9BD /* Utilities.m in Sources */,
+				8470007B1F5E38C4004350C9 /* SignUpViewController.m in Sources */,
 				848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
