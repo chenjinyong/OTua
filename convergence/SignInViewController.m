@@ -32,7 +32,7 @@
 -(void)naviConfig{
     
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 110, 255);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏

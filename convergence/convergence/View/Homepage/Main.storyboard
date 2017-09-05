@@ -57,7 +57,7 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myInfoCell" id="nq1-Lg-uWl" customClass="MyInfoTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="myInfoCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myInfoCell" id="nq1-Lg-uWl" customClass="MyInfoTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nq1-Lg-uWl" id="Egj-Pi-ZjT">
@@ -102,7 +102,7 @@
                         <barButtonItem key="rightBarButtonItem" image="设置" id="s8R-Y4-SEt">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="setUp:" destination="oPl-XM-qOw" id="rup-QP-R54"/>
+                                <action selector="setUpAction:" destination="oPl-XM-qOw" id="jwO-XE-xCa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

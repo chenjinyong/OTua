@@ -37,7 +37,7 @@
 -(void)naviConfig{
     
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 110, 255);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -47,15 +47,9 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
     //为导航条左上角创建一个按钮
-    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = left;
+
 }
--(void)backAction{
-    //用model方式返回上一页
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //用push方式返回上一页
-    //[self.navigationController popViewControllerAnimated:YES];
-}
+
 //按键盘上的return键收起键盘
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];

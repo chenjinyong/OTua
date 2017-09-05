@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *MyInfoTableView;
-- (IBAction)setUp:(UIBarButtonItem *)sender;
+- (IBAction)setUpAction:(UIBarButtonItem *)sender;
 
 
 //定义一个存放数据的数组
@@ -45,9 +45,6 @@
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //去掉导航栏下面的空格
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
-    
-    
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条上按钮的风格颜色
@@ -55,6 +52,8 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
+
+
 
 //将要来到此页面（隐藏导航栏）
 - (void)viewDidAppear:(BOOL)animated{
@@ -133,9 +132,26 @@
 */
 
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //获取要跳转过去的那个页面
+    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
     
+    //创建一个navigationcontroller
+    //UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:signNavi];
+    //执行跳转//2.用某种方式跳转到上述页面（这里用modal方式跳转）
+    [self presentViewController:signNavi animated:YES completion:nil];
+    
+    //(这里用push方式跳转）
+    //[self.navigationController pushViewController:nc animated:YES];
 }
-- (IBAction)setUp:(UIBarButtonItem *)sender {
+
+- (IBAction)setUpAction:(UIBarButtonItem *)sender {
+    //    if ([Utilities loginCheck]) {
+    UINavigationController *setting = [Utilities getStoryboardInstance:@"setUp" byIdentity:@"Setting"];
+    [self presentViewController:setting animated:YES completion:nil];
+    //    }else{
+    //        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
+    //        [self presentViewController:signNavi animated:YES completion:nil];
+    //    }
     
 }
 @end

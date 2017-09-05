@@ -46,6 +46,8 @@
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
 		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
+		84B7EAF91F5E71330070D0DC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7EAF81F5E71330070D0DC /* SettingViewController.m */; };
+		84B7EAFD1F5E716F0070D0DC /* StetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7EAFC1F5E716F0070D0DC /* StetingTableViewCell.m */; };
 		84F6BE2F1F5D610F00A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */; };
 		84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */; };
 		84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */; };
@@ -147,6 +149,10 @@
 		848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		848D3FD11F5527F60043C9BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848D3FD31F5527FF0043C9BD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		84B7EAF71F5E71330070D0DC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = SOURCE_ROOT; };
+		84B7EAF81F5E71330070D0DC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = SOURCE_ROOT; };
+		84B7EAFB1F5E716F0070D0DC /* StetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StetingTableViewCell.h; sourceTree = "<group>"; };
+		84B7EAFC1F5E716F0070D0DC /* StetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StetingTableViewCell.m; sourceTree = "<group>"; };
 		84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyLogin.storyboard; path = Homepage/MyLogin.storyboard; sourceTree = "<group>"; };
 		84F6BE311F5D651C00A3C791 /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
 		84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
@@ -369,6 +375,15 @@
 			path = AliUtil;
 			sourceTree = "<group>";
 		};
+		84B7EAFA1F5E71450070D0DC /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84B7EAFB1F5E716F0070D0DC /* StetingTableViewCell.h */,
+				84B7EAFC1F5E716F0070D0DC /* StetingTableViewCell.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		84F6BE301F5D64B900A3C791 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +448,8 @@
 		B29FE1581F5D2EA10085C03E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				84B7EAF71F5E71330070D0DC /* SettingViewController.h */,
+				84B7EAF81F5E71330070D0DC /* SettingViewController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -440,6 +457,7 @@
 		B29FE1591F5D2F0C0085C03E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84B7EAFA1F5E71450070D0DC /* Setting */,
 				84F6BE301F5D64B900A3C791 /* MyInfo */,
 				B29FE1701F5D32700085C03E /* Main.storyboard */,
 				848D3F531F5525310043C9BD /* LaunchScreen.storyboard */,
@@ -669,6 +687,7 @@
 				848D3FBF1F5526DF0043C9BD /* NSString+Crypt.m in Sources */,
 				848D3F821F5526DA0043C9BD /* Order.m in Sources */,
 				848D3FB91F5526DF0043C9BD /* AppAPIClient.m in Sources */,
+				84B7EAFD1F5E716F0070D0DC /* StetingTableViewCell.m in Sources */,
 				848D3FB41F5526DF0043C9BD /* MD5DataSigner.m in Sources */,
 				848D3F7C1F5526C90043C9BD /* BasicEncodingRules.m in Sources */,
 				847000781F5E38A7004350C9 /* SignInViewController.m in Sources */,
@@ -693,6 +712,7 @@
 				848D3FC31F5526DF0043C9BD /* Utilities.m in Sources */,
 				8470007B1F5E38C4004350C9 /* SignUpViewController.m in Sources */,
 				848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */,
+				84B7EAF91F5E71330070D0DC /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
