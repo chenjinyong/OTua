@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		840F6D011F5F9CE800138EF6 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D001F5F9CE800138EF6 /* FoundViewController.m */; };
 		840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */; };
 		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
 		848D3F441F5525310043C9BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F431F5525310043C9BD /* main.m */; };
@@ -46,14 +45,24 @@
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
 		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
+		84A77A1A1F5FF7DE007067AC /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A191F5FF7DE007067AC /* MyInfoViewController.m */; };
+		84A77A1D1F5FF7E5007067AC /* ConvergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */; };
+		84A77A201F5FF7EE007067AC /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A1F1F5FF7EE007067AC /* FoundViewController.m */; };
+		84A77A261F5FF99B007067AC /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A231F5FF99B007067AC /* SignInViewController.m */; };
+		84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A251F5FF99B007067AC /* SignUpViewController.m */; };
+		84A77A2B1F5FFC35007067AC /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A2A1F5FFC35007067AC /* LeftViewController.m */; };
+		84A77A2D1F6003CD007067AC /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A77A2C1F6003CD007067AC /* Detail.storyboard */; };
+		84A77A301F600747007067AC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A2F1F600747007067AC /* DetailViewController.m */; };
+		84A77A331F600B20007067AC /* VouchersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A321F600B20007067AC /* VouchersViewController.m */; };
+		84A77A351F600EA2007067AC /* Vouchers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A77A341F600EA2007067AC /* Vouchers.storyboard */; };
+		84A77A391F6014FD007067AC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A381F6014FD007067AC /* SettingViewController.m */; };
+		84A77A3C1F6015B3007067AC /* StetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */; };
 		84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DEBA271F5FEC79005F006F /* FoundModel.m */; };
-		84F699331F5E5CEA00ABD169 /* ConvergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699321F5E5CEA00ABD169 /* ConvergenceViewController.m */; };
 		84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */; };
 		84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699381F5E5DE600ABD169 /* ConvergenceModel.m */; };
 		84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */; };
 		84F6BE2F1F5D610F00A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */; };
 		84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */; };
-		84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */; };
 		84F6BE3A1F5D734D00A3C791 /* setUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE391F5D734D00A3C791 /* setUp.storyboard */; };
 		A7359B1E13D0B1AD8DB215C0 /* libPods-convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */; };
 		B29FE1711F5D32700085C03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29FE1701F5D32700085C03E /* Main.storyboard */; };
@@ -78,8 +87,6 @@
 
 /* Begin PBXFileReference section */
 		440BE0004877292B44AB639C /* Pods-convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.debug.xcconfig"; sourceTree = "<group>"; };
-		840F6CFF1F5F9CE800138EF6 /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = SOURCE_ROOT; };
-		840F6D001F5F9CE800138EF6 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = SOURCE_ROOT; };
 		840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundCollectionViewCell.h; sourceTree = "<group>"; };
 		840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundCollectionViewCell.m; sourceTree = "<group>"; };
 		8470007C1F5E3C26004350C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -152,10 +159,30 @@
 		848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		848D3FD11F5527F60043C9BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848D3FD31F5527FF0043C9BD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		84A77A181F5FF7DE007067AC /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoViewController.h; path = convergence/Controller/MyInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		84A77A191F5FF7DE007067AC /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = convergence/Controller/MyInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		84A77A1B1F5FF7E5007067AC /* ConvergenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceViewController.h; sourceTree = "<group>"; };
+		84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceViewController.m; sourceTree = "<group>"; };
+		84A77A1E1F5FF7EE007067AC /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
+		84A77A1F1F5FF7EE007067AC /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
+		84A77A221F5FF99B007067AC /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		84A77A231F5FF99B007067AC /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		84A77A241F5FF99B007067AC /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		84A77A251F5FF99B007067AC /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		84A77A291F5FFC35007067AC /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		84A77A2A1F5FFC35007067AC /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		84A77A2C1F6003CD007067AC /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		84A77A2E1F600747007067AC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		84A77A2F1F600747007067AC /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		84A77A311F600B20007067AC /* VouchersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VouchersViewController.h; sourceTree = "<group>"; };
+		84A77A321F600B20007067AC /* VouchersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VouchersViewController.m; sourceTree = "<group>"; };
+		84A77A341F600EA2007067AC /* Vouchers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Vouchers.storyboard; sourceTree = "<group>"; };
+		84A77A371F6014FD007067AC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		84A77A381F6014FD007067AC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		84A77A3A1F6015B3007067AC /* StetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StetingTableViewCell.h; sourceTree = "<group>"; };
+		84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StetingTableViewCell.m; sourceTree = "<group>"; };
 		84DEBA261F5FEC79005F006F /* FoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundModel.h; sourceTree = "<group>"; };
 		84DEBA271F5FEC79005F006F /* FoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundModel.m; sourceTree = "<group>"; };
-		84F699311F5E5CEA00ABD169 /* ConvergenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceViewController.h; sourceTree = SOURCE_ROOT; };
-		84F699321F5E5CEA00ABD169 /* ConvergenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceViewController.m; sourceTree = SOURCE_ROOT; };
 		84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceTableViewCell.h; sourceTree = "<group>"; };
 		84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceTableViewCell.m; sourceTree = "<group>"; };
 		84F699371F5E5DE600ABD169 /* ConvergenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceModel.h; sourceTree = "<group>"; };
@@ -165,8 +192,6 @@
 		84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyLogin.storyboard; path = Homepage/MyLogin.storyboard; sourceTree = "<group>"; };
 		84F6BE311F5D651C00A3C791 /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
 		84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
-		84F6BE341F5D66AE00A3C791 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoViewController.h; path = convergence/Model/MyInfoViewController.h; sourceTree = SOURCE_ROOT; };
-		84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = convergence/Model/MyInfoViewController.m; sourceTree = SOURCE_ROOT; };
 		84F6BE391F5D734D00A3C791 /* setUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = setUp.storyboard; sourceTree = "<group>"; };
 		B29FE1701F5D32700085C03E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Homepage/Main.storyboard; sourceTree = "<group>"; };
 		C7740094EEF81EB7CAA81CAC /* libPods-convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,8 +235,8 @@
 		840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				840F6CFF1F5F9CE800138EF6 /* FoundViewController.h */,
-				840F6D001F5F9CE800138EF6 /* FoundViewController.m */,
+				84A77A1E1F5FF7EE007067AC /* FoundViewController.h */,
+				84A77A1F1F5FF7EE007067AC /* FoundViewController.m */,
 			);
 			name = "FoundViewController 发现";
 			sourceTree = "<group>";
@@ -386,11 +411,44 @@
 			path = AliUtil;
 			sourceTree = "<group>";
 		};
+		84A77A211F5FF921007067AC /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				84A77A221F5FF99B007067AC /* SignInViewController.h */,
+				84A77A231F5FF99B007067AC /* SignInViewController.m */,
+				84A77A241F5FF99B007067AC /* SignUpViewController.h */,
+				84A77A251F5FF99B007067AC /* SignUpViewController.m */,
+			);
+			name = Sign;
+			sourceTree = "<group>";
+		};
+		84A77A281F5FFBEB007067AC /* Left */ = {
+			isa = PBXGroup;
+			children = (
+				84A77A291F5FFC35007067AC /* LeftViewController.h */,
+				84A77A2A1F5FFC35007067AC /* LeftViewController.m */,
+			);
+			name = Left;
+			sourceTree = "<group>";
+		};
+		84A77A361F6014E8007067AC /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84A77A371F6014FD007067AC /* SettingViewController.h */,
+				84A77A381F6014FD007067AC /* SettingViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				84F699311F5E5CEA00ABD169 /* ConvergenceViewController.h */,
-				84F699321F5E5CEA00ABD169 /* ConvergenceViewController.m */,
+				84A77A1B1F5FF7E5007067AC /* ConvergenceViewController.h */,
+				84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */,
+				84A77A2E1F600747007067AC /* DetailViewController.h */,
+				84A77A2F1F600747007067AC /* DetailViewController.m */,
+				84A77A311F600B20007067AC /* VouchersViewController.h */,
+				84A77A321F600B20007067AC /* VouchersViewController.m */,
 			);
 			name = "convergenceViewController 首页";
 			sourceTree = "<group>";
@@ -406,6 +464,8 @@
 				84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */,
 				840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */,
 				840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */,
+				84A77A3A1F6015B3007067AC /* StetingTableViewCell.h */,
+				84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */,
 			);
 			name = MyInfo;
 			sourceTree = "<group>";
@@ -413,6 +473,9 @@
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84A77A361F6014E8007067AC /* Setting */,
+				84A77A281F5FFBEB007067AC /* Left */,
+				84A77A211F5FF921007067AC /* Sign */,
 				840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */,
 				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
 				B29FE1561F5D2EA10085C03E /* MyInfoViewControll */,
@@ -423,8 +486,8 @@
 		B29FE1561F5D2EA10085C03E /* MyInfoViewControll */ = {
 			isa = PBXGroup;
 			children = (
-				84F6BE341F5D66AE00A3C791 /* MyInfoViewController.h */,
-				84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */,
+				84A77A181F5FF7DE007067AC /* MyInfoViewController.h */,
+				84A77A191F5FF7DE007067AC /* MyInfoViewController.m */,
 			);
 			name = MyInfoViewControll;
 			path = My;
@@ -439,6 +502,8 @@
 				848D3F511F5525310043C9BD /* Assets.xcassets */,
 				84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */,
 				84F6BE391F5D734D00A3C791 /* setUp.storyboard */,
+				84A77A2C1F6003CD007067AC /* Detail.storyboard */,
+				84A77A341F600EA2007067AC /* Vouchers.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +647,8 @@
 				848D3F551F5525310043C9BD /* LaunchScreen.storyboard in Resources */,
 				848D3F521F5525310043C9BD /* Assets.xcassets in Resources */,
 				B29FE1711F5D32700085C03E /* Main.storyboard in Resources */,
+				84A77A2D1F6003CD007067AC /* Detail.storyboard in Resources */,
+				84A77A351F600EA2007067AC /* Vouchers.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,18 +724,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A77A261F5FF99B007067AC /* SignInViewController.m in Sources */,
+				84A77A331F600B20007067AC /* VouchersViewController.m in Sources */,
 				848D3FBC1F5526DF0043C9BD /* NSData+Base64.m in Sources */,
+				84A77A3C1F6015B3007067AC /* StetingTableViewCell.m in Sources */,
 				848D3FB11F5526DF0043C9BD /* base64.m in Sources */,
+				84A77A1A1F5FF7DE007067AC /* MyInfoViewController.m in Sources */,
 				848D3FBF1F5526DF0043C9BD /* NSString+Crypt.m in Sources */,
 				84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */,
 				848D3F821F5526DA0043C9BD /* Order.m in Sources */,
 				848D3FB91F5526DF0043C9BD /* AppAPIClient.m in Sources */,
 				848D3FB41F5526DF0043C9BD /* MD5DataSigner.m in Sources */,
+				84A77A301F600747007067AC /* DetailViewController.m in Sources */,
 				848D3F7C1F5526C90043C9BD /* BasicEncodingRules.m in Sources */,
 				848D3FB51F5526DF0043C9BD /* NSDataEx.m in Sources */,
 				84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */,
-				84F699331F5E5CEA00ABD169 /* ConvergenceViewController.m in Sources */,
-				840F6D011F5F9CE800138EF6 /* FoundViewController.m in Sources */,
+				84A77A2B1F5FFC35007067AC /* LeftViewController.m in Sources */,
 				84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */,
 				848D3FB01F5526DF0043C9BD /* GBAlipayManager.m in Sources */,
 				848D3FC11F5526DF0043C9BD /* StorageMgr.m in Sources */,
@@ -679,10 +750,11 @@
 				848D3FBE1F5526DF0043C9BD /* NSDateFormatter+Category.m in Sources */,
 				848D3FBB1F5526DF0043C9BD /* JSONS.m in Sources */,
 				848D3F471F5525310043C9BD /* AppDelegate.m in Sources */,
-				84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */,
 				848D3FB21F5526DF0043C9BD /* DataSigner.m in Sources */,
 				848D3FB81F5526DF0043C9BD /* RSADataVerifier.m in Sources */,
+				84A77A201F5FF7EE007067AC /* FoundViewController.m in Sources */,
 				84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */,
+				84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
 				848D3F441F5525310043C9BD /* main.m in Sources */,
 				848D3FB61F5526DF0043C9BD /* openssl_wrapper.m in Sources */,
@@ -691,6 +763,8 @@
 				848D3FB71F5526DF0043C9BD /* RSADataSigner.m in Sources */,
 				848D3FC31F5526DF0043C9BD /* Utilities.m in Sources */,
 				848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */,
+				84A77A1D1F5FF7E5007067AC /* ConvergenceViewController.m in Sources */,
+				84A77A391F6014FD007067AC /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

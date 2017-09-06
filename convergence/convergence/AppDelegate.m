@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <ECSlidingViewController/ECSlidingViewController.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <ECSlidingViewControllerDelegate>
+
+@property (strong,nonatomic)ECSlidingViewController *slidingVC;
 
 @end
 
@@ -17,7 +20,53 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //初始化窗口 不用故事版设置入口箭头的时候。系统不会默认设置窗口，需要手动设置
+    _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    //将窗口可视化
+    [_window makeKeyAndVisible];
+    
+    UINavigationController *navi =[Utilities getStoryboardInstance:@"Main" byIdentity:@"HomeNavi"];
+    //创建门框 (初始化的同时顺便设置好门框最外层的那扇门，也就是用户会看到的正中间的页面)
+    _slidingVC = [[ECSlidingViewController alloc]initWithTopViewController:navi] ;
+    //签协议
+    //   _slidingVC.delegate = self;
+    //放好左边nansanmen[Utilities getStoryboardInstance:@"Main" byIdentity:@"HomeNavi"]
+    _slidingVC.underLeftViewController = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"Left"];
+    
+    //设置手势(表示让中间的门能够对拖拽与触摸响应)
+    _slidingVC.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping |ECSlidingViewControllerAnchoredGesturePanning;
+    
+    //把上述手势添加到中间那扇门
+    [navi.view addGestureRecognizer:_slidingVC.panGesture];
+    
+    //设置侧滑动画的执行时间
+    _slidingVC.defaultTransitionDuration = 0.25;
+    
+    //设置滑动的幅度(中间那扇门打开的宽度)
+    _slidingVC.anchorRightPeekAmount = UI_SCREEN_W/6;
+    
+    //（设置app入口）
+    _window.rootViewController = _slidingVC;
+    
+    //注册侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
+    
+    //    [_slidingVC addTarget:self action:@selector(LeftSwitch:) forControlEvents:UIControlEventEditingChanged];
+    
     return YES;
+}
+
+//当前收到通知后要执行的方法
+-(void)leftSwitchAction:(UIBarButtonItem *)note{
+    NSLog(@"侧滑");
+    //当台上的状态打开，当打开的状态下合上
+    if(_slidingVC.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered){
+        [_slidingVC anchorTopViewToRightAnimated:YES];
+    }else{
+        [_slidingVC resetTopViewAnimated:YES];
+    }
+    
 }
 
 
