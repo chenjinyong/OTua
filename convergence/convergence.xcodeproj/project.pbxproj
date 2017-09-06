@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840F6D011F5F9CE800138EF6 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D001F5F9CE800138EF6 /* FoundViewController.m */; };
+		840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */; };
 		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
 		848D3F441F5525310043C9BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F431F5525310043C9BD /* main.m */; };
 		848D3F471F5525310043C9BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F461F5525310043C9BD /* AppDelegate.m */; };
@@ -44,9 +46,11 @@
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
 		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
+		84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DEBA271F5FEC79005F006F /* FoundModel.m */; };
 		84F699331F5E5CEA00ABD169 /* ConvergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699321F5E5CEA00ABD169 /* ConvergenceViewController.m */; };
 		84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */; };
 		84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699381F5E5DE600ABD169 /* ConvergenceModel.m */; };
+		84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */; };
 		84F6BE2F1F5D610F00A3C791 /* MyLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */; };
 		84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */; };
 		84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BE351F5D66AE00A3C791 /* MyInfoViewController.m */; };
@@ -74,6 +78,10 @@
 
 /* Begin PBXFileReference section */
 		440BE0004877292B44AB639C /* Pods-convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.debug.xcconfig"; sourceTree = "<group>"; };
+		840F6CFF1F5F9CE800138EF6 /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = SOURCE_ROOT; };
+		840F6D001F5F9CE800138EF6 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = SOURCE_ROOT; };
+		840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundCollectionViewCell.h; sourceTree = "<group>"; };
+		840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundCollectionViewCell.m; sourceTree = "<group>"; };
 		8470007C1F5E3C26004350C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		8470007D1F5E3C26004350C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		848D3F3F1F5525310043C9BD /* convergence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = convergence.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,12 +152,16 @@
 		848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		848D3FD11F5527F60043C9BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848D3FD31F5527FF0043C9BD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		84DEBA261F5FEC79005F006F /* FoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundModel.h; sourceTree = "<group>"; };
+		84DEBA271F5FEC79005F006F /* FoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundModel.m; sourceTree = "<group>"; };
 		84F699311F5E5CEA00ABD169 /* ConvergenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceViewController.h; sourceTree = SOURCE_ROOT; };
 		84F699321F5E5CEA00ABD169 /* ConvergenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceViewController.m; sourceTree = SOURCE_ROOT; };
 		84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceTableViewCell.h; sourceTree = "<group>"; };
 		84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceTableViewCell.m; sourceTree = "<group>"; };
 		84F699371F5E5DE600ABD169 /* ConvergenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceModel.h; sourceTree = "<group>"; };
 		84F699381F5E5DE600ABD169 /* ConvergenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceModel.m; sourceTree = "<group>"; };
+		84F6993A1F5EB9FE00ABD169 /* ConTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConTableViewCell.h; sourceTree = "<group>"; };
+		84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConTableViewCell.m; sourceTree = "<group>"; };
 		84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyLogin.storyboard; path = Homepage/MyLogin.storyboard; sourceTree = "<group>"; };
 		84F6BE311F5D651C00A3C791 /* MyInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoTableViewCell.h; sourceTree = "<group>"; };
 		84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoTableViewCell.m; sourceTree = "<group>"; };
@@ -195,6 +207,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				840F6CFF1F5F9CE800138EF6 /* FoundViewController.h */,
+				840F6D001F5F9CE800138EF6 /* FoundViewController.m */,
+			);
+			name = "FoundViewController 发现";
+			sourceTree = "<group>";
+		};
 		848D3F361F5525310043C9BD = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +317,8 @@
 				8470007D1F5E3C26004350C9 /* UserModel.m */,
 				84F699371F5E5DE600ABD169 /* ConvergenceModel.h */,
 				84F699381F5E5DE600ABD169 /* ConvergenceModel.m */,
+				84DEBA261F5FEC79005F006F /* FoundModel.h */,
+				84DEBA271F5FEC79005F006F /* FoundModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +402,10 @@
 				84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */,
 				84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */,
 				84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */,
+				84F6993A1F5EB9FE00ABD169 /* ConTableViewCell.h */,
+				84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */,
+				840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */,
+				840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */,
 			);
 			name = MyInfo;
 			sourceTree = "<group>";
@@ -386,6 +413,7 @@
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */,
 				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
 				B29FE1561F5D2EA10085C03E /* MyInfoViewControll */,
 			);
@@ -640,9 +668,11 @@
 				848D3FB51F5526DF0043C9BD /* NSDataEx.m in Sources */,
 				84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */,
 				84F699331F5E5CEA00ABD169 /* ConvergenceViewController.m in Sources */,
+				840F6D011F5F9CE800138EF6 /* FoundViewController.m in Sources */,
 				84F6BE331F5D651C00A3C791 /* MyInfoTableViewCell.m in Sources */,
 				848D3FB01F5526DF0043C9BD /* GBAlipayManager.m in Sources */,
 				848D3FC11F5526DF0043C9BD /* StorageMgr.m in Sources */,
+				840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */,
 				848D3FC01F5526DF0043C9BD /* RequestAPI.m in Sources */,
 				848D3FB31F5526DF0043C9BD /* DataVerifier.m in Sources */,
 				8470007E1F5E3C26004350C9 /* UserModel.m in Sources */,
@@ -652,10 +682,12 @@
 				84F6BE361F5D66AE00A3C791 /* MyInfoViewController.m in Sources */,
 				848D3FB21F5526DF0043C9BD /* DataSigner.m in Sources */,
 				848D3FB81F5526DF0043C9BD /* RSADataVerifier.m in Sources */,
+				84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
 				848D3F441F5525310043C9BD /* main.m in Sources */,
 				848D3FB61F5526DF0043C9BD /* openssl_wrapper.m in Sources */,
 				848D3FBD1F5526DF0043C9BD /* NSDate+Utility.m in Sources */,
+				84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */,
 				848D3FB71F5526DF0043C9BD /* RSADataSigner.m in Sources */,
 				848D3FC31F5526DF0043C9BD /* Utilities.m in Sources */,
 				848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */,

@@ -10,4 +10,16 @@
 
 @interface ConvergenceModel : NSObject
 
+@property (strong,nonatomic)NSString *address;
+@property (strong,nonatomic)NSString *distance;
+@property (strong,nonatomic)NSString *categoryName;//类别名称
+@property (strong,nonatomic)NSString *id;
+@property (strong,nonatomic)NSString *Image;
+@property (strong,nonatomic)NSString *logo;
+@property (strong,nonatomic)NSString *name;
+@property (nonatomic) NSInteger  Price;
+@property (nonatomic) NSInteger  orginPrice;
+@property (strong,nonatomic)NSString *sellNumber;
+- (instancetype)initWithDict: (NSDictionary *)dict;
 @end
+

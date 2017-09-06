@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ConvergenceModel.h"
+#import "ConvergenceTableViewCell.h"
 @interface ConvergenceViewController : UIViewController
-
+@property (strong,nonatomic) ConvergenceModel*model;
+@property (strong,nonatomic)ConvergenceTableViewCell *convergence;
 @end
