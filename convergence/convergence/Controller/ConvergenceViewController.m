@@ -13,8 +13,13 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    NSInteger page;
+    NSInteger perPage;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
 
@@ -32,6 +37,15 @@
     [self networkRequest];
     _arr = [NSMutableArray new];
     _brr = [NSMutableArray new];
+    
+    page = 1;
+    perPage = 10;
+    
+    //创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    
+    [self uiLayout];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,8 +71,38 @@
     
     
 }
+
+-(void)uiLayout{
+    _tableView.tableFooterView = [UIView new];
+    [self refresh];
+}
+
+-(void)refresh{
+    //初始化一个下拉刷新按钮
+    UIRefreshControl *refreshControl=[[UIRefreshControl alloc]init];
+    NSString *title = @"加载中...";
+    //设置标题
+    NSDictionary *dic = @{NSForegroundColorAttributeName : [UIColor grayColor], NSBackgroundColorAttributeName: [UIColor groupTableViewBackgroundColor] };
+    NSAttributedString *attrTitle = [[NSAttributedString alloc]initWithString:title attributes:dic];
+    refreshControl.attributedTitle = attrTitle;
+    //设置刷新指示器的颜色
+    refreshControl.tintColor = [UIColor grayColor];
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //定义用户触发下拉事件执行的方法
+    [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+    refreshControl.tag = 11;
+    //将下拉刷新控件添加到TableView中（在tableview中，下拉刷新控件会自动放置在表格视图的后侧位置） 就不用设置位置了
+    [self.tableView addSubview:refreshControl];
+}
+
+-(void)refreshPage{
+    page = 1;
+    [self networkRequest];
+}
+
+
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"0510",@"jing":@1,@"wei":@1,@"page":@1,@"perPage":@6};
+    NSDictionary *para = @{@"city":@"0510",@"jing":@1,@"wei":@1,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //        NSDictionary *content = responseObject[@"content"];
         //
@@ -67,11 +111,12 @@
         //NSLog(@"首页%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001)
         {
+            
             //NSArray *advertisement =responseObject[@"advertisement"];
             NSDictionary *result =responseObject[@ "result"];
-            NSLog(@"result = %@",result);
+ //           NSLog(@"rrrrr = %@",result);
             NSArray * exper =result[@"models"];
-            NSLog(@"exper = %@",exper);
+            NSLog(@"eeeee = %@",exper);
             for (NSDictionary *dict in exper)
             {
                 //用ConvergenceModel类中定义的初始化方法initWithDict:建行遍历得来的字典dict转换成为activityModel对象
@@ -80,11 +125,17 @@
                 [_arr addObject:ConModel];
             }
             [_tableView reloadData];
+            [self endAnimation];
+            UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
+            [refresh endRefreshing];
         }else{
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        NSLog(@"statusCode = %ld",(long)statusCode);
+        //失败以后要做的事情在此执行
+        NSLog(@"statusCode=%ld",statusCode);
+        
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
 }
 
@@ -101,9 +152,9 @@
 //细胞高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row % 2 == 0) {
-        return 200;
+        return 240;
     }else{
-        return 100.0f;
+        return 120.0f;
     }
     
 }
@@ -132,14 +183,14 @@
         CLLocationDistance kilometers=[_location distanceFromLocation:Location]/1000;
         cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
         
-        
+        [_aiv stopAnimating];
         return cell;
 
     }else{
     ConTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
         ConvergenceModel *model=_arr[indexPath.row];
         NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",model.Image]];
-        [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+        [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         cell.cardNameLabel.text = model.name;
         cell.volumeLabel.text = model.categoryName;
         cell.pricelabel.text = [NSString stringWithFormat:@"%ld元",(long)_model.Price];
@@ -170,7 +221,10 @@
 }
 
 
-
+//这个方法处理网络请求完成后所有不同的动画终止
+-(void)endAnimation{
+    [_aiv stopAnimating];
+}
 
 /*
 #pragma mark - Navigation

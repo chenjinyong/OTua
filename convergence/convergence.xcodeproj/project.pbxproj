@@ -57,6 +57,7 @@
 		84A77A351F600EA2007067AC /* Vouchers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A77A341F600EA2007067AC /* Vouchers.storyboard */; };
 		84A77A391F6014FD007067AC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A381F6014FD007067AC /* SettingViewController.m */; };
 		84A77A3C1F6015B3007067AC /* StetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */; };
+		84AB11841F6121E00089C83B /* VouchersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB11831F6121E00089C83B /* VouchersModel.m */; };
 		84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DEBA271F5FEC79005F006F /* FoundModel.m */; };
 		84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */; };
 		84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699381F5E5DE600ABD169 /* ConvergenceModel.m */; };
@@ -181,6 +182,8 @@
 		84A77A381F6014FD007067AC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		84A77A3A1F6015B3007067AC /* StetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StetingTableViewCell.h; sourceTree = "<group>"; };
 		84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StetingTableViewCell.m; sourceTree = "<group>"; };
+		84AB11821F6121E00089C83B /* VouchersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VouchersModel.h; sourceTree = "<group>"; };
+		84AB11831F6121E00089C83B /* VouchersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VouchersModel.m; sourceTree = "<group>"; };
 		84DEBA261F5FEC79005F006F /* FoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundModel.h; sourceTree = "<group>"; };
 		84DEBA271F5FEC79005F006F /* FoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundModel.m; sourceTree = "<group>"; };
 		84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceTableViewCell.h; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				84F699381F5E5DE600ABD169 /* ConvergenceModel.m */,
 				84DEBA261F5FEC79005F006F /* FoundModel.h */,
 				84DEBA271F5FEC79005F006F /* FoundModel.m */,
+				84AB11821F6121E00089C83B /* VouchersModel.h */,
+				84AB11831F6121E00089C83B /* VouchersModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 				84A77A3C1F6015B3007067AC /* StetingTableViewCell.m in Sources */,
 				848D3FB11F5526DF0043C9BD /* base64.m in Sources */,
 				84A77A1A1F5FF7DE007067AC /* MyInfoViewController.m in Sources */,
+				84AB11841F6121E00089C83B /* VouchersModel.m in Sources */,
 				848D3FBF1F5526DF0043C9BD /* NSString+Crypt.m in Sources */,
 				84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */,
 				848D3F821F5526DA0043C9BD /* Order.m in Sources */,

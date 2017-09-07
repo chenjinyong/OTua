@@ -59,6 +59,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buyAction:forEvent:" destination="LNa-pm-jtL" eventType="touchUpInside" id="Owl-KR-tdg"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSC-wF-OLi">
                                         <rect key="frame" x="0.0" y="285.5" width="375" height="27"/>
@@ -284,6 +287,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="体验劵信息" id="6WJ-0S-tFa"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="buyBtn" destination="lP0-cL-kY8" id="7EO-kR-TVg"/>
+                        <outlet property="cardStyleLabel" destination="NPj-FA-yrw" id="FHG-T8-V5R"/>
+                        <outlet property="dateLabel" destination="KC1-kR-tuU" id="MdM-cc-nkl"/>
+                        <outlet property="ipLabel" destination="XIc-8K-VRD" id="oeV-MR-N2i"/>
+                        <outlet property="logoImg" destination="gVa-y2-PJt" id="I2r-bj-B1E"/>
+                        <outlet property="nameLabel" destination="xfH-gP-Rla" id="n6o-pf-dJg"/>
+                        <outlet property="priceLabel" destination="ggM-eh-SBT" id="LSs-Jn-gCU"/>
+                        <outlet property="pricesLabel" destination="82J-FL-GKH" id="e0i-Lu-OQC"/>
+                        <outlet property="soldNumLabel" destination="y3K-Ta-LUZ" id="emW-Xp-uQi"/>
+                        <outlet property="timeLabel" destination="N5G-dZ-Ewx" id="H3s-VM-ww3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebC-gg-SQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
