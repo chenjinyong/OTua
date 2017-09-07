@@ -111,11 +111,47 @@
                         <outlet property="HeadImage" destination="Cmp-S1-Gtk" id="O4B-mb-lxg"/>
                         <outlet property="LoginBtn" destination="0Ya-lL-scN" id="ByU-cK-9h3"/>
                         <outlet property="MyInfoTableView" destination="0EQ-pZ-EUq" id="nFt-bI-8Xi"/>
+                        <segue destination="APh-eq-hzS" kind="show" identifier="proToPromote" id="sxj-Km-nlJ"/>
+                        <segue destination="R1n-Wv-oWq" kind="show" identifier="feedToBack" id="HKz-zc-ZZh"/>
+                        <segue destination="kS6-1T-7dl" kind="show" identifier="aboutToAbout" id="hty-Nc-3HZ"/>
+                        <segue destination="Bmu-xl-6hj" kind="show" identifier="OrderToMyOrder" id="kxY-w0-SQb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHI-NS-anx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1200.8" y="-260.41979010494754"/>
+        </scene>
+        <!--MyOrder-->
+        <scene sceneID="7bJ-qd-yci">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyOrder" id="Bmu-xl-6hj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfV-zb-wpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="-379"/>
+        </scene>
+        <!--Promote-->
+        <scene sceneID="oez-ZS-LwJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Promote" id="APh-eq-hzS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8V-ZK-5b8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="-300"/>
+        </scene>
+        <!--Feedback-->
+        <scene sceneID="l17-e5-ozR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feedback" id="R1n-Wv-oWq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMo-Mz-e7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828" y="-216"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="2H4-Qy-WUi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="About" id="kS6-1T-7dl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7A-BM-waM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="-128"/>
         </scene>
         <!--Convergence View Controller-->
         <scene sceneID="EAm-WN-Osr">
@@ -146,7 +182,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="193"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9wO-pa-L2b" id="wdt-df-61B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="192.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="193"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z1H-u5-E0n">

@@ -93,29 +93,33 @@
 //    if (![Utilities loginCheck] && indexPath.row == 0){
 //        [Utilities popUpAlertViewWithMsg:@"请先登录" andTitle:nil onView:self];
 //    } else {
-//        if (indexPath.section == 0) {
-//            switch (indexPath.row) {
-//                case 0:
-//                    [self performSegueWithIdentifier:@"" sender:self];
-//                    break;
-//                case 1:
-//                    [self performSegueWithIdentifier:@"" sender:self];
-//                    break;
-//                case 2:
-//                    [self performSegueWithIdentifier:@"" sender:self];
-//                    break;
-//                case 3:
-//                    [self performSegueWithIdentifier:@"" sender:self];
-//                    break;
-//                case 4:
-//                    [self performSegueWithIdentifier:@"" sender:self];
-//                    break;
-//                    
-//                    
-//                default:
-//                    break;
-//            }
-//        }
+        //if (indexPath.section == 0) {
+            
+                switch (indexPath.section) {
+                    case 0:
+                        [self performSegueWithIdentifier:@"OrderToMyOrder" sender:self];
+                        break;
+                    case 1:
+                        [self performSegueWithIdentifier:@"proToPromote" sender:self];
+                        break;
+                    case 2:
+                        [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:@"当前积分:34567" onView:self];
+                        //[self performSegueWithIdentifier:@"123123" sender:self];
+                        break;
+                    case 3:
+                        [self performSegueWithIdentifier:@"feedToBack" sender:self];
+                        break;
+                    case 4:
+                        [self performSegueWithIdentifier:@"aboutToAbout" sender:self];
+                        break;
+                        
+                        
+                    default:
+                        break;
+                }
+            
+            
+        //}
 //    }
 }
 

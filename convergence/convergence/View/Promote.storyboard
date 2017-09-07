@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vCd-pf-AMw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--我的推广-->
+        <scene sceneID="Mvi-j3-76e">
+            <objects>
+                <viewController id="vCd-pf-AMw" customClass="PromoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E9s-wk-M1M"/>
+                        <viewControllerLayoutGuide type="bottom" id="yNj-Wt-ZRA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5M7-KU-XV5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45G-Xk-oYn">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="45G-Xk-oYn" secondAttribute="trailing" id="8sx-fb-xEv"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="top" secondItem="E9s-wk-M1M" secondAttribute="bottom" id="PR1-za-L2F"/>
+                            <constraint firstItem="yNj-Wt-ZRA" firstAttribute="top" secondItem="45G-Xk-oYn" secondAttribute="bottom" id="Yio-Mx-lCq"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="leading" secondItem="5M7-KU-XV5" secondAttribute="leading" id="Z0A-nU-GPI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的推广" id="6aH-qr-72U"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="ZH_QRimageView" destination="45G-Xk-oYn" id="EXC-Xc-8dJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8s-3d-Isk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113" y="116"/>
+        </scene>
+    </scenes>
+</document>
