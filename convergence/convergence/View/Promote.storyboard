@@ -22,15 +22,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45G-Xk-oYn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="93" y="250" width="189" height="166"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="45G-Xk-oYn" secondAttribute="trailing" id="8sx-fb-xEv"/>
-                            <constraint firstItem="45G-Xk-oYn" firstAttribute="top" secondItem="E9s-wk-M1M" secondAttribute="bottom" id="PR1-za-L2F"/>
-                            <constraint firstItem="yNj-Wt-ZRA" firstAttribute="top" secondItem="45G-Xk-oYn" secondAttribute="bottom" id="Yio-Mx-lCq"/>
-                            <constraint firstItem="45G-Xk-oYn" firstAttribute="leading" secondItem="5M7-KU-XV5" secondAttribute="leading" id="Z0A-nU-GPI"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="top" secondItem="E9s-wk-M1M" secondAttribute="bottom" constant="186" id="ARV-qV-7ia"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="centerY" secondItem="5M7-KU-XV5" secondAttribute="centerY" id="Bl2-id-LSN"/>
+                            <constraint firstAttribute="trailing" secondItem="45G-Xk-oYn" secondAttribute="trailing" constant="93" id="YNB-05-g53"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="leading" secondItem="5M7-KU-XV5" secondAttribute="leading" constant="93" id="Yqm-Er-xAv"/>
+                            <constraint firstItem="45G-Xk-oYn" firstAttribute="centerX" secondItem="5M7-KU-XV5" secondAttribute="centerX" id="bm8-dU-hOW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的推广" id="6aH-qr-72U"/>
@@ -41,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8s-3d-Isk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="116"/>
+            <point key="canvasLocation" x="112.8" y="115.59220389805098"/>
         </scene>
     </scenes>
 </document>
