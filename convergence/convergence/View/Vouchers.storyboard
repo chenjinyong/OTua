@@ -165,8 +165,8 @@
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-18至3016-05-18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC1-kR-tuU">
-                                        <rect key="frame" x="15" y="560" width="148" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC1-kR-tuU">
+                                        <rect key="frame" x="15" y="560" width="28" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -218,6 +218,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-pX-ijr">
+                                        <rect key="frame" x="55.5" y="560" width="28.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="至" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60x-J2-PIB">
+                                        <rect key="frame" x="43" y="560" width="12.5" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="OSC-wF-OLi" firstAttribute="top" secondItem="82J-FL-GKH" secondAttribute="bottom" constant="15" id="19U-od-c4I"/>
@@ -250,6 +262,7 @@
                                     <constraint firstItem="KmF-Mb-xAA" firstAttribute="leading" secondItem="y3K-Ta-LUZ" secondAttribute="leading" id="XbY-4q-yc3"/>
                                     <constraint firstItem="gVa-y2-PJt" firstAttribute="top" secondItem="uVA-5X-WSF" secondAttribute="top" id="XkG-Xy-P2h"/>
                                     <constraint firstItem="lP0-cL-kY8" firstAttribute="bottom" secondItem="82J-FL-GKH" secondAttribute="bottom" id="YQP-S1-eUe"/>
+                                    <constraint firstItem="gqu-pX-ijr" firstAttribute="leading" secondItem="60x-J2-PIB" secondAttribute="trailing" id="ZJZ-6M-oY0"/>
                                     <constraint firstItem="DcI-ry-4ps" firstAttribute="leading" secondItem="KC1-kR-tuU" secondAttribute="leading" id="ZVX-XG-fwL"/>
                                     <constraint firstItem="DcI-ry-4ps" firstAttribute="top" secondItem="KC1-kR-tuU" secondAttribute="bottom" constant="15" id="bDT-IJ-gVI"/>
                                     <constraint firstItem="LdW-e2-jA4" firstAttribute="leading" secondItem="uVA-5X-WSF" secondAttribute="leading" id="bZK-6g-2AY"/>
@@ -257,6 +270,8 @@
                                     <constraint firstItem="N5G-dZ-Ewx" firstAttribute="leading" secondItem="DcI-ry-4ps" secondAttribute="leading" id="cNz-gS-Cxe"/>
                                     <constraint firstItem="NPj-FA-yrw" firstAttribute="leading" secondItem="uVA-5X-WSF" secondAttribute="leading" constant="15" id="d4k-OG-JCO"/>
                                     <constraint firstAttribute="trailing" secondItem="FrU-ma-Wei" secondAttribute="trailing" id="f0S-YM-ia8"/>
+                                    <constraint firstItem="60x-J2-PIB" firstAttribute="centerY" secondItem="KC1-kR-tuU" secondAttribute="centerY" id="geO-Ln-s95"/>
+                                    <constraint firstItem="gqu-pX-ijr" firstAttribute="centerY" secondItem="KC1-kR-tuU" secondAttribute="centerY" id="hGX-ja-Ghx"/>
                                     <constraint firstAttribute="trailing" secondItem="5Vb-nd-nvW" secondAttribute="trailing" id="i9k-io-bAu"/>
                                     <constraint firstItem="eN9-Eh-HlJ" firstAttribute="leading" secondItem="uVA-5X-WSF" secondAttribute="leading" constant="15" id="isy-fY-N8e"/>
                                     <constraint firstAttribute="trailing" secondItem="UIa-Ol-Ypa" secondAttribute="trailing" constant="15" id="koE-f7-VdZ"/>
@@ -274,6 +289,7 @@
                                     <constraint firstItem="NAt-zo-mZo" firstAttribute="leading" secondItem="uVA-5X-WSF" secondAttribute="leading" constant="15" id="vF5-Xw-H6E"/>
                                     <constraint firstItem="XIc-8K-VRD" firstAttribute="leading" secondItem="YcZ-CA-mpW" secondAttribute="trailing" constant="15" id="wqa-qg-zOp"/>
                                     <constraint firstItem="KC1-kR-tuU" firstAttribute="leading" secondItem="eN9-Eh-HlJ" secondAttribute="leading" id="x4T-UG-Fi6"/>
+                                    <constraint firstItem="60x-J2-PIB" firstAttribute="leading" secondItem="KC1-kR-tuU" secondAttribute="trailing" id="xbk-z5-331"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -288,21 +304,24 @@
                     <navigationItem key="navigationItem" title="体验劵信息" id="6WJ-0S-tFa"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="beginTimeLabel" destination="KC1-kR-tuU" id="MYo-Hn-ekL"/>
                         <outlet property="buyBtn" destination="lP0-cL-kY8" id="7EO-kR-TVg"/>
                         <outlet property="cardStyleLabel" destination="NPj-FA-yrw" id="FHG-T8-V5R"/>
-                        <outlet property="dateLabel" destination="KC1-kR-tuU" id="MdM-cc-nkl"/>
+                        <outlet property="endTimeLabel" destination="gqu-pX-ijr" id="i0u-Ml-HHN"/>
                         <outlet property="ipLabel" destination="XIc-8K-VRD" id="oeV-MR-N2i"/>
                         <outlet property="logoImg" destination="gVa-y2-PJt" id="I2r-bj-B1E"/>
                         <outlet property="nameLabel" destination="xfH-gP-Rla" id="n6o-pf-dJg"/>
                         <outlet property="priceLabel" destination="ggM-eh-SBT" id="LSs-Jn-gCU"/>
                         <outlet property="pricesLabel" destination="82J-FL-GKH" id="e0i-Lu-OQC"/>
+                        <outlet property="promotLabel" destination="NAt-zo-mZo" id="QWe-GS-S3h"/>
+                        <outlet property="ruleLabel" destination="lyF-6Y-Cr1" id="VjE-GH-Bjk"/>
                         <outlet property="soldNumLabel" destination="y3K-Ta-LUZ" id="emW-Xp-uQi"/>
                         <outlet property="timeLabel" destination="N5G-dZ-Ewx" id="H3s-VM-ww3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebC-gg-SQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="-337"/>
+            <point key="canvasLocation" x="1712.8" y="-337.78110944527737"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "DetailModel.h"
+#import "ConvergenceModel.h"
 
 @interface DetailViewController (){
     NSInteger page;
@@ -56,20 +58,44 @@
 
 //网络请求
 -(void)netRequest{
-    NSDictionary * para = @{@"city":@"0510",@"jing":@"",@"wei":@"",@"page":@(page),@"perPage":@(perpage),@"type":@""};
-    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"会所详情 = %@",responseObject);
+    NSDictionary * para = @{@"clubKeyId":@54,};
+    [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+      //  NSLog(@"会所详情 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSLog(@"rrr = %@",result);
-            NSArray *models = result[@"models"];
-            NSLog(@"mmm = %@",models);
-        }
+            NSArray *clubPic = result[@"clubPic"];
+            NSLog(@"mmm = %@",clubPic);
+            
+            DetailModel *model = [[DetailModel alloc]initWithDictionary:result];
+            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.clubLogo] placeholderImage:[UIImage imageNamed:@"clubLogo"]];
+            _ipLabel.text = model.clubAddressB;
+            _namelabel.text = model.clubName;
+            _detailLabel.text =model.clubIntroduce;
+            _timeLabel.text = model.openTime;
+            _vipLabel.text = model.clubMember;
+            _teacherLabel.text = model.clubPerson;
+            _siteLabel.text = model.storeNums;
+            
+//            ConvergenceModel *cmodel = [ConvergenceModel alloc]initWithDict:experience;
+            [[StorageMgr singletonStorageMgr]addKey:@"logo" andValue:_cardImg.image];
+            
+        }else {
+            [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
         
         
-    } failure:^(NSInteger statusCode, NSError *error) {
         
-    }];
+    }
+    }
+     failure:^(NSInteger statusCode, NSError *error) {
+         //失败以后要做的事情在此执行
+         NSLog(@"statusCode=%ld",statusCode);
+
+         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+     }];
+
+        
+    
 }
 /*
 #pragma mark - Navigation

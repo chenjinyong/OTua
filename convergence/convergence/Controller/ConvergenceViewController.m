@@ -57,6 +57,14 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
+    
+    //设置状态栏为白色
+    UIApplication *app= [UIApplication sharedApplication];
+    app.statusBarStyle = UIStatusBarStyleLightContent;
+    
+//    //去除导航栏下方的横线
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 //每次将要来到这个页面的时候
@@ -185,10 +193,10 @@
         cell.nameLabel.text = conver.name;
 //        cell.volumeLabel.text = model.;
 //        cell.distanceLabel.text = dict[@"distance"];
-        //计算距离
-//        CLLocation *Location = [[CLLocation alloc] initWithLatitude:[model.distance doubleValue] longitude:[model.distance doubleValue]];
+//        //计算距离
+//        CLLocation *Location = [[CLLocation alloc] initWithLatitude:[_model.distance doubleValue] longitude:[_model.distance doubleValue]];
 //        
-//        CLLocationDistance kilometers=[_location distanceFromLocation:Location]/1000;
+//        CLLocationDistance kilometers=[_location distanceFromLocation:latitude]/1000;
 //        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
         
         [_aiv stopAnimating];
