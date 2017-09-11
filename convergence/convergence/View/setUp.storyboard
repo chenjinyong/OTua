@@ -59,7 +59,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hiz-SD-qFa">
                                 <rect key="frame" x="0.0" y="214" width="375" height="453"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SettingCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" id="CeU-dP-ZHV" customClass="StetingTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97045200890000005" green="0.97815290180000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Hiz-SD-qFa" secondAttribute="trailing" id="PI1-YU-Ph8"/>
                             <constraint firstAttribute="bottom" secondItem="Hiz-SD-qFa" secondAttribute="bottom" id="SRL-nA-Hbh"/>
@@ -122,7 +122,7 @@
         <!--修改昵称-->
         <scene sceneID="yYj-9X-jIr">
             <objects>
-                <viewController id="7Fh-ml-Gmh" sceneMemberID="viewController">
+                <viewController id="7Fh-ml-Gmh" customClass="ModifyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9tW-2F-dBs"/>
                         <viewControllerLayoutGuide type="bottom" id="YAX-1b-fsI"/>

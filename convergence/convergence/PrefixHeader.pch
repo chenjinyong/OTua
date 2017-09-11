@@ -18,7 +18,5 @@
 #import "RequestAPI.h"
 #import "ErrorHandler.h"
 #import "NSString+Crypt.h"
-
-
-
+#import <UIImageView+WebCache.h>
 #endif /* PrefixHeader_pch */

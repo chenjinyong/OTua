@@ -12,6 +12,8 @@
 @interface PromoteViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *ZH_QRimageView;
 
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
+
 @end
 
 @implementation PromoteViewController
@@ -19,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self QrCodeRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +46,7 @@
     [filter setDefaults];
     
     // 3.二维码信息
-    NSString *str = @"http://www.baidu.com"; // 展示一串文字
+    NSString *str = @"会聚  一个集万千健身会所的App"; // 展示一串文字
     //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
     
     // 4.将字符串转成二进制数据
@@ -84,6 +87,23 @@
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
     return [UIImage imageWithCGImage:scaledImage];
+}
+
+- (void)QrCodeRequest{
+    _aiv = [Utilities getCoverOnView:self.view];
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    [parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]forKey:@"memberId"];
+    [RequestAPI requestURL:@"/mySelfController/getInvitationCode" withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"二维码：%@",responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        
+    }];
 }
 
 /*

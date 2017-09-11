@@ -20,6 +20,8 @@
 @property (nonatomic) NSInteger  Price;
 @property (nonatomic) NSInteger  orginPrice;
 @property (strong,nonatomic)NSString *sellNumber;
+
+
 - (instancetype)initWithDict: (NSDictionary *)dict;
 @end
 

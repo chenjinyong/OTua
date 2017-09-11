@@ -7,10 +7,13 @@
 //
 
 #import "MyInfoViewController.h"
+#import "UserModel.h"
 #import "MyInfoTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyInfoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *HeadImage;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLbl;
 @property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *MyInfoTableView;
@@ -31,6 +34,28 @@
     
     [self naviConfig];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if ([Utilities loginCheck]) {
+        //登录
+        _LoginBtn.hidden = YES;
+        _usernameLbl.hidden = NO;
+        
+        UserModel * user = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+        [_HeadImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"ic_user_head"]];
+        _usernameLbl.text = user.nickname;
+        
+        
+    }else{
+        //未登录
+        _LoginBtn.hidden = NO;
+        _usernameLbl.hidden = YES;
+        
+        _HeadImage.image = [UIImage imageNamed:@"ic_user_head"];
+        _usernameLbl.text = @"游客";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,9 +115,9 @@
     //点击某行细胞变色
     //NSLog(@"%ld<<",(long)indexPath.section);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    if (![Utilities loginCheck] && indexPath.row == 0){
-//        [Utilities popUpAlertViewWithMsg:@"请先登录" andTitle:nil onView:self];
-//    } else {
+    if (![Utilities loginCheck] && indexPath.row == 0){
+        [Utilities popUpAlertViewWithMsg:@"请先登录" andTitle:nil onView:self];
+    } else {
         //if (indexPath.section == 0) {
             
                 switch (indexPath.section) {
@@ -120,7 +145,7 @@
             
             
         //}
-//    }
+    }
 }
 
 /*
@@ -147,14 +172,14 @@
 }
 
 - (IBAction)setUpAction:(UIBarButtonItem *)sender {
-    //    if ([Utilities loginCheck]) {
-    UINavigationController *setting = [Utilities getStoryboardInstance:@"setUp" byIdentity:@"Setting"];
+    if ([Utilities loginCheck]) {
+        UINavigationController *setting = [Utilities getStoryboardInstance:@"setUp" byIdentity:@"Setting"];
     [self presentViewController:setting animated:YES completion:nil];
-    //    }else{
-    //        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
-    //        [self presentViewController:signNavi animated:YES completion:nil];
-    //    }
-    
+        }else{
+            UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
+            [self presentViewController:signNavi animated:YES completion:nil];
+        }
+
 }
 @end
 

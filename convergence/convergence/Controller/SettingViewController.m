@@ -115,17 +115,17 @@
                     case 0:
                        [self performSegueWithIdentifier:@"nickName" sender:self];
                         break;
-//                    case 1:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-//                    case 2:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-//                    case 3:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-//    
-//    
+                    case 1:
+                        [self performSegueWithIdentifier:@"" sender:self];
+                        break;
+                    case 2:
+                        [self performSegueWithIdentifier:@"" sender:self];
+                        break;
+                    case 3:
+                        [self performSegueWithIdentifier:@"" sender:self];
+                        break;
+    
+    
                     default:
                         break;
                }
@@ -133,23 +133,23 @@
 
 //设置大脚
 - (void)setFootViewForTableView{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 45)];
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 45)];
     
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置按钮位置大小
-    exitBtn.frame = CGRectMake(0, 5, UI_SCREEN_W, 40);
+    exitBtn.frame = CGRectMake(0, UI_SCREEN_H/ 3 * 2, UI_SCREEN_W, 40);
     [exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     //设置按钮标题的字体大小
-    exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.f];
+    exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
     //使用常量包定义按钮标题字体颜色
-    [exitBtn setTitleColor:UIColorFromRGB(221.f, 129.f, 116.f) forState:UIControlStateNormal];
+    [exitBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     //给按钮添加事件
     [exitBtn addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
     
     exitBtn.backgroundColor = [UIColor whiteColor];
     
-    [view addSubview:exitBtn];
-    [_settingTableView setTableFooterView:view];
+    [self.view addSubview:exitBtn];
+//    [_settingTableView setTableFooterView:view];
     
 }
 
@@ -169,6 +169,8 @@
 - (void)exit{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 /*
 #pragma mark - Navigation
