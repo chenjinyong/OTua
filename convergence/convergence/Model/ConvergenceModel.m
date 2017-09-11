@@ -17,11 +17,14 @@
         _orginPrice=[[Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""]integerValue];
         _categoryName = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@""];
         _id = [Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""];
+        _imgurl = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
         _Image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@""];
         _logo = [Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
         _name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
         _categoryName = [Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
         _Price = [[Utilities nullAndNilCheck:dict[@"Price"] replaceBy:@""]integerValue];
+        //_experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@""];
+        self.experience = [dict[@"experience"]isKindOfClass:[NSNull class]]?@[@""]:dict[@"experience"];
     }
     return self;
 }
