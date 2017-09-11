@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _arr = [NSMutableArray new];
     [self naviConfig];
     [self allorderRequest];
 }
@@ -87,13 +88,13 @@
 }
 //设置表格视图中每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arr.count;
+    return 1;
 }
 
-//设置组的名字方式
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"订单号:";
-}
+////设置组的名字方式
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    return @"订单号:";
+//}
 
 //设置当一个细胞将要出现的时候要做的事情
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -109,21 +110,28 @@
 }
 //设置每一组中每一行的细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MyOrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CardVoucherCell" forIndexPath:indexPath];
-    VouchersModel * Order = _arr[indexPath.row];
-    cell.couponLabel.text = Order.eName;
-    cell.shopNameLabel.text = Order.eClubName;
-    cell.priceLabel.text = Order.currentPrice;
+    orderModel * Order = _arr[indexPath.section];
+    cell.couponLabel.text = Order.productName;
+    cell.shopNameLabel.text = Order.clubName;
+    cell.priceLabel.text = Order.donepay;
     //将http请求的字符串转为NSURL
-    NSURL *url=[NSURL URLWithString:Order.eLogo];
+    NSURL *url=[NSURL URLWithString:Order.imgUrl];
     [cell.CardImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"image"]];
     return cell;
 
 }
 
+//设置组的名称（标题头节）
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    orderModel *ordermodel = _arr[section];
+    return [NSString stringWithFormat:@"订单号：%@",ordermodel.orderNum];
+}
+
 -(void)allorderRequest{
     //点击按钮的时候创建一个蒙层（菊花膜）并显示在当前页面（self.view）
-UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     _aiv = [Utilities getCoverOnView:self.view];
     //参数
     
@@ -138,12 +146,12 @@ UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
             NSLog(@"result =%@",result);
             NSArray * List = result[@"orderList"];
             NSLog(@"List = %@",List);
-            for (NSDictionary *dict in result) {
+            for (NSDictionary *dict in List) {
                 orderModel *ConModel = [[orderModel alloc]initWithDictionary:dict];
                 //将上述实例化好的ConvergenceModel对象插入_arr数组
                 [_arr addObject:ConModel];
             }
-            
+            [_tableView reloadData];
             
         }
         
