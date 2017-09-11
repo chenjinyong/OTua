@@ -7,10 +7,12 @@
 //
 
 #import "PromoteViewController.h"
-#import "qrencode.h"
+#import <CoreImage/CoreImage.h>
 
 @interface PromoteViewController ()
-@property (strong, nonatomic) IBOutlet UIImageView *ZH_QRimageView;
+@property (weak, nonatomic) IBOutlet UIImageView *ZH_QRimageView;
+
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
 
 @end
 
@@ -19,12 +21,89 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self CreateQRCode];
+    [self QrCodeRequest];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}- (void)viewWillAppear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    // 1.实例化二维码滤镜
+    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    
+    // 2.恢复滤镜的默认属性
+    [filter setDefaults];
+    
+    // 3.二维码信息
+    NSString *str = @"会聚  一个集万千健身会所的App"; // 展示一串文字
+    //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
+    
+    // 4.将字符串转成二进制数据
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // 5.通过KVC设置滤镜inputMessage数据
+    [filter setValue:data forKey:@"inputMessage"];
+    
+    // 6.获取滤镜输出的图像
+    CIImage *outputImage = [filter outputImage];
+    
+    // 7.将CIImage转成UIImage
+    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
+    
+    // 8.展示二维码
+    self.ZH_QRimageView.image = image;
+}
+
+- (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size
+{
+    CGRect extent = CGRectIntegral(image.extent);
+    //CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+    CGFloat scale = MIN(10, 20);
+    
+    // 1.创建bitmap;
+    size_t width = CGRectGetWidth(extent) * scale;
+    size_t height = CGRectGetHeight(extent) * scale;
+    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
+    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
+    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
+    CGContextScaleCTM(bitmapRef, scale, scale);
+    CGContextDrawImage(bitmapRef, extent, bitmapImage);
+    
+    // 2.保存bitmap到图片
+    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    CGContextRelease(bitmapRef);
+    CGImageRelease(bitmapImage);
+    return [UIImage imageWithCGImage:scaledImage];
+}
+
+- (void)QrCodeRequest{
+    _aiv = [Utilities getCoverOnView:self.view];
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    [parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]forKey:@"memberId"];
+    [RequestAPI requestURL:@"/mySelfController/getInvitationCode" withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"二维码：%@",responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        
+    }];
 }
 
 /*
@@ -36,12 +115,6 @@
     // Pass the selected object to the new view controller.
 }
 */
--(void)CreateQRCode{
-    _ZH_QRimageView = [[UIImageView alloc]initWithFrame:CGRectMake(80, 180, 250, 250)];
-    
-    [self.view addSubview:_ZH_QRimageView];
-    
-//    _ZH_QRimageView.image = [ qrImageForString:@"会聚" imageSize:_ZH_QRimageView.bounds.size.width];
-}
+
 
 @end

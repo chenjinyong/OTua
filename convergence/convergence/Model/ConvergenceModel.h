@@ -21,7 +21,12 @@
 @property (nonatomic) NSInteger  Price;
 @property (nonatomic) NSInteger  orginPrice;
 @property (strong,nonatomic)NSString *sellNumber;
+<<<<<<< HEAD
 @property (strong,nonatomic)NSArray *experience;
+=======
+
+
+>>>>>>> d3c205da4586fdb26b6967810081ad49815a0bd6
 - (instancetype)initWithDict: (NSDictionary *)dict;
 @end
 
