@@ -16,8 +16,10 @@
 @interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger page;
     NSInteger perPage;
+    NSInteger i;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImg;
 
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
@@ -34,18 +36,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
-    [self networkRequest];
-    _arr = [NSMutableArray new];
-    _brr = [NSMutableArray new];
-    
-    page = 1;
-    perPage = 10;
-    
-    //创建菊花膜
-    _aiv = [Utilities getCoverOnView:self.view];
-    
     [self uiLayout];
-
+    [self dataInitialize];
+    //
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +89,16 @@
     [self.tableView addSubview:refreshControl];
 }
 
+- (void)dataInitialize {
+    _arr = [NSMutableArray new];
+    _brr = [NSMutableArray new];
+    
+    perPage = 10;
+    //创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    [self refreshPage];
+}
+
 -(void)refreshPage{
     page = 1;
     [self networkRequest];
@@ -102,56 +106,59 @@
 
 
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"0510",@"jing":@1,@"wei":@1,@"page":@(page),@"perPage":@(perPage)};
+    NSDictionary *para = @{@"city":@"无锡",@"jing":@120,@"wei":@31,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        //        NSDictionary *content = responseObject[@"content"];
-        //
-        //        _model= [[ConvergenceModel alloc]initWithDict:content];
-        
-        //NSLog(@"首页%@",responseObject);
-        if ([responseObject[@"resultFlag"] integerValue] == 8001)
-        {
+      //  NSLog(@"首页%@",responseObject);
+        [_aiv stopAnimating];
+        UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
+        [refresh endRefreshing];
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             
             //NSArray *advertisement =responseObject[@"advertisement"];
-            NSDictionary *result =responseObject[@ "result"];
- //           NSLog(@"rrrrr = %@",result);
-            NSArray * exper =result[@"models"];
-            NSLog(@"eeeee = %@",exper);
-            for (NSDictionary *dict in exper)
-            {
-                //用ConvergenceModel类中定义的初始化方法initWithDict:建行遍历得来的字典dict转换成为activityModel对象
-                ConvergenceModel *ConModel = [[ConvergenceModel alloc]initWithDict:dict];
-                //将上述实例化好的ConvergenceModel对象插入_arr数组
+            NSDictionary *result =responseObject[@"result"];
+            NSArray * models =result[@"models"];
+            for(NSDictionary * dict in models){
+                
+            ConvergenceModel * ConModel = [[ConvergenceModel alloc]initWithDict:dict];
+                
+                
                 [_arr addObject:ConModel];
+                
+ //               _backgroundImg.image = [UIImage imageNamed:@"imgurl"];
+ //               [_backgroundImg sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"imgurl"]];
+                
             }
+                        
+            
             [_tableView reloadData];
-            [self endAnimation];
-            UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
-            [refresh endRefreshing];
-        }else{
+    
+        } else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         //失败以后要做的事情在此执行
         NSLog(@"statusCode=%ld",statusCode);
-        
+        [_aiv stopAnimating];
+        UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
+        [refresh endRefreshing];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
 }
 
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return _arr.count;
 }
 
 //每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arr.count;
+    ConvergenceModel * conver = _arr[section];
+    return conver.experience.count+1;
     
 }
 //细胞高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row % 2 == 0) {
+    if (indexPath.row == 0) {
         return 240;
     }else{
         return 120.0f;
@@ -165,40 +172,41 @@
 
 //细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row % 2 == 0) {
+    ConvergenceModel * conver = _arr[indexPath.section];
+    if (indexPath.row == 0) {
         ConvergenceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1" forIndexPath:indexPath];
-        ConvergenceModel *model=_arr[indexPath.row];
+       
 
         
-        NSURL * url = [NSURL URLWithString:model.Image];
+        NSURL * url = [NSURL URLWithString:conver.Image];
         [cell.backgroundImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
         
-        cell.ipLabel.text = model.address;
-        cell.nameLabel.text = model.name;
+        cell.ipLabel.text = conver.address;
+        cell.nameLabel.text = conver.name;
 //        cell.volumeLabel.text = model.;
 //        cell.distanceLabel.text = dict[@"distance"];
         //计算距离
-        CLLocation *Location = [[CLLocation alloc] initWithLatitude:[model.distance doubleValue] longitude:[model.distance doubleValue]];
-        
-        CLLocationDistance kilometers=[_location distanceFromLocation:Location]/1000;
-        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
+//        CLLocation *Location = [[CLLocation alloc] initWithLatitude:[model.distance doubleValue] longitude:[model.distance doubleValue]];
+//        
+//        CLLocationDistance kilometers=[_location distanceFromLocation:Location]/1000;
+//        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
         
         [_aiv stopAnimating];
         return cell;
 
     }else{
+        NSArray * expArr = conver.experience;
+        NSDictionary * dict = expArr[indexPath.row-1];
     ConTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
-        ConvergenceModel *model=_arr[indexPath.row];
-        NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",model.Image]];
-        [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-        cell.cardNameLabel.text = model.name;
-        cell.volumeLabel.text = model.categoryName;
-        cell.pricelabel.text = [NSString stringWithFormat:@"%ld元",(long)_model.Price];
-        cell.numLabel.text = [NSString stringWithFormat:@"已售：%@",_model.sellNumber];
         
-//        cell.pricelabel.text = [NSString stringWithFormat:@"%ld元",(long)_model.orginPrice];
-//        cell.numLabel.text = [NSString stringWithFormat:@"已售：%@",_model.sellNumber];
-//        dict1[@"sellNumber"];
+        NSURL * url = [NSURL URLWithString:dict[@"logo"]];
+        [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+        cell.cardNameLabel.text = dict[@"name"];
+        cell.volumeLabel.text = @"综合卷";
+        cell.pricelabel.text = [NSString stringWithFormat:@"%@元",dict[@"orginPrice"]];
+        cell.numLabel.text = [NSString stringWithFormat:@"已售：%@",dict[@"sellNumber"]];
+        
+
         return cell;
     }
     

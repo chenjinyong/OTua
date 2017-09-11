@@ -16,10 +16,12 @@
 @property (strong,nonatomic)NSString *id;
 @property (strong,nonatomic)NSString *Image;
 @property (strong,nonatomic)NSString *logo;
+@property (strong,nonatomic)NSString *imgurl;
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic) NSInteger  Price;
 @property (nonatomic) NSInteger  orginPrice;
 @property (strong,nonatomic)NSString *sellNumber;
+@property (strong,nonatomic)NSArray *experience;
 - (instancetype)initWithDict: (NSDictionary *)dict;
 @end
 

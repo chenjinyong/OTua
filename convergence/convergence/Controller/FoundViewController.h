@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FoundModel.h"
+#import "FoundCollectionViewCell.h"
 
 @interface FoundViewController : UIViewController
-
+@property (strong,nonatomic) FoundModel *foundModel;
+@property (strong,nonatomic)FoundCollectionViewCell *foundCell;
 @end

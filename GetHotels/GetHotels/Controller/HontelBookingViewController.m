@@ -138,7 +138,7 @@
             
             NSArray *types = content[@"hotel_types"];
             for (int i = 0;i<types.count;i++ ) {
-                _styleLabel.text =types[0];0
+                _styleLabel.text =types[0];
                 _breakfastLabel.text =types[1];
                 _bedStylelabel.text =types[2];
                 _sizeLabel.text =types[3];

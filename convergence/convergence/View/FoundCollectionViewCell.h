@@ -12,6 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *logoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImg;
 
 @end
