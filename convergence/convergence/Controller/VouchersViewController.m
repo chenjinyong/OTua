@@ -37,7 +37,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self uiLyout];
     [self netRequest];
+    
     _arr = [NSMutableArray new];
 }
 
@@ -67,13 +69,13 @@
             NSLog(@"result = %@",result);
             VouchersModel *model = [[VouchersModel alloc]initWithDictionary:result];
  //               _logoImg.image = dict[@"eLogo"];
-            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
-                _cardStyleLabel.text = model.eClubName;
-                _priceLabel.text = model.orginPrice;
-                _pricesLabel.text = model.currentPrice;
-                _nameLabel.text = model.eClubName;
-                _ipLabel.text = model.eAddress;
-                _ipLabel.text = model.eAddress;
+//            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
+//                _cardStyleLabel.text = model.eClubName;
+                _priceLabel.text = [NSString stringWithFormat:@"%@元",model.orginPrice];
+//                _pricesLabel.text = model.currentPrice;
+//                _nameLabel.text = model.eClubName;
+//                _ipLabel.text = model.eAddress;
+                //_ipLabel.text = model.eAddress;
                 _beginTimeLabel.text = model.beginDate;
                 _endTimeLabel.text = model.endDate;
                 _ruleLabel.text = model.rules;
@@ -93,6 +95,15 @@
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
         
     }];
+}
+
+-(void)uiLyout{
+    [_logoImg sd_setImageWithURL:[NSURL URLWithString:_conver.logo] placeholderImage:[UIImage imageNamed:@"logo"]];
+//    _ipLabel.text =
+    _cardStyleLabel.text = _conver.name;
+    _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_conver.orginPrice];
+    _ipLabel.text = _conver.address;
+    _nameLabel.text = _conver.name;
 }
 /*
 #pragma mark - Navigation

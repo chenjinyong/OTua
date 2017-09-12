@@ -10,13 +10,15 @@
 #import "ConTableViewCell.h"
 #import "DetailViewController.h"
 #import "VouchersViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import <CoreLocation/CoreLocation.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
     NSInteger page;
     NSInteger perPage;
     NSInteger i;
+    BOOL      firstVisit;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImg;
@@ -25,7 +27,8 @@
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
 
-@property (strong,nonatomic) CLLocation *location;
+@property (strong,nonatomic) CLLocationManager *locMgr;
+@property (strong,nonatomic) CLLocation *location;;
 
 
 @end
@@ -116,7 +119,7 @@
 -(void)networkRequest{
     NSDictionary *para = @{@"city":@"无锡",@"jing":@120,@"wei":@31,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-      //  NSLog(@"首页%@",responseObject);
+        NSLog(@"首页%@",responseObject);
         [_aiv stopAnimating];
         UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
         [refresh endRefreshing];
@@ -125,17 +128,13 @@
             //NSArray *advertisement =responseObject[@"advertisement"];
             NSDictionary *result =responseObject[@"result"];
             NSArray * models =result[@"models"];
+         
             for(NSDictionary * dict in models){
-                
             ConvergenceModel * ConModel = [[ConvergenceModel alloc]initWithDict:dict];
-                
                 
                 [_arr addObject:ConModel];
                 
- //               _backgroundImg.image = [UIImage imageNamed:@"imgurl"];
- //               [_backgroundImg sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"imgurl"]];
-                
-            }
+           }
                         
             
             [_tableView reloadData];
@@ -173,7 +172,111 @@
     }
     
 }
+//设置每一组中每一行细胞被点击以后要做的事情
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+   
+    
+    
+}
 
+
+-(void)locationConfig{
+    //这个方法专门处理定位的基本设置
+    
+    _locMgr = [CLLocationManager new];
+    //    _location = [CLLocation new];
+    //签协议
+    _locMgr.delegate =self;
+    //定位到的设备位移多少距离进行识别 距离决定于kCLLocationAccuracyBest的精确度
+    _locMgr.distanceFilter = kCLDistanceFilterNone;
+    //设置把地球分割成边长多少精度的方块
+    _locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+    //打开定位服务的开关（开始定位）
+    [_locMgr startUpdatingLocation];
+}
+
+- (void)enterApp{
+    BOOL AppInit = NO;
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开APP
+        AppInit = YES;
+    } else {
+        if ([Utilities getUserDefaults:@"UserCity"] == nil) {
+            //也说明是第一次打开APP
+            AppInit = YES;
+        }
+        
+    }
+}
+
+-(void)locationstart{
+    //判断用户是否选择过是否使用定位
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+        //询问用户是否愿意使用定位
+        //判断用户使用的版本 （8.0以上）
+#ifdef __IPHONE_8_0
+        if([_locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+            //使用“使用中打开定位”这个策略去运用定位功能
+            [_locMgr requestWhenInUseAuthorization];
+        }
+#endif
+    }
+    //打开定位服务的开关（开始定位）
+    [_locMgr startUpdatingLocation];
+}
+
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    // NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿到城市
+    if(firstVisit){
+        firstVisit = !firstVisit;
+        //根据定位拿到城市
+        [self getRegeoViaCoordinate];
+    }
+}
+
+//根据定位拿到城市
+-(void)getRegeoViaCoordinate{
+    //duration表示从NOW开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_after(duration,dispatch_get_main_queue(),^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if(!error){
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                cityStr = [cityStr substringToIndex:(cityStr.length -1)];
+                [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];
+                [[StorageMgr singletonStorageMgr]addKey:@"LocCity" andValue:cityStr];
+                
+            }
+        }];
+        //关掉开关
+        [_locMgr stopUpdatingLocation];
+    });
+}
+
+-(void)checkCityState:(NSNotification *)note{
+    NSString * cityStr = note.object;
+    
+        [Utilities removeUserDefaults:@"UserCity"];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+        //重新执行网络请求
+    
+}
 
 #pragma mark - table view
 
@@ -191,13 +294,12 @@
         
         cell.ipLabel.text = conver.address;
         cell.nameLabel.text = conver.name;
-//        cell.volumeLabel.text = model.;
-//        cell.distanceLabel.text = dict[@"distance"];
-//        //计算距离
-//        CLLocation *Location = [[CLLocation alloc] initWithLatitude:[_model.distance doubleValue] longitude:[_model.distance doubleValue]];
-//        
-//        CLLocationDistance kilometers=[_location distanceFromLocation:latitude]/1000;
-//        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
+
+        //计算距离
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[_model.distance doubleValue] longitude:[_model.distance doubleValue]];
+        
+        CLLocationDistance kilometers=[_location distanceFromLocation:location]/1000;
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
         
         [_aiv stopAnimating];
         return cell;
@@ -209,11 +311,13 @@
         
         NSURL * url = [NSURL URLWithString:dict[@"logo"]];
         [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+        
         cell.cardNameLabel.text = dict[@"name"];
         cell.volumeLabel.text = @"综合卷";
         cell.pricelabel.text = [NSString stringWithFormat:@"%@元",dict[@"orginPrice"]];
+        [[StorageMgr singletonStorageMgr]addKey:@"orgin" andValue:self];
         cell.numLabel.text = [NSString stringWithFormat:@"已售：%@",dict[@"sellNumber"]];
-        
+        [[StorageMgr singletonStorageMgr]addKey:@"sellNumber" andValue:self];
 
         return cell;
     }
@@ -227,12 +331,18 @@
         //当从列表也到详情页的这个跳转要发生的时候
         //1 获取要传递到下一页去的数据
         NSIndexPath *indexpath = [_tableView indexPathForSelectedRow];
-        ConvergenceModel * activity = _arr[indexpath.row];
+        ConvergenceModel * activity = _arr[indexpath.section];
         //2获取下一页这个实例
         DetailViewController *detailVC = segue.destinationViewController;
         
         //3把数据给下一页预备好的接受容器
         detailVC.fitness = activity;
+    }
+    else {
+        NSIndexPath *indexpath = [_tableView indexPathForSelectedRow];
+        ConvergenceModel * activity = _arr[indexpath.section];
+        VouchersViewController*Vouch = segue.destinationViewController;
+        Vouch.conver = activity;
     }
 }
 
