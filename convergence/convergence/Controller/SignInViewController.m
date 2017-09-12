@@ -53,7 +53,7 @@
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if ([[Utilities getUserDefaults:@"Username" ]isKindOfClass:[NSNull class]]) {
+    if (![[Utilities getUserDefaults:@"Username" ]isKindOfClass:[NSNull class]]) {
         if ([Utilities getUserDefaults:@"Username"] != nil) {
             //将它显示在用户名输入框中
             _usernameTextField.text = [Utilities getUserDefaults:@"Username"];
@@ -138,7 +138,7 @@
             //清空密码输入框里的内容
             _passwordTextField.text = @"";
             //记忆用户名
-            [Utilities setUserDefaults:@"username" content:_usernameTextField.text];
+            [Utilities setUserDefaults:@"Username" content:_usernameTextField.text];
             //用Model的方式返回上一页
             [self dismissViewControllerAnimated:YES completion:nil];
             

@@ -20,10 +20,38 @@
                     <view key="view" contentMode="scaleToFill" id="9yt-TR-3qp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-Rh-WiA">
+                                <rect key="frame" x="15" y="79" width="345" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="mcu-Mo-HLp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="AJT-OK-slS" id="1bL-EQ-QqZ"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="j8b-Rh-WiA" firstAttribute="leading" secondItem="9yt-TR-3qp" secondAttribute="leading" constant="15" id="4id-mY-f7i"/>
+                            <constraint firstItem="j8b-Rh-WiA" firstAttribute="top" secondItem="81r-sH-Lee" secondAttribute="bottom" constant="15" id="ChL-xM-gCu"/>
+                            <constraint firstAttribute="trailing" secondItem="j8b-Rh-WiA" secondAttribute="trailing" constant="15" id="umE-vE-E4J"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="意见反馈" id="aKj-8l-hWg"/>
+                    <navigationItem key="navigationItem" title="意见反馈" id="aKj-8l-hWg">
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="nOW-A9-8iY">
+                            <connections>
+                                <action selector="SubmitAction:" destination="AJT-OK-slS" id="vHJ-K7-fbi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="FeedBackTextView" destination="j8b-Rh-WiA" id="aUj-uq-NrT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt9-hc-7e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

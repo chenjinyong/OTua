@@ -8,7 +8,8 @@
 
 #import "SettingViewController.h"
 #import "StetingTableViewCell.h"
-
+#import "UserModel.h"
+#import "JSONS.h"
 @interface SettingViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *UserImage;
 - (IBAction)ModifyPicture:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -16,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *ImgView;
 
 //定义一个存放数据的数组
-@property (strong,nonatomic) NSMutableArray * arr;
+@property (strong,nonatomic) NSArray * arr;
 
 @end
 
@@ -26,17 +27,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //_arr = @[@{@"nickLabel":@"昵称",@"userNameLabel":@""},@{@"nickLabel":@"性别",@"userNameLabel":@""},@{@"nickLabel":@"生日",@"userNameLabel":@""},@{@"nickLabel":@"身份证号码",@"userNameLabel":@""}];
-    _arr = [NSMutableArray new];//可变数组必须初始化
-    NSDictionary * dictA = @{@"nickLabel":@"昵称",@"userNameLabel":@""};
-    NSDictionary * dictB = @{@"nickLabel":@"性别",@"userNameLabel":@""};
-    NSDictionary * dictC = @{@"nickLabel":@"生日",@"userNameLabel":@""};
-    NSDictionary * dictD = @{@"nickLabel":@"身份证号码",@"userNameLabel":@""};
-    [_arr addObject:dictA];
-    [_arr addObject:dictB];
-    [_arr addObject:dictC];
-    [_arr addObject:dictD];
-    //数据重载
-    [_settingTableView reloadData];
+   // _arr = [NSMutableArray new];//可变数组必须初始化
+//    NSDictionary * dictA = @{@"nickLabel":@"昵称",@"userNameLabel":@""};
+//    NSDictionary * dictB = @{@"nickLabel":@"性别",@"userNameLabel":@""};
+//    NSDictionary * dictC = @{@"nickLabel":@"生日",@"userNameLabel":@""};
+//    NSDictionary * dictD = @{@"nickLabel":@"身份证号码",@"userNameLabel":@""};
+//    [_arr addObject:dictA];
+//    [_arr addObject:dictB];
+//    [_arr addObject:dictC];
+//    [_arr addObject:dictD];
+    _arr = @[@"昵称",@"性别",@"生日",@"身份证号码"];
+    
     
     [self naviConfig];
     //调用大脚方法
@@ -74,30 +75,73 @@
 }
 
 //将要来到此页面（隐藏导航栏）
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self updateInfo];
 }
+-(void)updateInfo{
+   // UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+   // NSDictionary *para = @{@"memberId":model.memberId,@"name":model.nickname,@"birthday":model.dob,@"gender":model.gender,@"identificationcard":model.idCardNo};
+    //将字符串转换成NSURL对象
+    NSURL *weatherURL = [NSURL URLWithString:@"http://club.fisheep.com.cn/mySelfController/updateMyselfInfos"];
+    //初始化单例化的NSURLSession对象
+    NSURLSession *session = [NSURLSession sharedSession];
+    //创建一个基于NSURLSession的请求（除了请求任务还有上传和下载任务可以选择）任务并处理完成后的回调
+    NSURLSessionDataTask *jsonDataTask = [session dataTaskWithURL:weatherURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSLog(@"请求完成，开始做事");
+        if (!error) {
+            NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
+            if (httpRes.statusCode == 200) {
+                NSLog(@"网络请求成功，真的开始做事");
+                //将JSON格式的数据流data用JSONS工具包里的NSData下的Category中的JSONCol方法转化为OC对象（Array或Dictionary）
+                id jsonObject = [data JSONCol];
+                NSLog(@"%@", jsonObject);
+            } else {
+                NSLog(@"%ld", (long)httpRes.statusCode);
+            }
+        } else {
+            NSLog(@"%@", error.description);
+        }
+    }];
+    //让任务开始执行
+    [jsonDataTask resume];
+}
+//    [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+//        NSLog(@"dddd %@",responseObject);
+//        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+//            
+//            
+//        }else{
+//            
+//        }
+//
+//    } failure:^(NSInteger statusCode, NSError *error) {
+//        NSLog(@"%@,%ld",error,(long)statusCode);
+//    }];
 
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _arr.count;
+    return 1;
 }
 
 //每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return _arr.count;
     
 }
 //细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    StetingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
     //去掉底部多余下划线
     self.settingTableView.tableFooterView = [UIView new];
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     //根据行号拿到数组中对应的数据
-    NSDictionary *dict = _arr[indexPath.row];
-    cell.nickLabel.text = dict[@"nickLabel"];
-    cell.userNameLabel.text = dict[@"userNameLabel"];
+   // NSDictionary *dict = _arr[indexPath.row];
+//    cell.nickLabel.text = dict[@"nickLabel"];
+//    cell.userNameLabel.text = dict[@"userNameLabel"];
+    cell.textLabel.text = _arr[indexPath.row];
+    cell.detailTextLabel.text =model.nickname;
     return cell;
 }
 
