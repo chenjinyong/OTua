@@ -37,6 +37,7 @@
     self.tabBarController.tabBar.hidden = NO;
 }
 
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     // 1.实例化二维码滤镜
@@ -46,7 +47,7 @@
     [filter setDefaults];
     
     // 3.二维码信息
-    NSString *str = @"会聚  一个集万千健身会所的App"; // 展示一串文字
+    NSString *str = @"http://dwz.cn/%@"; // 展示一串文字
     //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
     
     // 4.将字符串转成二进制数据
@@ -97,7 +98,10 @@
         NSLog(@"二维码：%@",responseObject);
         [_aiv stopAnimating];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            NSDictionary *result= responseObject[@"result"];
+            NSLog(@"result =%@",result);
             
+        }else{
             
         }
         

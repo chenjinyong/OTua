@@ -18,8 +18,8 @@
 - (IBAction)LoginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *MyInfoTableView;
 - (IBAction)setUpAction:(UIBarButtonItem *)sender;
-
-
+@property (strong,nonatomic)id result;
+@property (strong,nonatomic)NSString *str;
 //定义一个存放数据的数组
 @property (strong,nonatomic) NSArray * myInfoArr;
 
@@ -83,7 +83,22 @@
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
-
+-(void)request{
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    [RequestAPI requestURL:@"/score/memberScore" withParameters:@{@"memberId":model.memberId} andHeader:nil byMethod:kGet andSerializer:kForm
+        success:^(id responseObject){
+        NSLog(@"dhhhd %@",responseObject);
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            _result = responseObject[@"result"];
+            
+        }else{
+            
+        }
+   
+    } failure:^(NSInteger statusCode, NSError *error) {
+        
+    }];
+}
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _myInfoArr.count;
@@ -128,7 +143,13 @@
                         [self performSegueWithIdentifier:@"proToPromote" sender:self];
                         break;
                     case 2:
-                        [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:@"当前积分:34567" onView:self];
+                        [self request];
+                        if (_result != nil) {
+                            _str = [NSString stringWithFormat:@"当前积分:%@",_result ];
+                            [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:_str onView:self];
+                        }
+                        
+                        
                         //[self performSegueWithIdentifier:@"123123" sender:self];
                         break;
                     case 3:

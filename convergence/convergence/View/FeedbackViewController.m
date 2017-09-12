@@ -7,8 +7,11 @@
 //
 
 #import "FeedbackViewController.h"
+#import "UserModel.h"
 
-@interface FeedbackViewController ()
+@interface FeedbackViewController () <UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *FeedBackTextView;
+- (IBAction)SubmitAction:(UIBarButtonItem *)sender;
 
 @end
 
@@ -17,11 +20,69 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self naviConfig];
+    //[self Request];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)naviConfig{
+    //设置导航条的颜色(风格颜色)
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+    
+   
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];                // 1
+    [self.FeedBackTextView becomeFirstResponder];   // 2
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
+}
+
+//键盘收回
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
+}
+
+-(void)Request{
+    
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"message":_FeedBackTextView.text};
+
+    [RequestAPI requestURL:@"/clubFeedback" withParameters:para andHeader:nil byMethod:kPost andSerializer:kRes success:^(id responseObject) {
+        NSLog(@"反馈：%@",responseObject);
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            
+            
+        }else{
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        NSLog(@"statusCode%ld",(long)statusCode);
+    }];
 }
 
 /*
@@ -34,4 +95,7 @@
 }
 */
 
+- (IBAction)SubmitAction:(UIBarButtonItem *)sender {
+    [self Request];
+}
 @end
