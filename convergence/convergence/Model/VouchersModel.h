@@ -21,6 +21,14 @@
 @property (strong,nonatomic)NSString *saleCount;//已售
 @property (strong,nonatomic)NSString *status;//温馨提示
 @property (strong,nonatomic)NSString *useDate;//使用时间
+@property (strong,nonatomic)NSString * rules;//使用规则
+@property (strong,nonatomic)NSString * ePromot;//温馨提示
+@property (strong,nonatomic)NSString *eFeature;//特色
+@property (strong,nonatomic)NSString *experienceQuantity;//分店体验卷数量
+@property (strong,nonatomic)NSString *longitude;//经度
+@property (strong,nonatomic)NSString *latitude;//纬度
+
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 

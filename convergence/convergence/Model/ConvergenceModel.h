@@ -15,6 +15,7 @@
 @property (strong,nonatomic)NSString *categoryName;//类别名称
 @property (strong,nonatomic)NSString *id;
 @property (strong,nonatomic)NSString *Image;
+@property (strong,nonatomic)NSString *image;
 @property (strong,nonatomic)NSString *logo;
 @property (strong,nonatomic)NSString *imgurl;
 @property (strong,nonatomic)NSString *name;

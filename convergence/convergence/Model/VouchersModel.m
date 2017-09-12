@@ -24,6 +24,15 @@
         _saleCount = [Utilities nullAndNilCheck:dict[@"saleCount"] replaceBy:@""];
         _status = [Utilities nullAndNilCheck:dict[@"status"] replaceBy:@""];
         _useDate = [Utilities nullAndNilCheck:dict[@"useDate"] replaceBy:@""];
+        _rules = [Utilities nullAndNilCheck:dict[@"rules"] replaceBy:@""];
+        _ePromot = [Utilities nullAndNilCheck:dict[@"ePromot"] replaceBy:@""];
+        _eFeature = [Utilities nullAndNilCheck:dict[@"eFeature"] replaceBy:@""];
+        _experienceQuantity = [Utilities nullAndNilCheck:dict[@"experienceQuantity"] replaceBy:@""];
+        _longitude = [Utilities nullAndNilCheck:dict[@"longitude"] replaceBy:@""];
+        _latitude = [Utilities nullAndNilCheck:dict[@"latitude"] replaceBy:@""];
+        
+        
+        
     }
     return self;
 }
