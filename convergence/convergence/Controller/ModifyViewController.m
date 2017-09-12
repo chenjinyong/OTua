@@ -9,6 +9,8 @@
 #import "ModifyViewController.h"
 
 @interface ModifyViewController ()
+- (IBAction)confirmAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end
 
@@ -29,9 +31,26 @@
     //设置导航条的文字
     self.navigationItem.title = @"修改昵称";
     //为导航条右上角创建一个按钮
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"Sava" style:UIBarButtonItemStylePlain target:self action:nil];
-    self.navigationItem.rightBarButtonItem = right;
+//    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"Sava" style:UIBarButtonItemStylePlain target:self action:nil];
+//    self.navigationItem.rightBarButtonItem = right;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];                // 1
+    [self.textField becomeFirstResponder];   // 2
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+//键盘收回
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
 }
 
 /*
@@ -44,4 +63,7 @@
 }
 */
 
+- (IBAction)confirmAction:(UIBarButtonItem *)sender {
+    
+}
 @end

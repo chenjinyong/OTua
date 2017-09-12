@@ -51,13 +51,10 @@
     [super viewWillAppear:animated];                // 1
     [self.FeedBackTextView becomeFirstResponder];   // 2
     self.tabBarController.tabBar.hidden = YES;
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    
     self.tabBarController.tabBar.hidden = NO;
-    
 }
 
 //键盘收回

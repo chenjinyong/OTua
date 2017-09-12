@@ -14,7 +14,7 @@
     NSInteger allorderPagNum;//判断是否是第一页
     NSInteger page;
     NSInteger perPage;
-    NSInteger totalPage;
+    BOOL totalPage;
 }
 
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -79,7 +79,7 @@
 //以获取列表的刷新
 - (void)allorderRef{
     allorderPagNum = 1;
-//    [self allorderRequest];
+    [self allorderRequest];
     NSLog(@"刷新了一下");
 }
 
@@ -98,17 +98,18 @@
 //}
 
 //设置当一个细胞将要出现的时候要做的事情
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    //判断是不是最后一行细胞即将出现
-    if (indexPath.row == _arr.count - 1) {
-        //判断还有没有下一页存在
-        if (page<totalPage) {
-            //在这里执行上拉翻页的数据操作
-            page ++;
-            [self allorderRequest];
-        }
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    //判断是不是最后一行细胞即将出现
+//    if (indexPath.section== _arr.count - 1) {
+//        NSLog(@"jjjj%ld",(long)totalPage);
+//        //判断还有没有下一页存在
+//        if (totalPage) {
+//            //在这里执行上拉翻页的数据操作
+//            allorderPagNum ++;
+//            [self allorderRequest];
+//        }
+//    }
+//}
 //设置每一组中每一行的细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyOrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CardVoucherCell" forIndexPath:indexPath];
@@ -154,9 +155,13 @@
         [refresh endRefreshing];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary *result= responseObject[@"result"];
+            totalPage = [result[@"totalPage"] boolValue];
             NSLog(@"result =%@",result);
             NSArray * List = result[@"orderList"];
             NSLog(@"List = %@",List);
+//            if (allorderPagNum == 1) {
+//                [_arr removeAllObjects];
+//            }
             for (NSDictionary *dict in List) {
                 orderModel *ConModel = [[orderModel alloc]initWithDictionary:dict];
                 //将上述实例化好的ConvergenceModel对象插入_arr数组
@@ -168,6 +173,8 @@
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请求发生了错误," andTitle:@"提示" onView:self];
         
     }];
 }

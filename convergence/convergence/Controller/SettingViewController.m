@@ -122,12 +122,12 @@
 
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return _arr.count;
 }
 
 //每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arr.count;
+    return 1;
     
 }
 //细胞长什么样
@@ -140,8 +140,24 @@
    // NSDictionary *dict = _arr[indexPath.row];
 //    cell.nickLabel.text = dict[@"nickLabel"];
 //    cell.userNameLabel.text = dict[@"userNameLabel"];
-    cell.textLabel.text = _arr[indexPath.row];
-    cell.detailTextLabel.text =model.nickname;
+    cell.textLabel.text = _arr[indexPath.section];
+    if (indexPath.section == 0) {
+        cell.detailTextLabel.text =model.nickname;
+    }
+    if (indexPath.section == 1) {
+        cell.detailTextLabel.text = model.gender;
+        
+    }
+    if (indexPath.section == 2 ){
+        cell.detailTextLabel.text = model.dob;
+        
+    }
+    if (indexPath.section == 3) {
+        cell.detailTextLabel.text = model.idCardNo;
+        
+    }
+    NSURL *url = [NSURL URLWithString:model.avatarUrl];
+    [_UserImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
     return cell;
 }
 
@@ -159,15 +175,15 @@
                     case 0:
                        [self performSegueWithIdentifier:@"nickName" sender:self];
                         break;
-                    case 1:
-                        [self performSegueWithIdentifier:@"" sender:self];
-                        break;
-                    case 2:
-                        [self performSegueWithIdentifier:@"" sender:self];
-                        break;
-                    case 3:
-                        [self performSegueWithIdentifier:@"" sender:self];
-                        break;
+//                    case 1:
+//                        [self performSegueWithIdentifier:@"" sender:self];
+//                        break;
+//                    case 2:
+//                        [self performSegueWithIdentifier:@"" sender:self];
+//                        break;
+//                    case 3:
+//                        [self performSegueWithIdentifier:@"" sender:self];
+//                        break;
     
     
                     default:
@@ -214,8 +230,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 /*
 #pragma mark - Navigation
 
@@ -225,6 +239,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 //修改头像
 - (IBAction)ModifyPicture:(UIButton *)sender forEvent:(UIEvent *)event {
     
