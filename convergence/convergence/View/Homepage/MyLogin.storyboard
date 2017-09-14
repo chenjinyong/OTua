@@ -131,7 +131,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIT-Wb-1cu">
                                 <rect key="frame" x="15" y="264" width="345" height="40"/>
@@ -140,7 +140,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="816-Sl-ryh">
                                 <rect key="frame" x="15" y="324" width="215" height="40"/>
@@ -411,7 +411,7 @@
                         <outlet property="avatarImageView" destination="VQO-Ea-Jhj" id="w1M-ai-65a"/>
                         <outlet property="tableView" destination="vG7-nw-Vw3" id="seH-nM-wUy"/>
                         <outlet property="usernameLbl" destination="Cz1-6N-yBf" id="dLl-yN-iTb"/>
-                        <segue destination="Nie-Ni-BbH" kind="presentation" id="5Ak-dI-y90"/>
+                        <segue destination="Nie-Ni-BbH" kind="presentation" identifier="Let2MyAct" id="5Ak-dI-y90"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBq-Z4-iVe" userLabel="First Responder" sceneMemberID="firstResponder"/>

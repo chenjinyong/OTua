@@ -12,7 +12,7 @@
         <!--我的推广-->
         <scene sceneID="Mvi-j3-76e">
             <objects>
-                <viewController id="vCd-pf-AMw" customClass="PromoteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="promote" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vCd-pf-AMw" customClass="PromoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E9s-wk-M1M"/>
                         <viewControllerLayoutGuide type="bottom" id="yNj-Wt-ZRA"/>
@@ -23,6 +23,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45G-Xk-oYn">
                                 <rect key="frame" x="93" y="250" width="189" height="166"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>

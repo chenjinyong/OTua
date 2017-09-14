@@ -121,7 +121,7 @@
         <!--我的订单-->
         <scene sceneID="Dee-0q-QSP">
             <objects>
-                <viewController id="Dgr-8C-ojc" customClass="MyOrderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="order" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dgr-8C-ojc" customClass="MyOrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQq-uU-FrI"/>
                         <viewControllerLayoutGuide type="bottom" id="kxM-nd-BqI"/>

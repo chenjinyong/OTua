@@ -108,10 +108,13 @@
         if ([Utilities loginCheck]) {
             switch (indexPath.row) {
                 case 0:{
-                    [self performSegueWithIdentifier:@"Let2MyAct" sender:self];
+                    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyOrder" byIdentity:@"order"];
+                    [self presentViewController:signNavi animated:YES completion:nil];
                 }
                     break;
                 case 1:{
+                    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Promote" byIdentity:@"promote"];
+                    [self presentViewController:signNavi animated:YES completion:nil];
                     
                 }
                     break;
