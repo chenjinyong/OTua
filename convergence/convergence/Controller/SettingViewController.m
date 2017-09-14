@@ -171,7 +171,7 @@
     //点击某行细胞变色
     //NSLog(@"%ld<<",(long)indexPath.section);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                switch (indexPath.row) {
+                switch (indexPath.section) {
                     case 0:
                        [self performSegueWithIdentifier:@"nickName" sender:self];
                         break;
@@ -197,7 +197,7 @@
     
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置按钮位置大小
-    exitBtn.frame = CGRectMake(0, UI_SCREEN_H/ 3 * 2, UI_SCREEN_W, 40);
+    exitBtn.frame = CGRectMake(0, UI_SCREEN_H/ 5 * 3, UI_SCREEN_W, 40);
     [exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     //设置按钮标题的字体大小
     exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];

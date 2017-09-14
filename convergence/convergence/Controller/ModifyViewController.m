@@ -7,6 +7,7 @@
 //
 
 #import "ModifyViewController.h"
+#import "UserModel.h"
 
 @interface ModifyViewController ()
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
@@ -53,6 +54,24 @@
     [self.view endEditing:YES];
 }
 
+-(void)ModifyRequest{
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    //[parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]];
+    NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"name":_textField.text};
+    [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        NSLog(@"昵称：%@",responseObject);
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            
+            
+        }else{
+            
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
+    }];
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -64,6 +83,7 @@
 */
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
-    
+    [self ModifyRequest];
+    [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
 }
 @end
