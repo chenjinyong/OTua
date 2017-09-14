@@ -564,6 +564,8 @@
 				84A77A2F1F600747007067AC /* DetailViewController.m */,
 				84A77A311F600B20007067AC /* VouchersViewController.h */,
 				84A77A321F600B20007067AC /* VouchersViewController.m */,
+				84F12FF61F67C43500FB89CD /* payTableViewController.h */,
+				84F12FF71F67C43500FB89CD /* payTableViewController.m */,
 			);
 			name = "convergenceViewController 首页";
 			sourceTree = "<group>";
@@ -616,8 +618,6 @@
 				84B2155A1F615410001A79AB /* FeedbackViewController.m */,
 				84B2155C1F615427001A79AB /* AboutViewController.h */,
 				84B2155D1F615427001A79AB /* AboutViewController.m */,
-				84F12FF61F67C43500FB89CD /* payTableViewController.h */,
-				84F12FF71F67C43500FB89CD /* payTableViewController.m */,
 			);
 			name = "MyInfoViewControll   我的";
 			path = My;

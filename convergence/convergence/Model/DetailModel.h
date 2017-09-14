@@ -26,12 +26,13 @@
 @property (strong,nonatomic) NSString *openTime;//经度
 @property (strong,nonatomic) NSString *clubSite;//面积
 
+@property (strong,nonatomic) NSString *address;//地址
 @property (strong,nonatomic) NSString *storeNums;//拥有分店数量
 @property (strong,nonatomic) NSString *name;//经度
-//@property (strong,nonatomic) NSString *clubSite;//经度
-//@property (strong,nonatomic) NSString *clubSite;//经度
-//@property (strong,nonatomic) NSString *clubSite;//经度
-//@property (strong,nonatomic) NSString *clubSite;//经度
+@property (strong,nonatomic) NSString *eLogo;//体验卡图片
+@property (strong,nonatomic) NSString *eName;//体验卡名称
+@property (nonatomic) NSInteger price;//体验卡价格
+@property (nonatomic) NSInteger number;//已售
 
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 

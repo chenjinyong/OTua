@@ -8,13 +8,13 @@
 
 #import "DetailViewController.h"
 #import "DetailModel.h"
-#import "ConvergenceModel.h"
+
 
 @interface DetailViewController (){
     NSInteger page;
     NSInteger perpage;
 }
-@property (weak, nonatomic) IBOutlet UIImageView *logoImg;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollImg;
 @property (weak, nonatomic) IBOutlet UILabel *namelabel;
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -36,7 +36,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self netRequest];
-    [self uiLyout];
     
     page = 1;
     perpage = 10;
@@ -65,30 +64,38 @@
 -(void)netRequest{
     NSDictionary * para = @{@"clubKeyId":_fitness.id};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-      //  NSLog(@"会所详情 = %@",responseObject);
+        NSLog(@"会所详情 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
-            NSLog(@"rrr = %@",result);
+           // NSLog(@"rrr = %@",result);
             NSArray *clubPic = result[@"clubPic"];
             NSLog(@"mmm = %@",clubPic);
             
             DetailModel *model = [[DetailModel alloc]initWithDictionary:result];
-//            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.clubLogo] placeholderImage:[UIImage imageNamed:@"clubLogo"]];
-//            _ipLabel.text = model.clubAddressB;
-//            _namelabel.text = model.clubName;
+            _ipLabel.text = model.address;
+
+            _namelabel.text = model.clubName;
             _detailLabel.text =model.clubIntroduce;
             _timeLabel.text = model.openTime;
             _vipLabel.text = model.clubMember;
             _teacherLabel.text = model.clubPerson;
             _siteLabel.text = model.storeNums;
+            [_cardImg sd_setImageWithURL:[NSURL URLWithString:model.clubLogo ]];
             
-            
+           // _cardStyleLabel.text = model.eName;
+            NSArray *exper = result[@"experienceInfos"];
+            for (NSDictionary *dict in exper) {
+                DetailModel *mod = [[DetailModel alloc]initWithDictionary:dict];
+ //               [_cardImg sd_setImageWithURL:[NSURL URLWithString:mod.eLogo]];
+                NSURL * url = [NSURL URLWithString:mod.eLogo];
+                [_cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+                _cardStyleLabel.text = mod.eName;
+                _cardLabel.text = @"综合卷";
+                _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)mod.price];
+                _numLabel.text = [NSString stringWithFormat:@"已售%ld",(long)mod.number];
+            }
 
-            
-//            ConvergenceModel *cmodel = [[ConvergenceModel alloc]initWithDict:model];
-//            [[StorageMgr singletonStorageMgr]addKey:@"logo" andValue:_cardImg.image];
-//            
-//            _ipLabel.text = cmodel.address;
+
             
         }else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
@@ -108,25 +115,6 @@
     
 }
 
--(void)uiLyout{
-    
-    [_logoImg sd_setImageWithURL:[NSURL URLWithString:_fitness.Image] placeholderImage:[UIImage imageNamed:@"Image"]];
-    _ipLabel.text = _fitness.address;
-    _namelabel.text = _fitness.name;
-    
-    NSURL * url = [NSURL URLWithString:_fitness.logo];
-    [_cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-    
-//    [_cardImg sd_setImageWithURL:[NSURL URLWithString:_fitness.logo] placeholderImage:[UIImage imageNamed:@"logo"]];
-    _cardStyleLabel.text = _fitness.name;
-    _cardLabel.text = @"综合卷";
-    
-    _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_fitness.orginPrice];
-    _numLabel.text = [NSString stringWithFormat:@"已售%ld",(long)_fitness.sellNumber];
-    
-//    _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_fitness[@"orginPrice"]];
-//    _numLabel.text = [NSString stringWithFormat:@"已售：%@",dict[@"sellNumber"]];
-}
 
 
 /*

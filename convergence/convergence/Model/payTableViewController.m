@@ -121,8 +121,11 @@
 
 -(void)uiLayout{
 //    _HotelnameLbl.text = _Hotel.hotel_name;
-//    
-//    _priceLbl.text = [NSString stringWithFormat:@"¥%ld元",(long)_Hotel.Price];
+
+    _cardNameLabel.text = _Vouche.name;
+    _nameLabel.text = _Vouche.name;
+//    _unitpriceLabel.text = _Vouch.currentPrice;
+    _unitpriceLabel.text = [NSString stringWithFormat:@"¥%ld元",(long)_Vouche.orginPrice];
 //    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"];
 //    _tomlabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"tomorrow"];
     //去掉多余下划线

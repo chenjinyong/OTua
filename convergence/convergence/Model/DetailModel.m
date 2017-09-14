@@ -31,6 +31,11 @@
         _storeNums = [Utilities nullAndNilCheck:dict[@"storeNums"] replaceBy:@""];
         _name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
  
+        _eLogo = [Utilities nullAndNilCheck:dict[@"eLogo"] replaceBy:@""];
+        _address = [Utilities nullAndNilCheck:@"address" replaceBy:@""];
+        _eName = [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@""];
+        _price = [[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""]integerValue];
+        _number = [[Utilities nullAndNilCheck:dict[@"number"] replaceBy:@""]integerValue];
         
     }
     return self;

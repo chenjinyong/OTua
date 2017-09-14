@@ -11,17 +11,21 @@
 #import "DetailViewController.h"
 #import "VouchersViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIImageView+WebCache.h"
 
 #import <CoreLocation/CoreLocation.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+
 @interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
     NSInteger page;
     NSInteger perPage;
     NSInteger i;
     BOOL      firstVisit;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *backImg;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImg;
+@property (weak, nonatomic) IBOutlet UITableView *logoImg;
+
+
 
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
@@ -117,7 +121,7 @@
 
 
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"无锡",@"jing":@120,@"wei":@31,@"page":@(page),@"perPage":@(perPage)};
+    NSDictionary *para = @{@"city":@"无锡",@"jing":@120.333,@"wei":@31.57,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"首页%@",responseObject);
         [_aiv stopAnimating];
@@ -128,14 +132,22 @@
             //NSArray *advertisement =responseObject[@"advertisement"];
             NSDictionary *result =responseObject[@"result"];
             NSArray * models =result[@"models"];
-         
+            NSArray *adver = responseObject[@"advertisement"];
+            for(NSDictionary *Dict in adver){
+                ConvergenceModel * Model = [[ConvergenceModel alloc]initWithDict:Dict];
+                NSURL * url = [NSURL URLWithString:Model.imgurl];
+                [_backImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+            }
+            
+            
             for(NSDictionary * dict in models){
             ConvergenceModel * ConModel = [[ConvergenceModel alloc]initWithDict:dict];
                 
                 [_arr addObject:ConModel];
                 
            }
-                        
+            //NSArray *adver =responseObject[@"advertisement"];
+            
             
             [_tableView reloadData];
     
@@ -290,7 +302,7 @@
 
         
         NSURL * url = [NSURL URLWithString:conver.Image];
-        [cell.backgroundImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+        [cell.logoImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
         
         cell.ipLabel.text = conver.address;
         cell.nameLabel.text = conver.name;
@@ -313,11 +325,10 @@
         [cell.cardImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         
         cell.cardNameLabel.text = dict[@"name"];
+       
         cell.volumeLabel.text = @"综合卷";
         cell.pricelabel.text = [NSString stringWithFormat:@"%@元",dict[@"orginPrice"]];
-        [[StorageMgr singletonStorageMgr]addKey:@"orgin" andValue:self];
         cell.numLabel.text = [NSString stringWithFormat:@"已售：%@",dict[@"sellNumber"]];
-        [[StorageMgr singletonStorageMgr]addKey:@"sellNumber" andValue:self];
 
         return cell;
     }
