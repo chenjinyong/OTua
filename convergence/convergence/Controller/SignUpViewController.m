@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdText;
 @property (weak, nonatomic) IBOutlet UITextField *conPwdText;
 @property (weak, nonatomic) IBOutlet UITextField *VerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *varBtn;
 - (IBAction)VerAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)singUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *singUpBtn;
@@ -47,6 +48,9 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
     //为导航条左上角创建一个按钮
+    _varBtn.layer.borderWidth = 1;
+    _varBtn.layer.cornerRadius = 5;
+    _varBtn.layer.borderColor = UIColorFromRGB(0, 115, 250).CGColor;
 
 }
 

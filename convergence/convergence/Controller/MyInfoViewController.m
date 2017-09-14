@@ -148,8 +148,6 @@
                             _str = [NSString stringWithFormat:@"当前积分:%@",_result ];
                             [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:_str onView:self];
                         }
-                        
-                        
                         //[self performSegueWithIdentifier:@"123123" sender:self];
                         break;
                     case 3:
@@ -195,7 +193,7 @@
 - (IBAction)setUpAction:(UIBarButtonItem *)sender {
     if ([Utilities loginCheck]) {
         UINavigationController *setting = [Utilities getStoryboardInstance:@"setUp" byIdentity:@"Setting"];
-    [self presentViewController:setting animated:YES completion:nil];
+        [self presentViewController:setting animated:YES completion:nil];
         }else{
             UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
             [self presentViewController:signNavi animated:YES completion:nil];

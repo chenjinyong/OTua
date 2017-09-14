@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8B-BA-evC">
                                 <rect key="frame" x="0.0" y="99" width="375" height="80"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="frq-1g-XG6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="frq-1g-XG6">
                                         <rect key="frame" x="15" y="15" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="frq-1g-XG6" secondAttribute="height" multiplier="1:1" id="4lU-AT-p0w"/>
@@ -144,7 +144,16 @@
                             <constraint firstItem="wwo-aK-k9N" firstAttribute="leading" secondItem="Hb5-rW-lzv" secondAttribute="leading" id="R6U-Ag-QtU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="修改昵称" id="bx9-4Z-27P"/>
+                    <navigationItem key="navigationItem" title="修改昵称" id="bx9-4Z-27P">
+                        <barButtonItem key="rightBarButtonItem" title="Sava" id="RoF-Pg-Fka">
+                            <connections>
+                                <action selector="confirmAction:" destination="7Fh-ml-Gmh" id="Ha9-DQ-5KV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="wwo-aK-k9N" id="mjH-Na-fiW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhV-J9-fW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

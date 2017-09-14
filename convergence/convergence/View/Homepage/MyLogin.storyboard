@@ -24,29 +24,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibA-k4-WPu">
-                                <rect key="frame" x="15" y="84" width="345" height="30"/>
+                                <rect key="frame" x="15" y="94" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wkQ-iJ-NZs"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x6b-Rv-NY0">
-                                <rect key="frame" x="15" y="134" width="345" height="30"/>
+                                <rect key="frame" x="15" y="154" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tCk-FY-NIc"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdn-J5-yvA">
-                                <rect key="frame" x="15" y="204" width="345" height="30"/>
+                                <rect key="frame" x="15" y="234" width="345" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yWX-Ll-k0a"/>
+                                </constraints>
                                 <state key="normal" title="登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInAction:forEvent:" destination="kGK-VU-oVL" eventType="touchUpInside" id="fxJ-nK-U1h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aun-LC-zch">
-                                <rect key="frame" x="15" y="244" width="345" height="26"/>
+                                <rect key="frame" x="15" y="284" width="345" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="还没有账号？点击加入我们吧！"/>
                                 <connections>
@@ -61,7 +75,7 @@
                             <constraint firstItem="x6b-Rv-NY0" firstAttribute="leading" secondItem="Dvg-fC-YkU" secondAttribute="leading" constant="15" id="6eq-MS-h5H"/>
                             <constraint firstItem="Vdn-J5-yvA" firstAttribute="leading" secondItem="Dvg-fC-YkU" secondAttribute="leading" constant="15" id="Dj0-N8-bk5"/>
                             <constraint firstItem="x6b-Rv-NY0" firstAttribute="top" secondItem="ibA-k4-WPu" secondAttribute="bottom" constant="20" id="Fvc-hy-OTo"/>
-                            <constraint firstItem="ibA-k4-WPu" firstAttribute="top" secondItem="d0s-vz-eTC" secondAttribute="bottom" constant="20" id="NYi-cX-VUz"/>
+                            <constraint firstItem="ibA-k4-WPu" firstAttribute="top" secondItem="d0s-vz-eTC" secondAttribute="bottom" constant="30" id="NYi-cX-VUz"/>
                             <constraint firstItem="ibA-k4-WPu" firstAttribute="leading" secondItem="Dvg-fC-YkU" secondAttribute="leading" constant="15" id="Rr1-xH-8cX"/>
                             <constraint firstAttribute="trailing" secondItem="ibA-k4-WPu" secondAttribute="trailing" constant="15" id="UbR-8e-6W7"/>
                             <constraint firstAttribute="trailing" secondItem="x6b-Rv-NY0" secondAttribute="trailing" constant="15" id="fzJ-4n-k0H"/>
@@ -93,39 +107,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名（手机号）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="daB-s7-p1a">
-                                <rect key="frame" x="15" y="84" width="345" height="30"/>
+                                <rect key="frame" x="15" y="84" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oGF-GQ-bbD"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aqc-Lf-LAA">
-                                <rect key="frame" x="15" y="134" width="345" height="30"/>
+                                <rect key="frame" x="15" y="144" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xB0-N3-sw6"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEM-So-dvm">
-                                <rect key="frame" x="15" y="184" width="345" height="30"/>
+                                <rect key="frame" x="15" y="204" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="woX-Dn-O8A"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIT-Wb-1cu">
-                                <rect key="frame" x="15" y="234" width="345" height="30"/>
+                                <rect key="frame" x="15" y="264" width="345" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="m6C-De-VlD"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="816-Sl-ryh">
-                                <rect key="frame" x="15" y="284" width="215" height="30"/>
+                                <rect key="frame" x="15" y="324" width="215" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4iK-Gm-2Jr"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5z-UB-4Lb">
-                                <rect key="frame" x="260" y="284" width="100" height="25"/>
+                                <rect key="frame" x="260" y="324" width="100" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="70C-6Z-0x4"/>
+                                    <constraint firstAttribute="height" constant="35" id="70C-6Z-0x4"/>
                                     <constraint firstAttribute="width" constant="100" id="W5w-Eo-4jr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -135,11 +164,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slc-1f-Nuw">
-                                <rect key="frame" x="15" y="344" width="345" height="30"/>
+                                <rect key="frame" x="15" y="394" width="345" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e6z-r0-XBE"/>
+                                </constraints>
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="singUpAction:forEvent:" destination="BBy-RP-dDG" eventType="touchUpInside" id="9qs-sk-sgE"/>
                                 </connections>
@@ -177,6 +214,7 @@
                         <outlet property="pwdText" destination="vEM-So-dvm" id="Oou-8O-hhw"/>
                         <outlet property="singUpBtn" destination="Slc-1f-Nuw" id="ZQ0-Wl-9e1"/>
                         <outlet property="userNameText" destination="daB-s7-p1a" id="02M-Oc-Iat"/>
+                        <outlet property="varBtn" destination="b5z-UB-4Lb" id="kaj-Kb-F3S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eB-Rs-jve" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -74,8 +74,18 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="CardImage" destination="hZH-0O-RtQ" id="G5q-Ff-IK1"/>
+                                                    <outlet property="couponLabel" destination="S4l-cH-dlO" id="pme-0Z-ORJ"/>
+                                                    <outlet property="priceLabel" destination="ox3-nA-0KF" id="PrH-Px-uee"/>
+                                                    <outlet property="shopNameLabel" destination="2Pi-QM-w3A" id="bxW-2b-Ihs"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="SHL-ug-lzV" id="HHc-Pe-w9d"/>
+                                            <outlet property="delegate" destination="SHL-ug-lzV" id="5lD-Yy-L7v"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -99,6 +109,10 @@
                     <navigationItem key="navigationItem" title="我的订单" id="ueH-5v-Nk8"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="WCr-Jj-8z7" id="RNx-ga-y99"/>
+                        <outlet property="tableView" destination="Dyo-Kq-0c1" id="Cmx-56-4qb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xO1-fP-MFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,10 +179,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CardImage" destination="t8R-LO-Qst" id="Hyh-hN-8pE"/>
-                                            <outlet property="couponLabel" destination="dxA-TK-7Xw" id="N47-7M-Na7"/>
-                                            <outlet property="priceLabel" destination="kTK-vK-2uH" id="R8Y-GU-0LE"/>
-                                            <outlet property="shopNameLabel" destination="chm-DE-eKk" id="EOl-Dp-q8x"/>
+                                            <outlet property="CardImage" destination="t8R-LO-Qst" id="rod-qq-I4t"/>
+                                            <outlet property="couponLabel" destination="dxA-TK-7Xw" id="lht-wk-UOd"/>
+                                            <outlet property="priceLabel" destination="kTK-vK-2uH" id="fSI-VG-MR4"/>
+                                            <outlet property="shopNameLabel" destination="chm-DE-eKk" id="7bZ-dy-lK1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -189,7 +203,7 @@
                     <navigationItem key="navigationItem" title="我的订单" id="n72-Oh-EJ0"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="tableView" destination="mpk-JV-yCz" id="X60-K3-c5o"/>
+                        <outlet property="tableView" destination="mpk-JV-yCz" id="8bC-ku-aAE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="an4-zD-iqN" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -38,33 +38,35 @@
 }
 
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+   
+//-(void)QrCode {
     
-    // 1.实例化二维码滤镜
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    
-    // 2.恢复滤镜的默认属性
-    [filter setDefaults];
-    
-    // 3.二维码信息
-    NSString *str = @"http://dwz.cn/%@"; // 展示一串文字
-    //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
-    
-    // 4.将字符串转成二进制数据
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // 5.通过KVC设置滤镜inputMessage数据
-    [filter setValue:data forKey:@"inputMessage"];
-    
-    // 6.获取滤镜输出的图像
-    CIImage *outputImage = [filter outputImage];
-    
-    // 7.将CIImage转成UIImage
-    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
-    
-    // 8.展示二维码
-    self.ZH_QRimageView.image = image;
-}
+//    // 1.实例化二维码滤镜
+//    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+//    
+//    // 2.恢复滤镜的默认属性
+//    [filter setDefaults];
+//    
+//    // 3.二维码信息
+//    NSString *str = @"http://dwz.cn/ETumE"; // 展示一串文字
+//    //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
+//    
+//    // 4.将字符串转成二进制数据
+//    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    // 5.通过KVC设置滤镜inputMessage数据
+//    [filter setValue:data forKey:@"inputMessage"];
+//    
+//    // 6.获取滤镜输出的图像
+//    CIImage *outputImage = [filter outputImage];
+//    
+//    // 7.将CIImage转成UIImage
+//    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
+//    
+//    // 8.展示二维码
+//    self.ZH_QRimageView.image = image;
+//}
 
 - (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size
 {
@@ -98,14 +100,40 @@
         NSLog(@"二维码：%@",responseObject);
         [_aiv stopAnimating];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
-            NSDictionary *result= responseObject[@"result"];
+            NSDictionary * result= responseObject[@"result"];
             NSLog(@"result =%@",result);
+            // 1.实例化二维码滤镜
+            CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+            
+            // 2.恢复滤镜的默认属性
+            [filter setDefaults];
+            
+            // 3.二维码信息
+            NSString *str = @"http://dwz.cn/%@"; // 展示一串文字
+            //    NSString *str = @"http://www.baidu.com"; // 直接打开网页
+            
+            // 4.将字符串转成二进制数据
+            NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+            
+            // 5.通过KVC设置滤镜inputMessage数据
+            [filter setValue:data forKey:@"inputMessage"];
+            
+            // 6.获取滤镜输出的图像
+            CIImage *outputImage = [filter outputImage];
+            
+            // 7.将CIImage转成UIImage
+            UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
+            
+            // 8.展示二维码
+            self.ZH_QRimageView.image = image;
             
         }else{
             
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接" andTitle:nil onView:self];
         
     }];
 }
