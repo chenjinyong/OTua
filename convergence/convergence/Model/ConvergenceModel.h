@@ -19,7 +19,7 @@
 @property (strong,nonatomic)NSString *logo;
 @property (strong,nonatomic)NSString *imgurl;
 @property (strong,nonatomic)NSString *name;
-@property (nonatomic) NSInteger  Price;
+@property (nonatomic) NSInteger  Price;  
 @property (nonatomic) NSInteger  orginPrice;
 @property (strong,nonatomic)NSString *sellNumber;
 ///<<<<< HEAD

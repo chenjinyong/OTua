@@ -513,6 +513,42 @@
                                     <outlet property="delegate" destination="o1s-yP-THs" id="4og-3D-w4p"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1YR-7s-oE5">
+                                <rect key="frame" x="0.0" y="124" width="375" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Gx7-wy-DAn"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="payCell" id="dT0-71-Dh4" customClass="sxTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dT0-71-Dh4" id="Be5-oS-PEV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abl-aM-sq3">
+                                                    <rect key="frame" x="15" y="14" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Abl-aM-sq3" firstAttribute="centerY" secondItem="Be5-oS-PEV" secondAttribute="centerY" id="fIm-8i-sUO"/>
+                                                <constraint firstItem="Abl-aM-sq3" firstAttribute="leading" secondItem="Be5-oS-PEV" secondAttribute="leading" constant="15" id="usq-7T-O9q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sxLbl" destination="Abl-aM-sq3" id="CUh-O9-Nr6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="o1s-yP-THs" id="Dyu-td-oEV"/>
+                                    <outlet property="delegate" destination="o1s-yP-THs" id="11K-z7-XAV"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -520,8 +556,11 @@
                             <constraint firstItem="kEo-Xl-NOT" firstAttribute="leading" secondItem="Yrh-R5-bQL" secondAttribute="leading" id="Ccp-2W-Eb0"/>
                             <constraint firstItem="kEo-Xl-NOT" firstAttribute="top" secondItem="aTr-1h-3ou" secondAttribute="bottom" id="KaT-O3-aan"/>
                             <constraint firstItem="aTr-1h-3ou" firstAttribute="leading" secondItem="Yrh-R5-bQL" secondAttribute="leading" id="LRv-T3-6YZ"/>
+                            <constraint firstItem="1YR-7s-oE5" firstAttribute="leading" secondItem="Yrh-R5-bQL" secondAttribute="leading" id="emV-5q-qpb"/>
                             <constraint firstAttribute="trailing" secondItem="kEo-Xl-NOT" secondAttribute="trailing" id="fRD-be-967"/>
                             <constraint firstItem="aTr-1h-3ou" firstAttribute="top" secondItem="7cG-A7-a5k" secondAttribute="bottom" id="jN8-zm-K7w"/>
+                            <constraint firstAttribute="trailing" secondItem="1YR-7s-oE5" secondAttribute="trailing" id="vZj-wk-UiT"/>
+                            <constraint firstItem="1YR-7s-oE5" firstAttribute="top" secondItem="aTr-1h-3ou" secondAttribute="bottom" id="xK1-oa-pQg"/>
                             <constraint firstAttribute="trailing" secondItem="aTr-1h-3ou" secondAttribute="trailing" id="yuF-eq-3hN"/>
                         </constraints>
                     </view>
@@ -531,6 +570,7 @@
                         <outlet property="CollectionView" destination="kEo-Xl-NOT" id="tcN-5j-6M5"/>
                         <outlet property="FullfillBtn" destination="qdx-ay-Nwy" id="Er7-DZ-hXA"/>
                         <outlet property="distanceBtn" destination="tSe-fE-0j1" id="nAj-aZ-mY6"/>
+                        <outlet property="tableView" destination="1YR-7s-oE5" id="6kS-IH-yT9"/>
                         <outlet property="wholecityBtn" destination="p9c-aP-z4d" id="YR5-cr-WiR"/>
                     </connections>
                 </viewController>

@@ -57,9 +57,13 @@
     
 }
 
+//单击手势响应事件
+-(void)tapClick:(UITapGestureRecognizer *)tap{
+}
+
 //网络请求
 -(void)netRequest{
-    NSDictionary * para = @{@"clubKeyId":@54,};
+    NSDictionary * para = @{@"clubKeyId":_fitness.id};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       //  NSLog(@"会所详情 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {

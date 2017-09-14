@@ -10,8 +10,9 @@
 #import "FoundCollectionViewCell.h"
 #import "FoundModel.h"
 #import <UIImageView+WebCache.h>
+#import "sxTableViewCell.h"
 //#import "ConvergenceModel.h"
-@interface FoundViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
+@interface FoundViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource>{
     BOOL flag;
     NSInteger index;
     NSInteger page;
@@ -25,26 +26,39 @@
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;//距离
 - (IBAction)distance:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)FullfillAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
 
 @property (strong,nonatomic)NSMutableArray *arr;
+@property (strong,nonatomic)NSArray *brr;
+@property (strong,nonatomic)NSArray *crr;
+@property (strong,nonatomic)NSArray *drr;
 //定义一个存放数据的数组
 @property (strong,nonatomic) NSArray * foundArr;
+
+@property (strong,nonatomic)NSArray *cellarr;
 @end
 
 @implementation FoundViewController
 
 - (void)viewDidLoad {
+    //_brr = [NSArray new];
+    
     [super viewDidLoad];
     [self naviConfig];
     [self uiLayout];
     [self netRequest];
+    
+    [self dataInitalize];
+    [self payAction];
+    
+
     // Do any additional setup after loading the view.
     
     
     _arr = [NSMutableArray new];
-    
+    //_brr = [NSArray new];
     }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +67,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    _tableView.hidden = YES;
     
 
 }
@@ -77,8 +91,19 @@
     flag = NO;
     index = 0;
     perpage =10;
+    
+    //去掉多余下划线
+    //self.tableView.tableFooterView = [UIView new];
+    //将表格试图设置为“编辑视图中”
+    //self.tableView.editing = YES;
+    
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //用代码来选中表歌视图中的某个细胞
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    
+    _tableView.hidden = YES;
+    
 }
-
 
 
 -(void)refresh{
@@ -180,19 +205,100 @@
 
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - tableViewCell
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _brr.count;
+}
+
+//设置cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40.f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    sxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"payCell" forIndexPath:indexPath];
+    
+    cell.sxLbl.text = _brr[indexPath.row];
+    
+    return cell;
+}
+
+
+-(void)dataInitalize{
+    _brr = @[@"全部分类",@"动感单车",@"力量器械",@"瑜伽/普拉提",@"有氧运动"];
+}
+
+-(void)payAction{
+    switch (self.tableView.indexPathForSelectedRow.row) {
+        case 0:{
+
+        }
+            
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+        case 3:{
+            
+        }
+        case 4:{
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //遍历表格视图中所有选中状态下的细胞
+    for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
+        //当选中的细胞不是当前正在按的这个细胞的情况下
+        if (eachIP != indexPath) {
+            //将细胞从选中状态下改为不选中状态
+            [tableView deselectRowAtIndexPath:eachIP animated:YES];
+            
+        }
+    }
+}
+
+
+
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+//
 
 - (IBAction)wholecityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _tableView.hidden = NO;
+    
+    
+    
 }
 - (IBAction)FullfillAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _tableView.hidden = NO;
+ //   _brr = @[@"0分类",@"动0单车",@"力量0",@"00",@"00"];
+    
 }
 - (IBAction)distance:(UIButton *)sender forEvent:(UIEvent *)event {
 }

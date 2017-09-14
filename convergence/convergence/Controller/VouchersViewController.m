@@ -7,8 +7,9 @@
 //
 
 #import "VouchersViewController.h"
-#import "VouchersModel.h"
-#import "ConvergenceModel.h"
+//#import "VouchersModel.h"
+//#import "ConvergenceModel.h"
+#import "payTableViewController.h"
 
 
 @interface VouchersViewController ()
@@ -116,5 +117,15 @@
 */
 
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if([Utilities loginCheck]){
+        payTableViewController *pay = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"Purchase"];
+        pay.Vouche = _conver;
+        [self.navigationController pushViewController:pay animated:YES];
+        
+    }else{
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
+        [self presentViewController:signNavi animated:YES completion:nil];
+    
+    }
 }
 @end
