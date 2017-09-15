@@ -11,7 +11,7 @@
 @interface DetailModel : NSObject
 @property (strong,nonatomic) NSString *clubAddressB;//地址
 @property (strong,nonatomic) NSString *fId;//
-@property (strong,nonatomic) NSString *fImgUrl;//图片
+@property (strong,nonatomic) NSString *imgUrl;//图片
 @property (strong,nonatomic) NSString *fName;//名字
 @property (strong,nonatomic) NSString *grayImgUrl;//图片
 @property (strong,nonatomic) NSString *greenImgUrl;//图片
@@ -25,15 +25,16 @@
 @property (strong,nonatomic) NSString *clubIntroduce;//介绍
 @property (strong,nonatomic) NSString *openTime;//经度
 @property (strong,nonatomic) NSString *clubSite;//面积
+@property (strong,nonatomic) NSString *eId;//面积
 
 @property (strong,nonatomic) NSString *address;//地址
 @property (strong,nonatomic) NSString *storeNums;//拥有分店数量
 @property (strong,nonatomic) NSString *name;//经度
 @property (strong,nonatomic) NSString *eLogo;//体验卡图片
 @property (strong,nonatomic) NSString *eName;//体验卡名称
-@property (nonatomic) NSInteger price;//体验卡价格
+@property (nonatomic) NSInteger orginPrice;//体验卡价格
 @property (nonatomic) NSInteger number;//已售
-
+@property (strong,nonatomic) NSArray * experienceInfos;//体验卡名称
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 
 

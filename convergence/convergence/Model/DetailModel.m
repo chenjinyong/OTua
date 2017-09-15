@@ -13,7 +13,7 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     if (self ==[super init]) {
         _clubAddressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@""];
-        _fImgUrl = [Utilities nullAndNilCheck:dict[@"fImgUrl"] replaceBy:@""];
+        _imgUrl = [Utilities nullAndNilCheck:dict[@"imgUrl"] replaceBy:@""];
         _fName = [Utilities nullAndNilCheck:dict[@"fName"] replaceBy:@""];
         _fId = [Utilities nullAndNilCheck:dict[@"fId"] replaceBy:@""];
         _fName = [Utilities nullAndNilCheck:dict[@"fName"] replaceBy:@""];
@@ -34,8 +34,10 @@
         _eLogo = [Utilities nullAndNilCheck:dict[@"eLogo"] replaceBy:@""];
         _address = [Utilities nullAndNilCheck:@"address" replaceBy:@""];
         _eName = [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@""];
-        _price = [[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""]integerValue];
+        _orginPrice = [[Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""]integerValue];
         _number = [[Utilities nullAndNilCheck:dict[@"number"] replaceBy:@""]integerValue];
+        _eId = [Utilities nullAndNilCheck:dict[@"eId"] replaceBy:@""];
+        self.experienceInfos = [dict[@"experienceInfos"] isKindOfClass:[NSNull class]]?@[]:dict[@"experienceInfos"];
         
     }
     return self;

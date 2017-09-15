@@ -14,8 +14,8 @@
     if(self = [super init]){
         _eLogo = [Utilities nullAndNilCheck:dict[@"eLogo"] replaceBy:@""];
         _eName =[Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@""];
-        _currentPrice =[Utilities nullAndNilCheck:dict[@"currentPrice"] replaceBy:@""];
-        _orginPrice = [Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""];
+//        _currentPrice =[Utilities nullAndNilCheck:dict[@"currentPrice"] replaceBy:@""];
+        _orginPrice = [[Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""]integerValue];
         _endDate = [Utilities nullAndNilCheck:dict[@"endDate"] replaceBy:@""];
         _beginDate = [Utilities nullAndNilCheck:dict[@"beginDate"] replaceBy:@""];
         _eAddress = [Utilities nullAndNilCheck:dict[@"eAddress"] replaceBy:@""];

@@ -11,8 +11,8 @@
 @interface VouchersModel : NSObject
 @property (strong,nonatomic)NSString *eLogo;//图片
 @property (strong,nonatomic)NSString *eName;//体验卡名字
-@property (strong,nonatomic)NSString *currentPrice;//当前价格
-@property (strong,nonatomic)NSString *orginPrice;//原价
+@property (nonatomic)NSInteger currentPrice;//当前价格
+@property (nonatomic)NSInteger orginPrice;//原价
 @property (strong,nonatomic)NSString *endDate;//结束日期
 @property (strong,nonatomic)NSString *beginDate;//起始日期
 @property (strong,nonatomic)NSString *eAddress;//地址

@@ -189,7 +189,17 @@
 {
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    //体验劵详情页的跳转
+    if (!(indexPath.row == 0)) {
+        ConvergenceModel * home = _arr[indexPath.section];
+        //判断当前tableView是否为_activityTableView（这个条件判断常用在一个页面中有多个taleView的时候）
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSArray *array = home.experience;
+        NSDictionary *dict = array[indexPath.row-1];
+        NSString *eId =  dict[@"id"];
+        NSLog(@"eId的值为：%@",eId);
+        [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:eId];
+    }
    
     
     
@@ -349,28 +359,24 @@
         //3把数据给下一页预备好的接受容器
         detailVC.fitness = activity;
     }
-    else {
+    if ([segue.identifier isEqualToString:@"List2Vouchers"]) {
+        
+        //当从列表也到详情页的这个跳转要发生的时候
+        //1 获取要传递到下一页去的数据
         NSIndexPath *indexpath = [_tableView indexPathForSelectedRow];
         ConvergenceModel * activity = _arr[indexpath.section];
-        VouchersViewController*Vouch = segue.destinationViewController;
-        Vouch.conver = activity;
+        //2获取下一页这个实例
+        VouchersViewController *detailVC = segue.destinationViewController;
+        
+        //3把数据给下一页预备好的接受容器
+        detailVC.conver = activity;
     }
+
 }
-
-
 //这个方法处理网络请求完成后所有不同的动画终止
 -(void)endAnimation{
     [_aiv stopAnimating];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

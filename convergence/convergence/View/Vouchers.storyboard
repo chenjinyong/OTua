@@ -13,7 +13,7 @@
         <!--体验劵信息-->
         <scene sceneID="52S-J8-IkL">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="LNa-pm-jtL" customClass="VouchersViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardDetail" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LNa-pm-jtL" customClass="VouchersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1VT-gh-y1X"/>
                         <viewControllerLayoutGuide type="bottom" id="6So-u2-zKY"/>

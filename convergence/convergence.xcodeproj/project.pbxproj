@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8402716D1F6B6BE900CC99E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8402716C1F6B6BE800CC99E4 /* Foundation.framework */; };
+		8402716F1F6B6BFA00CC99E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8402716E1F6B6BFA00CC99E4 /* CoreGraphics.framework */; };
+		840271721F6B752300CC99E4 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840271711F6B752300CC99E4 /* ZLImageViewDisplayView.m */; };
+		840271751F6BC07B00CC99E4 /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840271741F6BC07B00CC99E4 /* DetailTableViewCell.m */; };
 		840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */; };
 		846241C01F6A5FB400BD7A72 /* sxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846241BF1F6A5FB400BD7A72 /* sxTableViewCell.m */; };
 		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
@@ -116,6 +120,12 @@
 
 /* Begin PBXFileReference section */
 		440BE0004877292B44AB639C /* Pods-convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-convergence/Pods-convergence.debug.xcconfig"; sourceTree = "<group>"; };
+		8402716C1F6B6BE800CC99E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8402716E1F6B6BFA00CC99E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		840271701F6B752300CC99E4 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
+		840271711F6B752300CC99E4 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
+		840271731F6BC07B00CC99E4 /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
+		840271741F6BC07B00CC99E4 /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
 		840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundCollectionViewCell.h; sourceTree = "<group>"; };
 		840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundCollectionViewCell.m; sourceTree = "<group>"; };
 		846241BE1F6A5FB400BD7A72 /* sxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sxTableViewCell.h; sourceTree = "<group>"; };
@@ -280,6 +290,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8402716F1F6B6BFA00CC99E4 /* CoreGraphics.framework in Frameworks */,
+				8402716D1F6B6BE900CC99E4 /* Foundation.framework in Frameworks */,
 				84B2160A1F615A92001A79AB /* CoreMedia.framework in Frameworks */,
 				84B216081F615A83001A79AB /* CoreVideo.framework in Frameworks */,
 				84B216061F615A51001A79AB /* QuartzCore.framework in Frameworks */,
@@ -455,6 +467,8 @@
 				848D3FA31F5526DF0043C9BD /* NSDate+Utility.m */,
 				848D3FA41F5526DF0043C9BD /* NSDateFormatter+Category.h */,
 				848D3FA51F5526DF0043C9BD /* NSDateFormatter+Category.m */,
+				840271701F6B752300CC99E4 /* ZLImageViewDisplayView.h */,
+				840271711F6B752300CC99E4 /* ZLImageViewDisplayView.m */,
 				848D3FA61F5526DF0043C9BD /* NSString+Crypt.h */,
 				848D3FA71F5526DF0043C9BD /* NSString+Crypt.m */,
 				848D3FA81F5526DF0043C9BD /* RequestAPI.h */,
@@ -588,6 +602,8 @@
 				84D044CA1F62812C009428F4 /* MyOrderTableViewCell.m */,
 				846241BE1F6A5FB400BD7A72 /* sxTableViewCell.h */,
 				846241BF1F6A5FB400BD7A72 /* sxTableViewCell.m */,
+				840271731F6BC07B00CC99E4 /* DetailTableViewCell.h */,
+				840271741F6BC07B00CC99E4 /* DetailTableViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -644,6 +660,8 @@
 		D11BCE11CA0144D969236C49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8402716E1F6B6BFA00CC99E4 /* CoreGraphics.framework */,
+				8402716C1F6B6BE800CC99E4 /* Foundation.framework */,
 				84B216091F615A92001A79AB /* CoreMedia.framework */,
 				84B216071F615A83001A79AB /* CoreVideo.framework */,
 				84B216051F615A51001A79AB /* QuartzCore.framework */,
@@ -904,6 +922,7 @@
 				848D3FC01F5526DF0043C9BD /* RequestAPI.m in Sources */,
 				84B2164A1F61706D001A79AB /* qrinput.m in Sources */,
 				848D3FB31F5526DF0043C9BD /* DataVerifier.m in Sources */,
+				840271721F6B752300CC99E4 /* ZLImageViewDisplayView.m in Sources */,
 				8470007E1F5E3C26004350C9 /* UserModel.m in Sources */,
 				848D3FBE1F5526DF0043C9BD /* NSDateFormatter+Category.m in Sources */,
 				84B216491F61706D001A79AB /* qrencode.m in Sources */,
@@ -918,6 +937,7 @@
 				84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
 				848D3F441F5525310043C9BD /* main.m in Sources */,
+				840271751F6BC07B00CC99E4 /* DetailTableViewCell.m in Sources */,
 				848D3FB61F5526DF0043C9BD /* openssl_wrapper.m in Sources */,
 				848D3FBD1F5526DF0043C9BD /* NSDate+Utility.m in Sources */,
 				84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */,

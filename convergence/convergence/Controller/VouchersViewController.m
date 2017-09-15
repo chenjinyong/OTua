@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self uiLyout];
+//    [self uiLyout];
     [self netRequest];
     
     _arr = [NSMutableArray new];
@@ -62,20 +62,26 @@
 
 //网络请求
 -(void)netRequest{
-    NSDictionary *para = @{@"experienceId":@1};
+    NSString *eid = [[StorageMgr singletonStorageMgr]objectForKey:@"eId"];
+//isKindOfClass:[NSNull class] ?@"-1" : [[StorageMgr singletonStorageMgr]objectForKey:@"eId"];
+    
+    NSDictionary *para = @{@"experienceId":eid};
+    NSLog(@"para %@",para);
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
 //        NSLog(@"体验卷 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSLog(@"result = %@",result);
             VouchersModel *model = [[VouchersModel alloc]initWithDictionary:result];
- //               _logoImg.image = dict[@"eLogo"];
-//            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
-//                _cardStyleLabel.text = model.eClubName;
-                _priceLabel.text = [NSString stringWithFormat:@"%@元",model.orginPrice];
+
+            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
+               _cardStyleLabel.text = model.eName;
+                _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)model.orginPrice];
+                _priceLabel.text = [NSString stringWithFormat:@"%ld元",_conver.orginPrice];
+            NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
 //                _pricesLabel.text = model.currentPrice;
-//                _nameLabel.text = model.eClubName;
-//                _ipLabel.text = model.eAddress;
+            _nameLabel.text =_conver.name;
+                _ipLabel.text = model.eAddress;
                 //_ipLabel.text = model.eAddress;
                 _beginTimeLabel.text = model.beginDate;
                 _endTimeLabel.text = model.endDate;
@@ -83,10 +89,6 @@
                 _promotLabel.text = model.ePromot;
                 _timeLabel.text = model.useDate;
                 _soldNumLabel.text = model.saleCount;
-//            
-//            ConvergenceModel *conmodel = [[ConvergenceModel alloc]initWithDict:result];
-//             [_logoImg sd_setImageWithURL:[NSURL URLWithString:conmodel.logo] placeholderImage:[UIImage imageNamed:@""]];
-//            _nameLabel.text = conmodel.name;
         }
         else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
@@ -98,14 +100,14 @@
     }];
 }
 
--(void)uiLyout{
-    [_logoImg sd_setImageWithURL:[NSURL URLWithString:_conver.logo] placeholderImage:[UIImage imageNamed:@"logo"]];
-//    _ipLabel.text =
-    _cardStyleLabel.text = _conver.name;
-    _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_conver.orginPrice];
-    _ipLabel.text = _conver.address;
-    _nameLabel.text = _conver.name;
-}
+//-(void)uiLyout{
+//    [_logoImg sd_setImageWithURL:[NSURL URLWithString:_conver.logo] placeholderImage:[UIImage imageNamed:@"logo"]];
+////    _ipLabel.text =
+//    _cardStyleLabel.text = _conver.name;
+//    _priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_conver.orginPrice];
+//    _ipLabel.text = _conver.address;
+//    _nameLabel.text = _conver.name;
+//}
 /*
 #pragma mark - Navigation
 
