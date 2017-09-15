@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalpriceLabel;//总价
 @property (weak, nonatomic) IBOutlet UILabel *unitpriceLabel;//单价
+- (IBAction)StepperValueChanged:(id)sender;
 
 @property (strong,nonatomic)NSArray *arr;
 
@@ -216,4 +217,10 @@
 }
 */
 
+- (IBAction)StepperValueChanged:(id)sender {
+    UIStepper *st = (UIStepper *)sender;
+    NSLog(@"%f",st.value);
+    _numberLabel.text = [NSString stringWithFormat:@"%0.f",st.value];
+    _totalpriceLabel.text = [NSString stringWithFormat:@"%ld元",[_numberLabel.text integerValue] * [_unitpriceLabel.text integerValue]];
+}
 @end
