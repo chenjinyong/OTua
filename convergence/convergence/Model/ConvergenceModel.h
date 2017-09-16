@@ -22,6 +22,9 @@
 @property (nonatomic) NSInteger  Price;  
 @property (nonatomic) NSInteger orginPrice;
 @property (strong,nonatomic)NSString *sellNumber;
+
+@property (strong,nonatomic) NSString *latitude;
+@property (strong,nonatomic) NSString *longitude;
 ///<<<<< HEAD
 @property (strong,nonatomic)NSArray *experience;
 //=======

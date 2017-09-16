@@ -12,6 +12,7 @@
 #import "VouchersViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
+#import "ZLImageViewDisplayView.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -19,6 +20,7 @@
     NSInteger page;
     NSInteger perPage;
     NSInteger i;
+    NSInteger b;
     BOOL      firstVisit;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backImg;
@@ -30,7 +32,7 @@
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
-
+@property (strong,nonatomic) NSMutableArray *backArr;
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;;
 
@@ -86,6 +88,29 @@
     [self refresh];
 }
 
+- (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
+    
+    //    //获取要显示的位置
+    //    CGRect screenFrame = [[UIScreen mainScreen] bounds];
+    //
+    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 200);
+    
+    //初始化控件
+    ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
+    imageViewDisplay.imageViewArray = _arr;
+    imageViewDisplay.scrollInterval = 3;
+    imageViewDisplay.animationInterVale = 0.7;
+    [self.backImg addSubview:imageViewDisplay];
+    
+    //    [imageViewDisplay addTapEventForImageWithBlock:^(NSInteger imageIndex) {
+    //        NSString *str = [NSString stringWithFormat:@"我是第%ld张图片", imageIndex];
+    //        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    //        [alter show];
+    //    }];
+    
+}
+
+
 -(void)refresh{
     //初始化一个下拉刷新按钮
     UIRefreshControl *refreshControl=[[UIRefreshControl alloc]init];
@@ -107,7 +132,7 @@
 - (void)dataInitialize {
     _arr = [NSMutableArray new];
     _brr = [NSMutableArray new];
-    
+    _backArr = [NSMutableArray new];
     perPage = 10;
     //创建菊花膜
     _aiv = [Utilities getCoverOnView:self.view];
@@ -121,7 +146,7 @@
 
 
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"无锡",@"jing":@120.333,@"wei":@31.57,@"page":@(page),@"perPage":@(perPage)};
+    NSDictionary *para = @{@"city":@"无锡",@"jing":@120.29,@"wei":@31.59,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"首页%@",responseObject);
         [_aiv stopAnimating];
@@ -137,7 +162,10 @@
                 ConvergenceModel * Model = [[ConvergenceModel alloc]initWithDict:Dict];
                 NSURL * url = [NSURL URLWithString:Model.imgurl];
                 [_backImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+               
             }
+            
+        //    [self addZLImageViewDisPlayView:_backArr];
             
             
             for(NSDictionary * dict in models){
@@ -317,11 +345,12 @@
         cell.ipLabel.text = conver.address;
         cell.nameLabel.text = conver.name;
 
-        //计算距离
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:[_model.distance doubleValue] longitude:[_model.distance doubleValue]];
-        
-        CLLocationDistance kilometers=[_location distanceFromLocation:location]/1000;
-        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%.1f公里",kilometers];
+//        //计算距离
+//        CLLocation *location = [[CLLocation alloc] initWithLatitude:[conver.latitude doubleValue] longitude:[conver.longitude doubleValue]];
+//        
+//        
+//        CLLocationDistance kilometers=[_location distanceFromLocation:location]/1000;
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%@米",conver.distance];
         
         [_aiv stopAnimating];
         return cell;

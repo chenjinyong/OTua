@@ -134,7 +134,7 @@
 
 
 -(void)netRequest{
-    NSDictionary *para = @{@"city":@"0510",@"jing":@1,@"wei":@1,@"page":@(page),@"perPage":@(perpage)};
+    NSDictionary *para = @{@"city":@"0510",@"jing":@31.59,@"wei":@120.29,@"page":@(page),@"perPage":@(perpage)};
     [RequestAPI requestURL:@"/homepage/freeTrial" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"faxian = %@",responseObject);
         UIRefreshControl *refresh = (UIRefreshControl *)[self.CollectionView viewWithTag:11];
@@ -142,7 +142,7 @@
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray * models = result[@"models"];
-//            NSLog(@"models = %@",models);
+            NSLog(@"models = %@",models);
             [_detailarr addObject:models];
             for(NSDictionary *dict in models){
              ConvergenceModel * foundModel = [[ConvergenceModel alloc]initWithDict:dict];
@@ -239,10 +239,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    if(flag ==0){
+        
+    }
+    
     ConvergenceModel * home = _arr[indexPath.row];
-    
-    NSLog(@"值：%@",home);
-    
     DetailViewController*Vouch = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"clubdetail"];
     Vouch.fitness = home;
     [self.navigationController pushViewController:Vouch animated:YES];
@@ -319,7 +320,12 @@
 //
 
 - (IBAction)wholecityAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    _tableView.hidden = NO;
+    
+    if (sender.selected) {
+        _tableView.hidden = YES;  //点击显示
+    }else{
+        _tableView.hidden = NO;  //再次点击隐藏
+    }
     
     
     

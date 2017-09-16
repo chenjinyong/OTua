@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "convergence/Controller/ConvergenceViewController.m"
-            timestampString = "527168203.322043"
+            filePath = "convergence/Controller/FoundViewController.m"
+            timestampString = "527241463.536019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "convergence/Controller/ConvergenceViewController.m"
-            timestampString = "527169719.66237"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-payAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

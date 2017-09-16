@@ -26,6 +26,9 @@
         _Price = [[Utilities nullAndNilCheck:dict[@"Price"] replaceBy:@""]integerValue];
         //_experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@""];
         self.experience = [dict[@"experience"]isKindOfClass:[NSNull class]]?@[]:dict[@"experience"];
+        
+        _latitude = [Utilities nullAndNilCheck:dict[@"latitude"] replaceBy:@"0"];
+        _longitude = [Utilities nullAndNilCheck:dict[@"longitude"] replaceBy:@"0"];
     }
     return self;
 }
