@@ -25,7 +25,7 @@
 @property (strong,nonatomic) NSString *clubIntroduce;//介绍
 @property (strong,nonatomic) NSString *openTime;//经度
 @property (strong,nonatomic) NSString *clubSite;//面积
-@property (strong,nonatomic) NSString *eId;//面积
+@property (strong,nonatomic) NSString *eId;//
 
 @property (strong,nonatomic) NSString *address;//地址
 @property (strong,nonatomic) NSString *storeNums;//拥有分店数量

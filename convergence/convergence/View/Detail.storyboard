@@ -13,7 +13,7 @@
         <!--会所信息-->
         <scene sceneID="vpR-JH-y8A">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="nq0-ua-aBL" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="clubdetail" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nq0-ua-aBL" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ldy-CG-3ot"/>
                         <viewControllerLayoutGuide type="bottom" id="BRP-mL-JJy"/>

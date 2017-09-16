@@ -8,9 +8,10 @@
 
 #import "FoundViewController.h"
 #import "FoundCollectionViewCell.h"
-#import "FoundModel.h"
+//#import "FoundModel.h"
 #import <UIImageView+WebCache.h>
 #import "sxTableViewCell.h"
+#import "DetailViewController.h"
 //#import "ConvergenceModel.h"
 @interface FoundViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource>{
     BOOL flag;
@@ -34,6 +35,7 @@
 @property (strong,nonatomic)NSArray *brr;
 @property (strong,nonatomic)NSArray *crr;
 @property (strong,nonatomic)NSArray *drr;
+@property (strong,nonatomic)NSMutableArray *detailarr;
 //定义一个存放数据的数组
 @property (strong,nonatomic) NSArray * foundArr;
 
@@ -58,6 +60,7 @@
     
     
     _arr = [NSMutableArray new];
+    _detailarr = [NSMutableArray new];
     //_brr = [NSArray new];
     }
 
@@ -139,8 +142,11 @@
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray * models = result[@"models"];
+//            NSLog(@"models = %@",models);
+            [_detailarr addObject:models];
             for(NSDictionary *dict in models){
-             FoundModel * foundModel = [[FoundModel alloc]initWithDictionary:dict];
+             ConvergenceModel * foundModel = [[ConvergenceModel alloc]initWithDict:dict];
+             //   NSLog(@"foundModel = %@",foundModel);
                [_arr addObject:foundModel];
             }
             [_CollectionView reloadData];
@@ -170,8 +176,8 @@
 //    if(indexPath.section == 0){
         FoundCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"foundCell" forIndexPath:indexPath];
         
-        FoundModel *foundModel = _arr[indexPath.row];
-        NSURL *url = [NSURL URLWithString:foundModel.image];
+        ConvergenceModel *foundModel = _arr[indexPath.row];
+        NSURL *url = [NSURL URLWithString:foundModel.Image];
         [cell.logoImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         cell.nameLabel.text = foundModel.name;
         cell.ipLabel.text  = foundModel.address;
@@ -229,6 +235,40 @@
     return cell;
 }
 
+//细胞被点击后要做的事情
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    ConvergenceModel * home = _arr[indexPath.row];
+    
+    NSLog(@"值：%@",home);
+    
+    DetailViewController*Vouch = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"clubdetail"];
+    Vouch.fitness = home;
+    [self.navigationController pushViewController:Vouch animated:YES];
+    
+
+    
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+   
+    //遍历表格视图中所有选中状态下的细胞
+    for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
+        //当选中的细胞不是当前正在按的这个细胞的情况下
+        if (eachIP != indexPath) {
+            //将细胞从选中状态下改为不选中状态
+            [tableView deselectRowAtIndexPath:eachIP animated:YES];
+            
+        }
+    }
+    
+    
+}
+
 
 -(void)dataInitalize{
     _brr = @[@"全部分类",@"动感单车",@"力量器械",@"瑜伽/普拉提",@"有氧运动"];
@@ -237,7 +277,7 @@
 -(void)payAction{
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
-
+            
         }
             
             break;
@@ -262,31 +302,20 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //遍历表格视图中所有选中状态下的细胞
-    for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
-        //当选中的细胞不是当前正在按的这个细胞的情况下
-        if (eachIP != indexPath) {
-            //将细胞从选中状态下改为不选中状态
-            [tableView deselectRowAtIndexPath:eachIP animated:YES];
-            
-        }
-    }
-}
 
 
 
 
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+// // Get the new view controller using [segue destinationViewController].
+// // Pass the selected object to the new view controller.
+// }
+
 //
 
 - (IBAction)wholecityAction:(UIButton *)sender forEvent:(UIEvent *)event {

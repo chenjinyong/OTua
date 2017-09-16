@@ -16,6 +16,7 @@
 @property (strong,nonatomic)NSString *logo;
 @property (strong,nonatomic)NSString *orginPrice;
 @property (strong,nonatomic)NSArray *models;
+@property (strong,nonatomic)NSString *clubId;
 //@property (strong,nonatomic)NSInteger ellNumber;
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 @end

@@ -19,6 +19,7 @@
         _logo = [Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
         _name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
         _orginPrice= [Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""];
+        _clubId = [Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""];
         self.models = [dict[@"models"]isKindOfClass:[NSNull class]]?@[@""]:dict[@"models"];
     }
     return self;
