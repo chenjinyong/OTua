@@ -63,6 +63,7 @@
 		84A77A351F600EA2007067AC /* Vouchers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A77A341F600EA2007067AC /* Vouchers.storyboard */; };
 		84A77A391F6014FD007067AC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A381F6014FD007067AC /* SettingViewController.m */; };
 		84A77A3C1F6015B3007067AC /* StetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */; };
+		84A93AEF1F6CCF44000E410C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A93AEE1F6CCF44000E410C /* MapViewController.m */; };
 		84AB11841F6121E00089C83B /* VouchersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB11831F6121E00089C83B /* VouchersModel.m */; };
 		84B2154C1F615037001A79AB /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B2154B1F615037001A79AB /* MyOrder.storyboard */; };
 		84B2154E1F61506D001A79AB /* Promote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B2154D1F61506D001A79AB /* Promote.storyboard */; };
@@ -224,6 +225,8 @@
 		84A77A381F6014FD007067AC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		84A77A3A1F6015B3007067AC /* StetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StetingTableViewCell.h; sourceTree = "<group>"; };
 		84A77A3B1F6015B3007067AC /* StetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StetingTableViewCell.m; sourceTree = "<group>"; };
+		84A93AED1F6CCF44000E410C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		84A93AEE1F6CCF44000E410C /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		84AB11821F6121E00089C83B /* VouchersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VouchersModel.h; sourceTree = "<group>"; };
 		84AB11831F6121E00089C83B /* VouchersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VouchersModel.m; sourceTree = "<group>"; };
 		84B2154B1F615037001A79AB /* MyOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyOrder.storyboard; sourceTree = "<group>"; };
@@ -548,6 +551,15 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		84A93AEC1F6CCEDE000E410C /* MapViewController地图 */ = {
+			isa = PBXGroup;
+			children = (
+				84A93AED1F6CCF44000E410C /* MapViewController.h */,
+				84A93AEE1F6CCF44000E410C /* MapViewController.m */,
+			);
+			name = "MapViewController地图";
+			sourceTree = "<group>";
+		};
 		84B216381F61706D001A79AB /* MDQREncode */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +627,7 @@
 				84A77A281F5FFBEB007067AC /* Left */,
 				84A77A211F5FF921007067AC /* Sign */,
 				840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */,
+				84A93AEC1F6CCEDE000E410C /* MapViewController地图 */,
 				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
 				B29FE1561F5D2EA10085C03E /* MyInfoViewControll   我的 */,
 			);
@@ -933,6 +946,7 @@
 				848D3FB81F5526DF0043C9BD /* RSADataVerifier.m in Sources */,
 				84A77A201F5FF7EE007067AC /* FoundViewController.m in Sources */,
 				84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */,
+				84A93AEF1F6CCF44000E410C /* MapViewController.m in Sources */,
 				84B2164C1F61706D001A79AB /* rscode.m in Sources */,
 				84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
