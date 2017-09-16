@@ -63,7 +63,7 @@
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
             NSString * tradeNo = [GBAlipayManager generateTradeNO];
-            [GBAlipayManager alipayWithProductName:_Vouche.name amount:[NSString stringWithFormat:@"%ld元",(long)_Vouche.orginPrice] tradeNO:tradeNo notifyURL:nil productDescription:_numberLabel itBPay:@"30"];
+            [GBAlipayManager alipayWithProductName:_Vouche.name amount:[NSString stringWithFormat:@"%ld元",(long)_Vouche.orginPrice] tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_Vouche.name] itBPay:@"30"];
         }
             break;
         case 1:{
