@@ -42,8 +42,15 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
-    
-   
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+-(void)backAction{
+    //用model方式返回上一页
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //用push方式返回上一页
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -71,14 +78,15 @@
     [RequestAPI requestURL:@"/clubFeedback" withParameters:para andHeader:nil byMethod:kPost andSerializer:kRes success:^(id responseObject) {
         NSLog(@"反馈：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
-            
+            [Utilities popUpAlertViewWithMsg:@"提交成功" andTitle:@"提示" onView:self];
             
         }else{
-            
+            [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
         NSLog(@"statusCode%ld",(long)statusCode);
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
     }];
 }
 
@@ -94,5 +102,7 @@
 
 - (IBAction)SubmitAction:(UIBarButtonItem *)sender {
     [self Request];
+    [Utilities popUpAlertViewWithMsg:@"提交成功" andTitle:@"提示" onView:self];
+
 }
 @end
