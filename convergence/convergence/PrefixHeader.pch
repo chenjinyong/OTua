@@ -17,6 +17,7 @@
 #import "StorageMgr.h"
 #import "RequestAPI.h"
 #import "ErrorHandler.h"
+#import "NSDate+Utility.h"
 #import "NSString+Crypt.h"
 #import <UIImageView+WebCache.h>
 #import "GBAlipayManager.h"

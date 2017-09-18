@@ -12,7 +12,6 @@
 #import "VouchersViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
-#import "ZLImageViewDisplayView.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -20,7 +19,6 @@
     NSInteger page;
     NSInteger perPage;
     NSInteger i;
-    NSInteger b;
     BOOL      firstVisit;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backImg;
@@ -32,7 +30,7 @@
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
-@property (strong,nonatomic) NSMutableArray *backArr;
+
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;;
 
@@ -88,29 +86,6 @@
     [self refresh];
 }
 
-- (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
-    
-    //    //获取要显示的位置
-    //    CGRect screenFrame = [[UIScreen mainScreen] bounds];
-    //
-    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 200);
-    
-    //初始化控件
-    ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
-    imageViewDisplay.imageViewArray = _arr;
-    imageViewDisplay.scrollInterval = 3;
-    imageViewDisplay.animationInterVale = 0.7;
-    [self.backImg addSubview:imageViewDisplay];
-    
-    //    [imageViewDisplay addTapEventForImageWithBlock:^(NSInteger imageIndex) {
-    //        NSString *str = [NSString stringWithFormat:@"我是第%ld张图片", imageIndex];
-    //        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    //        [alter show];
-    //    }];
-    
-}
-
-
 -(void)refresh{
     //初始化一个下拉刷新按钮
     UIRefreshControl *refreshControl=[[UIRefreshControl alloc]init];
@@ -132,7 +107,7 @@
 - (void)dataInitialize {
     _arr = [NSMutableArray new];
     _brr = [NSMutableArray new];
-    _backArr = [NSMutableArray new];
+    
     perPage = 10;
     //创建菊花膜
     _aiv = [Utilities getCoverOnView:self.view];
@@ -162,10 +137,7 @@
                 ConvergenceModel * Model = [[ConvergenceModel alloc]initWithDict:Dict];
                 NSURL * url = [NSURL URLWithString:Model.imgurl];
                 [_backImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
-               
             }
-            
-        //    [self addZLImageViewDisPlayView:_backArr];
             
             
             for(NSDictionary * dict in models){
