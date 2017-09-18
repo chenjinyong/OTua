@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;//使用时间
 @property (weak, nonatomic) IBOutlet UILabel *ruleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promotLabel;//提示
-
+@property (strong,nonatomic)VouchersModel *model;
 @property (strong,nonatomic)NSMutableArray *arr;
 @end
 
@@ -72,24 +72,23 @@
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSLog(@"result = %@",result);
-            VouchersModel *model = [[VouchersModel alloc]initWithDictionary:result];
-
-            [_logoImg sd_setImageWithURL:[NSURL URLWithString:model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
-               _cardStyleLabel.text = model.eName;
-                _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)model.orginPrice];
-                _priceLabel.text = [NSString stringWithFormat:@"%ld元",_conver.orginPrice];
+            _model = [[VouchersModel alloc]initWithDictionary:result];
+            
+            [_logoImg sd_setImageWithURL:[NSURL URLWithString:_model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
+            _cardStyleLabel.text = _model.eName;
+            _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)_model.orginPrice];
+            _priceLabel.text = [NSString stringWithFormat:@"%ld元",_model.currentPrice];
             NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
-//                _pricesLabel.text = model.currentPrice;
+            //                _pricesLabel.text = model.currentPrice;
             _nameLabel.text =_conver.name;
-                _ipLabel.text = model.eAddress;
-                //_ipLabel.text = model.eAddress;
-                _beginTimeLabel.text = model.beginDate;
-                _endTimeLabel.text = model.endDate;
-                _ruleLabel.text = model.rules;
-                _promotLabel.text = model.ePromot;
-                _timeLabel.text = model.useDate;
-                _soldNumLabel.text = model.saleCount;
-        }
+            _ipLabel.text = _model.eAddress;
+            //_ipLabel.text = model.eAddress;
+            _beginTimeLabel.text = _model.beginDate;
+            _endTimeLabel.text = _model.endDate;
+            _ruleLabel.text = _model.rules;
+            _promotLabel.text = _model.ePromot;
+            _timeLabel.text = _model.useDate;
+            _soldNumLabel.text = _model.saleCount;        }
         else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
         }
@@ -121,7 +120,7 @@
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if([Utilities loginCheck]){
         payTableViewController *pay = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"Purchase"];
-        pay.Vouche = _conver;
+        pay.Vouch = _model;
         [self.navigationController pushViewController:pay animated:YES];
         
     }else{
