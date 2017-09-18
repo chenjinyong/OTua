@@ -63,7 +63,17 @@
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
             NSString * tradeNo = [GBAlipayManager generateTradeNO];
-            [GBAlipayManager alipayWithProductName:_Vouche.name amount:[NSString stringWithFormat:@"%ld元",(long)_Vouche.orginPrice] tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_Vouche.name] itBPay:@"30"];
+            [GBAlipayManager alipayWithProductName:_Vouch.eName amount:[NSString stringWithFormat:@"%ld",(long)_Vouch.currentPrice] tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_Vouch.eName] itBPay:@"30"];
+            /**
+             *  只针对单一用户数据本地写死
+             *
+             *  @param productName        商品名称
+             *  @param amount             商品金额
+             *  @param notifyURL          服务器异步通知页面路径
+             *  @param productDescription 商品详情
+             *  @param itBPay             未付款交易的超时时间
+             */
+
         }
             break;
         case 1:{
@@ -123,11 +133,12 @@
 -(void)uiLayout{
 //    _HotelnameLbl.text = _Hotel.hotel_name;
 
-    _cardNameLabel.text = _Vouche.name;
-    _nameLabel.text = _Vouche.name;
+    _cardNameLabel.text = _Vouch.eName;
+    _nameLabel.text = _Vouch.eClubName;
 //    _unitpriceLabel.text = _Vouch.currentPrice;
-    _unitpriceLabel.text = [NSString stringWithFormat:@"¥%ld元",(long)_Vouche.orginPrice];
-//    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"];
+    _unitpriceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_Vouch.currentPrice];
+    _totalpriceLabel.text = _unitpriceLabel.text;
+//    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"]  ¥;
 //    _tomlabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"tomorrow"];
     //去掉多余下划线
     self.tableView.tableFooterView = [UIView new];
@@ -221,6 +232,6 @@
     UIStepper *st = (UIStepper *)sender;
     NSLog(@"%f",st.value);
     _numberLabel.text = [NSString stringWithFormat:@"%0.f",st.value];
-    _totalpriceLabel.text = [NSString stringWithFormat:@"%ld元",[_numberLabel.text integerValue] * [_unitpriceLabel.text integerValue]];
+    _totalpriceLabel.text = [NSString stringWithFormat:@"%ld元",[_numberLabel.text integerValue] * _Vouch.currentPrice];
 }
 @end

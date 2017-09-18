@@ -62,8 +62,10 @@
         NSLog(@"昵称：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             
+            [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
             
         }else{
+            [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
             
         }
     } failure:^(NSInteger statusCode, NSError *error) {
@@ -84,6 +86,7 @@
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
     [self ModifyRequest];
-    [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
+    
+//    [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
 }
 @end

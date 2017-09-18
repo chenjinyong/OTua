@@ -10,11 +10,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "convergence/Controller/FoundViewController.m"
-            timestampString = "527241463.536019"
+            timestampString = "527394622.79697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "-payAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "convergence/Controller/FoundViewController.m"
+            timestampString = "527394622.79697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-payAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "convergence/Controller/FoundViewController.m"
+            timestampString = "527394622.79697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-payAction"
             landmarkType = "7">
          </BreakpointContent>
