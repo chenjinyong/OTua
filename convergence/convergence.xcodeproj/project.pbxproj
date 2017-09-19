@@ -11,13 +11,15 @@
 		8402716F1F6B6BFA00CC99E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8402716E1F6B6BFA00CC99E4 /* CoreGraphics.framework */; };
 		840271721F6B752300CC99E4 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840271711F6B752300CC99E4 /* ZLImageViewDisplayView.m */; };
 		840271751F6BC07B00CC99E4 /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840271741F6BC07B00CC99E4 /* DetailTableViewCell.m */; };
-		840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */; };
 		844BBC871F6F53AF0088DEE7 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BBC861F6F53AF0088DEE7 /* ActivityViewController.m */; };
 		844BBC8A1F6F53DC0088DEE7 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BBC891F6F53DC0088DEE7 /* ActivityModel.m */; };
 		844BBC8D1F6F53FE0088DEE7 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BBC8C1F6F53FE0088DEE7 /* ActivityTableViewCell.m */; };
 		844BBC901F6F5ABD0088DEE7 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BBC8F1F6F5ABD0088DEE7 /* ActivityDetailViewController.m */; };
 		844BBC951F6F5DD00088DEE7 /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BBC941F6F5DD00088DEE7 /* PurchaseTableViewController.m */; };
-		846241C01F6A5FB400BD7A72 /* sxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846241BF1F6A5FB400BD7A72 /* sxTableViewCell.m */; };
+		84652BD81F70C0E7000EB878 /* FoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD11F70C0E7000EB878 /* FoundCollectionViewCell.m */; };
+		84652BD91F70C0E7000EB878 /* FoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD31F70C0E7000EB878 /* FoundModel.m */; };
+		84652BDA1F70C0E7000EB878 /* FoundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD51F70C0E7000EB878 /* FoundTableViewCell.m */; };
+		84652BDB1F70C0E7000EB878 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD71F70C0E7000EB878 /* FoundViewController.m */; };
 		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
 		848B46A11F622EC700D06C05 /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B46A01F622EC700D06C05 /* UIImage+MDQRCode.m */; };
 		848D3F441F5525310043C9BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F431F5525310043C9BD /* main.m */; };
@@ -58,7 +60,6 @@
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
 		84A77A1A1F5FF7DE007067AC /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A191F5FF7DE007067AC /* MyInfoViewController.m */; };
 		84A77A1D1F5FF7E5007067AC /* ConvergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */; };
-		84A77A201F5FF7EE007067AC /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A1F1F5FF7EE007067AC /* FoundViewController.m */; };
 		84A77A261F5FF99B007067AC /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A231F5FF99B007067AC /* SignInViewController.m */; };
 		84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A251F5FF99B007067AC /* SignUpViewController.m */; };
 		84A77A2B1F5FFC35007067AC /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A2A1F5FFC35007067AC /* LeftViewController.m */; };
@@ -95,7 +96,6 @@
 		84D044CB1F62812C009428F4 /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044CA1F62812C009428F4 /* MyOrderTableViewCell.m */; };
 		84D044CE1F62C501009428F4 /* orderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044CD1F62C501009428F4 /* orderModel.m */; };
 		84D27E701F669DCE00863BAA /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D27E6F1F669DCD00863BAA /* DetailModel.m */; };
-		84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DEBA271F5FEC79005F006F /* FoundModel.m */; };
 		84F12FF81F67C43500FB89CD /* payTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F12FF71F67C43500FB89CD /* payTableViewController.m */; };
 		84F699361F5E5D9F00ABD169 /* ConvergenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */; };
 		84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F699381F5E5DE600ABD169 /* ConvergenceModel.m */; };
@@ -132,8 +132,6 @@
 		840271711F6B752300CC99E4 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		840271731F6BC07B00CC99E4 /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
 		840271741F6BC07B00CC99E4 /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
-		840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundCollectionViewCell.h; path = ../View/FoundCollectionViewCell.h; sourceTree = "<group>"; };
-		840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundCollectionViewCell.m; path = ../View/FoundCollectionViewCell.m; sourceTree = "<group>"; };
 		844BBC851F6F53AF0088DEE7 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		844BBC861F6F53AF0088DEE7 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		844BBC881F6F53DC0088DEE7 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
@@ -144,8 +142,14 @@
 		844BBC8F1F6F5ABD0088DEE7 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		844BBC931F6F5DD00088DEE7 /* PurchaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseTableViewController.h; sourceTree = "<group>"; };
 		844BBC941F6F5DD00088DEE7 /* PurchaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseTableViewController.m; sourceTree = "<group>"; };
-		846241BE1F6A5FB400BD7A72 /* sxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sxTableViewCell.h; path = ../View/sxTableViewCell.h; sourceTree = "<group>"; };
-		846241BF1F6A5FB400BD7A72 /* sxTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = sxTableViewCell.m; path = ../View/sxTableViewCell.m; sourceTree = "<group>"; };
+		84652BD01F70C0E7000EB878 /* FoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundCollectionViewCell.h; path = ../find/FoundCollectionViewCell.h; sourceTree = "<group>"; };
+		84652BD11F70C0E7000EB878 /* FoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundCollectionViewCell.m; path = ../find/FoundCollectionViewCell.m; sourceTree = "<group>"; };
+		84652BD21F70C0E7000EB878 /* FoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundModel.h; path = ../find/FoundModel.h; sourceTree = "<group>"; };
+		84652BD31F70C0E7000EB878 /* FoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundModel.m; path = ../find/FoundModel.m; sourceTree = "<group>"; };
+		84652BD41F70C0E7000EB878 /* FoundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundTableViewCell.h; path = ../find/FoundTableViewCell.h; sourceTree = "<group>"; };
+		84652BD51F70C0E7000EB878 /* FoundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundTableViewCell.m; path = ../find/FoundTableViewCell.m; sourceTree = "<group>"; };
+		84652BD61F70C0E7000EB878 /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
+		84652BD71F70C0E7000EB878 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
 		8470007C1F5E3C26004350C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		8470007D1F5E3C26004350C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		848B469F1F622EC700D06C05 /* UIImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDQRCode.h"; sourceTree = "<group>"; };
@@ -222,8 +226,6 @@
 		84A77A191F5FF7DE007067AC /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = convergence/Controller/MyInfoViewController.m; sourceTree = SOURCE_ROOT; };
 		84A77A1B1F5FF7E5007067AC /* ConvergenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceViewController.h; sourceTree = "<group>"; };
 		84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvergenceViewController.m; sourceTree = "<group>"; };
-		84A77A1E1F5FF7EE007067AC /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
-		84A77A1F1F5FF7EE007067AC /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
 		84A77A221F5FF99B007067AC /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		84A77A231F5FF99B007067AC /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		84A77A241F5FF99B007067AC /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -284,8 +286,6 @@
 		84D044CD1F62C501009428F4 /* orderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderModel.m; sourceTree = "<group>"; };
 		84D27E6E1F669DCD00863BAA /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
 		84D27E6F1F669DCD00863BAA /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
-		84DEBA261F5FEC79005F006F /* FoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundModel.h; path = ../Model/FoundModel.h; sourceTree = "<group>"; };
-		84DEBA271F5FEC79005F006F /* FoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundModel.m; path = ../Model/FoundModel.m; sourceTree = "<group>"; };
 		84F12FF61F67C43500FB89CD /* payTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = payTableViewController.h; path = convergence/Model/payTableViewController.h; sourceTree = SOURCE_ROOT; };
 		84F12FF71F67C43500FB89CD /* payTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = payTableViewController.m; path = convergence/Model/payTableViewController.m; sourceTree = SOURCE_ROOT; };
 		84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvergenceTableViewCell.h; sourceTree = "<group>"; };
@@ -345,21 +345,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */ = {
-			isa = PBXGroup;
-			children = (
-				84A77A1E1F5FF7EE007067AC /* FoundViewController.h */,
-				84A77A1F1F5FF7EE007067AC /* FoundViewController.m */,
-				84DEBA261F5FEC79005F006F /* FoundModel.h */,
-				84DEBA271F5FEC79005F006F /* FoundModel.m */,
-				840F6D051F5F9DD000138EF6 /* FoundCollectionViewCell.h */,
-				840F6D061F5F9DD000138EF6 /* FoundCollectionViewCell.m */,
-				846241BE1F6A5FB400BD7A72 /* sxTableViewCell.h */,
-				846241BF1F6A5FB400BD7A72 /* sxTableViewCell.m */,
-			);
-			name = "FoundViewController 发现";
-			sourceTree = "<group>";
-		};
 		844BBC841F6F53680088DEE7 /* ActivityViewController 活动 */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +357,16 @@
 			);
 			name = "ActivityViewController 活动";
 			sourceTree = "<group>";
+		};
+		84652BCF1F70C0E7000EB878 /* FoundViewController 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				84652BD61F70C0E7000EB878 /* FoundViewController.h */,
+				84652BD71F70C0E7000EB878 /* FoundViewController.m */,
+			);
+			name = "FoundViewController 发现";
+			path = convergence/find;
+			sourceTree = SOURCE_ROOT;
 		};
 		848D3F361F5525310043C9BD = {
 			isa = PBXGroup;
@@ -473,6 +468,8 @@
 				848D3F811F5526DA0043C9BD /* Order.m */,
 				8470007C1F5E3C26004350C9 /* UserModel.h */,
 				8470007D1F5E3C26004350C9 /* UserModel.m */,
+				84652BD21F70C0E7000EB878 /* FoundModel.h */,
+				84652BD31F70C0E7000EB878 /* FoundModel.m */,
 				84F699371F5E5DE600ABD169 /* ConvergenceModel.h */,
 				84F699381F5E5DE600ABD169 /* ConvergenceModel.m */,
 				84AB11831F6121E00089C83B /* VouchersModel.m */,
@@ -637,6 +634,10 @@
 				84F6BE321F5D651C00A3C791 /* MyInfoTableViewCell.m */,
 				84F699341F5E5D9F00ABD169 /* ConvergenceTableViewCell.h */,
 				84F699351F5E5D9F00ABD169 /* ConvergenceTableViewCell.m */,
+				84652BD01F70C0E7000EB878 /* FoundCollectionViewCell.h */,
+				84652BD11F70C0E7000EB878 /* FoundCollectionViewCell.m */,
+				84652BD41F70C0E7000EB878 /* FoundTableViewCell.h */,
+				84652BD51F70C0E7000EB878 /* FoundTableViewCell.m */,
 				84F6993A1F5EB9FE00ABD169 /* ConTableViewCell.h */,
 				84F6993B1F5EB9FE00ABD169 /* ConTableViewCell.m */,
 				84A77A3A1F6015B3007067AC /* StetingTableViewCell.h */,
@@ -654,14 +655,14 @@
 		B29FE1521F5D2EA10085C03E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
+				84652BCF1F70C0E7000EB878 /* FoundViewController 发现 */,
 				844BBC841F6F53680088DEE7 /* ActivityViewController 活动 */,
+				84A93AEC1F6CCEDE000E410C /* MapViewController地图 */,
+				B29FE1561F5D2EA10085C03E /* MyInfoViewControll   我的 */,
 				84A77A361F6014E8007067AC /* Setting */,
 				84A77A281F5FFBEB007067AC /* Left */,
 				84A77A211F5FF921007067AC /* Sign */,
-				840F6CFE1F5F9C8B00138EF6 /* FoundViewController 发现 */,
-				84A93AEC1F6CCEDE000E410C /* MapViewController地图 */,
-				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
-				B29FE1561F5D2EA10085C03E /* MyInfoViewControll   我的 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -964,12 +965,13 @@
 				84B216481F61706D001A79AB /* mask.m in Sources */,
 				84B2155E1F615427001A79AB /* AboutViewController.m in Sources */,
 				848D3FC11F5526DF0043C9BD /* StorageMgr.m in Sources */,
-				840F6D071F5F9DD000138EF6 /* FoundCollectionViewCell.m in Sources */,
 				84D044CB1F62812C009428F4 /* MyOrderTableViewCell.m in Sources */,
 				848D3FC01F5526DF0043C9BD /* RequestAPI.m in Sources */,
+				84652BDB1F70C0E7000EB878 /* FoundViewController.m in Sources */,
 				84B2164A1F61706D001A79AB /* qrinput.m in Sources */,
 				848D3FB31F5526DF0043C9BD /* DataVerifier.m in Sources */,
 				840271721F6B752300CC99E4 /* ZLImageViewDisplayView.m in Sources */,
+				84652BD81F70C0E7000EB878 /* FoundCollectionViewCell.m in Sources */,
 				8470007E1F5E3C26004350C9 /* UserModel.m in Sources */,
 				848D3FBE1F5526DF0043C9BD /* NSDateFormatter+Category.m in Sources */,
 				84B216491F61706D001A79AB /* qrencode.m in Sources */,
@@ -980,23 +982,22 @@
 				844BBC901F6F5ABD0088DEE7 /* ActivityDetailViewController.m in Sources */,
 				848D3FB21F5526DF0043C9BD /* DataSigner.m in Sources */,
 				848D3FB81F5526DF0043C9BD /* RSADataVerifier.m in Sources */,
-				84A77A201F5FF7EE007067AC /* FoundViewController.m in Sources */,
 				844BBC951F6F5DD00088DEE7 /* PurchaseTableViewController.m in Sources */,
 				84F6993C1F5EB9FE00ABD169 /* ConTableViewCell.m in Sources */,
 				84A93AEF1F6CCF44000E410C /* MapViewController.m in Sources */,
+				84652BD91F70C0E7000EB878 /* FoundModel.m in Sources */,
 				84B2164C1F61706D001A79AB /* rscode.m in Sources */,
 				84A77A271F5FF99B007067AC /* SignUpViewController.m in Sources */,
 				848D3FBA1F5526DF0043C9BD /* ErrorHandler.m in Sources */,
 				848D3F441F5525310043C9BD /* main.m in Sources */,
+				84652BDA1F70C0E7000EB878 /* FoundTableViewCell.m in Sources */,
 				840271751F6BC07B00CC99E4 /* DetailTableViewCell.m in Sources */,
 				848D3FB61F5526DF0043C9BD /* openssl_wrapper.m in Sources */,
 				848D3FBD1F5526DF0043C9BD /* NSDate+Utility.m in Sources */,
-				84DEBA281F5FEC79005F006F /* FoundModel.m in Sources */,
 				848D3FB71F5526DF0043C9BD /* RSADataSigner.m in Sources */,
 				848D3FC31F5526DF0043C9BD /* Utilities.m in Sources */,
 				848D3F501F5525310043C9BD /* convergence.xcdatamodeld in Sources */,
 				84A77A1D1F5FF7E5007067AC /* ConvergenceViewController.m in Sources */,
-				846241C01F6A5FB400BD7A72 /* sxTableViewCell.m in Sources */,
 				84A77A391F6014FD007067AC /* SettingViewController.m in Sources */,
 				844BBC871F6F53AF0088DEE7 /* ActivityViewController.m in Sources */,
 			);

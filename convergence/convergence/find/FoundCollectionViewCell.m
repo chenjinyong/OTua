@@ -1,5 +1,5 @@
 //
-//  FoundCollectionViewCell.m
+//  FindCollectionViewCell.m
 //  convergence
 //
 //  Created by admin on 2017/9/6.

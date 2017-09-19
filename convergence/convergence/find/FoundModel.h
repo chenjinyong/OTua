@@ -1,8 +1,8 @@
 //
-//  FoundModel.h
+//  FindModel.h
 //  convergence
 //
-//  Created by admin on 2017/9/6.
+//  Created by admin on 2017/9/7.
 //  Copyright © 2017年 adminadmineducation. All rights reserved.
 //
 
@@ -12,13 +12,9 @@
 @property (strong,nonatomic) NSString * clubID;
 @property (strong,nonatomic) NSString * clubAdd;
 @property (strong,nonatomic) NSString * clubImageUrl;
-@property (strong,nonatomic) NSString *Image;
 @property (strong,nonatomic) NSString * clubJing;
 @property (strong,nonatomic) NSString * clubWei;
 @property (strong,nonatomic) NSString * clubName;
-@property (strong,nonatomic) NSString * name;
-@property (strong,nonatomic) NSString * address;
-@property (strong,nonatomic) NSString * distance;
 @property (nonatomic) NSInteger  clubDis;
 
 

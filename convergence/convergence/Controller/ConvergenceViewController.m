@@ -138,7 +138,7 @@
 
 
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"无锡",@"jing":@120.29,@"wei":@31.59,@"page":@(page),@"perPage":@(perPage)};
+    NSDictionary *para = @{@"city":@"无锡",@"jing":@(120.2672222),@"wei":@(31.47361111),@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         
         NSLog(@"首页%@",responseObject);

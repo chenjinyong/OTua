@@ -1,14 +1,14 @@
 //
-//  sxTableViewCell.m
+//  FindTableViewCell.m
 //  convergence
 //
-//  Created by admin on 2017/9/14.
+//  Created by admin on 2017/9/6.
 //  Copyright © 2017年 adminadmineducation. All rights reserved.
 //
 
-#import "sxTableViewCell.h"
+#import "FoundTableViewCell.h"
 
-@implementation sxTableViewCell
+@implementation FoundTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

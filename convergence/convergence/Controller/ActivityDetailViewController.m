@@ -65,28 +65,28 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
--(void)networkRequest{
-    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
-    NSString *request = [NSString stringWithFormat:@"/event/%@",_activity.activityId];
-    NSLog(@"%@",request);
-    NSMutableDictionary *parameters = [NSMutableDictionary new];
+- (void)networkRequest{
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    NSString *request =[NSString stringWithFormat:@"/event/%@",_activity.activityId];
+    // NSLog(@"%@",request);
+    NSMutableDictionary *parmeters = [NSMutableDictionary new];
     if([Utilities loginCheck]){
-        [parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]forKey:@"memberId"];
+        [parmeters setObject:[[StorageMgr singletonStorageMgr] objectForKey:@"MemberId"] forKey:@"memberId"];
     }
-    [RequestAPI requestURL:request withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
-     //   [aiv stopAnimating];
-        if([responseObject[@"resultFlag"]integerValue] == 8001){
-            NSDictionary * result = responseObject[@"locDict"];
+    [RequestAPI requestURL:request withParameters:parmeters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        // NSLog(@"responseObject = %@",responseObject);
+        [avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
             _activity = [[ActivityModel alloc]initWithDetailDictionary:result];
             [self uiLyout];
-            
         }else{
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [avi stopAnimating];
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        [aiv stopAnimating];
+        [avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
 }

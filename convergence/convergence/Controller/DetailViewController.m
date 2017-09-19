@@ -11,7 +11,6 @@
 //#import "SDCycleScrollView.h"
 #import "ZLImageViewDisplayView.h"
 #import "DetailTableViewCell.h"
-//#import <UIImageView+WebCache.h>
 #import "VouchersViewController.h"
 @interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger page;
@@ -177,8 +176,6 @@
     cell.cardLabel.text = @"综合卷";
     cell.priceLabel.text = [NSString stringWithFormat:@"%ld元",(long)conver.orginPrice];
     cell.numLabel.text = [NSString stringWithFormat:@"已售%ld",(long)conver.number];
-
-
     return cell;
 
 }
@@ -192,9 +189,9 @@
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
     //配置电话APP的路径，并将要拨打的号码组合到路径中
-    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_fitness.clubTel];
+    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_home.clubTel];
     NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-    NSLog(@"_fitness.clubTel = %@",_fitness.clubTel);
+    NSLog(@"_home.clubTel = %@",_home.clubTel);
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAppUrl];
     NSString *string =_fitness.clubTel;
