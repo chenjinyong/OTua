@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self naviConfig];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +35,28 @@
     
     self.tabBarController.tabBar.hidden = NO;
     
+}
+
+-(void)naviConfig{
+    //设置导航条的颜色(风格颜色)
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+-(void)backAction{
+    //用model方式返回上一页
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //用push方式返回上一页
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

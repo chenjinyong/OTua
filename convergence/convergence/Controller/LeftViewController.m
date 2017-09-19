@@ -20,6 +20,9 @@
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)settingAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
+@property (strong,nonatomic)id result;
+@property (strong,nonatomic)NSString *str;
+
 @end
 
 @implementation LeftViewController
@@ -63,7 +66,24 @@
 }
 
 -(void) dataInitialize{
-    _arr = @[@"我的订单",@"我的推广",@"积分中心",@"关于我们",@"意见反馈"];
+    _arr = @[@"我的订单",@"我的推广",@"积分中心",@"意见反馈",@"关于我们"];
+}
+
+-(void)request{
+    UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    [RequestAPI requestURL:@"/score/memberScore" withParameters:@{@"memberId":model.memberId} andHeader:nil byMethod:kGet andSerializer:kForm
+                   success:^(id responseObject){
+                       NSLog(@"dhhhd %@",responseObject);
+                       if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+                           _result = responseObject[@"result"];
+                           
+                       }else{
+                           
+                       }
+                       
+                   } failure:^(NSInteger statusCode, NSError *error) {
+                       
+                   }];
 }
 
 #pragma mark - Table view data source
@@ -119,14 +139,23 @@
                 }
                     break;
                 case 2:{
+                    [self request];
+                    if (_result != nil) {
+                        _str = [NSString stringWithFormat:@"当前积分:%@",_result ];
+                        [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:_str onView:self];
+                    }
                     
                 }
                     break;
                 case 3:{
+                    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Feedback" byIdentity:@"feedback"];
+                    [self presentViewController:signNavi animated:YES completion:nil];
                     
                 }
                     break;
                 case 4:{
+                    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"About" byIdentity:@"about"];
+                    [self presentViewController:signNavi animated:YES completion:nil];
                     
                 }
                     break;
@@ -165,6 +194,8 @@
 
 - (IBAction)settingAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if ([Utilities loginCheck]) {
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"setUp" byIdentity:@"Setting"];
+        [self presentViewController:signNavi animated:YES completion:nil];
         
     }else{
         UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyLogin" byIdentity:@"SignNavi"];
