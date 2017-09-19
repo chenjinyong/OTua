@@ -12,7 +12,7 @@
 #import "VouchersViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
-
+#import "ZLImageViewDisplayView.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
@@ -20,16 +20,20 @@
     NSInteger perPage;
     NSInteger i;
     BOOL      firstVisit;
+    NSInteger totalPage;
 }
-@property (weak, nonatomic) IBOutlet UIImageView *backImg;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableView *logoImg;
 
+@property (weak, nonatomic) IBOutlet UIView *imgView;
 
 
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
+@property (strong,nonatomic) NSMutableArray * imgArr;
 
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;;
@@ -74,6 +78,19 @@
 //    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
+- (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
+    
+    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 180);
+    
+    //初始化控件
+    ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
+    imageViewDisplay.imageViewArray = _imgArr;
+    imageViewDisplay.scrollInterval = 3;
+    imageViewDisplay.animationInterVale = 0.7;
+    [self.imgView addSubview:imageViewDisplay];
+    
+}
+
 //每次将要来到这个页面的时候
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -107,7 +124,7 @@
 - (void)dataInitialize {
     _arr = [NSMutableArray new];
     _brr = [NSMutableArray new];
-    
+    _imgArr = [NSMutableArray new];
     perPage = 10;
     //创建菊花膜
     _aiv = [Utilities getCoverOnView:self.view];
@@ -123,30 +140,42 @@
 -(void)networkRequest{
     NSDictionary *para = @{@"city":@"无锡",@"jing":@120.29,@"wei":@31.59,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        
         NSLog(@"首页%@",responseObject);
         [_aiv stopAnimating];
         UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
         [refresh endRefreshing];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             
-            //NSArray *advertisement =responseObject[@"advertisement"];
-            NSDictionary *result =responseObject[@"result"];
-            NSArray * models =result[@"models"];
-            NSArray *adver = responseObject[@"advertisement"];
-            for(NSDictionary *Dict in adver){
-                ConvergenceModel * Model = [[ConvergenceModel alloc]initWithDict:Dict];
-                NSURL * url = [NSURL URLWithString:Model.imgurl];
-                [_backImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+            NSArray * adv = responseObject[@"advertisement"];
+            //NSLog(@"adv =%@",adv);
+            
+            
+            for(NSDictionary * advDict in adv){
+                
+                _imgArr[i] = advDict[@"imgurl"];
+                i++;
+            }
+            NSLog(@"_advArr =%@",_imgArr);
+           // [self photoscroll];
+            [self addZLImageViewDisPlayView:_imgArr];
+            NSDictionary * result = responseObject[@"result"];
+            NSArray * models = result[@"models"];
+            NSDictionary *pagingInfo = result[@"pagingInfo"];
+            totalPage = [pagingInfo[@"totalPage"]integerValue];
+            if (page == 1) {
+                //清空数据
+                [_arr removeAllObjects];
+                
             }
             
-            
             for(NSDictionary * dict in models){
-            ConvergenceModel * ConModel = [[ConvergenceModel alloc]initWithDict:dict];
+                ConvergenceModel * home = [[ConvergenceModel alloc]initWithSecondNSDictionary:dict];
                 
-                [_arr addObject:ConModel];
+                [_arr addObject:home];
                 
-           }
-            //NSArray *adver =responseObject[@"advertisement"];
+            }
+            
             
             
             [_tableView reloadData];
@@ -163,6 +192,8 @@
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
 }
+
+
 
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -189,26 +220,24 @@
 {
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //体验劵详情页的跳转
-    if (!(indexPath.row == 0)) {
-        ConvergenceModel * home = _arr[indexPath.section];
-        //判断当前tableView是否为_activityTableView（这个条件判断常用在一个页面中有多个taleView的时候）
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ConvergenceModel * home = _arr[indexPath.section];
+    NSString *Id =  [NSString stringWithFormat:@"%ld",home.clubId];
+    //NSLog(@"id是：%@",Id);
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
+    if(indexPath.row == 0){
+        [self performSegueWithIdentifier:@"List2Detail" sender:nil];
+    }else {
         NSArray *array = home.experience;
         NSDictionary *dict = array[indexPath.row-1];
         NSString *eId =  dict[@"id"];
-        NSLog(@"eId的值为：%@",eId);
         [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:eId];
-    }
-   
-    
-    
-}
+        [self performSegueWithIdentifier:@"List2Vouchers" sender:nil];
+    }}
 
 
 -(void)locationConfig{
     //这个方法专门处理定位的基本设置
-    
     _locMgr = [CLLocationManager new];
     //    _location = [CLLocation new];
     //签协议
@@ -311,18 +340,18 @@
        
 
         
-        NSURL * url = [NSURL URLWithString:conver.Image];
+        NSURL * url = [NSURL URLWithString:conver.clubimage];
         [cell.logoImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
         
-        cell.ipLabel.text = conver.address;
-        cell.nameLabel.text = conver.name;
+        cell.ipLabel.text = conver.clubaddress;
+        cell.nameLabel.text = conver.clubname;
 
 //        //计算距离
 //        CLLocation *location = [[CLLocation alloc] initWithLatitude:[conver.latitude doubleValue] longitude:[conver.longitude doubleValue]];
 //        
 //        
 //        CLLocationDistance kilometers=[_location distanceFromLocation:location]/1000;
-        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%@米",conver.distance];
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%ld米",(long)conver.clubdis];
         
         [_aiv stopAnimating];
         return cell;

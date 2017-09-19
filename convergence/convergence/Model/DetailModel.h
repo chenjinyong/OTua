@@ -15,7 +15,7 @@
 @property (strong,nonatomic) NSString *fName;//名字
 @property (strong,nonatomic) NSString *grayImgUrl;//图片
 @property (strong,nonatomic) NSString *greenImgUrl;//图片
-
+@property (strong,nonatomic) NSString *clubTel;//电话号码
 @property (strong,nonatomic) NSString *clubJing;//经度
 @property (strong,nonatomic) NSString *clubLogo;//图片
 @property (strong,nonatomic) NSString *clubMember;//会员

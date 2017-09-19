@@ -30,6 +30,7 @@
     [self dataInitalize];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseResultAction:) name:@"AlipayResult" object:nil];
+    self.tabBarController.tabBar.hidden = YES;
     
     
 }

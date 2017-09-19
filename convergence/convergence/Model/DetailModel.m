@@ -36,6 +36,7 @@
         _eName = [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@""];
         _orginPrice = [[Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@""]integerValue];
         _number = [[Utilities nullAndNilCheck:dict[@"number"] replaceBy:@""]integerValue];
+        _clubTel = [Utilities nullAndNilCheck:dict[@"clubTel"] replaceBy:@""];
         _eId = [Utilities nullAndNilCheck:dict[@"eId"] replaceBy:@""];
         self.experienceInfos = [dict[@"experienceInfos"] isKindOfClass:[NSNull class]]?@[]:dict[@"experienceInfos"];
         

@@ -7,7 +7,7 @@
 //
 
 #import "VouchersViewController.h"
-//#import "VouchersModel.h"
+#import "VouchersModel.h"
 //#import "ConvergenceModel.h"
 #import "payTableViewController.h"
 
@@ -19,7 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *pricesLabel;//原价
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;//下单
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
+@property (strong,nonatomic)VouchersModel * expm;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//会所名字
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;//地址
 
@@ -80,7 +82,7 @@
             _priceLabel.text = [NSString stringWithFormat:@"%ld元",_model.currentPrice];
             NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
             //                _pricesLabel.text = model.currentPrice;
-            _nameLabel.text =_conver.name;
+            _nameLabel.text =_conver.clubname;
             _ipLabel.text = _model.eAddress;
             //_ipLabel.text = model.eAddress;
             _beginTimeLabel.text = _model.beginDate;
@@ -88,7 +90,9 @@
             _ruleLabel.text = _model.rules;
             _promotLabel.text = _model.ePromot;
             _timeLabel.text = _model.useDate;
-            _soldNumLabel.text = _model.saleCount;        }
+            _soldNumLabel.text = _model.saleCount;
+            [_arr addObject:_model];
+        }
         else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
         }
@@ -129,4 +133,34 @@
     
     }
 }
+
+- (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //配置电话APP的路径，并将要拨打的号码组合到路径中
+    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_expm.clubTel];
+    NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
+    NSLog(@"_fitness.clubTel = %@",_expm.clubTel);
+    //从当前APP跳转到其他指定的APP中
+    [[UIApplication sharedApplication] openURL:targetAppUrl];
+    NSString *string =_expm.clubTel;
+    //按逗号截取字符串
+    _arr = [string componentsSeparatedByString:@","];
+    //创建一个从底部弹出的弹窗
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //遍历判断数组中有几个值
+    for (int i = 0; i < _arr.count; i++) {
+        UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:actionA];
+    }
+    
+    UIAlertAction *actionB = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:actionB];
+    [self presentViewController:alert animated:YES completion:nil];
+    UIWebView *callWebview =[[UIWebView alloc]init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+    [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+}
+
 @end

@@ -22,4 +22,5 @@
 #import <UIImageView+WebCache.h>
 #import "GBAlipayManager.h"
 #import <Foundation/Foundation.h>
+//#import "SDCycleScrollView.h"
 #endif /* PrefixHeader_pch */

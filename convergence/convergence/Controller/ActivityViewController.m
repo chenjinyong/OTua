@@ -65,11 +65,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self locationStart];
+    self.tabBarController.tabBar.hidden = NO;
     
 }
 //每次到达这个页面的时候
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
 }
 //每次将要离开这个页面的时候
 -(void)viewWillDisappear:(BOOL)animated{
@@ -127,7 +129,7 @@
     //设置导航条的文字
     self.navigationItem.title = @"活动列表";
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -151,7 +153,7 @@
     NSAttributedString *attrTitle = [[NSAttributedString alloc]initWithString:title attributes:dic];
     refreshControl.attributedTitle = attrTitle;
     //设置刷新指示器的颜色
-    refreshControl.tintColor = [UIColor redColor];
+    refreshControl.tintColor = [UIColor grayColor];
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //定义用户触发下拉事件执行的方法
     [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];

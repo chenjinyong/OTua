@@ -10,27 +10,42 @@
 
 @interface ConvergenceModel : NSObject
 
-@property (strong,nonatomic)NSString *address;
-@property (strong,nonatomic)NSString *distance;
-@property (strong,nonatomic)NSString *categoryName;//类别名称
-@property (strong,nonatomic)NSString *detailid;
-@property (strong,nonatomic)NSString *Image;
-@property (strong,nonatomic)NSString *image;
-@property (strong,nonatomic)NSString *logo;
-@property (strong,nonatomic)NSString *imgurl;
-@property (strong,nonatomic)NSString *name;
-@property (nonatomic) NSInteger  Price;  
+@property (nonatomic,strong) NSString * hotId;
+@property (nonatomic,strong) NSString * jingdu;
+@property (nonatomic,strong) NSString * weidu;
+
+@property (nonatomic,strong) NSString * logoimage;
+@property (nonatomic,strong) NSString * advimage;
+//second
+@property(nonatomic)NSInteger clubId;
+@property (nonatomic) NSInteger clubdis;
+@property (nonatomic,strong) NSString * clubname;
+@property (nonatomic,strong) NSString * clubaddress;
+@property (nonatomic,strong) NSString * clubimage;
+@property (nonatomic,strong) NSString * clubprice;
+@property (strong,nonatomic) NSArray * experience;
+
+@property (strong,nonatomic) NSString *memberId;
+@property (strong,nonatomic) NSString *nickname;
+@property (strong,nonatomic) NSString *avatarUrl;
+//detail
+@property (nonatomic,strong) NSString * clubadd;
+@property (strong,nonatomic) NSString * introduce;
+@property (strong,nonatomic) NSString * clubLogo;
+@property (strong,nonatomic) NSString * clName;
+@property (strong,nonatomic) NSString * clubTel;
+@property (strong,nonatomic) NSString * clubTime;
+@property (nonatomic) NSInteger  clubMember;//会员
+@property (nonatomic) NSInteger clubPerson;//教练
+@property (nonatomic) NSInteger clubSite;//场地
+@property (strong,nonatomic) NSArray * experienceInfos;//体验劵信息
+@property (strong,nonatomic) NSString * eLogo;
+@property (strong,nonatomic) NSString * expNmae;
 @property (nonatomic) NSInteger orginPrice;
-@property (strong,nonatomic)NSString *sellNumber;
+@property (nonatomic) NSInteger number;
 
-@property (strong,nonatomic) NSString *latitude;
-@property (strong,nonatomic) NSString *longitude;
-///<<<<< HEAD
-@property (strong,nonatomic)NSArray *experience;
-//=======
-
-
-//>>>>>>> d3c205da4586fdb26b6967810081ad49815a0bd6
-- (instancetype)initWithDict: (NSDictionary *)dict;
-@end
+-(instancetype)initWithDetailNSDictionary:(NSDictionary *)dict;
+-(instancetype)initWithLeftNSDictionary:(NSDictionary *)dict;
+-(instancetype)initWithFirstNSDictionary:(NSDictionary *)dict;
+-(instancetype)initWithSecondNSDictionary:(NSDictionary *)dic;@end
 

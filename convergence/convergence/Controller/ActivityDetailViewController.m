@@ -43,6 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,13 +54,13 @@
     //设置导航条的文字
     self.navigationItem.title = _activity.name;
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条上按钮的风格颜色
-    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
@@ -74,9 +75,9 @@
     }
     [RequestAPI requestURL:request withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject = %@",responseObject);
-        [aiv stopAnimating];
+     //   [aiv stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
-            NSDictionary * result = responseObject[@"result"];
+            NSDictionary * result = responseObject[@"locDict"];
             _activity = [[ActivityModel alloc]initWithDetailDictionary:result];
             [self uiLyout];
             
