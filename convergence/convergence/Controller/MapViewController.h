@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "VouchersModel.h"
 @interface MapViewController : UIViewController
 
+@property (strong,nonatomic) VouchersModel *Vouch;
 @end

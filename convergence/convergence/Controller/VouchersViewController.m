@@ -21,7 +21,7 @@
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
-@property (strong,nonatomic)VouchersModel * expm;
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//会所名字
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;//地址
 
@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;//使用时间
 @property (weak, nonatomic) IBOutlet UILabel *ruleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promotLabel;//提示
-@property (strong,nonatomic)VouchersModel *model;
+
 @property (strong,nonatomic)NSMutableArray *arr;
 @end
 
@@ -74,24 +74,24 @@
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSLog(@"result = %@",result);
-            _model = [[VouchersModel alloc]initWithDictionary:result];
+            _voucher = [[VouchersModel alloc]initWithDictionary:result];
             
-            [_logoImg sd_setImageWithURL:[NSURL URLWithString:_model.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
-            _cardStyleLabel.text = _model.eName;
-            _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)_model.orginPrice];
-            _priceLabel.text = [NSString stringWithFormat:@"%ld元",_model.currentPrice];
+            [_logoImg sd_setImageWithURL:[NSURL URLWithString:_voucher.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
+            _cardStyleLabel.text = _voucher.eName;
+            _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)_voucher.orginPrice];
+            _priceLabel.text = [NSString stringWithFormat:@"%ld元",_voucher.currentPrice];
             NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
             //                _pricesLabel.text = model.currentPrice;
             _nameLabel.text =_conver.clubname;
-            _ipLabel.text = _model.eAddress;
+            _ipLabel.text = _voucher.eAddress;
             //_ipLabel.text = model.eAddress;
-            _beginTimeLabel.text = _model.beginDate;
-            _endTimeLabel.text = _model.endDate;
-            _ruleLabel.text = _model.rules;
-            _promotLabel.text = _model.ePromot;
-            _timeLabel.text = _model.useDate;
-            _soldNumLabel.text = _model.saleCount;
-            [_arr addObject:_model];
+            _beginTimeLabel.text = _voucher.beginDate;
+            _endTimeLabel.text = _voucher.endDate;
+            _ruleLabel.text = _voucher.rules;
+            _promotLabel.text = _voucher.ePromot;
+            _timeLabel.text = _voucher.useDate;
+            _soldNumLabel.text = _voucher.saleCount;
+            [_arr addObject:_voucher];
         }
         else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
@@ -124,7 +124,7 @@
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if([Utilities loginCheck]){
         payTableViewController *pay = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"Purchase"];
-        pay.Vouch = _model;
+        pay.Vouch = _voucher;
         [self.navigationController pushViewController:pay animated:YES];
         
     }else{
@@ -136,12 +136,12 @@
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
     //配置电话APP的路径，并将要拨打的号码组合到路径中
-    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_expm.clubTel];
+    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_voucher.clubTel];
     NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-    NSLog(@"_fitness.clubTel = %@",_expm.clubTel);
+    NSLog(@"_fitness.clubTel = %@",_voucher.clubTel);
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAppUrl];
-    NSString *string =_expm.clubTel;
+    NSString *string =_voucher.clubTel;
     //按逗号截取字符串
     _arr = [string componentsSeparatedByString:@","];
     //创建一个从底部弹出的弹窗

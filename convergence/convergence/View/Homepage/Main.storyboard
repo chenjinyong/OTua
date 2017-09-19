@@ -207,24 +207,25 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="244" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ma4-1W-TWw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="separatorColor" red="0.14609724283218384" green="0.54566603899002075" blue="0.99417585134506226" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="5ki-Hk-4WG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell1" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="203" id="9wO-pa-L2b" customClass="ConvergenceTableViewCell">
-                                                <rect key="frame" x="0.0" y="184" width="375" height="203"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell1" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="190" id="9wO-pa-L2b" customClass="ConvergenceTableViewCell">
+                                                <rect key="frame" x="0.0" y="153" width="375" height="190"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9wO-pa-L2b" id="wdt-df-61B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z1H-u5-E0n">
-                                                            <rect key="frame" x="10" y="10" width="355" height="188"/>
+                                                            <rect key="frame" x="10" y="10" width="355" height="174.5"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EE-rQ-ZXy">
-                                                            <rect key="frame" x="10" y="142.5" width="355" height="60"/>
+                                                            <rect key="frame" x="10" y="124.5" width="355" height="60"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdf-nD-KXe">
                                                                     <rect key="frame" x="10" y="10" width="42" height="21"/>
@@ -245,7 +246,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666666666666663" alpha="0.40300396126760563" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.24313725490196078" green="0.24705882352941178" blue="0.25098039215686274" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="Pp9-mu-Bd3" firstAttribute="top" secondItem="bdf-nD-KXe" secondAttribute="bottom" constant="5" id="9kk-Wg-IcI"/>
                                                                 <constraint firstItem="Pp9-mu-Bd3" firstAttribute="bottom" secondItem="7EE-rQ-ZXy" secondAttribute="bottomMargin" id="Gx0-tD-pm8"/>
@@ -263,7 +264,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="Z1H-u5-E0n" secondAttribute="bottom" constant="5" id="32o-WA-XOS"/>
                                                         <constraint firstItem="Z1H-u5-E0n" firstAttribute="centerX" secondItem="wdt-df-61B" secondAttribute="centerX" id="47S-Q2-nCO"/>
                                                         <constraint firstItem="Z1H-u5-E0n" firstAttribute="top" secondItem="wdt-df-61B" secondAttribute="top" constant="10" id="LqT-te-Iej"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7EE-rQ-ZXy" secondAttribute="bottom" id="P7o-wZ-BS0"/>
+                                                        <constraint firstItem="7EE-rQ-ZXy" firstAttribute="bottom" secondItem="Z1H-u5-E0n" secondAttribute="bottom" id="WdN-bF-asY"/>
                                                         <constraint firstItem="7EE-rQ-ZXy" firstAttribute="leading" secondItem="wdt-df-61B" secondAttribute="leading" constant="10" id="cOX-1O-HTZ"/>
                                                         <constraint firstItem="7EE-rQ-ZXy" firstAttribute="centerX" secondItem="wdt-df-61B" secondAttribute="centerX" id="dFb-f2-1eU"/>
                                                         <constraint firstAttribute="trailing" secondItem="Z1H-u5-E0n" secondAttribute="trailing" constant="10" id="dOM-Tv-HDN"/>
@@ -275,14 +276,13 @@
                                                     <outlet property="ipLabel" destination="Pp9-mu-Bd3" id="yTh-o9-KM4"/>
                                                     <outlet property="logoImg" destination="Z1H-u5-E0n" id="Xnc-Kb-aNj"/>
                                                     <outlet property="nameLabel" destination="bdf-nD-KXe" id="IeM-wh-WvM"/>
-                                                    <segue destination="9G4-Wk-FzH" kind="show" identifier="List2Detail" id="Leu-aA-Cci"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell2" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="102" id="s8H-cI-jot" customClass="ConTableViewCell">
-                                                <rect key="frame" x="0.0" y="387" width="375" height="102"/>
+                                                <rect key="frame" x="0.0" y="343" width="375" height="102"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s8H-cI-jot" id="Frd-bf-xay">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KQS-PS-Kma">
@@ -330,13 +330,13 @@
                                                         <constraint firstItem="pcz-ll-Xnx" firstAttribute="centerY" secondItem="KQS-PS-Kma" secondAttribute="centerY" id="zK2-a7-Ir7"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="cardImg" destination="KQS-PS-Kma" id="hSb-E9-5e3"/>
                                                     <outlet property="cardNameLabel" destination="h1a-nO-A6b" id="ghk-7g-ZXZ"/>
                                                     <outlet property="numLabel" destination="HhO-SX-olX" id="7im-8w-fyG"/>
                                                     <outlet property="pricelabel" destination="79q-hI-hdd" id="udz-l7-GyU"/>
                                                     <outlet property="volumeLabel" destination="pcz-ll-Xnx" id="Bq9-NC-PCV"/>
-                                                    <segue destination="0BQ-gG-yYp" kind="show" identifier="List2Vouchers" id="SGU-gt-8zw"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -369,16 +369,20 @@
                         <outlet property="imgView" destination="5ki-Hk-4WG" id="ioJ-gd-Ajz"/>
                         <outlet property="logoImg" destination="Ma4-1W-TWw" id="NwG-vM-1RQ"/>
                         <outlet property="tableView" destination="Ma4-1W-TWw" id="JpX-As-yMq"/>
+                        <segue destination="0BQ-gG-yYp" kind="show" identifier="List2Vouchers" id="gLu-Cm-cu9"/>
+                        <segue destination="9G4-Wk-FzH" kind="show" identifier="List2Detail" id="HDI-L2-xsA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Os2-Rp-w4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013.5" y="-1693.5"/>
+            <point key="canvasLocation" x="1012" y="-1694.3028485757122"/>
         </scene>
         <!--Detail-->
         <scene sceneID="nzs-a4-oKE">
             <objects>
-                <viewControllerPlaceholder storyboardName="Detail" id="9G4-Wk-FzH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Detail" id="9G4-Wk-FzH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7c0-Sg-sNp"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tM-ag-oxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1693" y="-1717"/>
@@ -386,7 +390,9 @@
         <!--Vouchers-->
         <scene sceneID="W3w-Gf-G1x">
             <objects>
-                <viewControllerPlaceholder storyboardName="Vouchers" id="0BQ-gG-yYp" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Vouchers" id="0BQ-gG-yYp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="32F-bm-9nD"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWQ-Tz-4AA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1694" y="-1672"/>
@@ -1084,7 +1090,7 @@
                                             <outlet property="activityNameLabel" destination="yXt-gA-E33" id="Vwa-MR-H4m"/>
                                             <outlet property="activityUnlikeLabel" destination="dBf-fk-GXm" id="ANq-nx-R2N"/>
                                             <outlet property="favoBtn" destination="0Z6-9P-skr" id="R2d-pR-l3d"/>
-                                            <segue destination="WwI-MB-7Dl" kind="show" id="ZqN-77-mKc"/>
+                                            <segue destination="WwI-MB-7Dl" kind="show" identifier="List2Detail" id="ZqN-77-mKc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1322,7 +1328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kas-Vb-Hwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="-1033.1334332833585"/>
+            <point key="canvasLocation" x="1012" y="-1033"/>
         </scene>
     </scenes>
     <resources>

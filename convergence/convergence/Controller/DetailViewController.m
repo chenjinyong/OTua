@@ -33,6 +33,7 @@
 
 @property (strong,nonatomic) NSMutableArray *arr;
 @property (strong,nonatomic) NSMutableArray *exparr;
+@property (strong,nonatomic)DetailModel *model;
 @end
 
 @implementation DetailViewController
@@ -40,11 +41,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self netRequest];
+    
     _arr = [NSMutableArray new];
     _exparr = [NSMutableArray new];
     page = 1;
     perpage = 10;
+    [self netRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +60,7 @@
 
 - (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
     
-    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 200);
+    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 210);
     
     //初始化控件
     ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
@@ -73,11 +75,6 @@
     
     self.tabBarController.tabBar.hidden = NO;
     
-}
-
-//单击手势响应事件
--(void)tapClick:(UITapGestureRecognizer *)tap{
-   
 }
 
 //网络请求
@@ -104,25 +101,20 @@
             [_expTableView reloadData];
            // NSLog(@"图片网址：%@",_arr);
             [self addZLImageViewDisPlayView:_arr];
-          //  [self photoscroll];
-            // [_scrollImg sd_setImageWithURL:[NSURL URLWithString:_arr[0]] placeholderImage:[UIImage imageNamed:@""]];/Users/admin/Desktop/会聚/convergence/convergence
-            
-            DetailModel *model = [[DetailModel alloc]initWithDictionary:result];
-            _ipLabel.text = model.clubAddressB;
+ 
+          _model = [[DetailModel alloc]initWithDictionary:result];
+            _ipLabel.text = _model.clubAddressB;
 
-            _namelabel.text = model.clubName;
-            _detailLabel.text =model.clubIntroduce;
-            _timeLabel.text = model.openTime;
-            _vipLabel.text = model.clubMember;
-            _teacherLabel.text = model.clubSite;
-            _siteLabel.text = model.clubPerson;
+            _namelabel.text = _model.clubName;
+            _detailLabel.text =_model.clubIntroduce;
+            _timeLabel.text = _model.openTime;
+            _vipLabel.text = _model.clubMember;
+            _teacherLabel.text = _model.clubSite;
+            _siteLabel.text = _model.clubPerson;
         
         }else {
             [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
-        
-        
-        
-    }
+        }
     }
      failure:^(NSInteger statusCode, NSError *error) {
          //失败以后要做的事情在此执行
@@ -130,9 +122,7 @@
 
          [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
      }];
-
-        
-    
+ 
 }
 
 //多少组
@@ -151,8 +141,7 @@
         return 120.0f;
 }
 //设置每一组中每一行细胞被点击以后要做的事情
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     VouchersViewController *Vouch = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"cardDetail"];
     //体验劵详情页的跳转
     DetailModel * home = _exparr[indexPath.row];
@@ -160,7 +149,7 @@
     [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:home.eId];
     //[self presentViewController:Vouch animated:YES completion:nil];
     [self.navigationController pushViewController:Vouch animated:YES];
-    
+   
 }
 
 //细胞长什么样
@@ -180,25 +169,21 @@
 
 }
 
-
-
-
-
-
 #pragma mark - Navigation
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
     //配置电话APP的路径，并将要拨打的号码组合到路径中
-    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_home.clubTel];
+    NSString *targetAppStr = [NSString stringWithFormat:@"%@",_model.clubTel];
     NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-    NSLog(@"_home.clubTel = %@",_home.clubTel);
+    NSLog(@"_home.clubTel = %@",_model.clubTel);
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAppUrl];
-    NSString *string =_fitness.clubTel;
+    NSString *string =_model.clubTel;
     //按逗号截取字符串
     _arr = [string componentsSeparatedByString:@","];
     //创建一个从底部弹出的弹窗
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    NSLog(@"_home.clubTel = %@",_model.clubTel);
     //遍历判断数组中有几个值
     for (int i = 0; i < _arr.count; i++) {
         UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

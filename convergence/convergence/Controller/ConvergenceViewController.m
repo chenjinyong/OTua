@@ -59,7 +59,7 @@
 }
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -67,20 +67,20 @@
     //设置导航条上按钮的风格颜色
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
     
     //设置状态栏为白色
     UIApplication *app= [UIApplication sharedApplication];
     app.statusBarStyle = UIStatusBarStyleLightContent;
     
-//    //去除导航栏下方的横线
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    //去除导航栏下方的横线
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
     
-    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 180);
+    CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 125);
     
     //初始化控件
     ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
@@ -148,16 +148,13 @@
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             
             NSArray * adv = responseObject[@"advertisement"];
-            //NSLog(@"adv =%@",adv);
-            
-            
+  
             for(NSDictionary * advDict in adv){
                 
                 _imgArr[i] = advDict[@"imgurl"];
                 i++;
             }
             NSLog(@"_advArr =%@",_imgArr);
-           // [self photoscroll];
             [self addZLImageViewDisPlayView:_imgArr];
             NSDictionary * result = responseObject[@"result"];
             NSArray * models = result[@"models"];
@@ -209,23 +206,25 @@
 //细胞高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 240;
+        return 215;
     }else{
-        return 120.0f;
+        return 115;
     }
     
 }
 //设置每一组中每一行细胞被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
     ConvergenceModel * home = _arr[indexPath.section];
     NSString *Id =  [NSString stringWithFormat:@"%ld",home.clubId];
     //NSLog(@"id是：%@",Id);
-    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
+    
     if(indexPath.row == 0){
+        
         [self performSegueWithIdentifier:@"List2Detail" sender:nil];
     }else {
         NSArray *array = home.experience;
@@ -233,7 +232,9 @@
         NSString *eId =  dict[@"id"];
         [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:eId];
         [self performSegueWithIdentifier:@"List2Vouchers" sender:nil];
-    }}
+    }
+     
+}
 
 
 -(void)locationConfig{
@@ -345,13 +346,7 @@
         
         cell.ipLabel.text = conver.clubaddress;
         cell.nameLabel.text = conver.clubname;
-
-//        //计算距离
-//        CLLocation *location = [[CLLocation alloc] initWithLatitude:[conver.latitude doubleValue] longitude:[conver.longitude doubleValue]];
-//        
-//        
-//        CLLocationDistance kilometers=[_location distanceFromLocation:location]/1000;
-        cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%ld米",(long)conver.clubdis];
+        cell.distanceLabel.text = [NSString stringWithFormat:@"%ld米",(long)conver.clubdis];
         
         [_aiv stopAnimating];
         return cell;

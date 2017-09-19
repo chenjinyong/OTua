@@ -129,7 +129,7 @@
     //设置导航条的文字
     self.navigationItem.title = @"活动列表";
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -137,7 +137,10 @@
     //设置导航条上按钮的风格颜色
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
+    //去除导航栏下方的横线
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 -(void)uiLayout{
     _tableView.tableFooterView = [UIView new];

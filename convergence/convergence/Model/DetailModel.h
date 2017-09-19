@@ -15,7 +15,7 @@
 @property (strong,nonatomic) NSString *fName;//名字
 @property (strong,nonatomic) NSString *grayImgUrl;//图片
 @property (strong,nonatomic) NSString *greenImgUrl;//图片
-@property (strong,nonatomic) NSString *clubTel;//电话号码
+
 @property (strong,nonatomic) NSString *clubJing;//经度
 @property (strong,nonatomic) NSString *clubLogo;//图片
 @property (strong,nonatomic) NSString *clubMember;//会员
@@ -24,8 +24,10 @@
 @property (strong,nonatomic) NSString *clubPerson;//教练
 @property (strong,nonatomic) NSString *clubIntroduce;//介绍
 @property (strong,nonatomic) NSString *openTime;//经度
-@property (strong,nonatomic) NSString *clubSite;//面积
+@property (strong,nonatomic) NSString *clubSite;//
+@property (strong,nonatomic) NSString *clubTel;//电话号码
 @property (strong,nonatomic) NSString *eId;//
+
 
 @property (strong,nonatomic) NSString *address;//地址
 @property (strong,nonatomic) NSString *storeNums;//拥有分店数量
