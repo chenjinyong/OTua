@@ -87,7 +87,7 @@
     UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     [RequestAPI requestURL:@"/score/memberScore" withParameters:@{@"memberId":model.memberId} andHeader:nil byMethod:kGet andSerializer:kForm
         success:^(id responseObject){
-        NSLog(@"dhhhd %@",responseObject);
+//        NSLog(@"dhhhd %@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             _result = responseObject[@"result"];
             

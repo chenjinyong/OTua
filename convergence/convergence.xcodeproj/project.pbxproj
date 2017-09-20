@@ -690,10 +690,10 @@
 			children = (
 				84F6BE301F5D64B900A3C791 /* Cell */,
 				B29FE1701F5D32700085C03E /* Main.storyboard */,
+				848D3F531F5525310043C9BD /* LaunchScreen.storyboard */,
 				848D3F511F5525310043C9BD /* Assets.xcassets */,
 				84F6BE2E1F5D610F00A3C791 /* MyLogin.storyboard */,
 				84F6BE391F5D734D00A3C791 /* setUp.storyboard */,
-				848D3F531F5525310043C9BD /* LaunchScreen.storyboard */,
 				84A77A2C1F6003CD007067AC /* Detail.storyboard */,
 				84A77A341F600EA2007067AC /* Vouchers.storyboard */,
 				84B2154B1F615037001A79AB /* MyOrder.storyboard */,

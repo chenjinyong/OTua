@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface orderModel : NSObject
-@property (weak,nonatomic)NSString * productName;
-@property (weak,nonatomic)NSString * clubName;
-@property (weak,nonatomic)NSString * imgUrl;
-@property (weak,nonatomic)NSString * orderNum;
-@property (weak,nonatomic)NSString * cardcomment;
-@property (weak,nonatomic)NSString * type;
-@property (weak,nonatomic)NSString * donepay;
+@property (strong, nonatomic) NSString * productName;
+@property (strong, nonatomic) NSString * clubName;
+@property (strong, nonatomic) NSString * imgUrl;
+@property (strong, nonatomic) NSString * orderNum;
+@property (strong, nonatomic) NSString * cardcomment;
+@property (strong, nonatomic) NSString * type;
+@property (strong, nonatomic) NSString * donepay;
 
--(instancetype)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end

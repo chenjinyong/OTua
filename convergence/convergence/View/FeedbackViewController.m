@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     //[self Request];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 
@@ -33,7 +34,7 @@
 
 -(void)naviConfig{
     //设置导航条的颜色(风格颜色)
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 145, 255);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 118, 255);
     //设置导航条标题的颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏
@@ -42,8 +43,18 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = left;
+    //    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    //    self.navigationItem.leftBarButtonItem = left;
+    
+    //实例化一个button 类型为UIButtonTypeSystem
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置位置大小CGRectMake(0, 0, 20, 20)
+    leftBtn.frame = CGRectMake(0, 0, 15, 25);
+    //设置其背景图片为返回图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 }
 
 -(void)backAction{
@@ -76,7 +87,7 @@
     NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"message":_FeedBackTextView.text};
 
     [RequestAPI requestURL:@"/clubFeedback" withParameters:para andHeader:nil byMethod:kPost andSerializer:kRes success:^(id responseObject) {
-        NSLog(@"反馈：%@",responseObject);
+//        NSLog(@"反馈：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             [Utilities popUpAlertViewWithMsg:@"提交成功" andTitle:@"提示" onView:self];
             
@@ -85,7 +96,7 @@
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        NSLog(@"statusCode%ld",(long)statusCode);
+//        NSLog(@"statusCode%ld",(long)statusCode);
         [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
     }];
 }

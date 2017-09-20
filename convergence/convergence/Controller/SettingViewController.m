@@ -26,16 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //_arr = @[@{@"nickLabel":@"昵称",@"userNameLabel":@""},@{@"nickLabel":@"性别",@"userNameLabel":@""},@{@"nickLabel":@"生日",@"userNameLabel":@""},@{@"nickLabel":@"身份证号码",@"userNameLabel":@""}];
    // _arr = [NSMutableArray new];//可变数组必须初始化
-//    NSDictionary * dictA = @{@"nickLabel":@"昵称",@"userNameLabel":@""};
-//    NSDictionary * dictB = @{@"nickLabel":@"性别",@"userNameLabel":@""};
-//    NSDictionary * dictC = @{@"nickLabel":@"生日",@"userNameLabel":@""};
-//    NSDictionary * dictD = @{@"nickLabel":@"身份证号码",@"userNameLabel":@""};
-//    [_arr addObject:dictA];
-//    [_arr addObject:dictB];
-//    [_arr addObject:dictC];
-//    [_arr addObject:dictD];
+
     _arr = @[@"昵称",@"性别",@"生日",@"身份证号码"];
     
     
@@ -227,6 +219,8 @@
 }
 
 - (void)exit{
+    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"MemberId"];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
