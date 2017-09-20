@@ -13,6 +13,9 @@
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
+@property (strong,nonatomic) UIActivityIndicatorView * aiv;
+//@property(strong,nonatomic) UserModel * User;
+
 @end
 
 @implementation ModifyViewController
@@ -20,7 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    _User = [[StorageMgr singletonStorageMgr] objectForKey:@"MemberInfo"];
     [self naviConfig];
+    [self setTextFieldLeftPadding:_textField forWidth:15];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,20 +60,31 @@
 }
 
 -(void)ModifyRequest{
+    NSString * nc  = _textField.text;
     UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+     _aiv=[Utilities getCoverOnView:self.view];
     //[parameters setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"]];
-    NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"name":_textField.text};
+    NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"name":nc};
     [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        [_aiv stopAnimating];
         NSLog(@"昵称：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
             
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+            
         }else{
-            [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:nil];
             
         }
     } failure:^(NSInteger statusCode, NSError *error) {
+        [_aiv stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"网络错误，请稍候再试" andTitle:@"提示" onView:nil];
     }];
     
@@ -83,6 +99,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)setTextFieldLeftPadding:(UITextField *)textField forWidth:(CGFloat)leftWidth
+{
+    CGRect frame = textField.frame;
+    frame.size.width = leftWidth;
+    UIView *leftview = [[UIView alloc] initWithFrame:frame];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    textField.leftView = leftview;
+}
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
     [self ModifyRequest];

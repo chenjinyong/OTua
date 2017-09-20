@@ -127,7 +127,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wwo-aK-k9N">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wwo-aK-k9N">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jAp-X8-FHr"/>
@@ -136,12 +136,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-BW-gyL">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wwo-aK-k9N" firstAttribute="top" secondItem="9tW-2F-dBs" secondAttribute="bottom" id="1TW-cr-08S"/>
+                            <constraint firstItem="YAX-1b-fsI" firstAttribute="top" secondItem="7Fl-BW-gyL" secondAttribute="bottom" id="3jc-zy-Y2s"/>
                             <constraint firstAttribute="trailing" secondItem="wwo-aK-k9N" secondAttribute="trailing" id="9yk-t1-bkP"/>
+                            <constraint firstAttribute="trailing" secondItem="7Fl-BW-gyL" secondAttribute="trailing" id="EzY-hQ-iF3"/>
                             <constraint firstItem="wwo-aK-k9N" firstAttribute="leading" secondItem="Hb5-rW-lzv" secondAttribute="leading" id="R6U-Ag-QtU"/>
+                            <constraint firstItem="7Fl-BW-gyL" firstAttribute="leading" secondItem="Hb5-rW-lzv" secondAttribute="leading" id="S2O-Zg-Ij9"/>
+                            <constraint firstItem="7Fl-BW-gyL" firstAttribute="top" secondItem="wwo-aK-k9N" secondAttribute="bottom" id="rGH-bI-rSr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="修改昵称" id="bx9-4Z-27P">
