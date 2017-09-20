@@ -82,7 +82,7 @@
     NSDictionary *para = @{@"userTel" : _userNameText.text,@"type" : @1};
     //网络请求
     [RequestAPI requestURL:@"/register/verificationCode" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"验证码 = %@",responseObject);
+//        NSLog(@"验证码 = %@",responseObject);
         //当网络请求成功时让蒙层消失
         [_avi stopAnimating];
         
@@ -145,7 +145,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     
     [RequestAPI requestURL:@"/register" withParameters:@{@"userTel":@7001,@"userPwd": [Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary * result = responseObject[@"result"];
@@ -174,7 +174,7 @@
     [RequestAPI requestURL:@"/login" withParameters:@{@"userName": _userNameText.text,@"password": encryptPwd,@"userTel": @7001,@"userPwd":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
         
         [_avi stopAnimating];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary * result = responseObject[@"result"];
             UserModel *user = [[UserModel alloc] initWithDictionary:result];

@@ -36,6 +36,8 @@
 -(void)naviConfig{
     //设置导航条的文字
     self.navigationItem.title = @"修改昵称";
+    //设置导航条的颜色(风格颜色)
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 110, 255);
     //为导航条右上角创建一个按钮
 //    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"Sava" style:UIBarButtonItemStylePlain target:self action:nil];
 //    self.navigationItem.rightBarButtonItem = right;

@@ -97,7 +97,7 @@
     _aiv = [Utilities getCoverOnView:self.view];
     
     [RequestAPI requestURL:@"/login/getKey" withParameters:@{@"deviceType":@7001,@"deviceId": [Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject := %@",responseObject);
+//        NSLog(@"responseObject := %@",responseObject);
         
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary * result = responseObject[@"result"];
@@ -125,7 +125,7 @@
     [RequestAPI requestURL:@"/login" withParameters:@{@"userName": _usernameTextField.text,@"password": encryptPwd,@"deviceType": @7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
         
         [_aiv stopAnimating];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary * result = responseObject[@"result"];
             UserModel *user = [[UserModel alloc] initWithDictionary:result];

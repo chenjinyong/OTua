@@ -70,12 +70,17 @@
 }
 
 -(void)request{
+    
     UserModel *model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     [RequestAPI requestURL:@"/score/memberScore" withParameters:@{@"memberId":model.memberId} andHeader:nil byMethod:kGet andSerializer:kForm
                    success:^(id responseObject){
-                       NSLog(@"dhhhd %@",responseObject);
+//                       NSLog(@"dhhhd %@",responseObject);
                        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
                            _result = responseObject[@"result"];
+                           if (_result != nil) {
+                               _str = [NSString stringWithFormat:@"当前积分:%@",_result ];
+                               [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:_str onView:self];
+                           }
                            
                        }else{
                            
@@ -140,11 +145,6 @@
                     break;
                 case 2:{
                     [self request];
-                    if (_result != nil) {
-                        _str = [NSString stringWithFormat:@"当前积分:%@",_result ];
-                        [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲" andTitle:_str onView:self];
-                    }
-                    
                 }
                     break;
                 case 3:{
