@@ -57,6 +57,8 @@
     _str1 = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
     [self initialization];
     [self disnetworkRequest];
+    //创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
 
     //设置导航条的颜色(风格颜色)
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
@@ -83,6 +85,7 @@
     [super viewWillAppear:animated];
     _SxTableView.hidden = YES;
     _coverView.hidden = YES;
+    
     
     
 }

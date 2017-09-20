@@ -25,7 +25,13 @@
         _status = [Utilities nullAndNilCheck:dict[@"status"] replaceBy:@""];
         _useDate = [Utilities nullAndNilCheck:dict[@"useDate"] replaceBy:@""];
         _rules = [Utilities nullAndNilCheck:dict[@"rules"] replaceBy:@""];
-        _ePromot = [Utilities nullAndNilCheck:dict[@"ePromot"] replaceBy:@""];
+       
+        if ([dict[@"ePromot"] isKindOfClass:[NSNull class]]) {
+            _ePromot = @"无";
+        }else{
+            _ePromot = [Utilities nullAndNilCheck:dict[@"ePromot"] replaceBy:@""];
+        }
+
         _eFeature = [Utilities nullAndNilCheck:dict[@"eFeature"] replaceBy:@""];
         _experienceQuantity = [Utilities nullAndNilCheck:dict[@"experienceQuantity"] replaceBy:@""];
         
