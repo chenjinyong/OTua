@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <ECSlidingViewController/ECSlidingViewController.h>
-
+#import "UserModel.h"
 @interface AppDelegate () <ECSlidingViewControllerDelegate>
 
 @property (strong,nonatomic)ECSlidingViewController *slidingVC;
@@ -49,9 +49,9 @@
     //（设置app入口）
     _window.rootViewController = _slidingVC;
     
+    
     //注册侧滑按钮被按的监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
-    
     //    [_slidingVC addTarget:self action:@selector(LeftSwitch:) forControlEvents:UIControlEventEditingChanged];
     
     return YES;
@@ -59,11 +59,12 @@
 
 //当前收到通知后要执行的方法
 -(void)leftSwitchAction:(UIBarButtonItem *)note{
-    NSLog(@"侧滑");
+    UIBarButtonItem * bar = note;
+    //NSLog(@"侧滑");
     //当台上的状态打开，当打开的状态下合上
     if(_slidingVC.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered){
         [_slidingVC anchorTopViewToRightAnimated:YES];
-    }else{
+           }else{
         [_slidingVC resetTopViewAnimated:YES];
     }
     

@@ -10,6 +10,7 @@
 #import "FoundTableViewCell.h"
 #import "FoundCollectionViewCell.h"
 #import "FoundModel.h"
+#import "UserModel.h"
 #import <UIImageView+WebCache.h>
 #import "DetailViewController.h"
 
@@ -31,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIView *coverView;
 @property (weak, nonatomic) IBOutlet UITableView *SxTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableView;
+- (IBAction)avaActon:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *avaImg;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *ContentCollectionView;
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
@@ -41,6 +44,7 @@
 @property (strong,nonatomic) NSString * disStr;
 @property (strong,nonatomic) NSString * idStr;
 @property (strong,nonatomic) NSMutableArray * contentArr;
+@property (strong,nonatomic)UIImageView *imgview;
 
 @property (strong,nonatomic) NSString *str;
 @property (strong,nonatomic) NSString *str1;
@@ -51,6 +55,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
+    [self addtapgestureRecognizer:self.imgview];
+    //接收侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
     
     
     _str  = [[StorageMgr singletonStorageMgr]objectForKey:@"jindu"];
@@ -85,10 +95,39 @@
     [super viewWillAppear:animated];
     _SxTableView.hidden = YES;
     _coverView.hidden = YES;
-    
-    
+}
+
+-(void)changeHeadImg{
+    UserModel * user = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    if (![Utilities loginCheck]) {
+        
+        
+        //[_avatarImg setImage:[UIImage imageNamed:@"Location"]];
+        [_imgview setImage:[UIImage imageNamed:@"ic_user"]];
+    }
+    else{
+//        NSLog(@"图片 %@",user.avatarUrl);
+        //NSString *imgurl = [NSString stringWithFormat:@"%@",user.avatarUrl];
+        [_imgview sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"ic_user_head"]];
+        
+        // _imgview =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Mine"]]
+    }
     
 }
+//添加单击手势
+-(void)addtapgestureRecognizer:(id)any{
+    //初始化一个单击手势，设置响应的事件为tapclick
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+    [any addGestureRecognizer:tap];
+}
+-(void)tapClick:(UITapGestureRecognizer *)tap{
+    
+    if (tap.state == UIGestureRecognizerStateRecognized ) {
+        //发送注册按钮被按的通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
+    }
+}
+
 #pragma mark - collection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;{
     return _contentArr.count;
@@ -373,7 +412,7 @@
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         //失败以后要做的事情在此处执行
-        NSLog(@"statusCode = %ld",(long)statusCode);
+//        NSLog(@"statusCode = %ld",(long)statusCode);
         [_aiv stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
@@ -404,7 +443,7 @@
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         //失败以后要做的事情在此处执行
-        NSLog(@"statusCode = %ld",(long)statusCode);
+//        NSLog(@"statusCode = %ld",(long)statusCode);
         [_aiv stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
@@ -587,5 +626,9 @@
     _coverView.hidden = NO;
     [_SxTableView reloadData];
 
+}
+- (IBAction)avaActon:(UIBarButtonItem *)sender {
+    //发送注册按钮被按的通知
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
 }
 @end

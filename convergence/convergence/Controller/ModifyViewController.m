@@ -69,7 +69,7 @@
     NSDictionary *para = @{@"memberId":@([model.memberId integerValue]),@"name":nc};
     [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
         [_aiv stopAnimating];
-        NSLog(@"昵称：%@",responseObject);
+//        NSLog(@"昵称：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];

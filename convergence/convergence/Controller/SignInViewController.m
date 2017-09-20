@@ -29,6 +29,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)naviConfig{
     
     //设置导航条的颜色(风格颜色)
@@ -140,6 +141,9 @@
             //记忆用户名
             [Utilities setUserDefaults:@"Username" content:_usernameTextField.text];
             //用Model的方式返回上一页
+            //发送注册按钮被按的通知
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"changeHeadImg" object:nil];
+
             [self dismissViewControllerAnimated:YES completion:nil];
             
         }else{
@@ -151,7 +155,6 @@
     } failure:^(NSInteger statusCode, NSError *error) {
         [_aiv stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
-        
     }];
 }
 //按键盘上的return键收起键盘

@@ -134,7 +134,7 @@
         [_aiv stopAnimating];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary * result= responseObject[@"result"];
-            NSLog(@"result =%@",result);
+//            NSLog(@"result =%@",result);
             // 1.实例化二维码滤镜
             CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
             

@@ -82,7 +82,7 @@
     NSString *ClubId = [[StorageMgr singletonStorageMgr]objectForKey:@"clubId"];
     NSDictionary * para = @{@"clubKeyId":ClubId};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"会所详情 = %@",responseObject);
+//        NSLog(@"会所详情 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
            // NSLog(@"rrr = %@",result);
@@ -95,7 +95,7 @@
              NSArray *eArr = result[@"experienceInfos"];
             for(NSDictionary * dict in eArr){
                 DetailModel * detail = [[DetailModel alloc]initWithDictionary:dict];
-                NSLog(@"555878%@",detail.experienceInfos);
+//                NSLog(@"555878%@",detail.experienceInfos);
                 [_exparr addObject:detail];
             }
             [_expTableView reloadData];
@@ -118,7 +118,7 @@
     }
      failure:^(NSInteger statusCode, NSError *error) {
          //失败以后要做的事情在此执行
-         NSLog(@"statusCode=%ld",statusCode);
+//         NSLog(@"statusCode=%ld",statusCode);
 
          [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
      }];
@@ -132,7 +132,7 @@
 
 //每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"_exparr = %@",_exparr);
+//    NSLog(@"_exparr = %@",_exparr);
     return _exparr.count;
     
 }
@@ -145,7 +145,7 @@
     VouchersViewController *Vouch = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"cardDetail"];
     //体验劵详情页的跳转
     DetailModel * home = _exparr[indexPath.row];
-    NSLog(@"数组值：%@",home.eId);
+//    NSLog(@"数组值：%@",home.eId);
     [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:home.eId];
     //[self presentViewController:Vouch animated:YES completion:nil];
     [self.navigationController pushViewController:Vouch animated:YES];
@@ -155,7 +155,7 @@
 //细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailModel * conver = _exparr[indexPath.row];
-    NSLog(@"conver = %@",conver);
+//    NSLog(@"conver = %@",conver);
     DetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailcell" forIndexPath:indexPath];
     
     NSURL * url = [NSURL URLWithString:conver.eLogo];
@@ -175,7 +175,7 @@
     //配置电话APP的路径，并将要拨打的号码组合到路径中
     NSString *targetAppStr = [NSString stringWithFormat:@"%@",_model.clubTel];
     NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-    NSLog(@"_home.clubTel = %@",_model.clubTel);
+//    NSLog(@"_home.clubTel = %@",_model.clubTel);
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAppUrl];
     NSString *string =_model.clubTel;
@@ -183,7 +183,7 @@
     _arr = [string componentsSeparatedByString:@","];
     //创建一个从底部弹出的弹窗
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    NSLog(@"_home.clubTel = %@",_model.clubTel);
+//    NSLog(@"_home.clubTel = %@",_model.clubTel);
     //遍历判断数组中有几个值
     for (int i = 0; i < _arr.count; i++) {
         UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

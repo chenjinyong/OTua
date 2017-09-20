@@ -8,7 +8,7 @@
 
 #import "VouchersViewController.h"
 #import "VouchersModel.h"
-//#import "ConvergenceModel.h"
+
 #import "payTableViewController.h"
 
 
@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *promotLabel;//提示
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
+
+
 @property (strong,nonatomic)NSMutableArray *arr;
 @end
 
@@ -43,6 +45,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self uiLyout];
+    
     [self netRequest];
     
     _arr = [NSMutableArray new];
@@ -64,25 +67,27 @@
     
 }
 
+
+
 //网络请求
 -(void)netRequest{
     NSString *eid = [[StorageMgr singletonStorageMgr]objectForKey:@"eId"];
 //isKindOfClass:[NSNull class] ?@"-1" : [[StorageMgr singletonStorageMgr]objectForKey:@"eId"];
     
     NSDictionary *para = @{@"experienceId":eid};
-    NSLog(@"para %@",para);
+//    NSLog(@"para %@",para);
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
 //        NSLog(@"体验卷 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
-            NSLog(@"result = %@",result);
+//            NSLog(@"result = %@",result);
             _voucher = [[VouchersModel alloc]initWithDictionary:result];
             
             [_logoImg sd_setImageWithURL:[NSURL URLWithString:_voucher.eLogo] placeholderImage:[UIImage imageNamed:@"eLogo"]];
             _cardStyleLabel.text = _voucher.eName;
             _pricesLabel.text =[NSString stringWithFormat:@"原价:%ld元",(long)_voucher.orginPrice];
             _priceLabel.text = [NSString stringWithFormat:@"%ld元",_voucher.currentPrice];
-            NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
+//            NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
             //                _pricesLabel.text = model.currentPrice;
             _nameLabel.text =_conver.clubname;
             _ipLabel.text = _voucher.eAddress;
@@ -140,7 +145,7 @@
     //配置电话APP的路径，并将要拨打的号码组合到路径中
     NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_voucher.clubTel];
     NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-    NSLog(@"_fitness.clubTel = %@",_voucher.clubTel);
+//    NSLog(@"_fitness.clubTel = %@",_voucher.clubTel);
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAppUrl];
     NSString *string =_voucher.clubTel;
@@ -168,7 +173,7 @@
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
     [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_voucher.longitude];
-    NSLog(@"%@",_voucher.longitude);
+//    NSLog(@"%@",_voucher.longitude);
     [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_voucher.latitude];
     
 }

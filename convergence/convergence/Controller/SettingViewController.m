@@ -220,7 +220,7 @@
 
 - (void)exit{
     [[StorageMgr singletonStorageMgr] removeObjectForKey:@"MemberId"];
-
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"changeHeadImg" object:nil]; 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

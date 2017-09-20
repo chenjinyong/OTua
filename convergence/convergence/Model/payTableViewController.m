@@ -230,7 +230,7 @@
 
 - (IBAction)StepperValueChanged:(id)sender {
     UIStepper *st = (UIStepper *)sender;
-    NSLog(@"%f",st.value);
+//    NSLog(@"%f",st.value);
     _numberLabel.text = [NSString stringWithFormat:@"%0.f",st.value];
     _totalpriceLabel.text = [NSString stringWithFormat:@"%ld元",[_numberLabel.text integerValue] * _Vouch.currentPrice];
 }

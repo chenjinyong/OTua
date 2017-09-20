@@ -30,6 +30,8 @@
 @property (strong,nonatomic) UIImageView *zoomIV;
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;
+- (IBAction)userAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *userImg;
 
 - (IBAction)searchAction:(UIBarButtonItem *)sender;
 - (IBAction)SwitchAction:(UIBarButtonItem *)sender;
@@ -48,8 +50,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    //为表格视图创建footer （该方法可以去除表格视图底部多余的下划线）
-    _tableView.tableFooterView = [UIView new];
     
     [self naviConfig];
     [self uiLayout];
@@ -240,7 +240,7 @@
         //
         [RequestAPI requestURL:request withParameters:parameter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情在此执行
-            NSLog(@"responseObject=%@",responseObject);
+//            NSLog(@"responseObject=%@",responseObject);
             [self endAnimation];
             if ([responseObject[@"resultFlag"] integerValue ] == 8001) {
                 //业务逻辑成功的情况下
@@ -274,7 +274,7 @@
             
         } failure:^(NSInteger statusCode, NSError *error) {
             //失败以后要做的事情在此执行
-            NSLog(@"statusCode=%ld",statusCode);
+//            NSLog(@"statusCode=%ld",statusCode);
             [self endAnimation];
             [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
         }];
@@ -374,7 +374,7 @@
             UIAlertAction *actionB = [UIAlertAction actionWithTitle:@"复制活动内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
                 [pasteboard setString:model.content];
-                NSLog(@"复制内容: %@",pasteboard.string);
+//                NSLog(@"复制内容: %@",pasteboard.string);
                 
                 
             }];
@@ -528,6 +528,11 @@
     }
 }
 
+- (IBAction)userAction:(UIBarButtonItem *)sender {
+    //发送注册按钮被按的通知
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
+}
+
 - (IBAction)searchAction:(UIBarButtonItem *)sender{
     //1.获得要跳转的页面的实例
     UINavigationController *searchVC = [Utilities getStoryboardInstance:@"Main" byIdentity:@"Issue"];
@@ -547,6 +552,7 @@
 }
 
 - (IBAction)CityBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    
 }
 
 
@@ -576,8 +582,8 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    NSLog(@"纬度：%f",newLocation.coordinate.latitude);
-    NSLog(@"经度：%f",newLocation.coordinate.longitude);
+//    NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+//    NSLog(@"经度：%f",newLocation.coordinate.longitude);
     _location = newLocation;
     //用flag思想判断是否可以去根据定位拿到城市
     if(firstVisit){
@@ -599,7 +605,7 @@
             if(!error){
                 CLPlacemark *first = placemarks.firstObject;
                 NSDictionary *locDict = first.addressDictionary;
-                NSLog(@"locDict = %@",locDict);
+//                NSLog(@"locDict = %@",locDict);
                 NSString *cityStr = locDict[@"City"];
                 cityStr = [cityStr substringToIndex:(cityStr.length -1)];
                 [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];

@@ -13,7 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
 #import "ZLImageViewDisplayView.h"
-
+#import "UserModel.h"
 
 @interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
     NSInteger page;
@@ -26,11 +26,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableView *logoImg;
-- (IBAction)avatarAction:(UIBarButtonItem *)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *imgView;
 
-
+@property (strong,nonatomic)UIImageView *img;
 @property (strong,nonatomic)UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray * arr;
 @property (strong,nonatomic) NSMutableArray * brr;
@@ -38,7 +37,7 @@
 
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;
-
+@property (strong,nonatomic)UIImageView *imgview;
 
 @end
 
@@ -52,7 +51,14 @@
     [self enterApp];
     [self locationConfig];
     [self dataInitialize];
-
+    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
+//    _imgview.layer.borderWidth = 0.3;
+//    _imgview.layer.cornerRadius = 10;
+    [self addtapgestureRecognizer:self.imgview];
+    //接收侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +87,19 @@
     //去掉tableView多余的线
     self.tableView.separatorStyle =NO;
 }
-
+//添加单击手势
+-(void)addtapgestureRecognizer:(id)any{
+    //初始化一个单击手势，设置响应的事件为tapclick
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+    [any addGestureRecognizer:tap];
+}
+-(void)tapClick:(UITapGestureRecognizer *)tap{
+    
+    if (tap.state == UIGestureRecognizerStateRecognized ) {
+        //发送注册按钮被按的通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
+    }
+}
 - (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
     
     CGRect frame = CGRectMake(0, 0, UI_SCREEN_W, 125);
@@ -99,9 +117,20 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    
 }
+-(void)changeHeadImg{
+    UserModel * user = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    if (![Utilities loginCheck]) {
+        //[_avatarImg setImage:[UIImage imageNamed:@"Location"]];
+        [_imgview setImage:[UIImage imageNamed:@"ic_user"]];
+    }
+    else{
+//        NSLog(@"图片 %@",user.avatarUrl);
+        //NSString *imgurl = [NSString stringWithFormat:@"%@",user.avatarUrl];
+        [_imgview sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"ic_user_head"]];
+    }
 
+}
 -(void)uiLayout{
     _tableView.tableFooterView = [UIView new];
     [self refresh];
@@ -149,7 +178,7 @@
         
         [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             
-            NSLog(@"首页%@",responseObject);
+//            NSLog(@"首页%@",responseObject);
             [_aiv stopAnimating];
             UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
             [refresh endRefreshing];
@@ -162,7 +191,7 @@
                     _imgArr[i] = advDict[@"imgurl"];
                     i++;
                 }
-                NSLog(@"_advArr =%@",_imgArr);
+//                NSLog(@"_advArr =%@",_imgArr);
                 [self addZLImageViewDisPlayView:_imgArr];
                 NSDictionary * result = responseObject[@"result"];
                 NSArray * models = result[@"models"];
@@ -188,7 +217,7 @@
             }
         } failure:^(NSInteger statusCode, NSError *error) {
             //失败以后要做的事情在此执行
-            NSLog(@"statusCode=%ld",statusCode);
+//            NSLog(@"statusCode=%ld",statusCode);
             [_aiv stopAnimating];
             UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
             [refresh endRefreshing];
@@ -198,10 +227,6 @@
     });
                    
 }
-                   
-                   
-
-
 
 //多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -298,8 +323,8 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    NSLog(@"纬度：%f",newLocation.coordinate.latitude);
-    NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    //NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
 
     
     _location = newLocation;
@@ -328,7 +353,7 @@
             if(!error){
                 CLPlacemark *first = placemarks.firstObject;
                 NSDictionary *locDict = first.addressDictionary;
-                NSLog(@"locDict = %@",locDict);
+//                NSLog(@"locDict = %@",locDict);
                 NSString *cityStr = locDict[@"City"];
                 cityStr = [cityStr substringToIndex:(cityStr.length -1)];
                 [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];
@@ -428,6 +453,11 @@
 }
 
 
-- (IBAction)avatarAction:(UIBarButtonItem *)sender {
-}
+
+
+
+    
+
+
+
 @end
