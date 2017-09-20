@@ -11,9 +11,8 @@
 #import "FoundCollectionViewCell.h"
 #import "FoundModel.h"
 #import <UIImageView+WebCache.h>
-
-
 #import "DetailViewController.h"
+
 @interface FoundViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     NSInteger page;
     NSInteger perPage;
@@ -29,7 +28,6 @@
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *FullfillBtn;//全部分类
 - (IBAction)FullfillAction:(UIButton *)sender forEvent:(UIEvent *)event;
-
 @property (weak, nonatomic) IBOutlet UIView *coverView;
 @property (weak, nonatomic) IBOutlet UITableView *SxTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightTableView;
@@ -43,6 +41,9 @@
 @property (strong,nonatomic) NSString * disStr;
 @property (strong,nonatomic) NSString * idStr;
 @property (strong,nonatomic) NSMutableArray * contentArr;
+
+@property (strong,nonatomic) NSString *str;
+@property (strong,nonatomic) NSString *str1;
 @end
 
 @implementation FoundViewController
@@ -51,9 +52,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    _str  = [[StorageMgr singletonStorageMgr]objectForKey:@"jindu"];
+    _str1 = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
     [self initialization];
     [self disnetworkRequest];
-    
+
     //设置导航条的颜色(风格颜色)
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
     //设置导航条标题的颜色
@@ -157,6 +161,16 @@
     }
 }
 
+
+-(void)checkCityState:(NSNotification *)note{
+    NSString * cityStr = note.object;
+    
+    [Utilities removeUserDefaults:@"UserCity"];
+    [Utilities setUserDefaults:@"UserCity" content:cityStr];
+    //重新执行网络请求
+    
+}
+
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _contentArr.count-1){
@@ -240,25 +254,25 @@
     pageNum = 1;
     if(flag == 1){
         if(indexPath.row == 0){
-        _disStr = @"1000";
+        _disStr = @"0";
         [self disnetworkRequest];//默认按距离请求
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;
         }
         if(indexPath.row == 1){
-            _disStr = @"2000";
+            _disStr = @"1000";
         [self rangenetworkRequest];
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;
         }
         if(indexPath.row == 2){
-            _disStr = @"3000";
+            _disStr = @"2000";
             [self rangenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
         }
         if(indexPath.row == 3){
-            _disStr = @"4000";
+            _disStr = @"3000";
             [self rangenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
@@ -317,21 +331,10 @@
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
         }
-        
-        
-    
+
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - networkRequest
 
@@ -339,7 +342,7 @@
 //距离排序请求
 -(void)disnetworkRequest{
     //_aiv= [Utilities getCoverOnView:self.view];
-    NSDictionary * para = @{@"city":@"无锡",@"page":@(pageNum),@"perPage":@(pageSize),@"jing":@(120.2672222),@"wei":@(31.47361111),@"type":@0};
+       NSDictionary * para = @{@"city":@"无锡",@"page":@(pageNum),@"perPage":@(pageSize),@"jing":_str,@"wei":_str1,@"type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kJson success:^(id responseObject) {
         [_aiv stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_ContentCollectionView viewWithTag:10001];
@@ -376,7 +379,7 @@
 //按人气
 -(void)peoplenetworkRequest{
     //_aiv = [Utilities getCoverOnView:self.view];
-    NSDictionary * para = @{@"city":@"无锡",@"jing":@"120.2672222",@"wei":@"31.47361111",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@1};
+    NSDictionary * para = @{@"city":@"无锡",@"jing":_str,@"wei":_str1,@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_aiv stopAnimating];
         //NSLog(@"responseObject=%@",responseObject);
@@ -408,7 +411,7 @@
 - (void)rangenetworkRequest{
 
     //_aiv = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.2672222",@"wei":@"31.47361111",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"distance":_disStr};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":_str,@"wei":_str1,@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"distance":_disStr};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_aiv stopAnimating];
@@ -452,7 +455,7 @@
 //按种类请求会所
 - (void)kindnetworkRequest{
     //_aiv = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.2672222",@"wei":@"31.47361111",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"featureId":_idStr};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":_str,@"wei":_str1,@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"featureId":_idStr};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         // NSLog(@"responseObject:%@", responseObject);
         [_aiv stopAnimating];

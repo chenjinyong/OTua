@@ -21,6 +21,7 @@
 		84652BDA1F70C0E7000EB878 /* FoundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD51F70C0E7000EB878 /* FoundTableViewCell.m */; };
 		84652BDB1F70C0E7000EB878 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84652BD71F70C0E7000EB878 /* FoundViewController.m */; };
 		8470007E1F5E3C26004350C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470007D1F5E3C26004350C9 /* UserModel.m */; };
+		8482F01A1F72055000E51B46 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482F0191F72055000E51B46 /* Annotation.m */; };
 		848B46A11F622EC700D06C05 /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B46A01F622EC700D06C05 /* UIImage+MDQRCode.m */; };
 		848D3F441F5525310043C9BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F431F5525310043C9BD /* main.m */; };
 		848D3F471F5525310043C9BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F461F5525310043C9BD /* AppDelegate.m */; };
@@ -56,7 +57,7 @@
 		848D3FCD1F5527E00043C9BD /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FC81F5527E00043C9BD /* libssl.a */; };
 		848D3FCE1F5527E00043C9BD /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FC91F5527E00043C9BD /* Openssl.framework */; };
 		848D3FD01F5527EC0043C9BD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FCF1F5527EC0043C9BD /* CoreTelephony.framework */; };
-		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; };
+		848D3FD21F5527F60043C9BD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD11F5527F60043C9BD /* CoreMotion.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		848D3FD41F5527FF0043C9BD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 848D3FD31F5527FF0043C9BD /* libz.tbd */; };
 		84A77A1A1F5FF7DE007067AC /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A191F5FF7DE007067AC /* MyInfoViewController.m */; };
 		84A77A1D1F5FF7E5007067AC /* ConvergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A77A1C1F5FF7E5007067AC /* ConvergenceViewController.m */; };
@@ -81,10 +82,10 @@
 		84B2155E1F615427001A79AB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2155D1F615427001A79AB /* AboutViewController.m */; };
 		84B216001F615A23001A79AB /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B215FF1F615A23001A79AB /* libiconv.tbd */; };
 		84B216021F615A34001A79AB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216011F615A34001A79AB /* AVFoundation.framework */; };
-		84B216041F615A41001A79AB /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216031F615A41001A79AB /* CoreImage.framework */; };
-		84B216061F615A51001A79AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216051F615A51001A79AB /* QuartzCore.framework */; };
-		84B216081F615A83001A79AB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216071F615A83001A79AB /* CoreVideo.framework */; };
-		84B2160A1F615A92001A79AB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216091F615A92001A79AB /* CoreMedia.framework */; };
+		84B216041F615A41001A79AB /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216031F615A41001A79AB /* CoreImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		84B216061F615A51001A79AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216051F615A51001A79AB /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		84B216081F615A83001A79AB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216071F615A83001A79AB /* CoreVideo.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		84B2160A1F615A92001A79AB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B216091F615A92001A79AB /* CoreMedia.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		84B216471F61706D001A79AB /* bitstream.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2163A1F61706D001A79AB /* bitstream.m */; };
 		84B216481F61706D001A79AB /* mask.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2163C1F61706D001A79AB /* mask.m */; };
 		84B216491F61706D001A79AB /* qrencode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B2163E1F61706D001A79AB /* qrencode.m */; };
@@ -152,6 +153,8 @@
 		84652BD71F70C0E7000EB878 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
 		8470007C1F5E3C26004350C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		8470007D1F5E3C26004350C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		8482F0181F72055000E51B46 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		8482F0191F72055000E51B46 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		848B469F1F622EC700D06C05 /* UIImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDQRCode.h"; sourceTree = "<group>"; };
 		848B46A01F622EC700D06C05 /* UIImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MDQRCode.m"; sourceTree = "<group>"; };
 		848D3F3F1F5525310043C9BD /* convergence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = convergence.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -587,6 +590,8 @@
 			children = (
 				84A93AED1F6CCF44000E410C /* MapViewController.h */,
 				84A93AEE1F6CCF44000E410C /* MapViewController.m */,
+				8482F0181F72055000E51B46 /* Annotation.h */,
+				8482F0191F72055000E51B46 /* Annotation.m */,
 			);
 			name = "MapViewController地图";
 			sourceTree = "<group>";
@@ -947,6 +952,7 @@
 				84F699391F5E5DE600ABD169 /* ConvergenceModel.m in Sources */,
 				848D3F821F5526DA0043C9BD /* Order.m in Sources */,
 				84B2164B1F61706D001A79AB /* qrspec.m in Sources */,
+				8482F01A1F72055000E51B46 /* Annotation.m in Sources */,
 				848D3FB91F5526DF0043C9BD /* AppAPIClient.m in Sources */,
 				844BBC8A1F6F53DC0088DEE7 /* ActivityModel.m in Sources */,
 				848D3FB41F5526DF0043C9BD /* MD5DataSigner.m in Sources */,

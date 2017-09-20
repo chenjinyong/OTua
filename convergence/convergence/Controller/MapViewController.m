@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "VouchersViewController.h"
-
+#import "Annotation.h"
 @interface MapViewController ()<CLLocationManagerDelegate, MKMapViewDelegate> {
     NSInteger count;
 }
@@ -105,6 +105,13 @@
     //用push方式返回上一页
     //[self.navigationController popViewControllerAnimated:YES];
 }
+
+//- (void)loadData{
+//    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"PinData" ofType:@"plist"];
+//    NSArray *tempArray = [NSArray arrayWithContentsOfFile:filePath];
+//    
+//}
+
 /*
 #pragma mark - Navigation
 
@@ -130,11 +137,11 @@
         NSLog(@"CLLocation经度：%f", newLocation.coordinate.longitude);
         NSLog(@"CLLocation纬度：%f", newLocation.coordinate.latitude);
         
-        _latitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.latitude];
-        _longitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.longitude];
+      //  _latitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.latitude];
+      //  _longitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.longitude];
         
-        //_longitudeLabel.text = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
-        //_latitudeLabel.text = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
+        _longitudeLabel.text = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
+        _latitudeLabel.text = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
     }
     //停止获取用户坐标（关闭开关）
     //[manager stopUpdatingLocation];
@@ -172,16 +179,20 @@
     //初始化CLLocationCoordinate2D这个坐标对象
     CLLocationCoordinate2D location;
     //设置具体经纬度作为视角中心点
-    _latitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.latitude];
-    _longitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.longitude];
+  //  _latitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.latitude];
+   // _longitudeLabel.text = [NSString stringWithFormat:@"%@",_Vouch.longitude];
+    NSLog(@"精度：%@",_Vouch.longitude);
     
-//    location.longitude = userLocation.coordinate.longitude;
-//    location.latitude = userLocation.coordinate.latitude;
+    location.latitude = [[[StorageMgr singletonStorageMgr]objectForKey:@"latitude"] doubleValue];
+    location.longitude = [[[StorageMgr singletonStorageMgr]objectForKey:@"longitude"] doubleValue];
+    //userLocation.coordinate.latitude;
     //将设置好点缩放值和中心点打包放入region结构中
     region.span = span;
     region.center = location;
     //将打包好的视角结构作为参数运用到map view的设置视角的方法中去
     [mapView setRegion:region animated:YES];
+    [self pinAnnotationViaCoordinate:location];
+    
 }
 
 //当地图加载失败时调用
@@ -234,7 +245,7 @@
     //设置大头针的标题与副标题
     [self setAnnotationWithDescriptionOnCoordinate:mapCoordinate completionHandler:^(NSDictionary *info) {
         //初始化一个大头针对象
-        VouchersViewController *annotation = [[VouchersViewController alloc] init];
+        Annotation *annotation = [[Annotation alloc] init];
         //将方法参数中的坐标设置为大头针的坐标属性
         annotation.coordinate = mapCoordinate;
         if (info) {

@@ -28,8 +28,10 @@
         _ePromot = [Utilities nullAndNilCheck:dict[@"ePromot"] replaceBy:@""];
         _eFeature = [Utilities nullAndNilCheck:dict[@"eFeature"] replaceBy:@""];
         _experienceQuantity = [Utilities nullAndNilCheck:dict[@"experienceQuantity"] replaceBy:@""];
-        _longitude = [Utilities nullAndNilCheck:dict[@"longitude"] replaceBy:@""];
-        _latitude = [Utilities nullAndNilCheck:dict[@"latitude"] replaceBy:@""];
+        
+        self.longitude = [dict[@"longitude"]isKindOfClass:[NSNull class]]?@[@""]:dict[@"longitude"];
+        self.latitude = [dict[@"latitude"]isKindOfClass:[NSNull class]]?@[@""]:dict[@"latitude"];
+        
         
         
         

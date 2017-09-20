@@ -13,7 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
 #import "ZLImageViewDisplayView.h"
-#import <CoreLocation/CoreLocation.h>
+
 
 @interface ConvergenceViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
     NSInteger page;
@@ -36,7 +36,7 @@
 @property (strong,nonatomic) NSMutableArray * imgArr;
 
 @property (strong,nonatomic) CLLocationManager *locMgr;
-@property (strong,nonatomic) CLLocation *location;;
+@property (strong,nonatomic) CLLocation *location;
 
 
 @end
@@ -48,9 +48,10 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     [self uiLayout];
+    [self enterApp];
+    [self locationConfig];
     [self dataInitialize];
-    //
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,6 +77,8 @@
     //去除导航栏下方的横线
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    //去掉tableView多余的线
+    self.tableView.separatorStyle =NO;
 }
 
 - (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
@@ -138,57 +141,64 @@
 
 
 -(void)networkRequest{
-    NSDictionary *para = @{@"city":@"无锡",@"jing":@(120.2672222),@"wei":@(31.47361111),@"page":@(page),@"perPage":@(perPage)};
-    [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+    //duration表示从NOW开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+    dispatch_after(duration,dispatch_get_main_queue(),^{
+        NSDictionary *para = @{@"city":@"无锡",@"jing":@(_location.coordinate.longitude),@"wei":@(_location.coordinate.latitude),@"page":@(page),@"perPage":@(perPage)};
         
-        NSLog(@"首页%@",responseObject);
-        [_aiv stopAnimating];
-        UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
-        [refresh endRefreshing];
-        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+        [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             
-            NSArray * adv = responseObject[@"advertisement"];
-  
-            for(NSDictionary * advDict in adv){
+            NSLog(@"首页%@",responseObject);
+            [_aiv stopAnimating];
+            UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
+            [refresh endRefreshing];
+            if ([responseObject[@"resultFlag"] integerValue] == 8001) {
                 
-                _imgArr[i] = advDict[@"imgurl"];
-                i++;
+                NSArray * adv = responseObject[@"advertisement"];
+                
+                for(NSDictionary * advDict in adv){
+                    
+                    _imgArr[i] = advDict[@"imgurl"];
+                    i++;
+                }
+                NSLog(@"_advArr =%@",_imgArr);
+                [self addZLImageViewDisPlayView:_imgArr];
+                NSDictionary * result = responseObject[@"result"];
+                NSArray * models = result[@"models"];
+                NSDictionary *pagingInfo = result[@"pagingInfo"];
+                totalPage = [pagingInfo[@"totalPage"]integerValue];
+                if (page == 1) {
+                    //清空数据
+                    [_arr removeAllObjects];
+                    
+                }
+                
+                for(NSDictionary * dict in models){
+                    ConvergenceModel * home = [[ConvergenceModel alloc]initWithSecondNSDictionary:dict];
+                    
+                    [_arr addObject:home];
+                    
+                }
+                
+                [_tableView reloadData];
+                
+            } else {
+                [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
             }
-            NSLog(@"_advArr =%@",_imgArr);
-            [self addZLImageViewDisPlayView:_imgArr];
-            NSDictionary * result = responseObject[@"result"];
-            NSArray * models = result[@"models"];
-            NSDictionary *pagingInfo = result[@"pagingInfo"];
-            totalPage = [pagingInfo[@"totalPage"]integerValue];
-            if (page == 1) {
-                //清空数据
-                [_arr removeAllObjects];
-                
-            }
-            
-            for(NSDictionary * dict in models){
-                ConvergenceModel * home = [[ConvergenceModel alloc]initWithSecondNSDictionary:dict];
-                
-                [_arr addObject:home];
-                
-            }
-            
-            
-            
-            [_tableView reloadData];
-    
-        } else {
-            [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:@"提示" onView:self];
-        }
-    } failure:^(NSInteger statusCode, NSError *error) {
-        //失败以后要做的事情在此执行
-        NSLog(@"statusCode=%ld",statusCode);
-        [_aiv stopAnimating];
-        UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
-        [refresh endRefreshing];
-        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-    }];
+        } failure:^(NSInteger statusCode, NSError *error) {
+            //失败以后要做的事情在此执行
+            NSLog(@"statusCode=%ld",statusCode);
+            [_aiv stopAnimating];
+            UIRefreshControl *refresh = (UIRefreshControl *)[self.tableView viewWithTag:11];
+            [refresh endRefreshing];
+            [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+        }];
+
+    });
+                   
 }
+                   
+                   
 
 
 
@@ -221,6 +231,7 @@
     
     ConvergenceModel * home = _arr[indexPath.section];
     NSString *Id =  [NSString stringWithFormat:@"%ld",home.clubId];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
     //NSLog(@"id是：%@",Id);
     
     if(indexPath.row == 0){
@@ -249,6 +260,7 @@
     _locMgr.desiredAccuracy = kCLLocationAccuracyBest;
     //打开定位服务的开关（开始定位）
     [_locMgr startUpdatingLocation];
+    [self locationstart];
 }
 
 - (void)enterApp{
@@ -285,11 +297,18 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    // NSLog(@"纬度：%f",newLocation.coordinate.latitude);
-    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+    NSLog(@"经度：%f",newLocation.coordinate.longitude);
+
+    
     _location = newLocation;
+    
+   [[StorageMgr singletonStorageMgr]addKey:@"jindu" andValue:[ NSString stringWithFormat:@"%f",_location.coordinate.longitude]];
+    [[StorageMgr singletonStorageMgr]addKey:@"weidu" andValue:[ NSString stringWithFormat:@"%f",_location.coordinate.latitude]];
+    //[self dataInitialize];
     //用flag思想判断是否可以去根据定位拿到城市
     if(firstVisit){
+       
         firstVisit = !firstVisit;
         //根据定位拿到城市
         [self getRegeoViaCoordinate];
@@ -299,7 +318,7 @@
 //根据定位拿到城市
 -(void)getRegeoViaCoordinate{
     //duration表示从NOW开始过3个SEC
-    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
     dispatch_after(duration,dispatch_get_main_queue(),^{
         //正式做事情
         CLGeocoder *geo = [CLGeocoder new];
@@ -346,6 +365,9 @@
         
         cell.ipLabel.text = conver.clubaddress;
         cell.nameLabel.text = conver.clubname;
+        
+        
+       
         cell.distanceLabel.text = [NSString stringWithFormat:@"%ld米",(long)conver.clubdis];
         
         [_aiv stopAnimating];
@@ -367,6 +389,7 @@
 
         return cell;
     }
+    
     
     
 }

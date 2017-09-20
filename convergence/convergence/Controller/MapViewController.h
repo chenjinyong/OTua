@@ -11,4 +11,6 @@
 @interface MapViewController : UIViewController
 
 @property (strong,nonatomic) VouchersModel *Vouch;
+@property (strong,nonatomic) NSString*latitude;
+@property (strong,nonatomic) NSString*longtitude;
 @end
