@@ -21,6 +21,7 @@
 - (IBAction)buyAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
+@property (strong,nonatomic) VouchersModel * voucher;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//会所名字
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;//地址
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;//使用时间
 @property (weak, nonatomic) IBOutlet UILabel *ruleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promotLabel;//提示
+- (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (strong,nonatomic)NSMutableArray *arr;
 @end
@@ -163,4 +165,11 @@
     [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
 }
 
+- (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_voucher.longitude];
+    NSLog(@"%@",_voucher.longitude);
+    [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_voucher.latitude];
+    
+}
 @end

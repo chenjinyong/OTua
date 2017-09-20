@@ -25,8 +25,8 @@
 @property (strong,nonatomic)NSString * ePromot;//温馨提示
 @property (strong,nonatomic)NSString *eFeature;//特色
 @property (strong,nonatomic)NSString *experienceQuantity;//分店体验卷数量
-@property (strong,nonatomic)NSString *longitude;//经度
-@property (strong,nonatomic)NSString *latitude;//纬度
+@property (strong,nonatomic)NSArray *longitude;//经度
+@property (strong,nonatomic)NSArray *latitude;//纬度
 
 
 

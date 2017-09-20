@@ -18,5 +18,5 @@
 @property (nonatomic, copy) NSString *subtitle;
 
 @property (strong,nonatomic) ConvergenceModel * conver;
-@property (strong,nonatomic) VouchersModel * voucher;
+
 @end
