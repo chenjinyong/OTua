@@ -26,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableView *logoImg;
+- (IBAction)avatarAction:(UIBarButtonItem *)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *imgView;
 
@@ -427,4 +428,6 @@
 }
 
 
+- (IBAction)avatarAction:(UIBarButtonItem *)sender {
+}
 @end
