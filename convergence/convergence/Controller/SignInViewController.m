@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 - (IBAction)signInAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *SigninBtn;
 @property (strong,nonatomic) UIActivityIndicatorView * aiv;
 @end
 
@@ -23,12 +24,23 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     [self uiLayout];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//每次将要来到这个页面的时候
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //添加监听用户名和密码的按钮点击事件(当输入框的内容改变时调用textChange方法)
+    [_usernameTextField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_passwordTextField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
 
 -(void)naviConfig{
     
@@ -61,6 +73,19 @@
         }
     }
 }
+//输入框内容改变的监听事件
+-(void)textChange:(UITextField *)textFiled{
+    //当文本框中的内容改变时判断内容长度是否为零；是则不启用按钮，不是则启用按钮。
+    if(_usernameTextField.text.length != 0 && _passwordTextField.text.length != 0){
+        _SigninBtn.enabled = YES;
+        _SigninBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+        //[_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        _SigninBtn.enabled = NO;
+        _SigninBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -73,6 +98,7 @@
 
 - (IBAction)signInAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if (_usernameTextField.text.length == 0) {
+        
         [Utilities popUpAlertViewWithMsg:@"请输入您的手机号" andTitle:nil onView:self];
         return;
     }
@@ -89,6 +115,9 @@
     if (_passwordTextField.text.length < 6 || _passwordTextField.text.length >18) {
         [Utilities popUpAlertViewWithMsg:@"您输入的密码必须在6-18位之间" andTitle:nil onView:self];
         return;
+    }
+    if(!(_usernameTextField.text.length == 0 &&_passwordTextField.text.length == 0)){
+        self.SigninBtn.backgroundColor = [UIColor blueColor];
     }
     //无输入异常的情况下，开始正式登录接口
     [self readyForencoding];

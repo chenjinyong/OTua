@@ -554,27 +554,20 @@
 			path = AliUtil;
 			sourceTree = "<group>";
 		};
-		84A77A211F5FF921007067AC /* Sign */ = {
+		84A77A211F5FF921007067AC /* SignInViewController 登录 */ = {
 			isa = PBXGroup;
 			children = (
 				84A77A221F5FF99B007067AC /* SignInViewController.h */,
 				84A77A231F5FF99B007067AC /* SignInViewController.m */,
 				84A77A241F5FF99B007067AC /* SignUpViewController.h */,
 				84A77A251F5FF99B007067AC /* SignUpViewController.m */,
-			);
-			name = Sign;
-			sourceTree = "<group>";
-		};
-		84A77A281F5FFBEB007067AC /* Left */ = {
-			isa = PBXGroup;
-			children = (
 				84A77A291F5FFC35007067AC /* LeftViewController.h */,
 				84A77A2A1F5FFC35007067AC /* LeftViewController.m */,
 			);
-			name = Left;
+			name = "SignInViewController 登录";
 			sourceTree = "<group>";
 		};
-		84A77A361F6014E8007067AC /* Setting */ = {
+		84A77A361F6014E8007067AC /* SettingViewController 设置 */ = {
 			isa = PBXGroup;
 			children = (
 				84A77A371F6014FD007067AC /* SettingViewController.h */,
@@ -582,10 +575,10 @@
 				84D044C61F62711D009428F4 /* ModifyViewController.h */,
 				84D044C71F62711D009428F4 /* ModifyViewController.m */,
 			);
-			name = Setting;
+			name = "SettingViewController 设置";
 			sourceTree = "<group>";
 		};
-		84A93AEC1F6CCEDE000E410C /* MapViewController地图 */ = {
+		84A93AEC1F6CCEDE000E410C /* MapViewController 地图 */ = {
 			isa = PBXGroup;
 			children = (
 				84A93AED1F6CCF44000E410C /* MapViewController.h */,
@@ -593,7 +586,7 @@
 				8482F0181F72055000E51B46 /* Annotation.h */,
 				8482F0191F72055000E51B46 /* Annotation.m */,
 			);
-			name = "MapViewController地图";
+			name = "MapViewController 地图";
 			sourceTree = "<group>";
 		};
 		84B216381F61706D001A79AB /* MDQREncode */ = {
@@ -663,11 +656,10 @@
 				84F699301F5E5C3E00ABD169 /* convergenceViewController 首页 */,
 				84652BCF1F70C0E7000EB878 /* FoundViewController 发现 */,
 				844BBC841F6F53680088DEE7 /* ActivityViewController 活动 */,
-				84A93AEC1F6CCEDE000E410C /* MapViewController地图 */,
+				84A93AEC1F6CCEDE000E410C /* MapViewController 地图 */,
 				B29FE1561F5D2EA10085C03E /* MyInfoViewControll   我的 */,
-				84A77A361F6014E8007067AC /* Setting */,
-				84A77A281F5FFBEB007067AC /* Left */,
-				84A77A211F5FF921007067AC /* Sign */,
+				84A77A361F6014E8007067AC /* SettingViewController 设置 */,
+				84A77A211F5FF921007067AC /* SignInViewController 登录 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

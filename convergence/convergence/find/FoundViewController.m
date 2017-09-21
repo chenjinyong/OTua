@@ -55,21 +55,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
-    [self addtapgestureRecognizer:self.imgview];
-    //接收侧滑按钮被按的监听
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
-    
-    
-    _str  = [[StorageMgr singletonStorageMgr]objectForKey:@"jindu"];
-    _str1 = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
+    [self naviConfig];
     [self initialization];
     [self disnetworkRequest];
+    
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//每次将要来到这个页面的时候
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _SxTableView.hidden = YES;
+    _coverView.hidden = YES;
+}
+
+//专门做导航条的控制
+-(void)naviConfig{
     //创建菊花膜
     _aiv = [Utilities getCoverOnView:self.view];
-
+    
     //设置导航条的颜色(风格颜色)
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
     //设置导航条标题的颜色
@@ -83,18 +93,21 @@
     //去除导航栏下方的横线
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-//每次将要来到这个页面的时候
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    _SxTableView.hidden = YES;
-    _coverView.hidden = YES;
+    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
+    _imgview.layer.borderWidth = 1;
+    _imgview.layer.cornerRadius = 12.5;
+    _imgview.layer.borderColor = UIColorFromRGB(37, 139, 254).CGColor;
+    _imgview.layer.masksToBounds = YES;
+    [self addtapgestureRecognizer:self.imgview];
+    
+    
+    
+    //接收侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
+    
+    _str  = [[StorageMgr singletonStorageMgr]objectForKey:@"jindu"];
+    _str1 = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
 }
 
 -(void)changeHeadImg{
@@ -596,7 +609,7 @@
 }
 
 
-#pragma mark - Action
+#pragma mark - buttonAction
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     _SxTableView.hidden = YES;
@@ -605,25 +618,41 @@
 //全城事件
 - (IBAction)wholecityAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 1;
-    self.heightTableView.constant = _cityArr.count *40 ;
-    _SxTableView.hidden = NO;
-    _coverView.hidden = NO;
+    self.heightTableView.constant = _cityArr.count *40;
+    if(_SxTableView.hidden == YES){
+        _SxTableView.hidden = NO;
+        _coverView.hidden = NO;
+    }else{
+        _SxTableView.hidden = YES;
+        _coverView.hidden = YES;
+        
+    }
     [_SxTableView reloadData];
 }
 //按距离分类事件
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 3;
     self.heightTableView.constant = _disArr.count *40;
-    _SxTableView.hidden = NO;
-    _coverView.hidden = NO;
+    if(_SxTableView.hidden == YES){
+        _SxTableView.hidden = NO;
+        _coverView.hidden = NO;
+    }else{
+        _SxTableView.hidden = YES;
+        _coverView.hidden = YES;
+    }
     [_SxTableView reloadData];
 }
 //全部分类事件
 - (IBAction)FullfillAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 2;
     self.heightTableView.constant = _kindArr.count *40 ;
-    _SxTableView.hidden = NO;
-    _coverView.hidden = NO;
+    if(_SxTableView.hidden == YES){
+        _SxTableView.hidden = NO;
+        _coverView.hidden = NO;
+    }else{
+        _SxTableView.hidden = YES;
+        _coverView.hidden = YES;
+    }
     [_SxTableView reloadData];
 
 }

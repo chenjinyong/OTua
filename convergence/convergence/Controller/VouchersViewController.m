@@ -142,32 +142,51 @@
 }
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    //配置电话APP的路径，并将要拨打的号码组合到路径中
-    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_voucher.clubTel];
-    NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
-//    NSLog(@"_fitness.clubTel = %@",_voucher.clubTel);
-    //从当前APP跳转到其他指定的APP中
-    [[UIApplication sharedApplication] openURL:targetAppUrl];
-    NSString *string =_voucher.clubTel;
-    //按逗号截取字符串
-    _arr = [string componentsSeparatedByString:@","];
-    //创建一个从底部弹出的弹窗
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    //遍历判断数组中有几个值
-    for (int i = 0; i < _arr.count; i++) {
-        UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    NSString *string = _voucher.clubTel;
+    _arr =  [string componentsSeparatedByString:@","];
+    // NSLog(@"数组里的是：%@",_arr);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *callAction = [UIAlertAction actionWithTitle:_arr[0] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //  NSLog(@"点了第一个");
+        // NSLog(@"%@",_arr[0]);
+        //配置电话APP的路径，并将要拨打的号码组合到路径中
+        NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_arr[0]];
+        
+        UIWebView *callWebview =[[UIWebView alloc]init];
+        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+        [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+        
+        
+    }];
+    [alertController addAction:callAction];
+    // }
+    if(_arr.count == 2)
+    {
+        
+        UIAlertAction *callAction = [UIAlertAction actionWithTitle:_arr[1] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // NSLog(@"点了第二个");
+            // NSLog(@"%@",_arr[1]);
+            //配置电话APP的路径，并将要拨打的号码组合到路径中
+            NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_arr[1]];
+            
+            UIWebView *callWebview =[[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+            
             
         }];
-        [alert addAction:actionA];
+        [alertController addAction:callAction];
+        
     }
     
-    UIAlertAction *actionB = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
-    [alert addAction:actionB];
-    [self presentViewController:alert animated:YES completion:nil];
-    UIWebView *callWebview =[[UIWebView alloc]init];
-    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
-    [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+    //  [alertController addAction:callAction];
+    [alertController addAction:cancelAction];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event {

@@ -51,13 +51,6 @@
     [self enterApp];
     [self locationConfig];
     [self dataInitialize];
-    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
-//    _imgview.layer.borderWidth = 0.3;
-//    _imgview.layer.cornerRadius = 10;
-    [self addtapgestureRecognizer:self.imgview];
-    //接收侧滑按钮被按的监听
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
     
 }
 
@@ -86,6 +79,16 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     //去掉tableView多余的线
     self.tableView.separatorStyle =NO;
+    
+    _imgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_imgview];
+    _imgview.layer.borderWidth = 1;
+    _imgview.layer.cornerRadius = 12.5;
+    _imgview.layer.borderColor = UIColorFromRGB(37, 139, 254).CGColor;
+    _imgview.layer.masksToBounds = YES;
+    [self addtapgestureRecognizer:self.imgview];
+    //接收侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeHeadImg) name:@"changeHeadImg" object:nil];
 }
 //添加单击手势
 -(void)addtapgestureRecognizer:(id)any{
