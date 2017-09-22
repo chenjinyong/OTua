@@ -43,7 +43,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdn-J5-yvA">
                                 <rect key="frame" x="15" y="234" width="345" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.38823529411764707" green="0.63921568627450975" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="yWX-Ll-k0a"/>
                                 </constraints>
@@ -166,7 +166,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slc-1f-Nuw">
                                 <rect key="frame" x="15" y="394" width="345" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.38823529411764707" green="0.63921568627450975" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="e6z-r0-XBE"/>
                                 </constraints>
@@ -209,7 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="bpZ-Am-T5T"/>
                     <connections>
-                        <outlet property="VerBtn" destination="816-Sl-ryh" id="HTO-sB-tYs"/>
+                        <outlet property="VerText" destination="816-Sl-ryh" id="B2M-QX-P8o"/>
                         <outlet property="conPwdText" destination="PIT-Wb-1cu" id="ugy-p6-x4v"/>
                         <outlet property="nickNameText" destination="Aqc-Lf-LAA" id="kic-bN-xN3"/>
                         <outlet property="pwdText" destination="vEM-So-dvm" id="Oou-8O-hhw"/>
@@ -323,11 +323,11 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="kXJ-mg-TQD">
-                                    <rect key="frame" x="0.0" y="286" width="312.5" height="80"/>
+                                    <rect key="frame" x="0.0" y="305" width="312.5" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnm-O6-4YB">
-                                            <rect key="frame" x="0.0" y="0.0" width="312.5" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.5"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="pMh-3n-VjX"/>
@@ -365,7 +365,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" textLabel="9Lv-TB-FMQ" style="IBUITableViewCellStyleDefault" id="l5d-ZJ-Jtb">
-                                        <rect key="frame" x="0.0" y="198" width="312" height="44"/>
+                                        <rect key="frame" x="0.0" y="198" width="313" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l5d-ZJ-Jtb" id="BQm-LQ-hyX">
                                             <rect key="frame" x="0.0" y="0.0" width="279.5" height="43.5"/>
@@ -382,11 +382,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" id="Q3B-7g-lSX">
-                                        <rect key="frame" x="0.0" y="242" width="312" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" rowHeight="63" id="Q3B-7g-lSX">
+                                        <rect key="frame" x="0.0" y="242" width="312" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q3B-7g-lSX" id="Vug-5Q-gch">
-                                            <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="313" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -417,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBq-Z4-iVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306" y="-734"/>
+            <point key="canvasLocation" x="-306.39999999999998" y="-734.48275862068976"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nvn-S4-k14">

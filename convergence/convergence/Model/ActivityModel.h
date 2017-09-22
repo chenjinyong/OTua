@@ -16,7 +16,7 @@
 @property (nonatomic) NSInteger like;               //活动点赞数量
 @property (nonatomic) NSInteger unlike;             //活动被踩数
 @property (nonatomic) BOOL      isFavo;             //活动是否可以被收藏
-@property (strong,nonatomic) NSString * address;
+@property (strong,nonatomic) NSString * address;    //活动地址
 @property (strong,nonatomic) NSString * applyFee;
 @property (strong,nonatomic) NSString * attendence;
 @property (strong,nonatomic) NSString * limitation;

@@ -101,7 +101,7 @@
     NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"];
     NSDictionary *para = @{@"memberId":string,@"type":@0};
     [RequestAPI requestURL:@"/orderController/orderList" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-       // NSLog(@"responseObject 订单:%@",responseObject);
+//        NSLog(@"responseObject 订单:%@",responseObject);
         [_aiv stopAnimating];
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary *result= responseObject[@"result"];

@@ -27,6 +27,7 @@
         self.like = [dict[@"reliableNumber"] isKindOfClass:[NSNull class]] ? 0 : [dict[@"reliableNumber"] integerValue];
         self.unlike = [dict[@"unReliableNumber"] isKindOfClass:[NSNull class]] ? 0 : [dict[@"unReliableNumber"] integerValue];
         self.isFavo = [dict[@"isFavo"]isKindOfClass:[NSNull class]]?   NO : [dict[@"isFavo"] boolValue ];
+        _address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"暂未提供地址"];
         
     }
     return self;

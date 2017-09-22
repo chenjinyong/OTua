@@ -324,7 +324,7 @@
     //将http请求的字符串转为NSURL
     NSURL *url=[NSURL URLWithString:activity.imgURL];
     //依靠SDWebImage来异步的下载一张远程路径下的图片，并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
-    [cell.activityImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"image"]];
+    [cell.activityImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"default"]];
     
     //将url给nsdata；下载图片
     // NSData *data = [NSData dataWithContentsOfURL:url];

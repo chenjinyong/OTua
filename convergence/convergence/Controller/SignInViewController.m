@@ -24,7 +24,8 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     [self uiLayout];
-    
+    _SigninBtn.enabled = NO;
+    _SigninBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
     
 }
 
@@ -116,9 +117,7 @@
         [Utilities popUpAlertViewWithMsg:@"您输入的密码必须在6-18位之间" andTitle:nil onView:self];
         return;
     }
-    if(!(_usernameTextField.text.length == 0 &&_passwordTextField.text.length == 0)){
-        self.SigninBtn.backgroundColor = [UIColor blueColor];
-    }
+    
     //无输入异常的情况下，开始正式登录接口
     [self readyForencoding];
 }

@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nickNameText;
 @property (weak, nonatomic) IBOutlet UITextField *pwdText;
 @property (weak, nonatomic) IBOutlet UITextField *conPwdText;
-@property (weak, nonatomic) IBOutlet UITextField *VerBtn;
+@property (weak, nonatomic) IBOutlet UITextField *VerText;
 @property (weak, nonatomic) IBOutlet UIButton *varBtn;
 - (IBAction)VerAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)singUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -29,11 +29,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
+    
+    _singUpBtn.enabled = NO;
+    _singUpBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//每次将要来到这个页面的时候
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //添加监听按钮点击事件(当输入框的内容改变时调用textChange方法)
+    [_userNameText addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_nickNameText addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_pwdText addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_conPwdText addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_VerText addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+   
+    
 }
 -(void)naviConfig{
     
@@ -63,6 +78,19 @@
 //按键盘外任意部位收起键盘
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
+}
+
+//输入框内容改变的监听事件
+-(void)textChange:(UITextField *)textFiled{
+    //当文本框中的内容改变时判断内容长度是否为零；是则不启用按钮，不是则启用按钮。
+    if(_userNameText.text.length != 0 && _nickNameText.text.length !=0 &&_pwdText.text.length != 0 &&_conPwdText.text.length !=0 && _VerText.text.length !=0 ){
+        _singUpBtn.enabled = YES;
+        _singUpBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+        //[_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        _singUpBtn.enabled = NO;
+        _singUpBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
 }
 /*
 #pragma mark - Navigation
