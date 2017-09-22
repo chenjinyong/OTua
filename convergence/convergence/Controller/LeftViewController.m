@@ -66,7 +66,7 @@
 }
 
 -(void) dataInitialize{
-    _arr = @[@"我的订单",@"我的推广",@"积分中心",@"意见反馈",@"关于我们"];
+    _arr = @[@"我的订单",@"我的活动",@"我的推广",@"积分中心",@"意见反馈",@"关于我们"];
 }
 
 -(void)request{
@@ -122,7 +122,7 @@
     if (indexPath.section == 0) {
         return 50.f;
     }else{
-        return UI_SCREEN_H - 500;
+        return UI_SCREEN_H - 550;
     }
 }
 
@@ -138,22 +138,26 @@
                 }
                     break;
                 case 1:{
+                    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"MyOrder" byIdentity:@"Activity"];
+                    [self presentViewController:signNavi animated:YES completion:nil];
+                }
+                case 2:{
                     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Promote" byIdentity:@"promote"];
                     [self presentViewController:signNavi animated:YES completion:nil];
                     
                 }
                     break;
-                case 2:{
+                case 3:{
                     [self request];
                 }
                     break;
-                case 3:{
+                case 4:{
                     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Feedback" byIdentity:@"feedback"];
                     [self presentViewController:signNavi animated:YES completion:nil];
                     
                 }
                     break;
-                case 4:{
+                case 5:{
                     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"About" byIdentity:@"about"];
                     [self presentViewController:signNavi animated:YES completion:nil];
                     

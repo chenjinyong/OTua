@@ -397,7 +397,7 @@
         <!--体验卷支付-->
         <scene sceneID="jmg-23-rLS">
             <objects>
-                <tableViewController storyboardIdentifier="Purchase" title="体验卷支付" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BlB-nW-sID" customClass="payTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Purchase" title="体验卷支付" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BlB-nW-sID" customClass="payTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="42" sectionHeaderHeight="28" sectionFooterHeight="28" id="nrr-No-iWO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
