@@ -10,6 +10,9 @@
 #import "GBAlipayConfig.h"
 
 @interface payTableViewController ()
+{
+    NSInteger flag;
+}
 @property (weak, nonatomic) IBOutlet UILabel *cardNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
@@ -68,12 +71,30 @@
     _arr = @[@"支付宝支付",@"微信支付",@"银联支付"];
 }
 
+-(void)uiLayout{
+    _cardNameLabel.text = _Vouch.eName;
+    _nameLabel.text = _Vouch.eClubName;
+    _unitpriceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_Vouch.currentPrice];
+    _totalpriceLabel.text = _unitpriceLabel.text;
+    //    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"]  ¥;
+    //    _tomlabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"tomorrow"];
+    //去掉多余下划线
+    self.tableView.tableFooterView = [UIView new];
+    //将表格试图设置为“编辑视图中”
+    self.tableView.editing = YES;
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //用代码来选中表歌视图中的某个细胞
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
 
 -(void)payAction{
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
-            NSString * tradeNo = [GBAlipayManager generateTradeNO];
-            [GBAlipayManager alipayWithProductName:_Vouch.eName amount:[NSString stringWithFormat:@"%ld",(long)_Vouch.currentPrice] tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_Vouch.eName] itBPay:@"30"];
+            
+                NSString * tradeNo = [GBAlipayManager generateTradeNO];
+                [GBAlipayManager alipayWithProductName:_Vouch.eName amount:[NSString stringWithFormat:@"%ld",(long)_Vouch.currentPrice] tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_Vouch.eName] itBPay:@"30"];
+
+            
             /**
              *  只针对单一用户数据本地写死
              *
@@ -140,35 +161,25 @@
     return @"支付方式";
 }
 
--(void)uiLayout{
-//    _HotelnameLbl.text = _Hotel.hotel_name;
 
-    _cardNameLabel.text = _Vouch.eName;
-    _nameLabel.text = _Vouch.eClubName;
-//    _unitpriceLabel.text = _Vouch.currentPrice;
-    _unitpriceLabel.text = [NSString stringWithFormat:@"%ld元",(long)_Vouch.currentPrice];
-    _totalpriceLabel.text = _unitpriceLabel.text;
-//    _todLabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"today"]  ¥;
-//    _tomlabel.text = [[StorageMgr singletonStorageMgr] objectForKey:@"tomorrow"];
-    //去掉多余下划线
-    self.tableView.tableFooterView = [UIView new];
-    //将表格试图设置为“编辑视图中”
-    self.tableView.editing = YES;
-    
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    //用代码来选中表歌视图中的某个细胞
-    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-}
-
+//按住细胞以后（取消选择）
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row != flag){
+        flag = indexPath.row;
     //遍历表格视图中所有选中状态下的细胞
     for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
         //当选中的细胞不是当前正在按的这个细胞的情况下
         if (eachIP != indexPath) {
             //将细胞从选中状态下改为不选中状态
             [tableView deselectRowAtIndexPath:eachIP animated:YES];
-            
         }
+     }
+  }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == flag){
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
 }
 
