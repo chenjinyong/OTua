@@ -12,6 +12,7 @@
 #import "ZLImageViewDisplayView.h"
 #import "DetailTableViewCell.h"
 #import "VouchersViewController.h"
+#import "MapViewController.h"
 @interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger page;
     NSInteger perpage;
@@ -248,8 +249,9 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 - (IBAction)mapimgAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
-    [self presentViewController:signNavi animated:YES completion:nil];
+    MapViewController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
+    //[self presentViewController:signNavi animated:YES completion:nil];
+    [self.navigationController pushViewController:signNavi animated:YES];
 
     [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_model.clubJing];
     [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_model.clubWei];
@@ -260,8 +262,9 @@
 }
 
 - (IBAction)mapLabelAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
-    [self presentViewController:signNavi animated:YES completion:nil];
+    MapViewController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
+    //[self presentViewController:signNavi animated:YES completion:nil];
+    [self.navigationController pushViewController:signNavi animated:YES];
     [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_model.clubJing];
     //    NSLog(@"%@",_voucher.longitude);
     [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_model.clubWei];

@@ -235,6 +235,44 @@
     NSURL * targetAPPUrl = [NSURL URLWithString:targetAPPStr];
     //从当前APP跳转到其他指定的APP中
     [[UIApplication sharedApplication] openURL:targetAPPUrl];
+        // NSLog(@"数组里的是：%@",_arr);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *callAction = [UIAlertAction actionWithTitle:_activity.phone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //  NSLog(@"点了第一个");
+        // NSLog(@"%@",_arr[0]);
+        //配置电话APP的路径，并将要拨打的号码组合到路径中
+        NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_activity.phone];
+        
+        UIWebView *callWebview =[[UIWebView alloc]init];
+        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+        [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+        
+        
+    }];
+    [alertController addAction:callAction];
+    // }
+    
+        
+        UIAlertAction *call = [UIAlertAction actionWithTitle:_activity.phone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // NSLog(@"点了第二个");
+            // NSLog(@"%@",_arr[1]);
+            //配置电话APP的路径，并将要拨打的号码组合到路径中
+            NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_activity.phone];
+            
+            UIWebView *callWebview =[[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+            
+            
+        }];
+        [alertController addAction:callAction];
+   
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+    //  [alertController addAction:callAction];
+    [alertController addAction:cancelAction];
+
     
     
 }

@@ -25,12 +25,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self naviConfig];
     [self set];
-    [self Lateralspreads];
 //    self.navigationController.navigationBar.barTintColor = [UIColor ];
 //    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     
 }
+
+-(void)naviConfig{
+    //设置文字
+    self.navigationItem.title = @"显示地图";
+    //设置导航条的颜色(风格颜色)
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(37, 139, 254);
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = NO;
+    //为导航条左上角创建一个按钮
+    
+    
+    //UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    //self.navigationItem.leftBarButtonItem = left;
+   
+}
+//-(void)backAction{
+//    //用model方式返回上一页
+//    //[self dismissViewControllerAnimated:YES completion:nil];
+//    //用push方式返回上一页
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
 //侧滑返回上一页
 -(void)Lateralspreads{
     // 获取系统自带滑动手势的target对象
@@ -130,12 +158,6 @@
     
 }
 
--(void)backAction{
-    //用model方式返回上一页
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //用push方式返回上一页
-    //[self.navigationController popViewControllerAnimated:YES];
-}
 
 //- (void)loadData{
 //    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"PinData" ofType:@"plist"];
