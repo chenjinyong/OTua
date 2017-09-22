@@ -20,6 +20,7 @@
         _grayImgUrl = [Utilities nullAndNilCheck:dict[@"grayImgUrl"] replaceBy:@""];
         _greenImgUrl = [Utilities nullAndNilCheck:dict[@"greenImgUrl"] replaceBy:@""];
         _clubJing = [Utilities nullAndNilCheck:dict[@"clubJing"] replaceBy:@""];
+        _clubWei = [Utilities nullAndNilCheck:dict[@"clubWei"] replaceBy:@""];
         _clubMember = [Utilities nullAndNilCheck:dict[@"clubMember"] replaceBy:@""];
         _clubMoods = [Utilities nullAndNilCheck:dict[@"clubMoods"] replaceBy:@""];
         _clubName = [Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];

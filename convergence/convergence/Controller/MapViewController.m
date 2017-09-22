@@ -25,8 +25,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self set];
+    [self Lateralspreads];
 //    self.navigationController.navigationBar.barTintColor = [UIColor ];
 //    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
+    
+}
+//侧滑返回上一页
+-(void)Lateralspreads{
+    // 获取系统自带滑动手势的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
+    if(self.navigationController.childViewControllers.count == 1){
+        // 表示用户在根控制器界面，就不需要触发滑动手势，
+        return NO;
+    }
+    return YES;
+}
+
+-(void)set{
     // Do any additional setup after loading the view.
     count = 0;
     //初始化位置管理器对象作为定位功能的基础
@@ -81,10 +112,10 @@
     _latitudeLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_latitudeLabel];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -238,6 +269,7 @@
     }
 }
 
+
 //根据坐标创建大头针并安插
 - (void)pinAnnotationViaCoordinate:(CLLocationCoordinate2D)mapCoordinate {
     //设置弱引用的自身以供block使用来解开强引用循环（双下划线）
@@ -248,13 +280,19 @@
         Annotation *annotation = [[Annotation alloc] init];
         //将方法参数中的坐标设置为大头针的坐标属性
         annotation.coordinate = mapCoordinate;
-        if (info) {
-            //设置大头针的标题与副标题属性
-            annotation.title = info[@"City"];
-            annotation.subtitle = info[@"Name"];
-        }
+        NSString *name = [[StorageMgr singletonStorageMgr]objectForKey:@"clubname"];
+        NSString *address = [[StorageMgr singletonStorageMgr]objectForKey:@"clubaddress"];
+        NSLog(@"_voucher.eClubName %@",name);
+        NSLog(@"_voucher.eClubName %@",address);
+        //设置大头针的标题与副标题属性
+        annotation.title = name;
+        annotation.subtitle = address;
+        
+        [weakSelf.mapView selectAnnotation:annotation animated:YES];
         //将大头针插入地图视图
         [weakSelf.mapView addAnnotation:annotation];
+        [weakSelf.mapView selectAnnotation:annotation animated:YES];
+
     }];
 }
 

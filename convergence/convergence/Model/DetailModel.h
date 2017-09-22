@@ -17,6 +17,7 @@
 @property (strong,nonatomic) NSString *greenImgUrl;//图片
 
 @property (strong,nonatomic) NSString *clubJing;//经度
+@property (strong,nonatomic) NSString *clubWei;//纬度
 @property (strong,nonatomic) NSString *clubLogo;//图片
 @property (strong,nonatomic) NSString *clubMember;//会员
 @property (strong,nonatomic) NSString *clubMoods;//

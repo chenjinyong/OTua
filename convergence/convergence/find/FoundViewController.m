@@ -39,7 +39,7 @@
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSArray * cityArr;
 @property (strong,nonatomic) NSMutableArray * kindArr;
-@property (strong,nonatomic) NSMutableArray * kindArr1;
+@property (strong,nonatomic) NSMutableArray * kindBrr;
 @property (strong,nonatomic) NSArray * disArr;
 @property (strong,nonatomic) NSString * disStr;
 @property (strong,nonatomic) NSString * idStr;
@@ -58,7 +58,7 @@
     [self naviConfig];
     [self initialization];
     [self disnetworkRequest];
-    
+    [self Lateralspreads];
     
     
 }
@@ -127,6 +127,33 @@
     }
     
 }
+
+//侧滑返回上一页
+-(void)Lateralspreads{
+    // 获取系统自带滑动手势的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
+    if(self.navigationController.childViewControllers.count == 1){
+        // 表示用户在根控制器界面，就不需要触发滑动手势，
+        return NO;
+    }
+    return YES;
+}
+
 //添加单击手势
 -(void)addtapgestureRecognizer:(id)any{
     //初始化一个单击手势，设置响应的事件为tapclick
@@ -313,30 +340,35 @@
         [self disnetworkRequest];//默认按距离请求
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;
+        [_wholecityBtn setTitle:_cityArr[0] forState:UIControlStateNormal];
         }
         if(indexPath.row == 1){
             _disStr = @"1000";
-        [self rangenetworkRequest];
-        _SxTableView.hidden = YES;
-        _coverView.hidden = YES;
+            [self rangenetworkRequest];
+            _SxTableView.hidden = YES;
+            _coverView.hidden = YES;
+            [_wholecityBtn setTitle:_cityArr[1] forState:UIControlStateNormal];
         }
         if(indexPath.row == 2){
             _disStr = @"2000";
             [self rangenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_wholecityBtn setTitle:_cityArr[2] forState:UIControlStateNormal];
         }
         if(indexPath.row == 3){
             _disStr = @"3000";
             [self rangenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_wholecityBtn setTitle:_cityArr[3] forState:UIControlStateNormal];
         }
         if(indexPath.row == 4){
             _disStr = @"5000";
             [self rangenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_wholecityBtn setTitle:_cityArr[4] forState:UIControlStateNormal];
         }
         
         
@@ -347,30 +379,35 @@
             [self disnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_FullfillBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
         }
         if(indexPath.row == 1){
             _idStr = @"1";
             [self kindnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_FullfillBtn setTitle:_kindArr[1] forState:UIControlStateNormal];
         }
         if(indexPath.row == 2){
             _idStr = @"2";
             [self kindnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_FullfillBtn setTitle:_kindArr[2] forState:UIControlStateNormal];
         }
         if(indexPath.row == 3){
             _idStr = @"3";
             [self kindnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_FullfillBtn setTitle:_kindArr[3] forState:UIControlStateNormal];
         }
         if(indexPath.row == 4){
             _idStr = @"4";
             [self kindnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_FullfillBtn setTitle:_kindArr[4] forState:UIControlStateNormal];
         }
         
     }
@@ -380,14 +417,14 @@
             [self disnetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
-        }
-       
+            [_distanceBtn setTitle:_disArr[0] forState:UIControlStateNormal];
+        }if(indexPath.row == 1){
             [self peoplenetworkRequest];
             _SxTableView.hidden = YES;
             _coverView.hidden = YES;
+            [_distanceBtn setTitle:_disArr[1] forState:UIControlStateNormal];
         }
-
-    
+    }
 }
 
 
@@ -559,7 +596,7 @@
             NSArray *featureForm = features[@"featureForm"];
             for(NSDictionary *dict in featureForm){
                 FoundModel * find = [[FoundModel alloc]initWithSxNSDictionary:dict];
-                [_kindArr1 addObject:find];
+                [_kindBrr addObject:find];
                 //    NSLog(@"数组里的是：%@",model.fName);
             }
             if(pageNum == 1){
@@ -567,7 +604,7 @@
             }
             _kindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
             for(int i = 0;i < 4;i++){
-                FoundModel * find = _kindArr1[i];
+                FoundModel * find = _kindBrr[i];
                 [_kindArr addObject:find.fName];
             }
             
@@ -595,7 +632,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     _cityArr = [NSArray new];
     _kindArr = [NSMutableArray new];
-    _kindArr1 = [NSMutableArray new];
+    _kindBrr = [NSMutableArray new];
     _disArr = [NSArray new];
     _contentArr = [NSMutableArray new];
     //_kindArr = @[@"全部分类",@"动感单车",@"力量器械",@"瑜伽/普拉提",@"有氧运动"];
@@ -622,6 +659,8 @@
     if(_SxTableView.hidden == YES){
         _SxTableView.hidden = NO;
         _coverView.hidden = NO;
+        _distanceBtn.titleLabel.text = @"按距离";
+        _FullfillBtn.titleLabel.text =@"全部分类";
     }else{
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;
@@ -636,6 +675,8 @@
     if(_SxTableView.hidden == YES){
         _SxTableView.hidden = NO;
         _coverView.hidden = NO;
+        _FullfillBtn.titleLabel.text =@"全部分类";
+        _wholecityBtn.titleLabel.text = @"全城";
     }else{
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;
@@ -649,6 +690,9 @@
     if(_SxTableView.hidden == YES){
         _SxTableView.hidden = NO;
         _coverView.hidden = NO;
+        _distanceBtn.titleLabel.text = @"按距离";
+        
+        _wholecityBtn.titleLabel.text = @"全城";
     }else{
         _SxTableView.hidden = YES;
         _coverView.hidden = YES;

@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *vipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+- (IBAction)mapimgAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)mapLabelAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (strong,nonatomic) NSMutableArray *arr;
 @property (strong,nonatomic) NSMutableArray *exparr;
@@ -47,6 +49,7 @@
     page = 1;
     perpage = 10;
     [self netRequest];
+    [self Lateralspreads];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +59,32 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = YES;
+}
+
+//侧滑返回上一页
+-(void)Lateralspreads{
+    // 获取系统自带滑动手势的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
+    if(self.navigationController.childViewControllers.count == 1){
+        // 表示用户在根控制器界面，就不需要触发滑动手势，
+        return NO;
+    }
+    return YES;
 }
 
 - (void)addZLImageViewDisPlayView:(NSArray *)imageArray{
@@ -82,7 +111,7 @@
     NSString *ClubId = [[StorageMgr singletonStorageMgr]objectForKey:@"clubId"];
     NSDictionary * para = @{@"clubKeyId":ClubId};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-//        NSLog(@"会所详情 = %@",responseObject);
+        NSLog(@"会所详情 = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
            // NSLog(@"rrr = %@",result);
@@ -217,5 +246,28 @@
     
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+- (IBAction)mapimgAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
+    [self presentViewController:signNavi animated:YES completion:nil];
+
+    [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_model.clubJing];
+    [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_model.clubWei];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubname" andValue:_model.clubName];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubaddress" andValue:_model.clubAddressB];
+    NSLog(@"_model.clubAddressB = %@",_model.clubAddressB);
+
+}
+
+- (IBAction)mapLabelAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Vouchers" byIdentity:@"map"];
+    [self presentViewController:signNavi animated:YES completion:nil];
+    [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_model.clubJing];
+    //    NSLog(@"%@",_voucher.longitude);
+    [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_model.clubWei];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubname" andValue:_model.clubName];
+    //    NSLog(@"%@",_voucher.longitude);
+    [[StorageMgr singletonStorageMgr] addKey:@"clubaddress" andValue:_model.clubAddressB];
+
 }
 @end

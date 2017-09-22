@@ -43,7 +43,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdn-J5-yvA">
                                 <rect key="frame" x="15" y="234" width="345" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.38823529411764707" green="0.63921568627450975" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="yWX-Ll-k0a"/>
                                 </constraints>
@@ -166,7 +166,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slc-1f-Nuw">
                                 <rect key="frame" x="15" y="394" width="345" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.38823529411764707" green="0.63921568627450975" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="e6z-r0-XBE"/>
                                 </constraints>
@@ -209,7 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="bpZ-Am-T5T"/>
                     <connections>
-                        <outlet property="VerBtn" destination="816-Sl-ryh" id="HTO-sB-tYs"/>
+                        <outlet property="VerText" destination="816-Sl-ryh" id="B2M-QX-P8o"/>
                         <outlet property="conPwdText" destination="PIT-Wb-1cu" id="ugy-p6-x4v"/>
                         <outlet property="nickNameText" destination="Aqc-Lf-LAA" id="kic-bN-xN3"/>
                         <outlet property="pwdText" destination="vEM-So-dvm" id="Oou-8O-hhw"/>

@@ -390,7 +390,7 @@
 
         
         NSURL * url = [NSURL URLWithString:conver.clubimage];
-        [cell.logoImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"MineSelected"]];
+        [cell.logoImg sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认图"]];
         
         cell.ipLabel.text = conver.clubaddress;
         cell.nameLabel.text = conver.clubname;

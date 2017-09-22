@@ -161,6 +161,7 @@
     //将下拉刷新控件添加到activityTableView中（在tableview中，下拉刷新控件会自动放置在表格视图的后侧位置） 就不用设置位置了
     [self.tableView addSubview:refreshControl];
 }
+
 //刷新数据
 //- (void)refreshData:(UIRefreshControl *)sender{
 //
@@ -324,11 +325,11 @@
     //将http请求的字符串转为NSURL
     NSURL *url=[NSURL URLWithString:activity.imgURL];
     //依靠SDWebImage来异步的下载一张远程路径下的图片，并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
-    [cell.activityImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"image"]];
+    [cell.activityImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认图"]];
     
     //将url给nsdata；下载图片
     // NSData *data = [NSData dataWithContentsOfURL:url];
-    //图片都是根据数据流来存取 的
+    //图片都是根据数据流来存取的
     //cell.activityImageView.image = [UIImage imageWithData:data];
     //给每一行的收藏按钮打上下标，用来区分它是哪一行的按钮
    

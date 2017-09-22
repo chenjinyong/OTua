@@ -16,7 +16,7 @@
 
 //创建一个容器去接受别的页面传来的数据
 @property (strong,nonatomic) ConvergenceModel * fitness;
-@property(nonatomic,strong) DetailModel * home;
+
 @property (strong,nonatomic) VouchersModel * voucher;
 @property (strong, nonatomic) NSArray *imagePaths;
 

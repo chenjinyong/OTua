@@ -33,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *ruleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promotLabel;//提示
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)mapimgAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)maplabelAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
 
 
 
@@ -49,8 +52,10 @@
     [self netRequest];
     
     _arr = [NSMutableArray new];
+    [self Lateralspreads];
+    
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -67,6 +72,31 @@
     
 }
 
+//侧滑返回上一页
+-(void)Lateralspreads{
+    // 获取系统自带滑动手势的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
+    if(self.navigationController.childViewControllers.count == 1){
+        // 表示用户在根控制器界面，就不需要触发滑动手势，
+        return NO;
+    }
+    return YES;
+}
 
 
 //网络请求
@@ -89,7 +119,7 @@
             _priceLabel.text = [NSString stringWithFormat:@"%ld元",_voucher.currentPrice];
 //            NSLog(@"_conver.orginPrice%ld",(long)_conver.orginPrice);
             //                _pricesLabel.text = model.currentPrice;
-            _nameLabel.text =_conver.clubname;
+            _nameLabel.text =_voucher.eClubName;
             _ipLabel.text = _voucher.eAddress;
             //_ipLabel.text = model.eAddress;
             _beginTimeLabel.text = _voucher.beginDate;
@@ -194,6 +224,29 @@
     [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_voucher.longitude];
 //    NSLog(@"%@",_voucher.longitude);
     [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_voucher.latitude];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubname" andValue:_voucher.eClubName];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubaddress" andValue:_voucher.eAddress];
+    
     
 }
+
+- (IBAction)mapimgAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_voucher.longitude];
+    //    NSLog(@"%@",_voucher.longitude);
+    [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_voucher.latitude];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubname" andValue:_voucher.eClubName];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubaddress" andValue:_voucher.eAddress];
+
+}
+
+- (IBAction)maplabelAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [[StorageMgr singletonStorageMgr] addKey:@"longitude" andValue:_voucher.longitude];
+    //    NSLog(@"%@",_voucher.longitude);
+    [[StorageMgr singletonStorageMgr] addKey:@"latitude" andValue:_voucher.latitude];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubname" andValue:_voucher.eClubName];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubaddress" andValue:_voucher.eAddress];
+
+}
+
+
 @end
