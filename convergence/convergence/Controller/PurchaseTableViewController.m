@@ -9,6 +9,9 @@
 #import "PurchaseTableViewController.h"
 
 @interface PurchaseTableViewController ()
+{
+    NSInteger flag;
+}
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
@@ -28,6 +31,7 @@
     [self naviConfig];
     [self uiLayout];
     [self dataInitalize];
+    [self Lateralspreads];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseResultAction:) name:@"AlipayResult" object:nil];
     self.tabBarController.tabBar.hidden = YES;
@@ -57,6 +61,20 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
     
+    
+}
+//侧滑返回上一页
+-(void)Lateralspreads{
+    // 获取系统自带滑动手势的target对象
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     
 }
 
@@ -138,16 +156,24 @@
     return @"支付方式";
 }
 
-//
+//按住细胞以后（取消选择）
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //遍历表格视图中所有选中状态下的细胞
-    for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
-        //当选中的细胞不是当前正在按的这个细胞的情况下
-        if (eachIP != indexPath) {
-            //将细胞从选中状态下改为不选中状态
-            [tableView deselectRowAtIndexPath:eachIP animated:YES];
-            
+    if(indexPath.row != flag){
+        flag = indexPath.row;
+        //遍历表格视图中所有选中状态下的细胞
+        for (NSIndexPath * eachIP in tableView.indexPathsForSelectedRows) {
+            //当选中的细胞不是当前正在按的这个细胞的情况下
+            if (eachIP != indexPath) {
+                //将细胞从选中状态下改为不选中状态
+                [tableView deselectRowAtIndexPath:eachIP animated:YES];
+            }
         }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == flag){
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
 }
 @end

@@ -78,6 +78,7 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
+
 //将要来到此页面（隐藏导航栏）
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

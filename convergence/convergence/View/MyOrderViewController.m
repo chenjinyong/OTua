@@ -66,6 +66,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 }
 
+
+
 -(void)backAction{
     //用model方式返回上一页
     [self dismissViewControllerAnimated:YES completion:nil];

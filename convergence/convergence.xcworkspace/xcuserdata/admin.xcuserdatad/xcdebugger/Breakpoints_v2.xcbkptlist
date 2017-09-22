@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "convergence/Controller/PurchaseTableViewController.m"
-            timestampString = "527741909.450083"
+            timestampString = "527759765.928215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-payAction"
             landmarkType = "7">
          </BreakpointContent>
