@@ -45,6 +45,7 @@
     self.navigationItem.title = @"活动报名支付";
     //为导航条右上角创建一个按钮
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"支付" style:UIBarButtonItemStylePlain target:self action:@selector(payAction)];
+    self.navigationItem.rightBarButtonItem = right;
     //设置导航条的颜色(风格颜色)
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(7, 121, 239);
     //设置导航条标题的颜色
@@ -55,7 +56,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
-    self.navigationItem.rightBarButtonItem = right;
+    
     
 }
 
@@ -83,15 +84,6 @@
             NSString * tradeNo = [GBAlipayManager generateTradeNO];
             [GBAlipayManager alipayWithProductName:_activity.name amount:_activity.applyFee tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@活动报名费",_activity.name] itBPay:@"30"];
         }
-            break;
-        case 1:{
-            
-        }
-            break;
-        case 2:{
-            
-        }
-            break;
             
         default:
             break;
