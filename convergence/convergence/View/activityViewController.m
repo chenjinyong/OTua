@@ -80,12 +80,9 @@
 //        NSLog(@"活动：%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSDictionary *result= responseObject[@"result"];
-            //NSDictionary * List = result[@"pagingInfo"];
             NSArray * list = result[@"models"];
             for (NSDictionary *dict in list) {
                 _activity = [[ActivityModel alloc] initWithDictionary:dict];
-                //NSLog(@"%@",dict);
-                //NSLog(@"%@",_activty);
                 //将上述实例化好的ConvergenceModel对象插入_arr数组
                 [_arr addObject:_activity];
             }
