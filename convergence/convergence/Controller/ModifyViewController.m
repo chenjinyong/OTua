@@ -12,9 +12,9 @@
 @interface ModifyViewController ()
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-
+@property (strong,nonatomic)UserModel *model;
 @property (strong,nonatomic) UIActivityIndicatorView * aiv;
-//@property(strong,nonatomic) UserModel * User;
+
 
 @end
 
@@ -26,6 +26,11 @@
 //    _User = [[StorageMgr singletonStorageMgr] objectForKey:@"MemberInfo"];
     [self naviConfig];
     [self setTextFieldLeftPadding:_textField forWidth:15];
+  //  NSString * name = [[StorageMgr singletonStorageMgr]objectForKey:@"nickname"];
+   // _textField.text = name;
+    _model = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    _textField.text = _model.nickname;
+    NSLog(@"_textField.text = %@",_model.nickname);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +80,6 @@
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:@"提示" onView:self];
-            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });

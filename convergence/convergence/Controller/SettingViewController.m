@@ -27,13 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    // _arr = [NSMutableArray new];//可变数组必须初始化
-
     _arr = @[@"昵称",@"性别",@"生日",@"身份证号码"];
-    
-    
     [self naviConfig];
     //调用大脚方法
     [self setFootViewForTableView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,6 +133,7 @@
     cell.textLabel.text = _arr[indexPath.section];
     if (indexPath.section == 0) {
         cell.detailTextLabel.text =model.nickname;
+       // [[StorageMgr singletonStorageMgr] addKey:@"nickname" andValue:model.nickname];
     }
     if (indexPath.section == 1) {
         cell.detailTextLabel.text = model.gender;
@@ -167,17 +166,6 @@
                     case 0:
                        [self performSegueWithIdentifier:@"nickName" sender:self];
                         break;
-//                    case 1:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-//                    case 2:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-//                    case 3:
-//                        [self performSegueWithIdentifier:@"" sender:self];
-//                        break;
-    
-    
                     default:
                         break;
                }
